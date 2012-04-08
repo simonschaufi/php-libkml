@@ -25,7 +25,7 @@ class ListItemType {
   }
   
   public function setModeFromString($string) {
-    $this->mode = array_search($string, ListItemType::$COLOR_MODE);
+    $this->mode = array_search($string, ListItemType::$LIST_ITEM_TYPE);
   }
   
   public function __toString() {

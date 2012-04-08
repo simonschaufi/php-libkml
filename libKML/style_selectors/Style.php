@@ -94,7 +94,7 @@ class Style extends StyleSelector {
     return $this->listStyle;
   }
   
-  public function setListStyle($iconStyle) {
+  public function setListStyle($listStyle) {
     $this->listStyle = $listStyle;
   }
   

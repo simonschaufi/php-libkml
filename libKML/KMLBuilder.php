@@ -41,7 +41,7 @@ namespace libKML;
       } elseif ($key == 'TimeStamp' || $key == 'TimeSpan') {
         $feature->setTimePrimitive(call_user_func('libKML\build'. $key, $value));
       } elseif ($key == 'Style' || $key == 'StyleMap') {
-        $feature->setStyleSelector(call_user_func('libKML\build'. $key, $value));
+        $feature->addStyleSelector(call_user_func('libKML\build'. $key, $value));
       } elseif ($key == 'atom:author') {
         $feature->setAuthor(buildAuthor($value));
       }
@@ -288,14 +288,14 @@ namespace libKML;
   
   function buildAltitudeMode($altitudeModeXMLObject) {
     $altitudeMode = new AltitudeMode();
-    $altitudeMode->setModeFromString($altitudeModeXMLObject);
+    $altitudeMode->setModeFromString($altitudeModeXMLObject->__toString());
     
     return $altitudeMode;
   }
   
   function buildRefreshMode($refreshModeXMLObject) {
     $refreshMode = new RefreshMode();
-    $refreshMode->setModeFromString($refreshModeXMLObject);
+    $refreshMode->setModeFromString($refreshModeXMLObject->__toString());
     
     return $refreshMode;
   }
@@ -348,17 +348,81 @@ namespace libKML;
     return $style;
   }
   
+  function buildPair($pairXMLObject) {
+    $pair = new Pair();
+    processKMLObject($pair, $pairXMLObject);
+    
+    $pairContent = $pairXMLObject->children();
+    
+    foreach($pairContent as $key => $value) {
+      if ($key == 'key') {
+        $pair->setKey($value->__toString());
+      } elseif ($key == 'styleUrl') {
+        $pair->setStyleUrl($value->__toString());
+      }
+    }
+    
+    return $pair;
+  }
+  
   function buildStyleMap($styleMapXMLObject) {
     $styleMap = new StyleMap();
     processStyleSelector($styleMap, $styleMapXMLObject);
     
-    
+    $styleMapContent = $styleMapXMLObject->children();
+    foreach($styleMapContent as $key => $value) {
+      if ($key == 'Pair') {
+        $styleMap->addPair(buildPair($value));
+      }
+    }
     
     return $styleMap;
   }
   
   function processSubStyle(&$subStyle, $subStyleXMLObject) {
     processKMLObject($subStyle, $subStyleXMLObject);
+  }
+  
+  function buildListItemType($listItemTypeXMLObject) {
+    $listItemType = new ListItemType();
+    $listItemType->setModeFromString($listItemTypeXMLObject);
+    
+    return $listItemType;
+  }
+  
+  function buildItemIcon($itemIconXMLObject) {
+    $itemIcon = new ItemIcon();
+    
+    $itemIconContent = $itemIconXMLObject->children();
+    foreach($itemIconContent as $key => $value) {
+      if ($key == 'state') {
+        
+      } elseif ($key == 'href') {
+        $itemIcon->setHref($value->__toString());
+      }
+    }
+    
+    return $itemIcon;
+  }
+  
+  function buildListStyle($listStyleXMLObject) {
+    $listStyle = new ListStyle();
+    processSubStyle($listStyle, $listStyleXMLObject);
+    
+    $listStyleContent = $listStyleXMLObject->children();
+    foreach($listStyleContent as $key => $value) {
+      if ($key == 'listItemType') {
+        $listStyle->setListItemType(buildListItemType($value));
+      } elseif ($key == 'bgColor') {
+        $listStyle->setBgColor($value->__toString());
+      } elseif ($key == 'itemIcons') {
+        foreach($value as $item) {
+          $listStyle->addItemIcon();
+        }
+      }
+    }
+    
+    return $listStyle;
   }
   
   function buildBalloonStyle($balloonStyleXMLObject) {

@@ -5,24 +5,43 @@ namespace libKML;
  *  Pair class
  */
 
-require_once("../KMLObject.php");
-
 class Pair extends KMLObject {
   public $key;
   public $styleUrl;
-  public $style;
   
   public function __toString() {
-    $parent_string = parent::__toString();
-    
     $output = array();
     $output[] = sprintf("<Pair%s>",
                         isset($this->id)?sprintf(" id=\"%s\"", $this->id):"");
-    $output[] = $parent_string;
+    
+    if (isset($this->key)) {
+      $output[] = sprintf("\t<key>%s</key>", $this->key);
+    }
+    
+    if (isset($this->styleUrl)) {
+      $output[] = sprintf("\t<styleUrl>%s</styleUrl>", $this->styleUrl);
+    }
     
     $output[] = "</Pair>";
     
     return implode("\n", $output);
   }
+  
+  public function getKey() {
+    return $this->key;
+  }
+  
+  public function setKey($key) {
+    $this->key = $key;
+  }
+  
+  public function getStyleUrl() {
+    return $this->styleUrl;
+  }
+  
+  public function setStyleUrl($styleUrl) {
+    $this->styleUrl = $styleUrl;
+  }
+  
 }
 ?>

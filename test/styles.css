@@ -1,0 +1,89 @@
+body {
+  font-family: Arial, sans-serif;
+  width: 980px;
+}
+
+body.iframe {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.block {
+  clear: both;
+  margin-bottom: 20px;
+}
+
+.block pre {
+  overflow: auto;
+  
+  font-family: monospace;
+  padding: 6px 10px;
+  background-color: #FAFAFA;
+  border: 1px solid #BBB;
+  
+  color: #007000;
+}
+
+table.performance {
+  font-size: 12px;
+  width: 250px;
+
+  font-family: monospace;
+  padding: 6px 10px;
+  background-color: #FAFAFA;
+  border: 1px solid #BBB;
+}
+
+table.performance tr td {
+  border-bottom: 1px dotted #BBB;
+}
+
+.map {
+  width: 900px;
+  height: 400px;
+}
+
+.forms {
+  float: right;
+  
+  padding: 10px;
+  border: 1px solid #BBB;
+  background-color:  #FAFAFA;
+}
+
+.forms form {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  
+  font-size: 12px;
+}
+
+fieldset {
+  border: 1px solid #BBB;
+}
+
+legend {
+  font-style: italic;
+}
+
+label {
+  display: block;
+  color: #BBB;
+}
+
+ul.index {
+  clear: both;
+}
+
+ul.index li {
+  font-size: 12px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+p.map_links a {
+  font-size: 20px;
+}

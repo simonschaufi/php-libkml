@@ -19,12 +19,10 @@ class ListStyle extends SubStyle {
   }
   
   public function __toString() {
-    $parent_string = parent::__toString();
-    
+  
     $output = array();
     $output[] = sprintf("<ListStyle%s>",
                         isset($this->id)?sprintf(" id=\"%s\"", $this->id):"");
-    $output[] = $parent_string;
     
     if (isset($this->listItemType)) {
       $output[] = sprintf("<listItemType>%s</listItemType>", $this->listItemType->__toString());
@@ -34,7 +32,7 @@ class ListStyle extends SubStyle {
       $output[] = sprintf("<bgColor>%s</bgColor>", $this->bgColor);
     }
     
-    if ($count($this->itemIcons)) {
+    if (count($this->itemIcons)) {
       foreach($this->itemIcons as $itemIcon) {
         $output[] = $itemIcon->__toString();
       }

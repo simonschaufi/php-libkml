@@ -20,12 +20,20 @@ abstract class Feature extends KMLObject {
   protected $abstractView;
   protected $timePrimitive;
   protected $styleUrl;
-  protected $styleSelector;
+  protected $styleSelectors = array();
   protected $region;
   protected $extendedData;
   
   public abstract function toWKT();
   public abstract function toJSON();
+  
+  public function addStyleSelector($styleSelector) {
+    $this->styleSelectors[] = $styleSelector;
+  }
+  
+  public function clearStyleSelectors() {
+    $this->styleSelectors = array();
+  }
 
   public function __toString() {
     $output = array();
@@ -82,8 +90,10 @@ abstract class Feature extends KMLObject {
       $output[] = sprintf("\t<styleUrl>%s</styleUrl>", $this->styleUrl);
     }
     
-    if (isset($this->styleSelector)) {
-      $output[] = $this->styleSelector->__toString();
+    if (count($this->styleSelectors)) {
+      foreach($this->styleSelectors as $styleSelector) {
+        $output[] = $styleSelector->__toString();
+      }
     }
     
     if (isset($this->region)) {

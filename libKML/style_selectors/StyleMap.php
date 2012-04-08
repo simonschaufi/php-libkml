@@ -9,7 +9,15 @@ require_once("StyleSelector.php");
 
 class StyleMap extends StyleSelector {
   
-  public $pairs = array();
+  private $pairs = array();
+  
+  public function addPair($pair) {
+    $this->pairs[] = $pair;
+  }
+  
+  public function clearPairs() {
+    $this->pairs = array();
+  }
   
   public function __toString() {    
     $output = array();
@@ -23,6 +31,14 @@ class StyleMap extends StyleSelector {
     $output[] = "</StyleMap>";
     
     return implode("\n", $output);
+  }
+  
+  public function setPairs($pairs) {
+    $this->pairs = $pairs;
+  }
+  
+  public function getPairs() {
+    return $this->pairs;
   }
 }
 
