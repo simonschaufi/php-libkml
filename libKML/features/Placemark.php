@@ -36,12 +36,13 @@ class Placemark extends Feature {
   }
   
   public function toJSON() {
-    $json_data = parent::toJSON();
+    $json_data = array();
     
     if (isset($this->geometry)) {
-      $json_data['geometry'] = $this->geometry->toJSON();
+      $json_data = array('type' => 'Feature',
+                         'geometry' => $this->geometry->toJSON());
     }
-    
+
     return $json_data;
   }
   

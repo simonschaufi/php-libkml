@@ -399,9 +399,9 @@ namespace libKML;
     }
   }
   
-  function buildLineStyle($lineStyleXMLOject) {
+  function buildLineStyle($lineStyleXMLObject) {
     $lineStyle = new LineStyle();
-    processColorStyle($lineStyle, $lineStyleXMLOject);
+    processColorStyle($lineStyle, $lineStyleXMLObject);
     
     $lineStyleContent = $lineStyleXMLObject->children();
     
@@ -410,8 +410,6 @@ namespace libKML;
         $lineStyle->setWidth((string)$value);
       }
     }
-    
-    return $labelStyle;
     
     return $lineStyle;
   }
