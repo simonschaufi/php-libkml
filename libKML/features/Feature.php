@@ -75,7 +75,7 @@ abstract class Feature extends KMLObject {
     }
     
     if (isset($this->description)) {
-      $output[] = sprintf("\t<description><![CDATA[%s]]></description>", $this->description);
+      $output[] = sprintf("\t<description>%s</description>", $this->description);
     }
     
     if (isset($this->abstractView)) {

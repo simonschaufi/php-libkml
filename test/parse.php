@@ -3,10 +3,6 @@
     
     require('../libkml.inc');
     
-    if (!file_exists(dirname(__FILE__) .'/files')) {
-        mkdir(dirname(__FILE__) .'/files');
-    }
-    
     function object_to_array($obj) {
         if(is_object($obj)) $obj = (array) $obj;
         if(is_array($obj)) {
