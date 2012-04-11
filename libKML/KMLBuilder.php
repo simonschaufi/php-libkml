@@ -478,17 +478,34 @@ namespace libKML;
     return $lineStyle;
   }
   
+  function buildVec2Type($vec2TypeXMLObject) {
+    $vec2Type = new Vec2Type();
+    
+    $attributes = $vec2TypeXMLObject->attributes();
+    
+    $class_attributes = array('x', 'y', 'xunits', 'yunits');
+    foreach($attributes as $key => $value) {
+      if (in_array($key, $class_attributes)) {
+        call_user_func(array($vec2Type, 'set'. ucfirst($key)), $value->__toString());
+      }
+    }
+       
+    return $vec2Type;
+  }
+  
   function buildIconStyle($iconStyleXMLObject) {
     $iconStyle = new IconStyle();
     processColorStyle($iconStyle, $iconStyleXMLObject);
     
     $iconStyleContent = $iconStyleXMLObject->children();
-    $simple_properties = array('scale', 'heading', 'hotSpot');
+    $simple_properties = array('scale', 'heading');
     foreach($iconStyleContent as $key => $value) {
       if (in_array($key, $simple_properties)) {
         call_user_func(array($iconStyle, 'set'. ucfirst($key)), $value->__toString());
       } elseif ($key == 'Icon') {
         $iconStyle->setIcon(buildIcon($value));
+      } elseif ($key == 'hotSpot') {
+        $iconStyle->setHotSpot(buildVec2Type($value));
       }
     }
     

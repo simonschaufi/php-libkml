@@ -32,7 +32,7 @@ class IconStyle extends ColorStyle {
     }
     
     if (isset($this->hotSpot)) {
-      $output[] = sprintf("\t<hotSpot>%s</hotSpot>", $this->hotSpot);
+      $output[] = sprintf("\t<hotSpot %s />", $this->hotSpot);
     }
     
     $output[] = "</IconStyle>";
@@ -72,4 +72,5 @@ class IconStyle extends ColorStyle {
     $this->hotSpot = $hotSpot;
   }
 }
+
 ?>

@@ -75,7 +75,7 @@ class Polygon extends Geometry {
       $output[] = sprintf("\t<extrude>%i</extrude>", $this->extrude);
     }
     
-    if (isset($this->extrude)) {
+    if (isset($this->tessellate)) {
       $output[] = sprintf("\t<tessellate>%s</tessellate>", $this->tessellate);
     }
     

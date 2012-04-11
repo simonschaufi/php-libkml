@@ -20,13 +20,13 @@ class LatLonBox extends KMLObject {
               $this->east, $this->west)) {
       $output[] = '<LanLonBox>';
       
-      $output[] = sprintf("\t<north>%s</north>", $this->north);
-      $output[] = sprintf("\t<south>%s</south>", $this->south);
-      $output[] = sprintf("\t<east>%s</east>", $this->east);
-      $output[] = sprintf("\t<west>%s</west>", $this->west);
+      $output[] = sprintf("<north>%s</north>", $this->north);
+      $output[] = sprintf("<south>%s</south>", $this->south);
+      $output[] = sprintf("<east>%s</east>", $this->east);
+      $output[] = sprintf("<west>%s</west>", $this->west);
       
       if (isset($this->rotation)) {
-        $output[] = sprintf("\t<rotation>%s</rotation>", $this->rotation);
+        $output[] = sprintf("<rotation>%s</rotation>", $this->rotation);
       }
       
       $output[] = '</LanLonBox>';

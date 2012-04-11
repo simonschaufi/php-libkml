@@ -18,11 +18,11 @@ abstract class Overlay extends Feature {
     $output[] = $parent_string;
     
     if (isset($this->color)) {
-      $output[] = sprintf("\t<color>%s</color>", $this->color);
+      $output[] = sprintf("<color>%s</color>", $this->color);
     }
     
     if (isset($this->drawOrder)) {
-      $output[] = sprintf("\t<drawOrder>%s</drawOrder>", $this->drawOrder);
+      $output[] = sprintf("<drawOrder>%s</drawOrder>", $this->drawOrder);
     }
     
     if (isset($this->icon)) {

@@ -17,7 +17,7 @@ class LineStyle extends ColorStyle {
     $output[] = $parent_string;
     
     if (isset($this->width)) {
-      $output[] = sprintf("\t<width>%f</width>", $this->width);
+      $output[] = sprintf("\t<width>%s</width>", $this->width);
     }
     
     $output[] = "</LineStyle>";
