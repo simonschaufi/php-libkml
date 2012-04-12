@@ -65,6 +65,34 @@ class Polygon extends Geometry {
     return $wkt_string;
   }
   
+  public function toWKT2d() {
+    $wkt_string = "";
+    
+    if (isset($this->outerBoundaryIs)) {
+      $wkt_array = array();
+      
+      $outer_wkt_array = array();
+      $outerCoordinates = $this->outerBoundaryIs->getCoordinates();
+      foreach($outerCoordinates as $coordinate) {
+        $outer_wkt_array[] = $coordinate->toWKT2d();
+      }
+      $wkt_array[] = '('. implode(",", $outer_wkt_array) .')';
+      
+      $inner_wkt_array = array();
+      if (isset($this->innerBoundaryIs)) {
+        $innerCoordinates = $this->innerBoundaryIs->getCoordinates();
+        foreach($innerCoordinates as $coordinate) {
+          $inner_wkt_array[] = $coordinate->toWKT2d();
+        }
+        $wkt_array[] = '('. implode(",", $inner_wkt_array) .')';
+      }
+      
+      $wkt_string = sprintf("POLYGON(%s)", implode(",", $wkt_array));
+    } 
+    
+    return $wkt_string;
+  }
+  
   public function __toString() {
    
     $output = array();
@@ -72,7 +100,7 @@ class Polygon extends Geometry {
                         isset($this->id)?sprintf(" id=\"%s\"", $this->id):"");
     
     if (isset($this->extrude)) {
-      $output[] = sprintf("\t<extrude>%i</extrude>", $this->extrude);
+      $output[] = sprintf("\t<extrude>%s</extrude>", $this->extrude);
     }
     
     if (isset($this->tessellate)) {

@@ -31,9 +31,32 @@ class KML {
     return implode("\n", $output);
   }
   
+  /**
+   *  Generate WKT
+   */
   public function toWKT() {
     if (isset($this->feature)) {
-      return $this->feature->toWKT();
+      if ($this->feature instanceof Container) {
+        return sprintf("GEOMETRYCOLLECTION(%s)", $this->feature->toWKT());
+      } else {
+        return $this->feature->toWKT();
+      }
+    } else {
+      return '';
+    }
+  }
+  
+  /**
+   *  Generate WKT without z-coordenates
+   */
+  
+  public function toWKT2d() {
+    if (isset($this->feature)) {
+      if ($this->feature instanceof Container) {
+        return sprintf("GEOMETRYCOLLECTION(%s)", $this->feature->toWKT2d());
+      } else {
+        return $this->feature->toWKT2d();
+      }
     } else {
       return '';
     }

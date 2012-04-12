@@ -11,6 +11,14 @@ abstract class Overlay extends Feature {
   protected $drawOrder;
   protected $icon;
   
+  public function toWKT() {
+    return '';
+  }
+  
+  public function toWKT2d() {
+    return '';
+  }
+  
   public function __toString() {
     $parent_string = parent::__toString();
     

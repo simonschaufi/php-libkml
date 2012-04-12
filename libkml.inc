@@ -47,6 +47,7 @@ include_once('libKML/field_types/Coordinates.php');
 include_once('libKML/field_types/RefreshMode.php');
 include_once('libKML/field_types/ColorMode.php');
 include_once('libKML/field_types/ListItemType.php');
+include_once('libKML/field_types/Vec2Type.php');
 include_once('libKML/geometries/Geometry.php');
 include_once('libKML/geometries/Point.php');
 include_once('libKML/geometries/LineString.php');

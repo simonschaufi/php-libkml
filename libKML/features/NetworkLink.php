@@ -40,6 +40,10 @@ class NetworkLink extends Feature {
     return '';
   }
   
+  public function toWKT2d() {
+    return '';
+  }
+  
   public function toJSON() {
     return '';
   }

@@ -19,6 +19,10 @@ class Coordinates {
     return implode(" ", array($this->longitude, $this->latitude, $this->altitude));
   }
   
+  public function toWKT2d() {    
+    return implode(" ", array($this->longitude, $this->latitude));
+  }
+  
   public function __toString() {
     return implode(",", array($this->longitude, $this->latitude, $this->altitude));
   }

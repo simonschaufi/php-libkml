@@ -25,6 +25,7 @@ abstract class Feature extends KMLObject {
   protected $extendedData;
   
   public abstract function toWKT();
+  public abstract function toWKT2d();
   public abstract function toJSON();
   
   public function addStyleSelector($styleSelector) {

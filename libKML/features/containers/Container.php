@@ -38,7 +38,17 @@ abstract class Container extends Feature {
       $output[] = $feature->toWKT();
     }
     
-    return implode("\n", $output);
+    return implode(",", $output);
+  }
+  
+  public function toWKT2d() {
+    $output = array();
+    
+    foreach($this->features as $feature) {
+      $output[] = $feature->toWKT2d();
+    }
+    
+    return implode(",", $output);
   }
   
   public function __toString() {

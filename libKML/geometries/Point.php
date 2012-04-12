@@ -21,6 +21,17 @@ class Point extends Geometry {
     return $wtk_data;
   }
   
+  
+  public function toWKT2d() {
+    $wtk_data =  '';
+    
+    if (isset($this->coordinates)) {
+      $wtk_data = sprintf("POINT (%s)", $this->coordinates->toWKT2d());
+    }
+    
+    return $wtk_data;
+  }
+  
   public function toJSON() {
     $json_data = null;
     

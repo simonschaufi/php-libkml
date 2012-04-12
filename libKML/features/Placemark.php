@@ -35,6 +35,14 @@ class Placemark extends Feature {
     }
   }
   
+  public function toWKT2d() {
+    if (isset($this->geometry)) {
+      return $this->geometry->toWKT2d();
+    } else {
+      return '';
+    }
+  }
+  
   public function toJSON() {
     $json_data = array();
     

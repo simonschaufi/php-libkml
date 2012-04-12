@@ -27,6 +27,21 @@ class LineString extends Geometry {
     return "";
   }
   
+  public function toWKT2d() {
+    
+    if (count($this->coordinates)) {
+      $coordinates_strings = array();
+      
+      foreach($this->coordinates as $coordinate) {
+        $coordinates_strings[] = $coordinate->toWKT2d();
+      }
+      
+      return sprintf("LINESTRING (%s)", implode(", ", $coordinates_strings));
+    }
+    
+    return "";
+  }
+  
   public function addCoordinate($coordinate) {
     $this->coordinates[] = $coordinate;
   }
