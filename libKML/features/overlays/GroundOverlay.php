@@ -37,7 +37,26 @@ class GroundOverlay extends Overlay {
   }
   
   public function toWKT() {
-    return '';
+    return $this->latLonBox->toWKT();
+  }
+  
+  public function toWKT2d() {
+    return $this->latLonBox->toWKT2d();
+  }
+  
+  public function toJSON() {
+    $json_data = array();
+    
+    if (isset($this->latLonBox)) {
+      $json_data = array('type' => 'Feature',
+                         'geometry' => $this->latLonBox->toJSON());
+    }
+
+    return $json_data;
+  }
+  
+  public function toExtGeoJSON() {
+    return $this->latLonBox->toExtGeoJSON();
   }
   
   public function getAltitude() {

@@ -36,6 +36,10 @@ class NetworkLink extends Feature {
     return implode("\n", $output);
   }
   
+  public function getAllFeatures() {
+    return array();
+  }
+  
   public function toWKT() {
     return '';
   }

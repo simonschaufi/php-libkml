@@ -11,12 +11,8 @@ abstract class Overlay extends Feature {
   protected $drawOrder;
   protected $icon;
   
-  public function toWKT() {
-    return '';
-  }
-  
-  public function toWKT2d() {
-    return '';
+  public function getAllFeatures() {
+    return array($this);
   }
   
   public function __toString() {
@@ -38,10 +34,6 @@ abstract class Overlay extends Feature {
     }
     
     return implode("\n", $output);
-  }
-  
-  public function toJSON() {
-    return array();
   }
   
   public function getColor() {

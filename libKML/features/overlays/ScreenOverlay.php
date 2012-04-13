@@ -5,8 +5,6 @@ namespace libKML;
  *  ScreenOverlay class
  */
 
-require_once("Overlay.php");
-
 class ScreenOverlay extends Overlay {
   private $rotation;
   private $overlayXY;
@@ -35,6 +33,18 @@ class ScreenOverlay extends Overlay {
   
   public function toWKT() {
     return '';
+  }
+  
+  public function toWKT2d() {
+    return '';
+  }
+  
+  public function toJSON() {
+    return null;
+  }
+  
+  public function toExtGeoJSON() {
+    return null;
   }
   
   public function getRotation() {

@@ -27,6 +27,7 @@ abstract class Feature extends KMLObject {
   public abstract function toWKT();
   public abstract function toWKT2d();
   public abstract function toJSON();
+  public abstract function getAllFeatures();
   
   public function addStyleSelector($styleSelector) {
     $this->styleSelectors[] = $styleSelector;
@@ -34,6 +35,16 @@ abstract class Feature extends KMLObject {
   
   public function clearStyleSelectors() {
     $this->styleSelectors = array();
+  }
+  
+  public function getAllStyles() {
+    $all_styles = array();
+    
+    foreach($this->styleSelectors as $style) {
+      $all_styles[] = $style;
+    }
+    
+    return $all_styles;
   }
 
   public function __toString() {

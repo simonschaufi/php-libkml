@@ -23,6 +23,16 @@ abstract class Container extends Feature {
     return $json_data;
   }
   
+  public function getAllFeatures() {
+    $allFeatures = array();
+    
+    foreach($this->features as $feature) {
+      $allFeatures = array_merge($allFeatures, $feature->getAllFeatures());
+    }
+    
+    return $allFeatures;
+  }
+  
   public function addFeature($feature) {
     $this->features[] = $feature;
   }

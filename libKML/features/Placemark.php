@@ -27,6 +27,10 @@ class Placemark extends Feature {
     return implode("\n", $output);
   }
   
+  public function getAllFeatures() {
+    return array($this);
+  }
+  
   public function toWKT() {
     if (isset($this->geometry)) {
       return $this->geometry->toWKT();

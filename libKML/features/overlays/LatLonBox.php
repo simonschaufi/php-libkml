@@ -35,6 +35,32 @@ class LatLonBox extends KMLObject {
     return implode("\n", $output);
   }
   
+  public function toWKT() {
+    return sprintf("POLYGON ((%s %s, %s %s, %s %s, %s %s))",
+                                $this->west,$this->north, 
+                                $this->east,$this->north, 
+                                $this->east,$this->south, 
+                                $this->west,$this->south);
+  }
+  
+  public function toWKT2d() {
+    return $this->toWKT();
+  }
+  
+  public function toJSON() {
+    $coordinates = array(array(array($this->west, $this->north),
+                                array($this->east, $this->north),
+                                array($this->east, $this->south),
+                                array($this->west, $this->south)));
+    
+    return array('type' => 'Polygon',
+                 'coordinates' => $coordinates);
+  }
+  
+  public function toExtGeoJSON() {
+    return '';
+  }
+  
   public function getNorth() {
     return $this->north;
   }
