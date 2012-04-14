@@ -5,8 +5,6 @@ namespace libKML;
  *  StyleMap class
  */
 
-require_once("StyleSelector.php");
-
 class StyleMap extends StyleSelector {
   
   private $pairs = array();

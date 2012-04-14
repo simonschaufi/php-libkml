@@ -9,7 +9,7 @@ require_once("Geometry.php");
 
 class MultiGeometry extends Geometry {
   
-  public $geometries;
+  private $geometries;
   
   public function __toString() {
     $parent_string = parent::__toString();
@@ -31,6 +31,14 @@ class MultiGeometry extends Geometry {
     $output[] = "</MultiGeometry>";
     
     return implode("\n", $output);
+  }
+  
+  public function getGeometries() {
+    return $this->geometries;
+  }
+  
+  public function setGeometries($geometries) {
+    $this->geometries = $geometries;
   }
 
 }

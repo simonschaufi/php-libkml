@@ -6,8 +6,9 @@ namespace libKML;
  */
 
 class Pair extends KMLObject {
-  public $key;
-  public $styleUrl;
+  
+  private $key;
+  private $styleUrl;
   
   public function __toString() {
     $output = array();

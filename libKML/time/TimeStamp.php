@@ -5,10 +5,9 @@ namespace libKML;
  *  TimeStamp class
  */
 
-require_once("TimePrimitive.php");
-
 class TimeStamp extends TimePrimitive {
-  public $when;
+  
+  private $when;
   
   public function __toString() {
     $parent_string = parent::__toString();
@@ -26,5 +25,14 @@ class TimeStamp extends TimePrimitive {
     
     return implode("\n", $output);
   }
+  
+  public function getWhen() {
+    return $this->when;
+  }
+  
+  public function setWhen($when) {
+    $this->when = $when;
+  }
+  
 }
 ?>

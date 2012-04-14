@@ -5,11 +5,27 @@ namespace libKML;
  *  Alias class
  */
 
-require_once("KMLObject.php");
-
 class Alias extends KMLObject {
-  public $targetHref;
-  public $sourceHref;
+  
+  private $targetHref;
+  private $sourceHref;
+  
+  public function getTargetHref() {
+    return $this->targetHref;
+  }
+  
+  public function setTargetHref($targetHref) {
+    $this->targetHref = $targetHref;
+  }
+  
+  public function getSourceHref() {
+    return $this->sourceHref;
+  }
+  
+  public function setSourceHref($sourceHref) {
+    $this->sourceHref = $sourceHref;
+  }
+  
 }
 
 ?>

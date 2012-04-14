@@ -5,12 +5,36 @@ namespace libKML;
  *  Scale class
  */
 
-require_once("KMLObject.php");
-
 class Scale extends KMLObject {
-  public $x;
-  public $y;
-  public $z;
+  
+  private $x;
+  private $y;
+  private $z;
+  
+  public function getX() {
+    return $this->x;
+  }
+  
+  public function setX($x) {
+    $this->x = $x;
+  }
+  
+  public function getY() {
+    return $this->y;
+  }
+  
+  public function setY($y) {
+    $this->y = $y;
+  }
+  
+  public function getZ() {
+    return $this->z;
+  }
+  
+  public function setZ($z) {
+    $this->z = $z;
+  }
+  
 }
 
 ?>

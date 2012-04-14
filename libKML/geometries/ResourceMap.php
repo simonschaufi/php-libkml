@@ -5,10 +5,17 @@ namespace libKML;
  *  ResouceMap class
  */
 
-require_once("KMLObject.php");
-
 class ResourceMap extends KMLObject {
-  public $aliases;
+  private $aliases;
+  
+  public function getAliases() {
+    return $this->aliases;
+  }
+  
+  public function setAliases($aliases) {
+    $this->aliases = $aliases;
+  }
+  
 }
 
 ?>

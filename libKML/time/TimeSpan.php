@@ -5,11 +5,10 @@ namespace libKML;
  *  TimeSpan class
  */
 
-require_once("TimePrimitive.php");
-
 class TimeSpan extends TimePrimitive {
-  public $begin;
-  public $end;
+  
+  private $begin;
+  private $end;
   
   public function __toString() {
     $parent_string = parent::__toString();
@@ -23,5 +22,22 @@ class TimeSpan extends TimePrimitive {
     
     return implode("\n", $output);
   }
+  
+  public function getBegin() {
+    return $this->begin;
+  }
+  
+  public function setBegin($begin) {
+    $this->begin = $begin;
+  }
+  
+  public function getEnd() {
+    return $this->end;
+  }
+  
+  public function setEnd($end) {
+    $this->end = $end;
+  }
+  
 }
 ?>

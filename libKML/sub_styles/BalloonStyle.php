@@ -6,6 +6,7 @@ namespace libKML;
  */
 
 class BalloonStyle extends SubStyle {
+  
   private $bgColor;
   private $textColor;
   private $text;

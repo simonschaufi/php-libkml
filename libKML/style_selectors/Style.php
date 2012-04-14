@@ -5,8 +5,6 @@ namespace libKML;
  *  Style class
  */
 
-require_once("StyleSelector.php");
-
 class Style extends StyleSelector {
   
   private $iconStyle;

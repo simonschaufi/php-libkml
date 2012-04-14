@@ -8,6 +8,7 @@ namespace libKML;
 require_once("Overlay.php");
 
 class PhotoOverlay extends Overlay {
+  
   private $rotation;
   private $viewVolume;
   private $imagePyramid;
