@@ -1,0 +1,18 @@
+ExtGeoJSON format
+
+Features
+	Feature1
+		name
+		description
+		type
+		styleid
+	Feature2
+		...
+	FeatureN
+Styles
+	Style1
+	Style2
+		...
+	StyleN
+
+Feature types
