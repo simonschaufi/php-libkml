@@ -6,6 +6,7 @@ namespace libKML;
  */
 
 class ScreenOverlay extends Overlay {
+  
   private $rotation;
   private $overlayXY;
   private $screenXY;

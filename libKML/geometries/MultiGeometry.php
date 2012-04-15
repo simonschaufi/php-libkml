@@ -9,7 +9,35 @@ require_once("Geometry.php");
 
 class MultiGeometry extends Geometry {
   
-  private $geometries;
+  private $geometries = array();
+  
+  public function addGeometry($geometry) {
+    $this->geometries[] = $geometry;
+  }
+  
+  public function clearGeometries() {
+    $this->geometries = array();
+  }
+  
+  public function toJSON() {
+    $geometries = array();
+    
+    foreach($this->geometries as $geometry) {
+      $geometries = array_merge($geometries, $geometry->toJSON());
+    }
+    
+    return $geometries;
+  }
+  
+  public function toWKT() {
+    $geometries = array();
+    
+    foreach($this->geometries as $geometry) {
+      $geometries[] = $geometry->toWTK();
+    }
+    
+    return sprintf("GEOMETRYCOLLECTION(%s)", implode(",", $geometries));
+  }
   
   public function __toString() {
     $parent_string = parent::__toString();

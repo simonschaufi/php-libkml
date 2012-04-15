@@ -99,7 +99,7 @@
     $open_file_time = microtime(true) - $start_time;
     
     $start_time = microtime(true);
-    $kml = parseKML($kml_data);
+    $kml = KML::createFromText($kml_data);
     $parse_time = microtime(true) - $start_time;
     
     $start_time = microtime(true);

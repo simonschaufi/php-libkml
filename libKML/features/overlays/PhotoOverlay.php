@@ -5,8 +5,6 @@ namespace libKML;
  *  PhotoOverlay class
  */
 
-require_once("Overlay.php");
-
 class PhotoOverlay extends Overlay {
   
   private $rotation;

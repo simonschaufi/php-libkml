@@ -73,7 +73,6 @@ namespace libKML;
   
   function buildDocument($documentXMLObject) {
     $document = new Document();
-    
     processContainer($document, $documentXMLObject);
     
     return $document;
@@ -263,6 +262,23 @@ namespace libKML;
     }
     
     return $linearRing; 
+  }
+  
+  function buildMultiGeometry($multiGeometryXMLObject) {
+    $multiGeometry = new MultiGeometry();
+    processGeometry($multiGeometry, $multiGeometryXMLObject);  
+    
+    $multiGeometryContent = $multiGeometryXMLObject->children();
+    
+    $geometries_objects = array('Point', 'LineString'. 'LinearRing', 'Polygon', 'MultiGeometry', 'Model');
+    
+    foreach ($multiGeometryXMLObject as $key => $value) {
+      if (in_array($key, $geometries_objects)) {
+        $multiGeometry->addGeometry(call_user_func('libKML\build'. $key, $value));
+      }
+    }
+    
+    return $multiGeometry;
   }
   
   function buildPolygon($polygonXMLObject) {
@@ -596,11 +612,16 @@ namespace libKML;
   }
   
   function buildKML($kmlXMLObject) {
-    $kml = new KML();
+    $kml = new \KML();
     
     $featureXMLObject = $kmlXMLObject->children();
-    if (isset($featureXMLObject)) {
-      $kml->setFeature(call_user_func('libKML\build'. $featureXMLObject->getName(), $featureXMLObject));
+    $root_objects = array('Document', 'Placemark', 'Folder', 'NetworkLink');
+    
+    foreach($featureXMLObject as $key => $value) {
+      if (in_array($key, $root_objects)) {
+        $kml->setFeature(call_user_func('libKML\build'. $key, $value));
+        //var_dump(call_user_func('libKML\build'. $key, $value));
+      }
     }
     
     return $kml;
