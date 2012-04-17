@@ -26,10 +26,22 @@ class Polygon extends Geometry {
         $json_data['coordinates'][0][] = $coordinate->toJSON();
       }
       
+      $first_coordinate = $outerCoordinates[0];
+      $last_coordinate = end($outerCoordinates);
+      if ($first_coordinate != $last_coordinate) {
+        $json_data['coordinates'][0][] = $first_coordinate->toJSON();
+      }
+      
       if (isset($this->innerBoundaryIs)) {
         $innerCoordinates = $this->innerBoundaryIs->getCoordinates();
         foreach($innerCoordinates as $coordinate) {
           $json_data['coordinates'][1][] = $coordinate->toJSON();
+        }
+        
+        $first_coordinate = $innerCoordinates[0];
+        $last_coordinate = end($innerCoordinates);
+        if ($first_coordinate != $last_coordinate) {
+          $json_data['coordinates'][1][] = $first_coordinate->toJSON();
         }
       }
     } 
@@ -44,21 +56,41 @@ class Polygon extends Geometry {
       $wkt_array = array();
       
       $outer_wkt_array = array();
-      $outerCoordinates = $this->outerBoundaryIs->getCoordinates();
-      foreach($outerCoordinates as $coordinate) {
-        $outer_wkt_array[] = $coordinate->toWKT();
+      if (isset($this->outerBoundaryIs)) {
+        $outerCoordinates = $this->outerBoundaryIs->getCoordinates();
+        if (count($outerCoordinates)) {
+          foreach($outerCoordinates as $coordinate) {
+            $outer_wkt_array[] = $coordinate->toWKT();
+          }
+          
+          $first_coordinate = $outerCoordinates[0];
+          $last_coordinate = end($outerCoordinates);
+          if ($first_coordinate != $last_coordinate) {
+            $outer_wkt_array[] = $first_coordinate->toWKT();
+          }
+          
+          $wkt_array[] = '('. implode(",", $outer_wkt_array) .')';
+        }
       }
-      $wkt_array[] = '('. implode(",", $outer_wkt_array) .')';
       
       $inner_wkt_array = array();
       if (isset($this->innerBoundaryIs)) {
         $innerCoordinates = $this->innerBoundaryIs->getCoordinates();
-        foreach($innerCoordinates as $coordinate) {
-          $inner_wkt_array[] = $coordinate->toWKT();
+        if (count($innerCoordinates)) {
+          foreach($innerCoordinates as $coordinate) {
+            $inner_wkt_array[] = $coordinate->toWKT();
+          }
+          
+          $first_coordinate = $innerCoordinates[0];
+          $last_coordinate = end($innerCoordinates);
+          if ($first_coordinate != $last_coordinate) {
+            $inner_wkt_array[] = $first_coordinate->toWKT();
+          }
+
+          $wkt_array[] = '('. implode(",", $inner_wkt_array) .')';
         }
-        $wkt_array[] = '('. implode(",", $inner_wkt_array) .')';
       }
-      
+
       $wkt_string = sprintf("POLYGON(%s)", implode(",", $wkt_array));
     } 
     
@@ -72,19 +104,39 @@ class Polygon extends Geometry {
       $wkt_array = array();
       
       $outer_wkt_array = array();
-      $outerCoordinates = $this->outerBoundaryIs->getCoordinates();
-      foreach($outerCoordinates as $coordinate) {
-        $outer_wkt_array[] = $coordinate->toWKT2d();
+      if (isset($this->outerBoundaryIs)) {
+        $outerCoordinates = $this->outerBoundaryIs->getCoordinates();
+        if (count($outerCoordinates)) {
+          foreach($outerCoordinates as $coordinate) {
+            $outer_wkt_array[] = $coordinate->toWKT2d();
+          }
+          
+          $first_coordinate = $outerCoordinates[0];
+          $last_coordinate = end($outerCoordinates);
+          if ($first_coordinate != $last_coordinate) {
+            $outer_wkt_array[] = $first_coordinate->toWKT2d();
+          }
+          
+          $wkt_array[] = '('. implode(",", $outer_wkt_array) .')';
+        }
       }
-      $wkt_array[] = '('. implode(",", $outer_wkt_array) .')';
       
       $inner_wkt_array = array();
       if (isset($this->innerBoundaryIs)) {
         $innerCoordinates = $this->innerBoundaryIs->getCoordinates();
-        foreach($innerCoordinates as $coordinate) {
-          $inner_wkt_array[] = $coordinate->toWKT2d();
+        if (count($innerCoordinates)) {
+          foreach($innerCoordinates as $coordinate) {
+            $inner_wkt_array[] = $coordinate->toWKT2d();
+          }
+          
+          $first_coordinate = $innerCoordinates[0];
+          $last_coordinate = end($innerCoordinates);
+          if ($first_coordinate != $last_coordinate) {
+            $inner_wkt_array[] = $first_coordinate->toWKT2d();
+          }
+          
+          $wkt_array[] = '('. implode(",", $inner_wkt_array) .')';
         }
-        $wkt_array[] = '('. implode(",", $inner_wkt_array) .')';
       }
       
       $wkt_string = sprintf("POLYGON(%s)", implode(",", $wkt_array));

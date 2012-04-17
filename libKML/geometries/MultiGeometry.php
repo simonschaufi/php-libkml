@@ -3,9 +3,7 @@ namespace libKML;
 
 /**
  *  MultiGeometry class
- */
-
-require_once("Geometry.php");
+ */ 
 
 class MultiGeometry extends Geometry {
   
@@ -34,6 +32,16 @@ class MultiGeometry extends Geometry {
     
     foreach($this->geometries as $geometry) {
       $geometries[] = $geometry->toWTK();
+    }
+    
+    return sprintf("GEOMETRYCOLLECTION(%s)", implode(",", $geometries));
+  }
+  
+  public function toWKT2d() {
+    $geometries = array();
+    
+    foreach($this->geometries as $geometry) {
+      $geometries[] = $geometry->toWKT2d();
     }
     
     return sprintf("GEOMETRYCOLLECTION(%s)", implode(",", $geometries));

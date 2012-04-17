@@ -2,7 +2,7 @@
 namespace libKML;
 
 /**
- *  LineString class
+ *  LinearRing class
  */
 
 class LinearRing extends Geometry {
@@ -21,11 +21,60 @@ class LinearRing extends Geometry {
   }
   
   public function toWKT() {
+    $coordinates_strings = array();
     
+    if (count($coordinates_strings)) {
+      foreach($this->coordinates as $coordinate) {
+        $coordinates_strings[] = $coordinate->toWKT();
+      }
+      
+      $first_coordinate = $this->coordinates[0];
+      $last_coordinate = end($this->coordinates);
+      if ($first_coordinate != $last_coordinate) {
+        $coordinates_strings[] = $first_coordinate->toWKT();
+      }
+    }
+    
+    return sprintf("LINESTRING(%s)", implode(", ", $coordinates_strings));
+  }
+  
+  public function toWKT2d() {
+    $coordinates_strings = array();
+    
+    if (count($coordinates_strings)) {
+      foreach($this->coordinates as $coordinate) {
+        $coordinates_strings[] = $coordinate->toWKT2d();
+      }
+      
+      $first_coordinate = $this->coordinates[0];
+      $last_coordinate = end($this->coordinates);
+      if ($first_coordinate != $last_coordinate) {
+        $coordinates_strings[] = $first_coordinate->toWKT2d();
+      }
+    }
+    
+    return sprintf("LINESTRING(%s)", implode(", ", $coordinates_strings));
   }
   
   public function toJSON() {
+    $json_data = null;
     
+    if (count($this->coordinates)) {
+      $json_data = array('type' => 'LineString',
+                         'coordinates' => array());
+      
+      foreach($this->coordinates as $coordinate) {
+        $json_data['coordinates'][] = $coordinate->toJSON();
+      }
+      
+      $first_coordinate = $this->coordinates[0];
+      $last_coordinate = end($this->coordinates);
+      if ($first_coordinate != $last_coordinate) {
+        $json_data['coordinates'][] = $first_coordinate->toJSON();
+      }
+    }
+    
+    return $json_data;
   }
   
   public function __toString() {
@@ -41,7 +90,7 @@ class LinearRing extends Geometry {
       $output[] = sprintf("\t<altitudeMode>%s</altitudeMode>", $this->altitudeMode);
     }
     
-    if (isset($this->coordinates) && is_array($this->coordinates)) {
+    if (count($this->coordinates)) {
       $coordinates_strings = array();
       foreach($this->coordinates as $coordinate) {
         $coordinates_strings[] = $coordinate->__toString();
@@ -83,7 +132,7 @@ class LinearRing extends Geometry {
     return $this->coordinates;
   }
   
-  public function setCoordinates($coordinates) {
+  public function setCoordinates(array $coordinates) {
     $this->coordinates = $coordinates;
   }
   

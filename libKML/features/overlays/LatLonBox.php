@@ -36,11 +36,12 @@ class LatLonBox extends KMLObject {
   }
   
   public function toWKT() {
-    return sprintf("POLYGON ((%s %s, %s %s, %s %s, %s %s))",
+    return sprintf("POLYGON ((%s %s, %s %s, %s %s, %s %s, %s %s))",
                                 $this->west,$this->north, 
                                 $this->east,$this->north, 
                                 $this->east,$this->south, 
-                                $this->west,$this->south);
+                                $this->west,$this->south,
+                                $this->west,$this->north);
   }
   
   public function toWKT2d() {
@@ -51,7 +52,8 @@ class LatLonBox extends KMLObject {
     $coordinates = array(array(array($this->west, $this->north),
                                 array($this->east, $this->north),
                                 array($this->east, $this->south),
-                                array($this->west, $this->south)));
+                                array($this->west, $this->south),
+                                array($this->west, $this->north)));
     
     return array('type' => 'Polygon',
                  'coordinates' => $coordinates);

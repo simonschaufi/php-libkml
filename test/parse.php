@@ -1,7 +1,7 @@
 <?php
     session_start();
     
-    require('../libkml.inc');
+    require('../libkml.php');
     
     function object_to_array($obj) {
         if(is_object($obj)) $obj = (array) $obj;
@@ -337,11 +337,27 @@
       </div>
     </div>
     
+    <div id="generatedWTK2d" class="block">
+      <h2>Generated WKT2d</h2>
+      <div class="content">
+        <a href="#" class="show">Show</a>
+        <pre><?php print_r($kml->toWKT2d()); ?></pre>
+      </div>
+    </div>
+    
     <div id="generatedJSON" class="block">
       <h2>Generated GeoJSON</h2>
       <div class="content">
         <a href="#" class="show">Show</a>
         <pre><?php print $generated_json; ?></pre>
+      </div>
+    </div>
+    
+    <div id="generatedJSON" class="block">
+      <h2>All features</h2>
+      <div class="content">
+        <a href="#" class="show">Show</a>
+        <pre><?php print_r($kml->getAllFeatures()); ?></pre>
       </div>
     </div>
     
