@@ -56,7 +56,14 @@ class GroundOverlay extends Overlay {
   }
   
   public function toExtGeoJSON() {
-    return $this->latLonBox->toExtGeoJSON();
+    $json_data = array();
+    
+    if (isset($this->latLonBox)) {
+      $json_data = array('type' => 'Feature',
+                         'geometry' => $this->latLonBox->toJSON());
+    }
+
+    return $json_data;
   }
   
   public function getAltitude() {

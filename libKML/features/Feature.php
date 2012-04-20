@@ -29,6 +29,20 @@ abstract class Feature extends KMLObject {
   public abstract function toJSON();
   public abstract function getAllFeatures();
   
+  public function toExtGeoJSON() {
+    $json_data = array();
+    
+    if (isset($this->name)) {
+      $json_data['properties']['name'] = $this->name;
+    }
+    
+    if (isset($this->description)) {
+      $json_data['properties']['description'] = $this->description;
+    }
+
+    return $json_data;
+  }
+  
   public function addStyleSelector($styleSelector) {
     $this->styleSelectors[] = $styleSelector;
   }

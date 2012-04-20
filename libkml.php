@@ -178,7 +178,23 @@ class KML {
   }
   
   public function toExtGeoJSON() {
+    $json_data = array();
     
+    if (isset($this->feature)) {
+      $all_features = $this->getAllFeatures();
+      
+      $json_data['type'] = 'FeatureCollection';
+      $json_data['features'] = array();
+      
+      foreach($all_features as $feature) {
+        $json_feature = $feature->toExtGeoJSON();
+        if ($json_feature) {
+         $json_data['features'][] = $json_feature;
+        }
+      }
+    }
+    
+    return json_encode($json_data);
   }
   
   /**
