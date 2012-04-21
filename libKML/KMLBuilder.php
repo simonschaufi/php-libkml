@@ -433,10 +433,21 @@ namespace libKML;
         $listStyle->setListItemType(buildListItemType($value));
       } elseif ($key == 'bgColor') {
         $listStyle->setBgColor($value->__toString());
-      } elseif ($key == 'itemIcons') {
-        foreach($value as $item) {
-          $listStyle->addItemIcon();
+      } elseif ($key == 'ItemIcon') {
+//        foreach($value as $item) {
+//          $listStyle->addItemIcon();
+//        }
+        $itemIcon = new ItemIcon();
+        
+        if (isset($value->state)) {
+          $itemIcon->setState((string)$value->state);
         }
+        
+        if (isset($value->href)) {
+          $itemIcon->setHref((string)$value->href);
+        }
+        
+        $listStyle->addItemIcon($itemIcon);        
       }
     }
     
