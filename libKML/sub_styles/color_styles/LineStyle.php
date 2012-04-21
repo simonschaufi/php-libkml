@@ -6,6 +6,7 @@ namespace libKML;
  */
 
 class LineStyle extends ColorStyle {
+  
   private $width;
   
   public function __toString() {

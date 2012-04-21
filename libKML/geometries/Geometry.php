@@ -6,7 +6,9 @@ namespace libKML;
  */
  
 abstract class Geometry extends KMLObject {
+  
   public abstract function toWKT();
   public abstract function toJSON();
+  
 }
 ?>

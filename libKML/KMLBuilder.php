@@ -10,8 +10,10 @@ namespace libKML;
   function processKMLObject(&$object, $objectXMLObject) {
     $attributes = $objectXMLObject->attributes();
         
-    if (isset($attributes['id'])) {
-      $object->setId((string)$attributes['id']);
+    foreach($attributes as $key => $value) {
+      if ($key == 'id') {
+        $object->setId((string)$value);
+      }
     }
   }
   

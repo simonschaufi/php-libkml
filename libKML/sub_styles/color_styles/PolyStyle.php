@@ -6,6 +6,7 @@ namespace libKML;
  */
 
 class PolyStyle extends ColorStyle {
+  
   private $fill;
   private $outline;
   
@@ -45,5 +46,6 @@ class PolyStyle extends ColorStyle {
   public function setOutline($outline) {
     $this->outline = $outline;
   }
+  
 }
 ?>

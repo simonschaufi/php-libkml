@@ -9,7 +9,7 @@ class StyleMap extends StyleSelector {
   
   private $pairs = array();
   
-  public function addPair($pair) {
+  public function addPair(Pair $pair) {
     $this->pairs[] = $pair;
   }
   
@@ -31,13 +31,14 @@ class StyleMap extends StyleSelector {
     return implode("\n", $output);
   }
   
-  public function setPairs($pairs) {
+  public function setPairs(array $pairs) {
     $this->pairs = $pairs;
   }
   
   public function getPairs() {
     return $this->pairs;
   }
+  
 }
 
 ?>

@@ -6,6 +6,7 @@ namespace libKML;
  */
 
 class IconStyle extends ColorStyle {
+  
   private $scale;
   private $heading;
   private $icon;
@@ -71,6 +72,7 @@ class IconStyle extends ColorStyle {
   public function setHotSpot($hotSpot) {
     $this->hotSpot = $hotSpot;
   }
+  
 }
 
 ?>

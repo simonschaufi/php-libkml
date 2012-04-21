@@ -9,14 +9,14 @@ abstract class KMLObject {
   protected $id;
   
   /**
-   *  Sets KML tag id
+   *  Sets KML attribute id
    */
   public function setId($id) {
     $this->id = $id;
   }
   
   /**
-   *  Gets KML tag id
+   *  Gets KML attribute id
    */
   public function getId() {
     return $this->id;

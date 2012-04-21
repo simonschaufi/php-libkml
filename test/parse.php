@@ -147,7 +147,7 @@
                             
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
   <title>Parsing KML</title>
@@ -282,20 +282,18 @@
         <tr><td class="bold">TOTAL:</td><td class="bold"> <?php print number_format($total_procress_time * 1000, 3); ?> ms</td></tr>
     </table>
     
-<!--    
+    
     <ul class="index">
       <li><a href="#inputKML">Input KML</a></li>
-      <li><a href="#simpleXML">SimpleXML object</a></li>
       <li><a href="#libKML">PHP libKML data</a></li>
       <li><a href="#generatedKML">Generated KML</a></li>
       <li><a href="#generatedWTK">Generated WKT</a></li>
       <li><a href="#generatedJSON">Generated GeoJSON</a></li>
     </ul>
--->    
+   
     <div id="inputKML" class="block">
       <h2>Input KML</h2>
       <div class="content">
-        <a href="#" class="show">Show</a>
         <pre><?php print htmlspecialchars($kml_data); ?></pre>
         
         <h4>Parsed by SimpleXML</h4>
@@ -306,16 +304,13 @@
     <div id="libKML" class="block block-xml">
       <h2>PHP libKML data</h2>
       <div class="content">
-        <a href="#" class="show">Show</a>
         <pre><?php print_r($kml); ?></pre>
       </div>
     </div>
     
     <div id="generatedKML" class="block">
       <h2>Generated KML</h2>
-      <a class="iframe" href="parse.php?op=kml">See in file</a>
       <div class="content">
-        <a href="#" class="show">Show</a>
         <pre><?php print htmlspecialchars($generated_kml); ?></pre>
         
         <h4>Parsed by SimpleXML</h4>
@@ -332,7 +327,6 @@
     <div id="generatedWTK" class="block">
       <h2>Generated WKT</h2>
       <div class="content">
-        <a href="#" class="show">Show</a>
         <pre><?php print htmlspecialchars($generated_wkt); ?></pre>
       </div>
     </div>
@@ -340,7 +334,6 @@
     <div id="generatedWTK2d" class="block">
       <h2>Generated WKT2d</h2>
       <div class="content">
-        <a href="#" class="show">Show</a>
         <pre><?php print_r($kml->toWKT2d()); ?></pre>
       </div>
     </div>
@@ -348,7 +341,6 @@
     <div id="generatedJSON" class="block">
       <h2>Generated GeoJSON</h2>
       <div class="content">
-        <a href="#" class="show">Show</a>
         <pre><?php print $generated_json; ?></pre>
       </div>
     </div>
@@ -356,7 +348,6 @@
     <div id="generatedJSON" class="block">
       <h2>All features</h2>
       <div class="content">
-        <a href="#" class="show">Show</a>
         <pre><?php print_r($kml->getAllFeatures()); ?></pre>
       </div>
     </div>

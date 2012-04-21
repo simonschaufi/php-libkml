@@ -6,6 +6,7 @@ namespace libKML;
  */
 
 class NetworkLinkControl {
+  
   public $minRefreshPeriod;
   public $maxSessionLength;
   private $cookie;
@@ -16,6 +17,31 @@ class NetworkLinkControl {
   public $expires;
   public $update;
   public $abstractView;
+  
+  public function __toString() {
+    $output = array();
+    
+    if (isset($this->cookie)) {
+      $output[] = sprintf("\t<cookie>%s</cookie>", $this->cookie);
+    }
+    
+    if (isset($this->message)) {
+      $output[] = sprintf("\t<message>%s</message>", $this->message);
+    }
+    
+    if (isset($this->linkName)) {
+      $output[] = sprintf("\t<linkName>%s</linkName>", $this->linkName);
+    }
+    
+    if (isset($this->linkDescription)) {
+      $output[] = sprintf("\t<linkDescription><![CDATA[%s]]></linkDescription>", $this->linkDescription);
+    }
+    
+    $output[] = '<NetworkLinkControl>';
+    $output[] = '</NetworkLinkControl>';
+    
+    return implode("\n", $output);
+  }
   
   public function setCookie($cookie) {
     $this->cookie = $cookie;
@@ -49,28 +75,4 @@ class NetworkLinkControl {
     return $this->linkDescription;
   }
 
-  public function __toString() {
-    $output = array();
-    
-    if (isset($this->cookie)) {
-      $output[] = sprintf("\t<cookie>%s</cookie>", $this->cookie);
-    }
-    
-    if (isset($this->message)) {
-      $output[] = sprintf("\t<message>%s</message>", $this->message);
-    }
-    
-    if (isset($this->linkName)) {
-      $output[] = sprintf("\t<linkName>%s</linkName>", $this->linkName);
-    }
-    
-    if (isset($this->linkDescription)) {
-      $output[] = sprintf("\t<linkDescription><![CDATA[%s]]></linkDescription>", $this->linkDescription);
-    }
-    
-    $output[] = '<NetworkLinkControl>';
-    $output[] = '</NetworkLinkControl>';
-    
-    return implode("\n", $output);
-  }
 }

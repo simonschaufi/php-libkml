@@ -8,6 +8,7 @@ namespace libKML;
 require_once("ColorStyle.php");
 
 class LabelStyle extends ColorStyle {
+  
   private $scale;
   
   public function __toString() {
@@ -34,5 +35,6 @@ class LabelStyle extends ColorStyle {
   public function setScale($scale) {
     $this->scale = $scale;
   }
+  
 }
 ?>

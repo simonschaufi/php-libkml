@@ -6,6 +6,7 @@ namespace libKML;
  */
 
 class ListStyle extends SubStyle {
+  
   private $listItemType;
   private $bgColor;
   private $itemIcons = array();
@@ -66,5 +67,6 @@ class ListStyle extends SubStyle {
   public function setItemIcons($itemIcons) {
     $this->itemIcons = $itemIcons;
   }
+  
 }
 ?>

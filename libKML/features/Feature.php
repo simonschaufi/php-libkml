@@ -20,7 +20,7 @@ abstract class Feature extends KMLObject {
   protected $abstractView;
   protected $timePrimitive;
   protected $styleUrl;
-  protected $styleSelectors = array();
+  protected $styleSelector = array();
   protected $region;
   protected $extendedData;
   
@@ -48,17 +48,17 @@ abstract class Feature extends KMLObject {
   }
   
   public function addStyleSelector($styleSelector) {
-    $this->styleSelectors[] = $styleSelector;
+    $this->styleSelector[] = $styleSelector;
   }
   
   public function clearStyleSelectors() {
-    $this->styleSelectors = array();
+    $this->styleSelector = array();
   }
   
   public function getAllStyles() {
     $all_styles = array();
     
-    foreach($this->styleSelectors as $style) {
+    foreach($this->styleSelector as $style) {
       $all_styles[] = $style;
     }
     
@@ -120,9 +120,9 @@ abstract class Feature extends KMLObject {
       $output[] = sprintf("\t<styleUrl>%s</styleUrl>", $this->styleUrl);
     }
     
-    if (count($this->styleSelectors)) {
-      foreach($this->styleSelectors as $styleSelector) {
-        $output[] = $styleSelector->__toString();
+    if (count($this->styleSelector)) {
+      foreach($this->styleSelector as $style) {
+        $output[] = $style->__toString();
       }
     }
     
@@ -234,7 +234,7 @@ abstract class Feature extends KMLObject {
     return $this->styleUrl;
   }
   
-  public function setStyleSelector($styleSelector) {
+  public function setStyleSelector(array $styleSelector) {
     $this->styleSelector = $styleSelector;
   }
   
@@ -242,7 +242,7 @@ abstract class Feature extends KMLObject {
     return $this->styleSelector;
   }
   
-  public function setRegion($region) {
+  public function setRegion(Region $region) {
     $this->region = $region;
   }
   

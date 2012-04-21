@@ -6,6 +6,7 @@ namespace libKML;
  */
 
 class Coordinates {
+  
   private $longitude = 0;
   private $latitude = 0;
   private $altitude = 0;
