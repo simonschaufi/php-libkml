@@ -72,6 +72,7 @@ include_once('libKML/style_selectors/Pair.php');
 include_once('libKML/style_selectors/StyleSelector.php');
 include_once('libKML/style_selectors/Style.php');
 include_once('libKML/style_selectors/StyleMap.php');
+include_once('libKML/sub_styles/ItemIcon.php');
 include_once('libKML/sub_styles/SubStyle.php');
 include_once('libKML/sub_styles/ListStyle.php');
 include_once('libKML/sub_styles/BalloonStyle.php');
