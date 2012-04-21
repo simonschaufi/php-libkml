@@ -32,6 +32,10 @@ abstract class Feature extends KMLObject {
   public function toExtGeoJSON() {
     $json_data = array();
     
+    if (isset($this->id)) {
+      $json_data['id'] = $this->id;
+    }
+    
     if (isset($this->name)) {
       $json_data['properties']['name'] = $this->name;
     }
