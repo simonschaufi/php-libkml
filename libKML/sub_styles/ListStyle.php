@@ -10,6 +10,8 @@ class ListStyle extends SubStyle {
   private $listItemType;
   private $bgColor;
   private $itemIcons = array();
+  private $maxSnippetLines;
+  
   
   public function addItemIcon($itemIcon) {
     $this->itemIcons[] = $itemIcon;
@@ -31,6 +33,10 @@ class ListStyle extends SubStyle {
     
     if (isset($this->bgColor)) {
       $output[] = sprintf("<bgColor>%s</bgColor>", $this->bgColor);
+    }
+    
+    if (isset($this->maxSnippetLines)) {
+      $output[] = sprintf("<maxSnippetLines>%s</maxSnippetLines>", $this->maxSnippetLines);
     }
     
     if (count($this->itemIcons)) {
@@ -66,6 +72,14 @@ class ListStyle extends SubStyle {
   
   public function setItemIcons($itemIcons) {
     $this->itemIcons = $itemIcons;
+  }
+  
+  public function setMaxSnippetLines($maxSnippetLines) {
+    $this->maxSnippetLines = $maxSnippetLines;
+  }
+  
+  public function getMaxSnippetLines() {
+    return $this->maxSnippetLines;
   }
   
 }

@@ -411,13 +411,12 @@ namespace libKML;
   function buildItemIcon($itemIconXMLObject) {
     $itemIcon = new ItemIcon();
     
-    $itemIconContent = $itemIconXMLObject->children();
-    foreach($itemIconContent as $key => $value) {
+    foreach($itemIconXMLObject as $key => $value) {
       if ($key == 'state') {
-        
+        $itemIcon->setState(new ItemIconState((string)$value));
       } elseif ($key == 'href') {
-        $itemIcon->setHref($value->__toString());
-      }
+        $itemIcon->setHref((string)$value);
+      } 
     }
     
     return $itemIcon;
@@ -433,21 +432,10 @@ namespace libKML;
         $listStyle->setListItemType(buildListItemType($value));
       } elseif ($key == 'bgColor') {
         $listStyle->setBgColor($value->__toString());
-      } elseif ($key == 'ItemIcon') {
-//        foreach($value as $item) {
-//          $listStyle->addItemIcon();
-//        }
-        $itemIcon = new ItemIcon();
-        
-        if (isset($value->state)) {
-          $itemIcon->setState((string)$value->state);
-        }
-        
-        if (isset($value->href)) {
-          $itemIcon->setHref((string)$value->href);
-        }
-        
-        $listStyle->addItemIcon($itemIcon);        
+      } elseif ($key == 'ItemIcon') {        
+        $listStyle->addItemIcon(buildItemIcon($value));        
+      } elseif ($key == 'maxSnippetLines') {
+        $listStyle->setMaxSnippetLines((string)$value);
       }
     }
     

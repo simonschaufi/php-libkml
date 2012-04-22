@@ -2,7 +2,7 @@
 namespace libKML;
 
 /**
- *  Icon class
+ *  ItemIcon class
  */
 
 class ItemIcon extends KMLObject {
@@ -13,7 +13,7 @@ class ItemIcon extends KMLObject {
   public function __toString() {
     
     $output = array();
-    
+     
     $output[] = sprintf("<ItemIcon%s>",
                         isset($this->id)?sprintf(" id=\"%s\"", $this->id):"");
     
@@ -24,6 +24,8 @@ class ItemIcon extends KMLObject {
     if (isset($this->state)) {
       $output[] = sprintf("\t<state>%s</state>", $this->state->__toString());
     }
+    
+    $output[] = "</ItemIcon>";
     
     return implode("\n", $output);
   }
