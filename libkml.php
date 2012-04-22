@@ -43,7 +43,7 @@ define('EXTGEOJSON_FEATURE_OVERLAY', 2);
 /*
  * Objects
  */
-include_once('libKML/KMLBuilder.php');
+
 include_once('libKML/KMLObject.php');
 include_once('libKML/Icon.php');
 include_once('libKML/features/AltitudeMode.php');
@@ -58,6 +58,7 @@ include_once('libKML/features/overlays/Overlay.php');
 include_once('libKML/features/overlays/GroundOverlay.php');
 include_once('libKML/features/overlays/ScreenOverlay.php');
 include_once('libKML/field_types/Coordinates.php');
+include_once('libKML/field_types/ItemIconState.php');
 include_once('libKML/field_types/RefreshMode.php');
 include_once('libKML/field_types/ColorMode.php');
 include_once('libKML/field_types/ListItemType.php');
@@ -84,6 +85,7 @@ include_once('libKML/sub_styles/color_styles/PolyStyle.php');
 include_once('libKML/views/AbstractView.php');
 include_once('libKML/views/Camera.php');
 include_once('libKML/views/LookAt.php');
+include_once('libKML/KMLBuilder.php');
 
 
 function parseKML($data) {

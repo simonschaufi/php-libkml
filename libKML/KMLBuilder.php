@@ -145,6 +145,22 @@ namespace libKML;
     
     processOverlay($screenOverlay, $screenOverlayXMLObject);
     
+    $screenOverlayContent = $screenOverlayXMLObject->children();
+    
+    foreach($screenOverlayContent as $key => $value) {
+      if ($key == 'rotation') {
+        $screenOverlay->setRotation((string)$value);
+      } elseif ($key == 'overlayXY') {
+        $screenOverlay->setOverlayXY(buildVec2Type($value));
+      } elseif ($key == 'screenXY') {
+        $screenOverlay->setScreenXY(buildVec2Type($value));
+      } elseif ($key == 'rotationXY') {
+        $screenOverlay->setRotationXY(buildVec2Type($value));
+      } elseif ($key == 'size') {
+        $screenOverlay->setSize(buildVec2Type($value));
+      }
+    }
+    
     return $screenOverlay;    
   }
   

@@ -345,13 +345,6 @@
       </div>
     </div>
     
-    <div id="generatedJSON" class="block">
-      <h2>All features</h2>
-      <div class="content">
-        <pre><?php print_r($kml->getAllFeatures()); ?></pre>
-      </div>
-    </div>
-    
     <?php endif; ?>
   
 </body>
