@@ -27,19 +27,19 @@ class ScreenOverlay extends Overlay {
     }
     
     if (isset($this->overlayXY)) {
-      $output[] = sprintf("\t<overlayXY %s />", $this->overlayXY);
+      $output[] = sprintf("\t<overlayXY %s />", (string)$this->overlayXY);
     }
     
     if (isset($this->screenXY)) {
-      $output[] = sprintf("\t<screenXY %s />", $this->screenXY);
+      $output[] = sprintf("\t<screenXY %s />", (string)$this->screenXY);
     }
     
     if (isset($this->rotationXY)) {
-      $output[] = sprintf("\t<rotationXY %s />", $this->rotationXY);
+      $output[] = sprintf("\t<rotationXY %s />", (string)$this->rotationXY);
     }
     
     if (isset($this->size)) {
-      $output[] = sprintf("\t<size %s />", $this->size);
+      $output[] = sprintf("\t<size %s />", (string)   $this->size);
     }
     
     $output[] = "</ScreenOverlay>";
