@@ -64,7 +64,7 @@ namespace libKML;
     $containerContent = $containerXMLObject->children();
     
     $object_properties = array('NetworkLink', 'Placemark', 'PhotoOverlay', 'ScreenOverlay', 'GroundOverlay',
-                               'Folder');
+                               'Folder', 'Document');
     
     foreach($containerContent as $key => $value) {
       if (in_array($key, $object_properties)) {
@@ -644,6 +644,16 @@ namespace libKML;
     return $kml;
   }
   
+  function buildTimeStamp($kmlXMLObject) {
+    $kml = new TimeStamp();
+    $kml->setWhen($kmlXMLObject->when);
+    return $kml;
+  }
 
-
+  function buildTimeSpan($kmlXMLObject) {
+    $kml = new TimeSpan();
+    $kml->setBegin($kmlXMLObject->begin);
+    $kml->setEnd($kmlXMLObject->end);
+    return $kml;
+  }
 ?>

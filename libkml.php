@@ -86,6 +86,9 @@ include_once('libKML/views/AbstractView.php');
 include_once('libKML/views/Camera.php');
 include_once('libKML/views/LookAt.php');
 include_once('libKML/KMLBuilder.php');
+include_once('libKML/time/TimePrimitive.php');
+include_once('libKML/time/TimeSpan.php');
+include_once('libKML/time/TimeStamp.php');
 
 
 function parseKML($data) {
