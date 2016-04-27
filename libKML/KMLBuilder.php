@@ -288,7 +288,7 @@ namespace libKML;
     
     $multiGeometryContent = $multiGeometryXMLObject->children();
     
-    $geometries_objects = array('Point', 'LineString'. 'LinearRing', 'Polygon', 'MultiGeometry', 'Model');
+    $geometries_objects = array('Point', 'LineString', 'LinearRing', 'Polygon', 'MultiGeometry', 'Model');
     
     foreach ($multiGeometryXMLObject as $key => $value) {
       if (in_array($key, $geometries_objects)) {
