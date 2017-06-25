@@ -59,9 +59,9 @@ function array_compare($array1, $array2)
 
 
 $map = false;
-$kml_file = "parse_test.kml";
+$kml_file = "parse-test.kml";
 $kml_file_url = 'http://' . $_SERVER['SERVER_NAME'] . dirname($_SERVER['REQUEST_URI']) . '/' . $kml_file;
-$kml_generated_file = "parse_test.kml";
+$kml_generated_file = "parse-test.kml";
 $kml_generated_file_url = 'http://' . $_SERVER['SERVER_NAME'] . dirname($_SERVER['REQUEST_URI']) . '/' . $kml_generated_file;
 $reset_cache = false;
 
@@ -94,9 +94,9 @@ if (isset($_REQUEST['op'])) {
             break;
         case 'clear':
             session_destroy();
-            $kml_file = "parse_test.kml";
+            $kml_file = "parse-test.kml";
             $kml_file_url = 'http://' . $_SERVER['SERVER_NAME'] . dirname($_SERVER['REQUEST_URI']) . '/' . $kml_file;
-            $kml_generated_file = "parse_test.kml";
+            $kml_generated_file = "parse-test.kml";
             $kml_generated_file_url = 'http://' . $_SERVER['SERVER_NAME'] . dirname($_SERVER['REQUEST_URI']) . '/' . $kml_generated_file;
             break;
 

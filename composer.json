@@ -5,7 +5,7 @@
     "description": "KML Library",
     "autoload": {
         "psr-4": {
-            "KML": "src/"
+            "KML\\": "src/"
         }
     },
     "autoload-dev": {

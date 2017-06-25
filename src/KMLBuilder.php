@@ -60,16 +60,16 @@ class KMLBuilder
         foreach ($featureXMLObject as $elementType => $value) {
             switch ($elementType) {
                 case 'Document':
-                    $builder->buildDocument($value);
+                    $kml->setFeature($builder->buildDocument($value));
                     break;
                 case 'Placemark':
-                    $builder->buildPlacemark($value);
+                    $kml->setFeature($builder->buildPlacemark($value));
                     break;
                 case 'Folder':
-                    $builder->buildFolder($value);
+                    $kml->setFeature($builder->buildFolder($value));
                     break;
                 case 'NetworkLink':
-                    $builder->buildNetworkLink($value);
+                    $kml->setFeature($builder->buildNetworkLink($value));
                     break;
             }
         }

@@ -86,20 +86,20 @@ class KML implements \JsonSerializable
 
     public function jsonSerialize()
     {
-        $json_data = [];
+        $jsonData = [];
 
         if (isset($this->feature)) {
-            $all_features = $this->getAllFeatures();
+            $allFeatures = $this->getAllFeatures();
 
-            $json_data['type'] = 'FeatureCollection';
-            $json_data['features'] = [];
+            $jsonData['type'] = 'FeatureCollection';
+            $jsonData['features'] = [];
 
-            foreach ($all_features as $feature) {
-                $json_data['features'][] = $feature;
+            foreach ($allFeatures as $feature) {
+                $jsonData['features'][] = $feature;
             }
         }
 
-        return $json_data;
+        return $jsonData;
     }
 
     public function toExtGeoJSON(): string
@@ -137,18 +137,15 @@ class KML implements \JsonSerializable
         return $all_styles;
     }
 
-    /**
-     * Returns all features in the KML
-     */
     public function getAllFeatures(): array
     {
-        $all_features = [];
+        $allFeatures = [];
 
         if (isset($this->feature)) {
-            $all_features = array_merge($all_features, $this->feature->getAllFeatures());
+            $allFeatures = array_merge($allFeatures, $this->feature->getAllFeatures());
         }
 
-        return $all_features;
+        return $allFeatures;
     }
 
     public function setFeature(Feature $feature)
