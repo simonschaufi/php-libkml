@@ -1,9 +1,7 @@
 <?php
 namespace KML\Views;
 
-/**
- *  LookAt class
- */
+use KML\Features\AltitudeMode;
 
 class LookAt extends AbstractView
 {
@@ -13,9 +11,10 @@ class LookAt extends AbstractView
     private $heading;
     private $tilt;
     private $range;
+    /** @var  AltitudeMode */
     private $altitudeMode;
   
-    public function __toString()
+    public function __toString(): string
     {
         $output = [];
         $output[] = sprintf(
@@ -116,12 +115,12 @@ class LookAt extends AbstractView
         $this->range = $range;
     }
   
-    public function getAltitudeMode()
+    public function getAltitudeMode(): AltitudeMode
     {
         return $this->altitudeMode;
     }
   
-    public function setAltitudeMode($altitudeMode)
+    public function setAltitudeMode(AltitudeMode $altitudeMode)
     {
         $this->altitudeMode = $altitudeMode;
     }

@@ -2,9 +2,6 @@
 
 namespace KML\FieldTypes;
 
-/**
- *  Altitude modes
- */
 class ColorMode
 {
     public static $COLOR_MODE_NORMAL = 0;

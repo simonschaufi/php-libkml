@@ -2,15 +2,14 @@
 
 namespace KML\Features;
 
-/**
- *  Placemark abstract class
- */
+use KML\Geometries\Geometry;
 
 class Placemark extends Feature
 {
+    /** @var  Geometry */
     private $geometry;
 
-    public function __toString()
+    public function __toString(): string
     {
         $parent_string = parent::__toString();
 
@@ -36,7 +35,7 @@ class Placemark extends Feature
         return [$this];
     }
 
-    public function toWKT()
+    public function toWKT(): string
     {
         if (isset($this->geometry)) {
             return $this->geometry->toWKT();
@@ -45,7 +44,7 @@ class Placemark extends Feature
         }
     }
 
-    public function toWKT2d()
+    public function toWKT2d(): string
     {
         if (isset($this->geometry)) {
             return $this->geometry->toWKT2d();
@@ -54,14 +53,14 @@ class Placemark extends Feature
         }
     }
 
-    public function toJSON()
+    public function jsonSerialize()
     {
         $json_data = [];
 
         if (isset($this->geometry)) {
             $json_data = [
                 'type'     => 'Feature',
-                'geometry' => $this->geometry->toJSON()
+                'geometry' => $this->geometry
             ];
         }
 
@@ -75,19 +74,19 @@ class Placemark extends Feature
         if (isset($this->geometry)) {
             $json_data = array_merge($json_data, [
                 'type'     => 'Feature',
-                'geometry' => $this->geometry->toJSON()
+                'geometry' => $this->geometry
             ]);
         }
 
         return $json_data;
     }
 
-    public function setGeometry($geometry)
+    public function setGeometry(Geometry $geometry)
     {
         $this->geometry = $geometry;
     }
 
-    public function getGeometry()
+    public function getGeometry(): Geometry
     {
         return $this->geometry;
     }

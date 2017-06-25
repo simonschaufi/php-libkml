@@ -2,39 +2,39 @@
 
 namespace KML\Geometries;
 
+use KML\Features\AltitudeMode;
+use KML\FieldTypes\Coordinates;
+
 class Point extends Geometry
 {
 
     private $extrude;
+    /** @var  AltitudeMode */
     private $altitudeMode;
-    private $coordinates = [];
-
-    public function addCoordinate($coordinate)
-    {
-        $this->coordinates[] = $coordinate;
-    }
+    /** @var  Coordinates */
+    private $coordinate;
 
     public function clearCoordinates()
     {
-        $this->coordinates = [];
+        $this->coordinate = null;
     }
 
-    public function getCoordinates()
+    public function getCoordinate(): Coordinates
     {
-        return $this->coordinates;
+        return $this->coordinate;
     }
 
-    public function setCoordinates($coordinates)
+    public function setCoordinate(Coordinates $coordinate)
     {
-        $this->coordinates = $coordinates;
+        $this->coordinate = $coordinate;
     }
 
-    public function toWKT()
+    public function toWKT(): string
     {
         $wtk_data = '';
 
-        if (isset($this->coordinates)) {
-            $wtk_data = sprintf("POINT (%s)", $this->coordinates->toWKT());
+        if (isset($this->coordinate)) {
+            $wtk_data = sprintf("POINT (%s)", $this->coordinate->toWKT());
         }
 
         return $wtk_data;
@@ -52,21 +52,21 @@ class Point extends Geometry
         return $wtk_data;
     }
 
-    public function toJSON()
+    public function jsonSerialize()
     {
         $json_data = null;
 
         if (isset($this->coordinates)) {
             $json_data = [
                 'type'        => 'Point',
-                'coordinates' => $this->coordinates->toJSON()
+                'coordinates' => $this->coordinates
             ];
         }
 
         return $json_data;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         $output = [];
         $output[] = sprintf(
@@ -101,12 +101,12 @@ class Point extends Geometry
         $this->extrude = $extrude;
     }
 
-    public function getAltitudeMode()
+    public function getAltitudeMode(): AltitudeMode
     {
         return $this->altitudeMode;
     }
 
-    public function setAltitudeMode($altitudeMode)
+    public function setAltitudeMode(AltitudeMode $altitudeMode)
     {
         $this->altitudeMode = $altitudeMode;
     }

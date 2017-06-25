@@ -3,10 +3,6 @@ namespace KML\Geometries;
 
 use KML\KMLObject;
 
-/**
- *  ResouceMap class
- */
-
 class ResourceMap extends KMLObject
 {
     private $aliases;
@@ -19,5 +15,10 @@ class ResourceMap extends KMLObject
     public function setAliases($aliases)
     {
         $this->aliases = $aliases;
+    }
+
+    public function __toString(): string
+    {
+        return '';
     }
 }

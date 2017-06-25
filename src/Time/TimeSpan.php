@@ -1,16 +1,14 @@
 <?php
 namespace KML\Time;
 
-/**
- *  TimeSpan class
- */
-
 class TimeSpan extends TimePrimitive
 {
+    /** @var  string */
     private $begin;
+    /** @var  string */
     private $end;
   
-    public function __toString()
+    public function __toString(): string
     {
         $parent_string = parent::__toString();
     
@@ -26,22 +24,22 @@ class TimeSpan extends TimePrimitive
         return implode("\n", $output);
     }
   
-    public function getBegin()
+    public function getBegin(): string
     {
         return $this->begin;
     }
   
-    public function setBegin($begin)
+    public function setBegin(string $begin)
     {
         $this->begin = $begin;
     }
   
-    public function getEnd()
+    public function getEnd(): string
     {
         return $this->end;
     }
   
-    public function setEnd($end)
+    public function setEnd(string $end)
     {
         $this->end = $end;
     }

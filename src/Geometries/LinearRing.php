@@ -4,7 +4,7 @@ namespace KML\Geometries;
 
 class LinearRing extends Line
 {
-    public function toWKT()
+    public function toWKT(): string
     {
         $coordinates_strings = [];
 
@@ -42,7 +42,7 @@ class LinearRing extends Line
         return sprintf("LINESTRING(%s)", implode(", ", $coordinates_strings));
     }
 
-    public function toJSON()
+    public function jsonSerialize()
     {
         $json_data = null;
 
@@ -53,20 +53,20 @@ class LinearRing extends Line
             ];
 
             foreach ($this->coordinates as $coordinate) {
-                $json_data['coordinates'][] = $coordinate->toJSON();
+                $json_data['coordinates'][] = $coordinate;
             }
 
             $first_coordinate = $this->coordinates[0];
             $last_coordinate = end($this->coordinates);
             if ($first_coordinate != $last_coordinate) {
-                $json_data['coordinates'][] = $first_coordinate->toJSON();
+                $json_data['coordinates'][] = $first_coordinate;
             }
         }
 
         return $json_data;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         $output = [];
         $output[] = sprintf(

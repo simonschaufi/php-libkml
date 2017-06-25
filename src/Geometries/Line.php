@@ -2,11 +2,13 @@
 
 namespace KML\Geometries;
 
+use KML\FieldTypes\Coordinates;
+
 abstract class Line extends GeometrySimple
 {
     protected $coordinates = [];
 
-    public function addCoordinate($coordinate)
+    public function addCoordinate(Coordinates $coordinate)
     {
         $this->coordinates[] = $coordinate;
     }

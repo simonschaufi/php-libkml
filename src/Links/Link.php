@@ -3,10 +3,6 @@ namespace KML\Links;
 
 use KML\KMLObject;
 
-/**
- *  Link class
- */
-
 class Link extends KMLObject
 {
     private $href;
@@ -18,7 +14,7 @@ class Link extends KMLObject
     private $viewFormat;
     private $httpQuery;
   
-    public function __toString()
+    public function __toString(): string
     {
         $output = [];
     

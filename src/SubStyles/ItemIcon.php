@@ -1,18 +1,16 @@
 <?php
 namespace KML\SubStyles;
 
+use KML\FieldTypes\ItemIconState;
 use KML\KMLObject;
-
-/**
- *  ItemIcon class
- */
 
 class ItemIcon extends KMLObject
 {
     private $href;
+    /** @var  ItemIconState */
     private $state;
   
-    public function __toString()
+    public function __toString(): string
     {
         $output = [];
      
@@ -44,12 +42,12 @@ class ItemIcon extends KMLObject
         $this->href = $href;
     }
   
-    public function getState()
+    public function getState(): ItemIconState
     {
         return $this->state;
     }
   
-    public function setState($state)
+    public function setState(ItemIconState $state)
     {
         $this->state = $state;
     }

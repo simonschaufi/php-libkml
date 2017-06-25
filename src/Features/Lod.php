@@ -3,10 +3,6 @@ namespace KML\Features;
 
 use KML\KMLObject;
 
-/**
- *  Lod class
- */
-
 class Lod extends KMLObject
 {
     private $minLodPixels;
@@ -52,5 +48,10 @@ class Lod extends KMLObject
     public function setMaxFadeExtent($maxFadeExtent)
     {
         $this->maxFadeExtent = $maxFadeExtent;
+    }
+
+    public function __toString(): string
+    {
+        return '';
     }
 }

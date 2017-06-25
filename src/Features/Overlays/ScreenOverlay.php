@@ -1,19 +1,21 @@
 <?php
 namespace KML\Features\Overlays;
 
-/**
- *  ScreenOverlay class
- */
+use KML\FieldTypes\Vec2Type;
 
 class ScreenOverlay extends Overlay
 {
     private $rotation;
+    /** @var  Vec2Type */
     private $overlayXY;
+    /** @var  Vec2Type */
     private $screenXY;
+    /** @var  Vec2Type */
     private $rotationXY;
+    /** @var  Vec2Type */
     private $size;
   
-    public function __toString()
+    public function __toString(): string
     {
         $parent_string = parent::__toString();
     
@@ -50,17 +52,17 @@ class ScreenOverlay extends Overlay
         return implode("\n", $output);
     }
   
-    public function toWKT()
+    public function toWKT(): string
     {
         return '';
     }
   
-    public function toWKT2d()
+    public function toWKT2d(): string
     {
         return '';
     }
   
-    public function toJSON()
+    public function jsonSerialize()
     {
         return null;
     }
@@ -80,42 +82,42 @@ class ScreenOverlay extends Overlay
         $this->rotation = $rotation;
     }
   
-    public function getOverlayXY()
+    public function getOverlayXY(): Vec2Type
     {
         return $this->overlayXY;
     }
   
-    public function setOverlayXY($overlayXY)
+    public function setOverlayXY(Vec2Type $overlayXY)
     {
         $this->overlayXY = $overlayXY;
     }
   
-    public function getScreenXY()
+    public function getScreenXY(): Vec2Type
     {
         return $this->screenXY;
     }
   
-    public function setScreenXY($screenXY)
+    public function setScreenXY(Vec2Type $screenXY)
     {
         $this->screenXY = $screenXY;
     }
   
-    public function getRotationXY()
+    public function getRotationXY(): Vec2Type
     {
         return $this->rotationXY;
     }
   
-    public function setRotationXY($rotationXY)
+    public function setRotationXY(Vec2Type $rotationXY)
     {
         $this->rotationXY = $rotationXY;
     }
   
-    public function getSize()
+    public function getSize(): Vec2Type
     {
         return $this->size;
     }
   
-    public function setSize($size)
+    public function setSize(Vec2Type $size)
     {
         $this->size = $size;
     }

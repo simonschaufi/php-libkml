@@ -6,10 +6,12 @@ use KML\Features\AltitudeMode;
 use KML\Features\Containers\Container;
 use KML\Features\Containers\Document;
 use KML\Features\Containers\Folder;
+use KML\Features\Feature;
 use KML\Features\NetworkLink;
 use KML\Features\Overlays\GroundOverlay;
 use KML\Features\Overlays\LatLonBox;
 use KML\Features\Overlays\Overlay;
+use KML\Features\Overlays\PhotoOverlay;
 use KML\Features\Overlays\ScreenOverlay;
 use KML\Features\Placemark;
 use KML\FieldTypes\Atom\Author;
@@ -20,9 +22,11 @@ use KML\FieldTypes\ListItemType;
 use KML\FieldTypes\RefreshMode;
 use KML\FieldTypes\Vec2Type;
 use KML\Geometries\Geometry;
+use KML\Geometries\GeometrySimple;
 use KML\Geometries\Line;
 use KML\Geometries\LinearRing;
 use KML\Geometries\LineString;
+use KML\Geometries\Model;
 use KML\Geometries\MultiGeometry;
 use KML\Geometries\Point;
 use KML\Geometries\Polygon;
@@ -56,16 +60,16 @@ class KMLBuilder
         foreach ($featureXMLObject as $elementType => $value) {
             switch ($elementType) {
                 case 'Document':
-                    $builder->buildDocument($elementType, $value);
+                    $builder->buildDocument($value);
                     break;
                 case 'Placemark':
-                    $builder->buildPlacemark($elementType, $value);
+                    $builder->buildPlacemark($value);
                     break;
                 case 'Folder':
-                    $builder->buildFolder($elementType, $value);
+                    $builder->buildFolder($value);
                     break;
                 case 'NetworkLink':
-                    $builder->buildNetworkLink($elementType, $value);
+                    $builder->buildNetworkLink($value);
                     break;
             }
         }
@@ -73,20 +77,15 @@ class KMLBuilder
         return $kml;
     }
 
-    private function processKMLObject(AbstractView $abstractView, \SimpleXMLElement $objectXMLObject)
+    private function processKMLObject(KMLObject $KMLObject, \SimpleXMLElement $objectXMLObject)
     {
         $attributes = $objectXMLObject->attributes();
 
         foreach ($attributes as $key => $value) {
             if ($key == 'id') {
-                $abstractView->setId((string)$value);
+                $KMLObject->setId((string)$value);
             }
         }
-    }
-
-    private function processAbstractView(AbstractView $abstractView, \SimpleXMLElement $abstractViewXMLObject)
-    {
-        $this->processKMLObject($abstractView, $abstractViewXMLObject);
     }
 
     private function processFeature(Feature $feature, \SimpleXMLElement $featureXMLObject)
@@ -109,34 +108,37 @@ class KMLBuilder
         foreach ($featureContent as $key => $value) {
             switch (true) {
                 case in_array($key, $simpleProperties):
-                    $feature->set($key, $value->__toString());
+                    $feature->set($key, (string)$value);
                     break;
                 case $key == 'Region':
-                    $feature->set($key, $this->buildRegion($key, $value));
+                    $feature->set($key, $this->buildRegion($value));
                     break;
                 case 'Camera':
-                    $feature->setAbstractView($this->buildCamera($key, $value));
+                    $feature->setAbstractView($this->buildCamera($value));
+                    break;
                 case 'LookAt':
-                    $feature->setAbstractView($this->buildLookAt($key, $value));
+                    $feature->setAbstractView($this->buildLookAt($value));
                     break;
                 case 'TimeStamp':
-                    $feature->setTimePrimitive($this->buildTimeStamp($key, $value));
+                    $feature->setTimePrimitive($this->buildTimeStamp($value));
+                    break;
                 case 'TimeSpan':
-                    $feature->setTimePrimitive($this->buildTimeSpan($key, $value));
+                    $feature->setTimePrimitive($this->buildTimeSpan($value));
                     break;
                 case 'Style':
-                    $feature->addStyleSelector($this->buildStyle($key, $value));
+                    $feature->addStyleSelector($this->buildStyle($value));
+                    break;
                 case 'StyleMap':
-                    $feature->addStyleSelector($this->buildStyleMap($key, $value));
+                    $feature->addStyleSelector($this->buildStyleMap($value));
                     break;
                 case 'atom:author':
-                    $feature->setAuthor($this->buildAuthor($key, $value));
+                    $feature->setAuthor($this->buildAuthor($value));
                     break;
             }
         }
     }
 
-    private function buildNetworkLink(\SimpleXMLElement $networkLinkXMLObject): KMLObject
+    private function buildNetworkLink(\SimpleXMLElement $networkLinkXMLObject): NetworkLink
     {
         $networkLink = new NetworkLink();
         $this->processFeature($networkLink, $networkLinkXMLObject);
@@ -153,31 +155,31 @@ class KMLBuilder
         foreach ($containerContent as $key => $value) {
             switch ($key) {
                 case 'NetworkLink':
-                    $container->addFeature($this->buildNetworkLink($key, $value));
+                    $container->addFeature($this->buildNetworkLink($value));
                     break;
                 case 'Placemark':
-                    $container->addFeature($this->buildPlacemark($key, $value));
+                    $container->addFeature($this->buildPlacemark($value));
                     break;
                 case 'PhotoOverlay':
-                    $container->addFeature($this->buildPhotoOverlay($key, $value));
+                    $container->addFeature($this->buildPhotoOverlay($value));
                     break;
                 case 'ScreenOverlay':
-                    $container->addFeature($this->buildScreenOverlay($key, $value));
+                    $container->addFeature($this->buildScreenOverlay($value));
                     break;
                 case 'GroundOverlay':
-                    $container->addFeature($this->buildGroundOverlay($key, $value));
+                    $container->addFeature($this->buildGroundOverlay($value));
                     break;
                 case 'Folder':
-                    $container->addFeature($this->buildFolder($key, $value));
+                    $container->addFeature($this->buildFolder($value));
                     break;
                 case 'Document':
-                    $container->addFeature($this->buildDocument($key, $value));
+                    $container->addFeature($this->buildDocument($value));
                     break;
             }
         }
     }
 
-    private function buildDocument(\SimpleXMLElement $documentXMLObject): KMLObject
+    private function buildDocument(\SimpleXMLElement $documentXMLObject): Document
     {
         $document = new Document();
         $this->processContainer($document, $documentXMLObject);
@@ -185,7 +187,7 @@ class KMLBuilder
         return $document;
     }
 
-    private function buildFolder(\SimpleXMLElement $folderXMLObject): KMLObject
+    private function buildFolder(\SimpleXMLElement $folderXMLObject): Folder
     {
         $folder = new Folder();
 
@@ -194,7 +196,7 @@ class KMLBuilder
         return $folder;
     }
 
-    private function buildLatLonBox(\SimpleXMLElement $latLonBoxXMLObject): KMLObject
+    private function buildLatLonBox(\SimpleXMLElement $latLonBoxXMLObject): LatLonBox
     {
         $latLonBox = new LatLonBox();
         $this->processKMLObject($latLonBox, $latLonBoxXMLObject);
@@ -204,19 +206,19 @@ class KMLBuilder
         foreach ($latLonBoxContent as $key => $value) {
             switch ($key) {
                 case 'north':
-                    $latLonBox->setNorth($value->__toString());
+                    $latLonBox->setNorth((string)$value);
                     break;
                 case 'east':
-                    $latLonBox->setEast($value->__toString());
+                    $latLonBox->setEast((string)$value);
                     break;
                 case 'west':
-                    $latLonBox->setWest($value->__toString());
+                    $latLonBox->setWest((string)$value);
                     break;
                 case 'south':
-                    $latLonBox->setSouth($value->__toString());
+                    $latLonBox->setSouth((string)$value);
                     break;
                 case 'rotation':
-                    $latLonBox->setRotation($value->__toString());
+                    $latLonBox->setRotation((string)$value);
                     break;
             }
         }
@@ -233,10 +235,10 @@ class KMLBuilder
         foreach ($overlayContent as $key => $value) {
             switch ($key) {
                 case 'color':
-                    $overlay->setColor($value->__toString());
+                    $overlay->setColor((string)$value);
                     break;
                 case 'drawOrder':
-                    $overlay->setDrawOrder($value->__toString());
+                    $overlay->setDrawOrder((string)$value);
                     break;
                 case 'Icon':
                     $overlay->setIcon($this->buildIcon($value));
@@ -245,7 +247,7 @@ class KMLBuilder
         }
     }
 
-    private function buildGroundOverlay(\SimpleXMLElement $groundOverlayXMLObject): KMLObject
+    private function buildGroundOverlay(\SimpleXMLElement $groundOverlayXMLObject): GroundOverlay
     {
         $groundOverlay = new GroundOverlay();
         $this->processOverlay($groundOverlay, $groundOverlayXMLObject);
@@ -255,7 +257,7 @@ class KMLBuilder
         foreach ($groundOverlayContent as $key => $value) {
             switch ($key) {
                 case 'altitude':
-                    $groundOverlay->setAltitude($value->__toString());
+                    $groundOverlay->setAltitude((string)$value);
                     break;
                 case 'altitudeMode':
                     $groundOverlay->setAltitudeMode($this->buildAltitudeMode($value));
@@ -269,7 +271,7 @@ class KMLBuilder
         return $groundOverlay;
     }
 
-    private function buildScreenOverlay(\SimpleXMLElement $screenOverlayXMLObject): KMLObject
+    private function buildScreenOverlay(\SimpleXMLElement $screenOverlayXMLObject): ScreenOverlay
     {
         $screenOverlay = new ScreenOverlay();
 
@@ -300,40 +302,71 @@ class KMLBuilder
         return $screenOverlay;
     }
 
-    private function buildCamera(\SimpleXMLElement $cameraXMLObject): KMLObject
+    private function buildPhotoOverlay(\SimpleXMLElement $overlayXMLObject): PhotoOverlay
+    {
+        $photoOverlay = new PhotoOverlay();
+
+        $this->processOverlay($photoOverlay, $overlayXMLObject);
+
+        $overlayContent = $overlayXMLObject->children();
+
+        foreach ($overlayContent as $key => $value) {
+            switch ($key) {
+                case 'rotation':
+                    $photoOverlay->setRotation((string)$value);
+                    break;
+                case 'viewVolume':
+                    $photoOverlay->setViewVolume((string)$value);
+                    break;
+                case 'imagePyramid':
+                    $photoOverlay->setImagePyramid((string)$value);
+                    break;
+                case 'point':
+                    $photoOverlay->setPoint($this->buildPoint($value));
+                    break;
+                case 'shape':
+                    $photoOverlay->setShape((string)$value);
+                    break;
+            }
+        }
+
+        return $photoOverlay;
+    }
+
+    private function buildCamera(\SimpleXMLElement $cameraXMLObject): Camera
     {
         $camera = new Camera();
-        $this->processAbstractView($camera, $cameraXMLObject);
+        $this->processKMLObject($camera, $cameraXMLObject);
 
         return $camera;
     }
 
-    private function buildLookAt(\SimpleXMLElement $lookAtXMLObject): KMLObject
+    private function buildLookAt(\SimpleXMLElement $lookAtXMLObject): LookAt
     {
         $lookAt = new LookAt();
-        $this->processAbstractView($lookAt, $lookAtXMLObject);
+        $this->processKMLObject($lookAt, $lookAtXMLObject);
 
         $lookAtContent = $lookAtXMLObject->children();
 
         foreach ($lookAtContent as $key => $value) {
             switch ($key) {
                 case 'longitude':
-                    $lookAt->setLongitude($value->__toString());
+                    $lookAt->setLongitude((string)$value);
                     break;
                 case 'latitude':
-                    $lookAt->setLatitude($value->__toString());
+                    $lookAt->setLatitude((string)$value);
                     break;
                 case 'altitude':
-                    $lookAt->setAltitude($value->__toString());
+                    $lookAt->setAltitude((string)$value);
                     break;
                 case 'heading':
-                    $lookAt->setHeading($value->__toString());
+                    $lookAt->setHeading((string)$value);
                     break;
                 case 'tilt':
-                    $lookAt->setTilt($value->__toString());
+                    $lookAt->setTilt((string)$value);
                     break;
                 case 'range':
-                    $lookAt->setRange($value->__toString());
+                    $lookAt->setRange((string)$value);
                     break;
                 case 'altitudeMode':
                     $lookAt->setAltitudeMode($this->buildAltitudeMode($value));
@@ -344,7 +377,40 @@ class KMLBuilder
         return $lookAt;
     }
 
-    private function buildPlacemark(\SimpleXMLElement $placemarkXMLObject): KMLObject
+    private function buildModel(\SimpleXMLElement $modelXMLObject): Model
+    {
+        $model = new Model();
+        $this->processKMLObject($model, $modelXMLObject);
+
+        $modelContent = $modelXMLObject->children();
+
+        foreach ($modelContent as $key => $value) {
+            switch ($key) {
+                case 'altitudeMode':
+                    $model->setAltitudeMode($this->buildAltitudeMode($value));
+                    break;
+                case 'location':
+                    $model->setLocation((string)$value);
+                    break;
+                case 'orientation':
+                    $model->setOrientation((string)$value);
+                    break;
+                case 'scale':
+                    $model->setScale((string)$value);
+                    break;
+                case 'link':
+                    $model->setLink((string)$value);
+                    break;
+                case 'resourceMap':
+                    $model->setResourceMap((string)$value);
+                    break;
+            }
+        }
+
+        return $model;
+    }
+
+    private function buildPlacemark(\SimpleXMLElement $placemarkXMLObject): Placemark
     {
         $placemark = new Placemark();
 
@@ -362,7 +428,7 @@ class KMLBuilder
         return $placemark;
     }
 
-    private function buildMultiGeometry(\SimpleXMLElement $multiGeometryXMLObject): KMLObject
+    private function buildMultiGeometry(\SimpleXMLElement $multiGeometryXMLObject): MultiGeometry
     {
         $multiGeometry = new MultiGeometry();
         $this->processGeometry($multiGeometry, $multiGeometryXMLObject);
@@ -379,7 +445,7 @@ class KMLBuilder
     }
 
 
-    private function build(string $elementType, \SimpleXMLElement $value): KMLObject
+    private function build(string $elementType, \SimpleXMLElement $value): ?Geometry
     {
         switch ($elementType) {
             case 'Point':
@@ -408,7 +474,7 @@ class KMLBuilder
         $this->processKMLObject($geometry, $geometryXMLObject);
     }
 
-    private function buildPoint(\SimpleXMLElement $pointXMLObject): KMLObject
+    private function buildPoint(\SimpleXMLElement $pointXMLObject): Point
     {
         $point = new Point();
 
@@ -424,7 +490,7 @@ class KMLBuilder
                     $point->setAltitudeMode($this->buildAltitudeMode($value));
                     break;
                 case 'coordinates':
-                    $point->setCoordinates($this->buildCoordinates($value));
+                    $point->setCoordinate($this->buildCoordinates($value));
                     break;
             }
         }
@@ -438,7 +504,7 @@ class KMLBuilder
         foreach ($content as $key => $value) {
             switch ($key) {
                 case 'coordinates':
-                    $coordinates = explode(" ", trim($value->__toString()));
+                    $coordinates = explode(" ", trim((string)$value));
                     foreach ($coordinates as $coordinate) {
                         if (strlen($coordinate)) {
                             $line->addCoordinate($this->buildCoordinates($coordinate));
@@ -454,10 +520,10 @@ class KMLBuilder
         foreach ($content as $key => $value) {
             switch ($key) {
                 case 'extrude':
-                    $simple->setExtrude($value->__toString());
+                    $simple->setExtrude((string)$value);
                     break;
                 case 'tessellate':
-                    $simple->setTessellate($value->__toString());
+                    $simple->setTessellate((string)$value);
                     break;
                 case 'altitudeMode':
                     $simple->setAltitudeMode($this->buildAltitudeMode($value));
@@ -466,27 +532,29 @@ class KMLBuilder
         }
     }
 
-    private function buildLineString(\SimpleXMLElement $lineStringXMLObject): KMLObject
+    private function buildLineString(\SimpleXMLElement $lineStringXMLObject): LineString
     {
         $lineString = new LineString();
         $this->processGeometry($lineString, $lineStringXMLObject);
 
         $lineStringContent = $lineStringXMLObject->children();
 
-        return $this->processLine($lineString, $lineStringContent);
+        $this->processLine($lineString, $lineStringContent);
+        return $lineString;
     }
 
-    private function buildLinearRing(\SimpleXMLElement $linearRingXMLObject): KMLObject
+    private function buildLinearRing(\SimpleXMLElement $linearRingXMLObject): LinearRing
     {
         $linearRing = new LinearRing();
         $this->processGeometry($linearRing, $linearRingXMLObject);
 
         $linearRingContent = $linearRingXMLObject->children();
 
-        return $this->processLine($linearRing, $linearRingContent);
+        $this->processLine($linearRing, $linearRingContent);
+        return $linearRing;
     }
 
-    private function buildPolygon(\SimpleXMLElement $polygonXMLObject): KMLObject
+    private function buildPolygon(\SimpleXMLElement $polygonXMLObject): Polygon
     {
         $polygon = new Polygon();
         $this->processGeometry($polygon, $polygonXMLObject);
@@ -512,7 +580,7 @@ class KMLBuilder
         return $polygon;
     }
 
-    private function buildAltitudeMode(\SimpleXMLElement $altitudeModeXMLObject): KMLObject
+    private function buildAltitudeMode(\SimpleXMLElement $altitudeModeXMLObject): AltitudeMode
     {
         $altitudeMode = new AltitudeMode();
         $altitudeMode->setModeFromString($altitudeModeXMLObject->__toString());
@@ -520,7 +588,7 @@ class KMLBuilder
         return $altitudeMode;
     }
 
-    private function buildRefreshMode(\SimpleXMLElement $refreshModeXMLObject): KMLObject
+    private function buildRefreshMode(\SimpleXMLElement $refreshModeXMLObject): RefreshMode
     {
         $refreshMode = new RefreshMode();
         $refreshMode->setModeFromString($refreshModeXMLObject->__toString());
@@ -528,7 +596,7 @@ class KMLBuilder
         return $refreshMode;
     }
 
-    private function buildCoordinates(\SimpleXMLElement $coordinatesXMLObject): KMLObject
+    private function buildCoordinates(\SimpleXMLElement $coordinatesXMLObject): Coordinates
     {
         $coordinates = new Coordinates();
 
@@ -568,23 +636,23 @@ class KMLBuilder
 
         foreach ($styleContent as $key => $value) {
             switch ($key) {
-                case 'BalloonStyle';
-                    $style->setBalloonStyle($this->buildBalloonStyle($key, $value));
+                case 'BalloonStyle':
+                    $style->setBalloonStyle($this->buildBalloonStyle($value));
                     break;
-                case 'IconStyle';
-                    $style->setIconStyle($this->buildIconStyle($key, $value));
+                case 'IconStyle':
+                    $style->setIconStyle($this->buildIconStyle($value));
                     break;
-                case 'LabelStyle';
-                    $style->setLabelStyle($this->buildLabelStyle($key, $value));
+                case 'LabelStyle':
+                    $style->setLabelStyle($this->buildLabelStyle($value));
                     break;
-                case 'LineStyle';
-                    $style->setLineStyle($this->buildLineStyle($key, $value));
+                case 'LineStyle':
+                    $style->setLineStyle($this->buildLineStyle($value));
                     break;
-                case 'ListStyle';
-                    $style->setListStyle($this->buildListStyle($key, $value));
+                case 'ListStyle':
+                    $style->setListStyle($this->buildListStyle($value));
                     break;
-                case 'PolyStyle';
-                    $style->setPolyStyle($this->buildPolyStyle($key, $value));
+                case 'PolyStyle':
+                    $style->setPolyStyle($this->buildPolyStyle($value));
                     break;
             }
         }
@@ -592,7 +660,7 @@ class KMLBuilder
         return $style;
     }
 
-    private function buildPair(\SimpleXMLElement $pairXMLObject): KMLObject
+    private function buildPair(\SimpleXMLElement $pairXMLObject): Pair
     {
         $pair = new Pair();
         $this->processKMLObject($pair, $pairXMLObject);
@@ -602,10 +670,10 @@ class KMLBuilder
         foreach ($pairContent as $key => $value) {
             switch ($key) {
                 case 'key':
-                    $pair->setKey($value->__toString());
+                    $pair->setKey((string)$value);
                     break;
                 case 'styleUrl':
-                    $pair->setStyleUrl($value->__toString());
+                    $pair->setStyleUrl((string)$value);
                     break;
             }
         }
@@ -613,7 +681,7 @@ class KMLBuilder
         return $pair;
     }
 
-    private function buildStyleMap(\SimpleXMLElement $styleMapXMLObject): KMLObject
+    private function buildStyleMap(\SimpleXMLElement $styleMapXMLObject): StyleMap
     {
         $styleMap = new StyleMap();
         $this->processStyleSelector($styleMap, $styleMapXMLObject);
@@ -633,7 +701,7 @@ class KMLBuilder
         $this->processKMLObject($subStyle, $subStyleXMLObject);
     }
 
-    private function buildListItemType(\SimpleXMLElement $listItemTypeXMLObject): KMLObject
+    private function buildListItemType(\SimpleXMLElement $listItemTypeXMLObject): ListItemType
     {
         $listItemType = new ListItemType();
         $listItemType->setModeFromString($listItemTypeXMLObject);
@@ -641,7 +709,7 @@ class KMLBuilder
         return $listItemType;
     }
 
-    private function buildItemIcon(\SimpleXMLElement $itemIconXMLObject): KMLObject
+    private function buildItemIcon(\SimpleXMLElement $itemIconXMLObject): ItemIcon
     {
         $itemIcon = new ItemIcon();
 
@@ -659,7 +727,7 @@ class KMLBuilder
         return $itemIcon;
     }
 
-    private function buildListStyle(\SimpleXMLElement $listStyleXMLObject): KMLObject
+    private function buildListStyle(\SimpleXMLElement $listStyleXMLObject): ListStyle
     {
         $listStyle = new ListStyle();
         $this->processSubStyle($listStyle, $listStyleXMLObject);
@@ -671,7 +739,7 @@ class KMLBuilder
                     $listStyle->setListItemType($this->buildListItemType($value));
                     break;
                 case 'bgColor':
-                    $listStyle->setBgColor($value->__toString());
+                    $listStyle->setBgColor((string)$value);
                     break;
                 case 'ItemIcon':
                     $listStyle->addItemIcon($this->buildItemIcon($value));
@@ -685,7 +753,7 @@ class KMLBuilder
         return $listStyle;
     }
 
-    private function buildBalloonStyle(\SimpleXMLElement $balloonStyleXMLObject): KMLObject
+    private function buildBalloonStyle(\SimpleXMLElement $balloonStyleXMLObject): BalloonStyle
     {
         $balloonStyle = new BalloonStyle();
         $this->processSubStyle($balloonStyle, $balloonStyleXMLObject);
@@ -694,13 +762,13 @@ class KMLBuilder
         foreach ($balloonStyleContent as $key => $value) {
             switch ($key) {
                 case 'bgColor':
-                    $balloonStyle->setBgColor($value->__toString());
+                    $balloonStyle->setBgColor((string)$value);
                     break;
                 case 'textColor':
-                    $balloonStyle->setTextColor($value->__toString());
+                    $balloonStyle->setTextColor((string)$value);
                     break;
                 case 'text':
-                    $balloonStyle->setText($value->__toString());
+                    $balloonStyle->setText((string)$value);
                     break;
             }
         }
@@ -708,7 +776,7 @@ class KMLBuilder
         return $balloonStyle;
     }
 
-    private function buildColorMode(\SimpleXMLElement $colorModeXMLObject): KMLObject
+    private function buildColorMode(\SimpleXMLElement $colorModeXMLObject): ColorMode
     {
         $colorMode = new ColorMode();
         $colorMode->setModeFromString($colorModeXMLObject);
@@ -725,7 +793,7 @@ class KMLBuilder
         foreach ($colorStyleContent as $key => $value) {
             switch ($key) {
                 case 'color':
-                    $colorStyle->setColor($value->__toString());
+                    $colorStyle->setColor((string)$value);
                     break;
                 case 'colorMode':
                     $colorStyle->setColorMode($this->buildColorMode($value));
@@ -734,7 +802,7 @@ class KMLBuilder
         }
     }
 
-    private function buildLineStyle(\SimpleXMLElement $lineStyleXMLObject): KMLObject
+    private function buildLineStyle(\SimpleXMLElement $lineStyleXMLObject): LineStyle
     {
         $lineStyle = new LineStyle();
         $this->processColorStyle($lineStyle, $lineStyleXMLObject);
@@ -750,7 +818,7 @@ class KMLBuilder
         return $lineStyle;
     }
 
-    private function buildVec2Type(\SimpleXMLElement $vec2TypeXMLObject): KMLObject
+    private function buildVec2Type(\SimpleXMLElement $vec2TypeXMLObject): Vec2Type
     {
         $vec2Type = new Vec2Type();
 
@@ -759,16 +827,16 @@ class KMLBuilder
         foreach ($attributes as $key => $value) {
             switch ($key) {
                 case 'x':
-                    $vec2Type->setX($value->__toString());
+                    $vec2Type->setX((string)$value);
                     break;
                 case 'y':
-                    $vec2Type->setY($value->__toString());
+                    $vec2Type->setY((string)$value);
                     break;
                 case 'xunits':
-                    $vec2Type->setXUnits($value->__toString());
+                    $vec2Type->setXUnits((string)$value);
                     break;
                 case 'yunits':
-                    $vec2Type->setYUnits($value->__toString());
+                    $vec2Type->setYUnits((string)$value);
                     break;
             }
         }
@@ -776,7 +844,7 @@ class KMLBuilder
         return $vec2Type;
     }
 
-    private function buildIconStyle(\SimpleXMLElement $iconStyleXMLObject): KMLObject
+    private function buildIconStyle(\SimpleXMLElement $iconStyleXMLObject): IconStyle
     {
         $iconStyle = new IconStyle();
         $this->processColorStyle($iconStyle, $iconStyleXMLObject);
@@ -785,10 +853,10 @@ class KMLBuilder
         foreach ($iconStyleContent as $key => $value) {
             switch ($key) {
                 case 'scale':
-                    $iconStyle->setScale($value->__toString());
+                    $iconStyle->setScale((string)$value);
                     break;
                 case 'heading':
-                    $iconStyle->setHeading($value->__toString());
+                    $iconStyle->setHeading((string)$value);
                     break;
                 case 'Icon':
                     $iconStyle->setIcon($this->buildIcon($value));
@@ -802,7 +870,7 @@ class KMLBuilder
         return $iconStyle;
     }
 
-    private function buildLabelStyle(\SimpleXMLElement $labelStyleXMLObject): KMLObject
+    private function buildLabelStyle(\SimpleXMLElement $labelStyleXMLObject): LabelStyle
     {
         $labelStyle = new LabelStyle();
         $this->processColorStyle($labelStyle, $labelStyleXMLObject);
@@ -818,7 +886,7 @@ class KMLBuilder
         return $labelStyle;
     }
 
-    private function buildPolyStyle(\SimpleXMLElement $polyStyleXMLObject): KMLObject
+    private function buildPolyStyle(\SimpleXMLElement $polyStyleXMLObject): PolyStyle
     {
         $polyStyle = new PolyStyle();
         $this->processColorStyle($polyStyle, $polyStyleXMLObject);
@@ -839,7 +907,7 @@ class KMLBuilder
         return $polyStyle;
     }
 
-    private function buildRegion(\SimpleXMLElement $regionXMLObject): KMLObject
+    private function buildRegion(\SimpleXMLElement $regionXMLObject): Region
     {
         $region = new Region();
         $this->processKMLObject($region, $regionXMLObject);
@@ -859,7 +927,7 @@ class KMLBuilder
         return $region;
     }
 
-    private function buildIcon(\SimpleXMLElement $iconXMLObject): KMLObject
+    private function buildIcon(\SimpleXMLElement $iconXMLObject): Icon
     {
         $icon = new Icon();
         $this->processKMLObject($icon, $iconXMLObject);
@@ -869,28 +937,28 @@ class KMLBuilder
         foreach ($iconContent as $key => $value) {
             switch ($key) {
                 case 'href':
-                    $icon->setHref($value->__toString());
+                    $icon->setHref((string)$value);
                     break;
                 case 'refreshInterval':
-                    $icon->setRefreshInterval($value->__toString());
+                    $icon->setRefreshInterval((string)$value);
                     break;
                 case 'viewRefreshTime':
-                    $icon->setViewRefreshTime($value->__toString());
+                    $icon->setViewRefreshTime((string)$value);
                     break;
                 case 'viewBoundScale':
-                    $icon->setViewBoundScale($value->__toString());
+                    $icon->setViewBoundScale((string)$value);
                     break;
                 case 'viewFormat':
-                    $icon->setViewFormat($value->__toString());
+                    $icon->setViewFormat((string)$value);
                     break;
                 case 'httpQuery':
-                    $icon->setHttpQuery($value->__toString());
+                    $icon->setHttpQuery((string)$value);
                     break;
                 case 'refreshMode':
-                    $icon->set($this->buildRefreshMode($value));
+                    $icon->setRefreshMode($this->buildRefreshMode($value));
                     break;
                 case 'viewRefreshMode':
-                    $icon->setViewRefreshMode($value->__toString());
+                    $icon->setViewRefreshMode((string)$value);
                     break;
             }
         }
@@ -898,30 +966,30 @@ class KMLBuilder
         return $icon;
     }
 
-    private function buildAuthor(\SimpleXMLElement $authorXMLObject): KMLObject
+    private function buildAuthor(\SimpleXMLElement $authorXMLObject): Author
     {
         $author = new Author();
 
-        $author->setName($authorXMLObject->name);
-        $author->setUri($authorXMLObject->uri);
-        $author->setEmail($authorXMLObject->email);
+        $author->setName((string)$authorXMLObject->name);
+        $author->setUri((string)$authorXMLObject->uri);
+        $author->setEmail((string)$authorXMLObject->email);
 
         return $author;
     }
 
-    private function buildTimeStamp(\SimpleXMLElement $kmlXMLObject): KMLObject
+    private function buildTimeStamp(\SimpleXMLElement $kmlXMLObject): TimeStamp
     {
         $kml = new TimeStamp();
-        $kml->setWhen($kmlXMLObject->when);
+        $kml->setWhen((string)$kmlXMLObject->when);
 
         return $kml;
     }
 
-    private function buildTimeSpan(\SimpleXMLElement $kmlXMLObject): KMLObject
+    private function buildTimeSpan(\SimpleXMLElement $kmlXMLObject): TimeSpan
     {
         $kml = new TimeSpan();
-        $kml->setBegin($kmlXMLObject->begin);
-        $kml->setEnd($kmlXMLObject->end);
+        $kml->setBegin((string)$kmlXMLObject->begin);
+        $kml->setEnd((string)$kmlXMLObject->end);
 
         return $kml;
     }

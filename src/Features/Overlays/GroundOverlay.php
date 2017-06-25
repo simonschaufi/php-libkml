@@ -2,17 +2,17 @@
 
 namespace KML\Features\Overlays;
 
-/**
- *  GroundOverlay class
- */
+use KML\Features\AltitudeMode;
 
 class GroundOverlay extends Overlay
 {
     private $altitude;
+    /** @var  AltitudeMode */
     private $altitudeMode;
+    /** @var  LatLonBox */
     private $latLonBox;
 
-    public function __toString()
+    public function __toString(): string
     {
         $parent_string = parent::__toString();
 
@@ -41,24 +41,24 @@ class GroundOverlay extends Overlay
         return implode("\n", $output);
     }
 
-    public function toWKT()
+    public function toWKT(): string
     {
         return $this->latLonBox->toWKT();
     }
 
-    public function toWKT2d()
+    public function toWKT2d(): string
     {
         return $this->latLonBox->toWKT2d();
     }
 
-    public function toJSON()
+    public function jsonSerialize()
     {
         $json_data = [];
 
         if (isset($this->latLonBox)) {
             $json_data = [
                 'type'     => 'Feature',
-                'geometry' => $this->latLonBox->toJSON()
+                'geometry' => $this->latLonBox
             ];
         }
 
@@ -72,7 +72,7 @@ class GroundOverlay extends Overlay
         if (isset($this->latLonBox)) {
             $json_data = [
                 'type'     => 'Feature',
-                'geometry' => $this->latLonBox->toJSON()
+                'geometry' => $this->latLonBox
             ];
         }
 
@@ -89,22 +89,22 @@ class GroundOverlay extends Overlay
         $this->altitude = $altitude;
     }
 
-    public function getAltitudeMode()
+    public function getAltitudeMode(): AltitudeMode
     {
         return $this->altitudeMode;
     }
 
-    public function setAltitudeMode($altitudeMode)
+    public function setAltitudeMode(AltitudeMode $altitudeMode)
     {
         $this->altitudeMode = $altitudeMode;
     }
 
-    public function getLatLonBox()
+    public function getLatLonBox(): LatLonBox
     {
         return $this->latLonBox;
     }
 
-    public function setLatLonBox($latLonBox)
+    public function setLatLonBox(LatLonBox $latLonBox)
     {
         $this->latLonBox = $latLonBox;
     }

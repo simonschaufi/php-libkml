@@ -3,10 +3,6 @@ namespace KML\Geometries;
 
 use KML\KMLObject;
 
-/**
- *  ResouceMap class
- */
-
 class Orientation extends KMLObject
 {
     private $heading;
@@ -41,5 +37,10 @@ class Orientation extends KMLObject
     public function setroll($roll)
     {
         $this->roll = $roll;
+    }
+
+    public function __toString(): string
+    {
+        return '';
     }
 }

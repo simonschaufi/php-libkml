@@ -4,10 +4,7 @@ namespace KML\Features\Overlays;
 
 use KML\KMLObject;
 
-/**
- *  LatLonBox class
- */
-class LatLonBox extends KMLObject
+class LatLonBox extends KMLObject implements \JsonSerializable
 {
     private $north;
     private $south;
@@ -15,7 +12,7 @@ class LatLonBox extends KMLObject
     private $west;
     private $rotation;
 
-    public function __toString()
+    public function __toString(): string
     {
         $output = [];
 
@@ -42,7 +39,7 @@ class LatLonBox extends KMLObject
         return implode("\n", $output);
     }
 
-    public function toWKT()
+    public function toWKT(): string
     {
         return sprintf(
             "POLYGON ((%s %s, %s %s, %s %s, %s %s, %s %s))",
@@ -59,12 +56,12 @@ class LatLonBox extends KMLObject
         );
     }
 
-    public function toWKT2d()
+    public function toWKT2d(): string
     {
         return $this->toWKT();
     }
 
-    public function toJSON()
+    public function jsonSerialize()
     {
         $coordinates = [
             [

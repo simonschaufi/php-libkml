@@ -1,19 +1,18 @@
 <?php
 namespace KML\Features\Overlays;
 
-/**
- *  PhotoOverlay class
- */
+use KML\Geometries\Point;
 
 class PhotoOverlay extends Overlay
 {
     private $rotation;
     private $viewVolume;
     private $imagePyramid;
+    /** @var  Point */
     private $point;
     private $shape;
   
-    public function __toString()
+    public function __toString(): string
     {
         $parent_string = parent::__toString();
     
@@ -31,17 +30,17 @@ class PhotoOverlay extends Overlay
         return implode("\n", $output);
     }
   
-    public function toWKT()
+    public function toWKT(): string
     {
         return '';
     }
   
-    public function toWKT2d()
+    public function toWKT2d(): string
     {
         return '';
     }
   
-    public function toJSON()
+    public function jsonSerialize()
     {
         return [];
     }
@@ -81,12 +80,12 @@ class PhotoOverlay extends Overlay
         return $this->imagePyramid;
     }
   
-    public function setPoint($point)
+    public function setPoint(Point $point)
     {
         $this->point = $point;
     }
   
-    public function getPoint()
+    public function getPoint(): Point
     {
         return $this->point;
     }

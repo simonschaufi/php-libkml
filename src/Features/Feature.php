@@ -2,28 +2,34 @@
 
 namespace KML\Features;
 
+use KML\FieldTypes\Atom\Author;
 use KML\KMLObject;
+use KML\Links\Link;
 use KML\Region;
+use KML\Time\TimePrimitive;
+use KML\Views\AbstractView;
 
-/**
- *  Feature abstract class
- */
-abstract class Feature extends KMLObject
+abstract class Feature extends KMLObject implements \JsonSerializable
 {
     protected $name;
     protected $visibility;
     protected $open;
+    /** @var  Author */
     protected $author;
+    /** @var  Link */
     protected $link;
     protected $address;
     protected $addressDetails;
     protected $phoneNumber;
     protected $snippet;
     protected $description;
+    /** @var  AbstractView */
     protected $abstractView;
+    /** @var  TimePrimitive */
     protected $timePrimitive;
     protected $styleUrl;
     protected $styleSelector = [];
+    /** @var  Region */
     protected $region;
     protected $extendedData;
 
@@ -31,7 +37,7 @@ abstract class Feature extends KMLObject
 
     abstract public function toWKT2d(): string;
 
-    abstract public function toJSON(): string;
+    abstract public function jsonSerialize();
 
     abstract public function getAllFeatures();
 
@@ -75,7 +81,7 @@ abstract class Feature extends KMLObject
         return $all_styles;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         $output = [];
 
@@ -92,7 +98,7 @@ abstract class Feature extends KMLObject
         }
 
         if (isset($this->author)) {
-            $output[] = $this->autor->__toString();
+            $output[] = $this->author->__toString();
         }
 
         if (isset($this->link)) {
@@ -104,7 +110,7 @@ abstract class Feature extends KMLObject
         }
 
         if (isset($this->addressDetails)) {
-            $output[] = $this->addressDetails->__toString();
+            $output[] = (string)$this->addressDetails;
         }
 
         if (isset($this->phoneNumber)) {
@@ -142,7 +148,7 @@ abstract class Feature extends KMLObject
         }
 
         if (isset($this->extendedData)) {
-            $output[] = $this->extendedData->__toString();
+            $output[] = (string)$this->extendedData;
         }
 
         return implode("\n", $output);
@@ -179,14 +185,14 @@ abstract class Feature extends KMLObject
         return $this->open;
     }
 
-    public function setAutor($autor)
+    public function setAuthor(Author $author)
     {
-        $this->autor = $autor;
+        $this->author = $author;
     }
 
-    public function getAutor()
+    public function getAuthor(): Author
     {
-        return $this->autor;
+        return $this->author;
     }
 
     public function setAddress($address)
@@ -239,22 +245,22 @@ abstract class Feature extends KMLObject
         return $this->description;
     }
 
-    public function setAbstractView($abstractView)
+    public function setAbstractView(AbstractView $abstractView)
     {
         $this->abstractView = $abstractView;
     }
 
-    public function getAbstractView()
+    public function getAbstractView(): AbstractView
     {
         return $this->abstractView;
     }
 
-    public function setTimePrimitive($timePrimitive)
+    public function setTimePrimitive(TimePrimitive $timePrimitive)
     {
         $this->timePrimitive = $timePrimitive;
     }
 
-    public function getTimePrimitive()
+    public function getTimePrimitive(): TimePrimitive
     {
         return $this->timePrimitive;
     }
@@ -301,28 +307,33 @@ abstract class Feature extends KMLObject
 
     public function set(string $type, $value)
     {
-        'name',
-            'visibility',
-            'open',
-            'address',
-            'phoneNumber',
-            'Snippet',
-            'description',
-            'styleUrl',
-
-
         switch ($type) {
             case 'Region':
+                $this->setRegion($value);
                 break;
-            case '':
+            case 'name':
+                $this->setName($value);
                 break;
-            case '':
+            case 'visibility':
+                $this->setVisibility($value);
                 break;
-            case '':
+            case 'open':
+                $this->setOpen($value);
                 break;
-            case '':
+            case 'address':
+                $this->setAddress($value);
                 break;
-            case '':
+            case 'phoneNumber':
+                $this->setPhoneNumber($value);
+                break;
+            case 'Snippet':
+                $this->setSnippet($value);
+                break;
+            case 'description':
+                $this->setDescription($value);
+                break;
+            case 'styleUrl':
+                $this->setStyleUrl($value);
                 break;
         }
     }

@@ -3,14 +3,13 @@
 namespace KML\Features\Overlays;
 
 use KML\Features\Feature;
+use KML\Icon;
 
-/**
- *  Overlay abstract class
- */
 abstract class Overlay extends Feature
 {
     protected $color;
     protected $drawOrder;
+    /** @var  Icon */
     protected $icon;
 
     public function getAllFeatures()
@@ -18,7 +17,7 @@ abstract class Overlay extends Feature
         return [$this];
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         $parent_string = parent::__toString();
 
@@ -60,12 +59,12 @@ abstract class Overlay extends Feature
         $this->drawOrder = $drawOrder;
     }
 
-    public function getIcon()
+    public function getIcon(): Icon
     {
         return $this->icon;
     }
 
-    public function setIcon($icon)
+    public function setIcon(Icon $icon)
     {
         $this->icon = $icon;
     }

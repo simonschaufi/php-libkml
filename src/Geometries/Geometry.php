@@ -3,12 +3,7 @@ namespace KML\Geometries;
 
 use KML\KMLObject;
 
-/**
- *  Geometry abstract class
- */
- 
-abstract class Geometry extends KMLObject
+abstract class Geometry extends KMLObject implements \JsonSerializable
 {
-    abstract public function toWKT();
-    abstract public function toJSON();
+    abstract public function toWKT(): string;
 }

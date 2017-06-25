@@ -4,7 +4,7 @@ namespace KML\Geometries;
 
 class LineString extends Line
 {
-    public function toWKT()
+    public function toWKT(): string
     {
         if (count($this->coordinates)) {
             $coordinates_strings = [];
@@ -34,7 +34,7 @@ class LineString extends Line
         return "";
     }
 
-    public function toJSON()
+    public function jsonSerialize()
     {
         $json_data = null;
 
@@ -45,14 +45,14 @@ class LineString extends Line
             ];
 
             foreach ($this->coordinates as $coordinate) {
-                $json_data['coordinates'][] = $coordinate->toJSON();
+                $json_data['coordinates'][] = $coordinate;
             }
         }
 
         return $json_data;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         $output = [];
         $output[] = sprintf(

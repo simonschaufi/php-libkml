@@ -1,15 +1,11 @@
 <?php
 namespace KML\Features\Containers;
 
-/**
- *  Document class
- */
-
 class Document extends Container
 {
     private $schemas = [];
   
-    public function __toString()
+    public function __toString(): string
     {
         $parent_string = parent::__toString();
     

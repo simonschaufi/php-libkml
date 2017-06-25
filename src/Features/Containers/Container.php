@@ -4,15 +4,11 @@ namespace KML\Features\Containers;
 use KML\Features\Feature;
 use KML\KMLObject;
 
-/**
- *  Container abstract class
- */
-
 abstract class Container extends Feature
 {
     protected $features = [];
   
-    public function toJSON(): string
+    public function jsonSerialize()
     {
         $json_data = null;
     
@@ -20,7 +16,7 @@ abstract class Container extends Feature
             $json_data = [];
       
             foreach ($this->features as $feature) {
-                $json_data[] = $feature->toJSON();
+                $json_data[] = $feature;
             }
         }
     

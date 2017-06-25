@@ -1,10 +1,13 @@
 <?php
 namespace KML\Geometries;
 
+use KML\Features\AltitudeMode;
+
 abstract class GeometrySimple extends Geometry
 {
     protected $extrude;
     protected $tessellate;
+    /** @var  AltitudeMode */
     protected $altitudeMode;
 
     public function getExtrude()
@@ -27,12 +30,12 @@ abstract class GeometrySimple extends Geometry
         $this->tessellate = $tessellate;
     }
 
-    public function getAltitudeMode()
+    public function getAltitudeMode(): AltitudeMode
     {
         return $this->altitudeMode;
     }
 
-    public function setAltitudeMode($altitudeMode)
+    public function setAltitudeMode(AltitudeMode $altitudeMode)
     {
         $this->altitudeMode = $altitudeMode;
     }

@@ -3,10 +3,6 @@ namespace KML\Geometries;
 
 use KML\KMLObject;
 
-/**
- *  Scale class
- */
-
 class Scale extends KMLObject
 {
     private $x;
@@ -41,5 +37,10 @@ class Scale extends KMLObject
     public function setZ($z)
     {
         $this->z = $z;
+    }
+
+    public function __toString(): string
+    {
+        return '';
     }
 }

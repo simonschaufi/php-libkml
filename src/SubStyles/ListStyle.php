@@ -1,12 +1,11 @@
 <?php
 namespace KML\SubStyles;
 
-/**
- *  ListStyle class
- */
+use KML\FieldTypes\ListItemType;
 
 class ListStyle extends SubStyle
 {
+    /** @var  ListItemType */
     private $listItemType;
     private $bgColor;
     private $itemIcons = [];
@@ -23,7 +22,7 @@ class ListStyle extends SubStyle
         $this->itemIcons = [];
     }
   
-    public function __toString()
+    public function __toString(): string
     {
         $output = [];
         $output[] = sprintf(
@@ -54,12 +53,12 @@ class ListStyle extends SubStyle
         return implode("\n", $output);
     }
   
-    public function getListItemType()
+    public function getListItemType(): ListItemType
     {
         return $this->listItemType;
     }
   
-    public function setListItemType($listItemType)
+    public function setListItemType(ListItemType $listItemType)
     {
         $this->listItemType = $listItemType;
     }

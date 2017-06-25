@@ -2,20 +2,29 @@
 
 namespace KML\StyleSelectors;
 
-/**
- *  Style class
- */
+use KML\SubStyles\BalloonStyle;
+use KML\SubStyles\ColorStyles\IconStyle;
+use KML\SubStyles\ColorStyles\LabelStyle;
+use KML\SubStyles\ColorStyles\LineStyle;
+use KML\SubStyles\ColorStyles\PolyStyle;
+use KML\SubStyles\ListStyle;
 
 class Style extends StyleSelector
 {
+    /** @var  IconStyle */
     private $iconStyle;
+    /** @var  LabelStyle */
     private $labelStyle;
+    /** @var  LineStyle */
     private $lineStyle;
+    /** @var  PolyStyle */
     private $polyStyle;
+    /** @var  BalloonStyle */
     private $balloonStyle;
+    /** @var  ListStyle */
     private $listStyle;
 
-    public function __toString()
+    public function __toString(): string
     {
         $output = [];
         $output[] = sprintf(
@@ -52,62 +61,62 @@ class Style extends StyleSelector
         return implode("\n", $output);
     }
 
-    public function getIconStyle()
+    public function getIconStyle(): IconStyle
     {
         return $this->iconStyle;
     }
 
-    public function setIconStyle($iconStyle)
+    public function setIconStyle(IconStyle $iconStyle)
     {
         $this->iconStyle = $iconStyle;
     }
 
-    public function getLabelStyle()
+    public function getLabelStyle(): LabelStyle
     {
         return $this->labelStyle;
     }
 
-    public function setLabelStyle($labelStyle)
+    public function setLabelStyle(LabelStyle $labelStyle)
     {
         $this->labelStyle = $labelStyle;
     }
 
-    public function getLineStyle()
+    public function getLineStyle(): LineStyle
     {
         return $this->lineStyle;
     }
 
-    public function setLineStyle($lineStyle)
+    public function setLineStyle(LineStyle $lineStyle)
     {
         $this->lineStyle = $lineStyle;
     }
 
-    public function getPolyStyle()
+    public function getPolyStyle(): PolyStyle
     {
         return $this->polyStyle;
     }
 
-    public function setPolyStyle($polyStyle)
+    public function setPolyStyle(PolyStyle $polyStyle)
     {
         $this->polyStyle = $polyStyle;
     }
 
-    public function getBalloonStyle()
+    public function getBalloonStyle(): BalloonStyle
     {
         return $this->balloonStyle;
     }
 
-    public function setBalloonStyle($balloonStyle)
+    public function setBalloonStyle(BalloonStyle $balloonStyle)
     {
         $this->balloonStyle = $balloonStyle;
     }
 
-    public function getListStyle()
+    public function getListStyle(): ListStyle
     {
         return $this->listStyle;
     }
 
-    public function setListStyle($listStyle)
+    public function setListStyle(ListStyle $listStyle)
     {
         $this->listStyle = $listStyle;
     }

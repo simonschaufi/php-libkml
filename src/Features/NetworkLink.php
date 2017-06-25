@@ -1,16 +1,12 @@
 <?php
 namespace KML\Features;
 
-/**
- *  NetworkLink abstract class
- */
-
 class NetworkLink extends Feature
 {
     private $refreshVisibility;
     private $flyToView;
   
-    public function __toString()
+    public function __toString(): string
     {
         $parent_string = parent::__toString();
     
@@ -44,17 +40,17 @@ class NetworkLink extends Feature
         return [];
     }
   
-    public function toWKT()
+    public function toWKT(): string
     {
         return '';
     }
   
-    public function toWKT2d()
+    public function toWKT2d(): string
     {
         return '';
     }
   
-    public function toJSON()
+    public function jsonSerialize()
     {
         return '';
     }

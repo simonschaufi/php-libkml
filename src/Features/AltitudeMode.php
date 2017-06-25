@@ -2,9 +2,6 @@
 
 namespace KML\Features;
 
-/**
- *  Altitude modes
- */
 class AltitudeMode
 {
     public static $ALTITUDE_MODE_CLAMP_TO_GROUND = 0;

@@ -2,10 +2,6 @@
 
 namespace KML\Geometries;
 
-/**
- *  MultiGeometry class
- */
-
 class MultiGeometry extends Geometry
 {
     private $geometries = [];
@@ -20,18 +16,18 @@ class MultiGeometry extends Geometry
         $this->geometries = [];
     }
 
-    public function toJSON()
+    public function jsonSerialize()
     {
         $geometries = [];
 
         foreach ($this->geometries as $geometry) {
-            $geometries = array_merge($geometries, $geometry->toJSON());
+            $geometries = array_merge($geometries, $geometry);
         }
 
         return $geometries;
     }
 
-    public function toWKT()
+    public function toWKT(): string
     {
         $geometries = [];
 
@@ -53,7 +49,7 @@ class MultiGeometry extends Geometry
         return sprintf("GEOMETRYCOLLECTION(%s)", implode(",", $geometries));
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         $parent_string = parent::__toString();
 

@@ -3,10 +3,6 @@ namespace KML\Geometries;
 
 use KML\KMLObject;
 
-/**
- *  Alias class
- */
-
 class Alias extends KMLObject
 {
     private $targetHref;
@@ -30,5 +26,10 @@ class Alias extends KMLObject
     public function setSourceHref($sourceHref)
     {
         $this->sourceHref = $sourceHref;
+    }
+
+    public function __toString(): string
+    {
+        return '';
     }
 }

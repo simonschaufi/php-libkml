@@ -1,18 +1,16 @@
 <?php
 namespace KML\SubStyles\ColorStyles;
 
+use KML\FieldTypes\ColorMode;
 use KML\SubStyles\SubStyle;
-
-/**
- *  ColorStyle abstract class
- */
 
 abstract class ColorStyle extends SubStyle
 {
     protected $color;
+    /** @var  ColorMode */
     protected $colorMode;
   
-    public function __toString()
+    public function __toString(): string
     {
         $output = [];
    
@@ -37,12 +35,12 @@ abstract class ColorStyle extends SubStyle
         $this->color = $color;
     }
   
-    public function getColorMode()
+    public function getColorMode(): ColorMode
     {
         return $this->colorMode;
     }
   
-    public function setColorMode($colorMode)
+    public function setColorMode(ColorMode $colorMode)
     {
         $this->colorMode = $colorMode;
     }

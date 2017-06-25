@@ -14,11 +14,7 @@ define('KML_DEFAULT_SCHEMA_VERSION', '2.2');
  */
 define('KML_DEFAULT_ENCODING', 'UTF-8');
 
-
-/**
- *   kml root element class
- */
-class KML
+class KML implements \JsonSerializable
 {
     /** @var Feature */
     private $feature;
@@ -88,7 +84,7 @@ class KML
         return '';
     }
 
-    public function toJSON(): string
+    public function jsonSerialize()
     {
         $json_data = [];
 
@@ -99,14 +95,11 @@ class KML
             $json_data['features'] = [];
 
             foreach ($all_features as $feature) {
-                $json_feature = $feature->toJSON();
-                if ($json_feature) {
-                    $json_data['features'][] = $json_feature;
-                }
+                $json_data['features'][] = $feature;
             }
         }
 
-        return json_encode($json_data);
+        return $json_data;
     }
 
     public function toExtGeoJSON(): string

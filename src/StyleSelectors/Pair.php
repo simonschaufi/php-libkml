@@ -3,16 +3,12 @@ namespace KML\StyleSelectors;
 
 use KML\KMLObject;
 
-/**
- *  Pair class
- */
-
 class Pair extends KMLObject
 {
     private $key;
     private $styleUrl;
   
-    public function __toString()
+    public function __toString(): string
     {
         $output = [];
         $output[] = sprintf(

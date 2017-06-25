@@ -1,15 +1,11 @@
 <?php
 namespace KML\SubStyles\ColorStyles;
 
-/**
- *  LineStyle class
- */
-
 class LineStyle extends ColorStyle
 {
     private $width;
   
-    public function __toString()
+    public function __toString(): string
     {
         $parent_string = parent::__toString();
     

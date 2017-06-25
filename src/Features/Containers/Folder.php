@@ -1,13 +1,9 @@
 <?php
 namespace KML\Features\Containers;
 
-/**
- *  Folder class
- */
-
 class Folder extends Container
 {
-    public function __toString()
+    public function __toString(): string
     {
         $parent_string = parent::__toString();
     

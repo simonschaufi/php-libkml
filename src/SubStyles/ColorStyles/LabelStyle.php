@@ -5,7 +5,7 @@ class LabelStyle extends ColorStyle
 {
     private $scale;
 
-    public function __toString()
+    public function __toString(): string
     {
         $parent_string = parent::__toString();
 

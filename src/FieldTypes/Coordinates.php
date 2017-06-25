@@ -2,17 +2,13 @@
 
 namespace KML\FieldTypes;
 
-/**
- *  Coordinates class type
- */
-
-class Coordinates
+class Coordinates implements \JsonSerializable
 {
     private $longitude = 0;
     private $latitude = 0;
     private $altitude = 0;
 
-    public function toJSON()
+    public function jsonSerialize()
     {
         return [
             floatval($this->longitude),
@@ -20,7 +16,7 @@ class Coordinates
         ];
     }
 
-    public function toWKT()
+    public function toWKT(): string
     {
         return implode(" ", [$this->longitude, $this->latitude, $this->altitude]);
     }

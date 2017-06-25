@@ -2,16 +2,14 @@
 
 namespace KML\Geometries;
 
-/**
- *  Polygon class
- */
-
 class Polygon extends GeometrySimple
 {
+    /** @var  LinearRing */
     private $outerBoundaryIs;
+    /** @var  LinearRing */
     private $innerBoundaryIs;
 
-    public function toJSON()
+    public function jsonSerialize()
     {
         $json_data = null;
 
@@ -23,25 +21,25 @@ class Polygon extends GeometrySimple
 
             $outerCoordinates = $this->outerBoundaryIs->getCoordinates();
             foreach ($outerCoordinates as $coordinate) {
-                $json_data['coordinates'][0][] = $coordinate->toJSON();
+                $json_data['coordinates'][0][] = $coordinate;
             }
 
             $first_coordinate = $outerCoordinates[0];
             $last_coordinate = end($outerCoordinates);
             if ($first_coordinate != $last_coordinate) {
-                $json_data['coordinates'][0][] = $first_coordinate->toJSON();
+                $json_data['coordinates'][0][] = $first_coordinate;
             }
 
             if (isset($this->innerBoundaryIs)) {
-                $innerCoordinates = $this->innerBoundaryIs->getCoordinates();
+                $innerCoordinates = $this->innerBoundaryIs;
                 foreach ($innerCoordinates as $coordinate) {
-                    $json_data['coordinates'][1][] = $coordinate->toJSON();
+                    $json_data['coordinates'][1][] = $coordinate;
                 }
 
                 $first_coordinate = $innerCoordinates[0];
                 $last_coordinate = end($innerCoordinates);
                 if ($first_coordinate != $last_coordinate) {
-                    $json_data['coordinates'][1][] = $first_coordinate->toJSON();
+                    $json_data['coordinates'][1][] = $first_coordinate;
                 }
             }
         }
@@ -49,7 +47,7 @@ class Polygon extends GeometrySimple
         return $json_data;
     }
 
-    public function toWKT()
+    public function toWKT(): string
     {
         $wkt_string = "";
 
@@ -147,7 +145,7 @@ class Polygon extends GeometrySimple
         return $wkt_string;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         $output = [];
         $output[] = sprintf(
@@ -180,22 +178,22 @@ class Polygon extends GeometrySimple
         return implode("\n", $output);
     }
 
-    public function getOuterBoundaryIs()
+    public function getOuterBoundaryIs(): LinearRing
     {
         return $this->outerBoundaryIs;
     }
 
-    public function setOuterBoundaryIs($outerBoundaryIs)
+    public function setOuterBoundaryIs(LinearRing $outerBoundaryIs)
     {
         $this->outerBoundaryIs = $outerBoundaryIs;
     }
 
-    public function getInnerBoundaryIs()
+    public function getInnerBoundaryIs(): LinearRing
     {
         return $this->innerBoundaryIs;
     }
 
-    public function setInnerBoundaryIs($innerBoundaryIs)
+    public function setInnerBoundaryIs(LinearRing $innerBoundaryIs)
     {
         $this->innerBoundaryIs = $innerBoundaryIs;
     }

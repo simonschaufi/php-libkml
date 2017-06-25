@@ -3,11 +3,6 @@ namespace KML\Geometries;
 
 use KML\KMLObject;
 
-/**
- *  Location class
- */
-
-
 class Location extends KMLObject
 {
     private $longitude;
@@ -42,5 +37,10 @@ class Location extends KMLObject
     public function getAltitude()
     {
         return $this->altitude;
+    }
+
+    public function __toString(): string
+    {
+        return '';
     }
 }

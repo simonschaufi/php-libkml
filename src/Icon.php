@@ -1,6 +1,8 @@
 <?php
 namespace KML;
 
+use KML\FieldTypes\RefreshMode;
+
 /**
  *  Icon class
  */
@@ -9,6 +11,7 @@ class Icon extends KMLObject
 {
     /** @var  string */
     private $href;
+    /** @var  RefreshMode */
     private $refreshMode;
     /** @var  string */
     private $refreshInterval;
@@ -79,12 +82,12 @@ class Icon extends KMLObject
         $this->href = $href;
     }
   
-    public function getRefreshMode()
+    public function getRefreshMode(): RefreshMode
     {
         return $this->refreshMode;
     }
   
-    public function setRefreshMode($refreshMode)
+    public function setRefreshMode(RefreshMode $refreshMode)
     {
         $this->refreshMode = $refreshMode;
     }

@@ -3,12 +3,9 @@ namespace KML\Features;
 
 use KML\KMLObject;
 
-/**
- *  LatLonAltBox class
- */
-
 class LanLonAltBox extends KMLObject
 {
+    /** @var  AltitudeMode */
     private $altitudeMode;
     private $minAltitude;
     private $maxAltitude;
@@ -17,7 +14,7 @@ class LanLonAltBox extends KMLObject
     private $east;
     private $west;
   
-    public function __toString()
+    public function __toString(): string
     {
         $output = [];
     
@@ -47,12 +44,12 @@ class LanLonAltBox extends KMLObject
         return implode("\n", $output);
     }
   
-    public function getAltitudeMode()
+    public function getAltitudeMode(): AltitudeMode
     {
         return $this->altitudeMode;
     }
   
-    public function setAltitudeMode($altitudeMode)
+    public function setAltitudeMode(AltitudeMode $altitudeMode)
     {
         $this->altitudeMode = $altitudeMode;
     }
@@ -72,7 +69,7 @@ class LanLonAltBox extends KMLObject
         return $this->maxAltitude;
     }
   
-    public function setMaxAltitude($altitudeMode)
+    public function setMaxAltitude($maxAltitude)
     {
         $this->maxAltitude = $maxAltitude;
     }

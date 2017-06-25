@@ -1,18 +1,19 @@
 <?php
 namespace KML\SubStyles\ColorStyles;
 
-/**
- *  IconStyle class
- */
+use KML\FieldTypes\Vec2Type;
+use KML\Icon;
 
 class IconStyle extends ColorStyle
 {
     private $scale;
     private $heading;
+    /** @var  Icon */
     private $icon;
+    /** @var  Vec2Type */
     private $hotSpot;
   
-    public function __toString()
+    public function __toString(): string
     {
         $parent_string = parent::__toString();
     
@@ -64,22 +65,22 @@ class IconStyle extends ColorStyle
         $this->heading = $heading;
     }
   
-    public function getIcon()
+    public function getIcon(): Icon
     {
         return $this->icon;
     }
   
-    public function setIcon($icon)
+    public function setIcon(Icon $icon)
     {
         $this->icon = $icon;
     }
   
-    public function getHotSpot()
+    public function getHotSpot(): Vec2Type
     {
         return $this->hotSpot;
     }
   
-    public function setHotSpot($hotSpot)
+    public function setHotSpot(Vec2Type $hotSpot)
     {
         $this->hotSpot = $hotSpot;
     }

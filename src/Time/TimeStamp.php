@@ -1,15 +1,12 @@
 <?php
 namespace KML\Time;
 
-/**
- *  TimeStamp class
- */
-
 class TimeStamp extends TimePrimitive
 {
+    /** @var  string */
     private $when;
   
-    public function __toString()
+    public function __toString(): string
     {
         $parent_string = parent::__toString();
     
@@ -21,7 +18,7 @@ class TimeStamp extends TimePrimitive
             );
             $output[] = $parent_string;
       
-            $output[] = $this->when->__toString();
+            $output[] = $this->when;
       
             $output[] = "</TimeStamp>";
         }
@@ -29,12 +26,12 @@ class TimeStamp extends TimePrimitive
         return implode("\n", $output);
     }
   
-    public function getWhen()
+    public function getWhen(): string
     {
         return $this->when;
     }
   
-    public function setWhen($when)
+    public function setWhen(string $when)
     {
         $this->when = $when;
     }

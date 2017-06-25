@@ -1,18 +1,13 @@
 <?php
 namespace KML\SubStyles;
 
-/**
- *  BalloonStyle class
- */
-
 class BalloonStyle extends SubStyle
 {
     private $bgColor;
     private $textColor;
     private $text;
-    private $displayMode;
   
-    public function __toString()
+    public function __toString(): string
     {
         $output = [];
         $output[] = sprintf(
@@ -30,10 +25,6 @@ class BalloonStyle extends SubStyle
     
         if (isset($this->text)) {
             $output[] = sprintf("\t<text><![CDATA[%s]]></text>", $this->text);
-        }
-    
-        if (isset($this->displayMode)) {
-            $output[] = $this->displayMode->__toString();
         }
     
         $output[] = "</BalloonStyle>";
@@ -69,15 +60,5 @@ class BalloonStyle extends SubStyle
     public function setText($text)
     {
         $this->text = $text;
-    }
-  
-    public function getDisplayMode()
-    {
-        return $this->displayMode;
-    }
-  
-    public function setDisplayMode($displayMode)
-    {
-        $this->displayMode = $displayMode;
     }
 }

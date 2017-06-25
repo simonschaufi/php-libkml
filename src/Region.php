@@ -1,16 +1,15 @@
 <?php
 namespace KML;
 
-/**
- *  Region class
- */
- 
+use KML\Features\Lod;
+
 class Region extends KMLObject
 {
     private $latLonAltBox;
+    /** @var  Lod */
     private $lod;
   
-    public function __toString()
+    public function __toString(): string
     {
         $output = [];
     
@@ -20,7 +19,7 @@ class Region extends KMLObject
                 isset($this->id)?sprintf(" id=\"%s\"", $this->id):""
             );
       
-            $output[] = $this->latLonAltBox->__toString();
+            $output[] = (string)$this->latLonAltBox;
       
             if (isset($this->lod)) {
                 $output[] = $this->lod->__toString();
@@ -42,12 +41,12 @@ class Region extends KMLObject
         return $this->latLonAltBox;
     }
   
-    public function setLod($lod)
+    public function setLod(Lod $lod)
     {
         $this->lod = $lod;
     }
   
-    public function getLod()
+    public function getLod(): Lod
     {
         return $this->lod;
     }

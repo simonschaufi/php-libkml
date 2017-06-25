@@ -1,10 +1,6 @@
 <?php
 namespace KML\StyleSelectors;
 
-/**
- *  StyleMap class
- */
-
 class StyleMap extends StyleSelector
 {
     private $pairs = [];
@@ -19,7 +15,7 @@ class StyleMap extends StyleSelector
         $this->pairs = [];
     }
   
-    public function __toString()
+    public function __toString(): string
     {
         $output = [];
         $output[] = sprintf(
