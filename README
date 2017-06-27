@@ -1,8 +1,24 @@
-
-php-libKML v.0.1
+libKML v.0.2
 
 -----------------------------------
+Fork of php-libKML https://github.com/earelin/php-libkml
 
 A php library to work with KML/KMZ files
 
 php-libKML maps KML/KMZ data into proper objects that follows the KML specification. The purpose of the library is create KML file from code, parse KML files and convert to another formats maintaining the complete KML information.
+
+Requires
+-----------------------------------
+PHP 7.1
+
+Tests
+-----------------------------------
+./vendor/bin/phpunit
+
+PHP_CodeSniffer
+-----------------------------------
+vendor/bin/phpcs --extensions=php --standard=PSR2 --ignore=*local.php src/ tests/
+
+ PHP Code Beautifier and Fixer
+-----------------------------------
+vendor/bin/phpcbf --extensions=php --standard=PSR2 src/ tests/

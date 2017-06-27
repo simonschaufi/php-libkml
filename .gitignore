@@ -1,0 +1,7 @@
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+vendor
+.php_cs.cache

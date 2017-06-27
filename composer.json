@@ -1,0 +1,39 @@
+{
+    "name": "cyberprojekt/libkml",
+    "license": "Apache 2.0",
+    "type": "library",
+    "description": "KML Library",
+    "authors": [
+        {
+            "name": "Jacek Głogosz",
+            "email": "jacek@cyberprojekt.pl",
+            "homepage": "http://www.cyberprojekt.pl",
+            "role": "Developer"
+        },
+        {
+            "name": "Xavier Carriba",
+            "homepage": "https://github.com/earelin/php-libkml",
+            "role": "Developer of original version"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "KML\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=7.1"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "3.*",
+        "phpunit/phpunit": "^6.2"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
