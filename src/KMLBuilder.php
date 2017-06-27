@@ -94,23 +94,19 @@ class KMLBuilder
 
         $featureContent = $featureXMLObject->children();
 
-        $simpleProperties = [
-            'name',
-            'visibility',
-            'open',
-            'address',
-            'phoneNumber',
-            'Snippet',
-            'description',
-            'styleUrl'
-        ];
-
         foreach ($featureContent as $key => $value) {
-            switch (true) {
-                case in_array($key, $simpleProperties):
+            switch ($key) {
+                case 'name':
+                case 'visibility':
+                case 'open':
+                case 'address':
+                case 'phoneNumber':
+                case 'Snippet':
+                case 'description':
+                case 'styleUrl':
                     $feature->set($key, (string)$value);
                     break;
-                case $key == 'Region':
+                case 'Region':
                     $feature->set($key, $this->buildRegion($value));
                     break;
                 case 'Camera':
