@@ -27,8 +27,20 @@ composer require earelin/php-libkml:^2.0.0
 
 ## Contribute ##
 
-Execute tests:
+Execute tests
 
 ```bash
 composer test
+```
+
+Check code quality with Codesniffer
+
+```bash
+composer phpcs
+```
+
+Codesniffer automatic code quality fix
+
+```bash
+composer phpcbf
 ```
