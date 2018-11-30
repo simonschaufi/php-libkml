@@ -1,0 +1,9 @@
+## IDE
+.sonarlint
+.idea
+
+## Dependencies
+vendor
+
+## Generated
+reports
