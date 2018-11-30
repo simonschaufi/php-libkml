@@ -23,23 +23,23 @@ class PhotoOverlay extends Overlay {
     return $this->rotation;
   }
 
-  public function setRotation(float $rotation): void {
+  public function setRotation(float $rotation) {
     $this->rotation = $rotation;
   }
 
-  public function getViewVolume(): ViewVolume {
+  public function getViewVolume() {
     return $this->viewVolume;
   }
 
-  public function setViewVolume(ViewVolume $viewVolume): void {
+  public function setViewVolume($viewVolume) {
     $this->viewVolume = $viewVolume;
   }
 
-  public function getImagePyramid(): ImagePyramid {
+  public function getImagePyramid() {
     return $this->imagePyramid;
   }
 
-  public function setImagePyramid(ImagePyramid $imagePyramid) {
+  public function setImagePyramid($imagePyramid) {
     $this->imagePyramid = $imagePyramid;
   }
 

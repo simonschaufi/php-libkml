@@ -4,6 +4,7 @@ namespace LibKml\Tests\Domain\Feature\Overlay;
 
 use LibKml\Domain\Feature\Overlay\PhotoOverlay;
 use LibKml\Domain\Feature\Overlay\ViewVolume;
+
 use PHPUnit\Framework\TestCase;
 
 class PhotoOverlayTest extends TestCase {
