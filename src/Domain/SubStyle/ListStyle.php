@@ -14,79 +14,46 @@ class ListStyle extends SubStyle {
   private $itemIcons = array();
   private $maxSnippetLines;
 
-  /**
-   * @param \LibKml\Domain\KmlObjectVisitor $visitor
-   */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitListStyle($this);
   }
 
-  /**
-   *
-   */
   public function addItemIcon($itemIcon) {
     $this->itemIcons[] = $itemIcon;
   }
 
-  /**
-   *
-   */
   public function clearItemIcons() {
     $this->itemIcons = array();
   }
 
-  /**
-   *
-   */
   public function getListItemType() {
     return $this->listItemType;
   }
 
-  /**
-   *
-   */
   public function setListItemType($listItemType) {
     $this->listItemType = $listItemType;
   }
 
-  /**
-   *
-   */
   public function getBgColor() {
     return $this->bgColor;
   }
 
-  /**
-   *
-   */
   public function setBgColor($bgColor) {
     $this->bgColor = $bgColor;
   }
 
-  /**
-   *
-   */
   public function getItemIcons() {
     return $this->itemIcons;
   }
 
-  /**
-   *
-   */
   public function setItemIcons($itemIcons) {
     $this->itemIcons = $itemIcons;
   }
 
-  /**
-   *
-   */
   public function getMaxSnippetLines() {
     return $this->maxSnippetLines;
   }
 
-  /**
-   *
-   */
   public function setMaxSnippetLines($maxSnippetLines) {
     $this->maxSnippetLines = $maxSnippetLines;
   }

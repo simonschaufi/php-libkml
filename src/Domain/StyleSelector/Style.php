@@ -16,93 +16,54 @@ class Style extends StyleSelector {
   private $balloonStyle;
   private $listStyle;
 
-  /**
-   * @param \LibKml\Domain\KmlObjectVisitor $visitor
-   */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitStyle($this);
   }
 
-  /**
-   *
-   */
   public function getIconStyle() {
     return $this->iconStyle;
   }
 
-  /**
-   *
-   */
   public function setIconStyle($iconStyle) {
     $this->iconStyle = $iconStyle;
   }
 
-  /**
-   *
-   */
   public function getLabelStyle() {
     return $this->labelStyle;
   }
 
-  /**
-   *
-   */
   public function setLabelStyle($labelStyle) {
     $this->labelStyle = $labelStyle;
   }
 
-  /**
-   *
-   */
   public function getLineStyle() {
     return $this->lineStyle;
   }
 
-  /**
-   *
-   */
   public function setLineStyle($lineStyle) {
     $this->lineStyle = $lineStyle;
   }
 
-  /**
-   *
-   */
   public function getPolyStyle() {
     return $this->polyStyle;
   }
 
-  /**
-   *
-   */
   public function setPolyStyle($polyStyle) {
     $this->polyStyle = $polyStyle;
   }
 
-  /**
-   *
-   */
   public function getBalloonStyle() {
     return $this->balloonStyle;
   }
 
-  /**
-   *
-   */
   public function setBalloonStyle($balloonStyle) {
     $this->balloonStyle = $balloonStyle;
   }
 
-  /**
-   *
-   */
   public function getListStyle() {
     return $this->listStyle;
   }
 
-  /**
-   *
-   */
   public function setListStyle($listStyle) {
     $this->listStyle = $listStyle;
   }

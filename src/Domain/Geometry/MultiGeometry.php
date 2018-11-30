@@ -9,40 +9,25 @@ use LibKml\Domain\KmlObjectVisitor;
  */
 class MultiGeometry extends Geometry {
 
-  private $geometries = array();
+  private $geometries = [];
 
-  /**
-   * @param \LibKml\Domain\KmlObjectVisitor $visitor
-   */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitMultiGeometry($this);
   }
 
-  /**
-   *
-   */
-  public function addGeometry($geometry) {
+  public function addGeometry(Geometry $geometry) {
     $this->geometries[] = $geometry;
   }
 
-  /**
-   *
-   */
   public function clearGeometries() {
-    $this->geometries = array();
+    $this->geometries = [];
   }
 
-  /**
-   *
-   */
   public function getGeometries() {
     return $this->geometries;
   }
 
-  /**
-   *
-   */
-  public function setGeometries($geometries) {
+  public function setGeometries(array $geometries) {
     $this->geometries = $geometries;
   }
 

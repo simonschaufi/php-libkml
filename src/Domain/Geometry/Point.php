@@ -9,55 +9,37 @@ use LibKml\Domain\KmlObjectVisitor;
  */
 class Point extends Geometry {
 
+  /**
+   * @var bool
+   */
   private $extrude;
   private $altitudeMode;
   private $coordinates;
 
-  /**
-   * @param \LibKml\Domain\KmlObjectVisitor $visitor
-   */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitPoint($this);
   }
 
-  /**
-   *
-   */
   public function getExtrude() {
     return $this->extrude;
   }
 
-  /**
-   *
-   */
-  public function setExtrude($extrude) {
+  public function setExtrude(bool $extrude) {
     $this->extrude = $extrude;
   }
 
-  /**
-   *
-   */
   public function getAltitudeMode() {
     return $this->altitudeMode;
   }
 
-  /**
-   *
-   */
   public function setAltitudeMode($altitudeMode) {
     $this->altitudeMode = $altitudeMode;
   }
 
-  /**
-   *
-   */
   public function getCoordinates() {
     return $this->coordinates;
   }
 
-  /**
-   *
-   */
   public function setCoordinates($coordinates) {
     $this->coordinates = $coordinates;
   }

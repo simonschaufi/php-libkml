@@ -11,7 +11,6 @@ use LibKml\Domain\Feature\Overlay\GroundOverlay;
 use LibKml\Domain\Feature\Overlay\PhotoOverlay;
 use LibKml\Domain\Feature\Overlay\ScreenOverlay;
 use LibKml\Domain\Feature\Placemark;
-use LibKml\Domain\Geometry\Alias;
 use LibKml\Domain\Geometry\LinearRing;
 use LibKml\Domain\Geometry\LineString;
 use LibKml\Domain\Geometry\Model;
@@ -38,154 +37,62 @@ use LibKml\Domain\TimePrimitive\TimeStamp;
  */
 interface KmlObjectVisitor {
 
-  /**
-   *
-   */
   public function visitIcon(Icon $icon);
 
-  /**
-   *
-   */
   public function visitLink(Link $link);
 
-  /**
-   *
-   */
   public function visitRegion(Region $region);
 
-  /**
-   *
-   */
   public function visitCamera(Camera $camera);
 
-  /**
-   *
-   */
   public function visitLookAt(LookAt $lookAt);
 
-  /**
-   *
-   */
   public function visitNetworkLink(NetworkLink $networkLink);
 
-  /**
-   *
-   */
   public function visitPlacemark(Placemark $placemark);
 
-  /**
-   *
-   */
   public function visitDocument(Document $document);
 
-  /**
-   *
-   */
   public function visitFolder(Folder $folder);
 
-  /**
-   *
-   */
   public function visitGroundOverlay(GroundOverlay $groundOverlay);
 
-  /**
-   *
-   */
   public function visitPhotoOverlay(PhotoOverlay $photoOverlay);
 
-  /**
-   *
-   */
   public function visitScreenOverlay(ScreenOverlay $screenOverlay);
 
-  /**
-   *
-   */
-  public function visitAlias(Alias $alias);
-
-  /**
-   *
-   */
   public function visitLinearRing(LinearRing $linearRing);
 
-  /**
-   *
-   */
   public function visitLineString(LineString $lineString);
 
-  /**
-   *
-   */
   public function visitModel(Model $model);
 
-  /**
-   *
-   */
   public function visitMultiGeometry(MultiGeometry $multiGeometry);
 
-  /**
-   *
-   */
   public function visitPoint(Point $point);
 
-  /**
-   *
-   */
   public function visitPolygon(Polygon $polygon);
 
-  /**
-   *
-   */
   public function visitResourceMap(ResourceMap $resourceMap);
 
-  /**
-   *
-   */
   public function visitStyle(Style $style);
 
-  /**
-   *
-   */
   public function visitStyleMap(StyleMap $styleMap);
 
-  /**
-   *
-   */
   public function visitBalloonStyle(BalloonStyle $balloonStyle);
 
-  /**
-   *
-   */
   public function visitListStyle(ListStyle $listStyle);
 
-  /**
-   *
-   */
   public function visitIconStyle(IconStyle $iconStyle);
 
-  /**
-   *
-   */
   public function visitTimeSpan(TimeSpan $timeSpan);
 
-  /**
-   *
-   */
   public function visitTimeStamp(TimeStamp $timeStamp);
 
-  /**
-   *
-   */
   public function visitLabelStyle(LabelStyle $labelStyle);
 
-  /**
-   *
-   */
   public function visitLineStyle(LineStyle $lineStyle);
 
-  /**
-   *
-   */
   public function visitPolyStyle(PolyStyle $polyStyle);
 
 }

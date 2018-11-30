@@ -11,9 +11,6 @@ abstract class Container extends Feature {
 
   protected $features = array();
 
-  /**
-   *
-   */
   public function getAllFeatures() {
     $allFeatures = array();
 
@@ -24,30 +21,18 @@ abstract class Container extends Feature {
     return $allFeatures;
   }
 
-  /**
-   *
-   */
   public function addFeature($feature) {
     $this->features[] = $feature;
   }
 
-  /**
-   *
-   */
   public function clearFeatures() {
     $this->features = array();
   }
 
-  /**
-   *
-   */
   public function getFeatures() {
     return $this->features;
   }
 
-  /**
-   *
-   */
   public function setFeatures($features) {
     $this->features = $features;
   }

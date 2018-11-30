@@ -11,23 +11,14 @@ class LineStyle extends ColorStyle {
 
   private $width;
 
-  /**
-   * @param \LibKml\Domain\KmlObjectVisitor $visitor
-   */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitLineStyle($this);
   }
 
-  /**
-   *
-   */
   public function getWidth() {
     return $this->width;
   }
 
-  /**
-   *
-   */
   public function setWidth($width) {
     $this->width = $width;
   }

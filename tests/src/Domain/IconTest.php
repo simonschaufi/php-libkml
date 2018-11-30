@@ -9,6 +9,9 @@ use PHPUnit\Framework\TestCase;
 
 class IconTest extends TestCase {
 
+  /**
+   * @var Icon
+   */
   protected $icon;
 
   public function setUp() {

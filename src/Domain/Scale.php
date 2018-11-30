@@ -11,9 +11,6 @@ class Scale {
   private $y;
   private $z;
 
-  /**
-   * @param KmlObjectVisitor $visitor
-   */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitScale($this);
   }
@@ -25,9 +22,6 @@ class Scale {
     return $this->x;
   }
 
-  /**
-   *
-   */
   public function setX(float $x) {
     $this->x = $x;
   }
@@ -39,9 +33,6 @@ class Scale {
     return $this->y;
   }
 
-  /**
-   *
-   */
   public function setY(float $y) {
     $this->y = $y;
   }
@@ -53,9 +44,6 @@ class Scale {
     return $this->z;
   }
 
-  /**
-   *
-   */
   public function setZ(float $z) {
     $this->z = $z;
   }

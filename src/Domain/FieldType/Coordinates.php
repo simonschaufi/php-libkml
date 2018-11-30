@@ -7,49 +7,42 @@ namespace LibKml\Domain\FieldType;
  */
 class Coordinates {
 
+  /**
+   * @var float
+   */
   private $longitude = 0;
-  private $latitude = 0;
-  private $altitude = 0;
 
   /**
-   *
+   * @var float
    */
+  private $latitude = 0;
+
+  /**
+   * @var float
+   */
+  private $altitude = 0;
+
   public function getLongitude() {
     return $this->longitude;
   }
 
-  /**
-   *
-   */
-  public function setLongitude($longitude) {
+  public function setLongitude(float $longitude) {
     $this->longitude = $longitude;
   }
 
-  /**
-   *
-   */
   public function getLatitude() {
     return $this->latitude;
   }
 
-  /**
-   *
-   */
-  public function setLatitude($latitude) {
+  public function setLatitude(float $latitude) {
     $this->latitude = $latitude;
   }
 
-  /**
-   *
-   */
   public function getAltitude() {
     return $this->altitude;
   }
 
-  /**
-   *
-   */
-  public function setAltitude($altitude) {
+  public function setAltitude(float $altitude) {
     $this->altitude = $altitude;
   }
 

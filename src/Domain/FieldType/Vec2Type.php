@@ -11,63 +11,39 @@ class Vec2Type {
 
   private $x;
   private $y;
-  private $xunits;
-  private $yunits;
+  private $xUnits;
+  private $yUnits;
 
-  /**
-   *
-   */
   public function getX() {
     return $this->x;
   }
 
-  /**
-   *
-   */
   public function setX($x) {
     $this->x = $x;
   }
 
-  /**
-   *
-   */
   public function getY() {
     return $this->y;
   }
 
-  /**
-   *
-   */
   public function setY($y) {
     $this->y = $y;
   }
 
-  /**
-   *
-   */
   public function getXUnits() {
-    return $this->xunits;
+    return $this->xUnits;
   }
 
-  /**
-   *
-   */
-  public function setXUnits($xunits) {
-    $this->xunits = $xunits;
+  public function setXUnits($xUnits) {
+    $this->xUnits = $xUnits;
   }
 
-  /**
-   *
-   */
   public function getYUnits() {
-    return $this->yunits;
+    return $this->yUnits;
   }
 
-  /**
-   *
-   */
-  public function setYUnits($yunits) {
-    $this->yunits = $yunits;
+  public function setYUnits($yUnits) {
+    $this->yUnits = $yUnits;
   }
 
 }

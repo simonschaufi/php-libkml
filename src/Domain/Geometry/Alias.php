@@ -2,49 +2,34 @@
 
 namespace LibKml\Domain\Geometry;
 
-use LibKml\Domain\KmlObject;
-use LibKml\Domain\KmlObjectVisitor;
-
 /**
  * Alias class.
  */
-class Alias extends KmlObject {
+class Alias {
 
+  /**
+   * @var string
+   */
   private $targetHref;
+
+  /**
+   * @var string
+   */
   private $sourceHref;
 
-  /**
-   * @param \LibKml\Domain\KmlObjectVisitor $visitor
-   */
-  public function accept(KmlObjectVisitor $visitor) {
-    $visitor->visitAlias($this);
-  }
-
-  /**
-   *
-   */
   public function getTargetHref() {
     return $this->targetHref;
   }
 
-  /**
-   *
-   */
-  public function setTargetHref($targetHref) {
+  public function setTargetHref(string $targetHref) {
     $this->targetHref = $targetHref;
   }
 
-  /**
-   *
-   */
   public function getSourceHref() {
     return $this->sourceHref;
   }
 
-  /**
-   *
-   */
-  public function setSourceHref($sourceHref) {
+  public function setSourceHref(string $sourceHref) {
     $this->sourceHref = $sourceHref;
   }
 

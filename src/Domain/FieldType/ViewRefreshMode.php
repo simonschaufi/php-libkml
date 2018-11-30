@@ -8,9 +8,8 @@ namespace LibKml\Domain\FieldType;
  * @package LibKML\Domain\FieldType
  */
 class ViewRefreshMode {
-  public static $NEVER = 0;
-  public static $ON_STOP = 1;
-  public static $ON_REQUEST = 2;
-  public static $ON_REGION = 3;
-
+  const NEVER = 0;
+  const ON_STOP = 1;
+  const ON_REQUEST = 2;
+  const ON_REGION = 3;
 }

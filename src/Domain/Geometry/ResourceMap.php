@@ -2,35 +2,30 @@
 
 namespace LibKml\Domain\Geometry;
 
-use LibKml\Domain\KmlObject;
-use LibKml\Domain\KmlObjectVisitor;
-
 /**
  * ResouceMap class.
  */
-class ResourceMap extends KmlObject {
-
-  private $aliases;
+class ResourceMap {
 
   /**
-   * @param \LibKml\Domain\KmlObjectVisitor $visitor
+   * @var array
    */
-  public function accept(KmlObjectVisitor $visitor) {
-    $visitor->visitResourceMap($this);
-  }
+  private $aliases = [];
 
-  /**
-   *
-   */
   public function getAliases() {
     return $this->aliases;
   }
 
-  /**
-   *
-   */
-  public function setAliases($aliases) {
+  public function setAliases(array $aliases) {
     $this->aliases = $aliases;
+  }
+
+  public function clearAliases() {
+    $this->aliases = [];
+  }
+
+  public function addAlias($alias) {
+    $this->aliases[] = $alias;
   }
 
 }
