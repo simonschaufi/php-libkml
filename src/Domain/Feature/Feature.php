@@ -1,14 +1,14 @@
 <?php
 
-namespace LibKML\Domain\Feature;
+namespace LibKml\Domain\Feature;
 
-use LibKML\Domain\KMLObject;
-use LibKml\Region;
+use LibKml\Domain\KmlObject;
+use LibKml\Domain\Region;
 
 /**
  * Feature abstract class.
  */
-abstract class Feature extends KMLObject {
+abstract class Feature extends KmlObject {
 
   protected $name;
   protected $visibility;
@@ -242,14 +242,14 @@ abstract class Feature extends KMLObject {
   }
 
   /**
-   *
+   * @return Region
    */
   public function getRegion() {
     return $this->region;
   }
 
   /**
-   *
+   * @param Region $region
    */
   public function setRegion(Region $region) {
     $this->region = $region;

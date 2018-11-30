@@ -1,6 +1,8 @@
 <?php
 
-namespace LibKML\Domain\SubStyle\ColorStyle;
+namespace LibKml\Domain\SubStyle\ColorStyle;
+
+use LibKml\Domain\KmlObjectVisitor;
 
 /**
  * LabelStyle class.
@@ -8,6 +10,13 @@ namespace LibKML\Domain\SubStyle\ColorStyle;
 class LabelStyle extends ColorStyle {
 
   private $scale;
+
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitLabelStyle($this);
+  }
 
   /**
    *

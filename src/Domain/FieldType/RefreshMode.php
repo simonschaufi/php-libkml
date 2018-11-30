@@ -1,6 +1,6 @@
 <?php
 
-namespace LibKML\Domain\FieldType;
+namespace LibKml\Domain\FieldType;
 
 /**
  * Refresh modes onChange, onInterval, or onExpire.

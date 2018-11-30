@@ -1,6 +1,8 @@
 <?php
 
-namespace LibKML\Domain\Feature;
+namespace LibKml\Domain\Feature;
+
+use LibKml\Domain\KmlObjectVisitor;
 
 /**
  * NetworkLink abstract class.
@@ -9,6 +11,13 @@ class NetworkLink extends Feature {
 
   private $refreshVisibility;
   private $flyToView;
+
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitNetworkLink($this);
+  }
 
   /**
    *

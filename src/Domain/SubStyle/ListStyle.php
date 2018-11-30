@@ -1,6 +1,8 @@
 <?php
 
-namespace LibKML\Domain\SubStyle;
+namespace LibKml\Domain\SubStyle;
+
+use LibKml\Domain\KmlObjectVisitor;
 
 /**
  * ListStyle class.
@@ -11,6 +13,13 @@ class ListStyle extends SubStyle {
   private $bgColor;
   private $itemIcons = array();
   private $maxSnippetLines;
+
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitListStyle($this);
+  }
 
   /**
    *

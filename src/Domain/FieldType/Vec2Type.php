@@ -1,6 +1,6 @@
 <?php
 
-namespace LibKML\Domain\FieldType;
+namespace LibKml\Domain\FieldType;
 
 /**
  * Class Vec2Type.
@@ -8,6 +8,7 @@ namespace LibKML\Domain\FieldType;
  * @package LibKML\Domain\FieldType
  */
 class Vec2Type {
+
   private $x;
   private $y;
   private $xunits;

@@ -1,8 +1,8 @@
 <?php
 
-namespace LibKML\Domain\Feature\Overlay;
+namespace LibKml\Domain\Feature\Overlay;
 
-use LibKML\Domain\Feature\Feature;
+use LibKml\Domain\Feature\Feature;
 
 /**
  * Overlay abstract class.

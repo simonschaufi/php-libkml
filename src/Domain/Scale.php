@@ -1,18 +1,25 @@
 <?php
 
-namespace LibKML\Domain;
+namespace LibKml\Domain;
 
 /**
  * Scale class.
  */
-class Scale extends KMLObject {
+class Scale {
 
   private $x;
   private $y;
   private $z;
 
   /**
-   *
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitScale($this);
+  }
+
+  /**
+   * @return float
    */
   public function getX() {
     return $this->x;
@@ -21,12 +28,12 @@ class Scale extends KMLObject {
   /**
    *
    */
-  public function setX($x) {
+  public function setX(float $x) {
     $this->x = $x;
   }
 
   /**
-   *
+   * @return float
    */
   public function getY() {
     return $this->y;
@@ -35,12 +42,12 @@ class Scale extends KMLObject {
   /**
    *
    */
-  public function setY($y) {
+  public function setY(float $y) {
     $this->y = $y;
   }
 
   /**
-   *
+   * @return float
    */
   public function getZ() {
     return $this->z;
@@ -49,7 +56,7 @@ class Scale extends KMLObject {
   /**
    *
    */
-  public function setZ($z) {
+  public function setZ(float $z) {
     $this->z = $z;
   }
 

@@ -1,6 +1,8 @@
 <?php
 
-namespace LibKML\Domain\Geometry;
+namespace LibKml\Domain\Geometry;
+
+use LibKml\Domain\KmlObjectVisitor;
 
 /**
  * Point class.
@@ -10,6 +12,13 @@ class Point extends Geometry {
   private $extrude;
   private $altitudeMode;
   private $coordinates;
+
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitPoint($this);
+  }
 
   /**
    *

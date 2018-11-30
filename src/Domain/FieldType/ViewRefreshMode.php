@@ -1,6 +1,6 @@
 <?php
 
-namespace LibKML\Domain\FieldType;
+namespace LibKml\Domain\FieldType;
 
 /**
  * Specifies how the link is refreshed when the "camera" changes.

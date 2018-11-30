@@ -1,11 +1,11 @@
 <?php
 
-namespace LibKML\Domain\AbstractView;
+namespace LibKml\Domain\AbstractView;
 
-use LibKML\Domain\KMLObject;
+use LibKml\Domain\KmlObject;
 
 /**
  * AbstractView abstract class.
  */
-abstract class AbstractView extends KMLObject {
+abstract class AbstractView extends KmlObject {
 }

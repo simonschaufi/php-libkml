@@ -1,11 +1,11 @@
 <?php
 
-namespace LibKML\Domain;
+namespace LibKml\Domain;
 
 /**
  * Base KMLObject.
  */
-abstract class KMLObject {
+abstract class KmlObject {
 
   protected $id;
   protected $targetId;
@@ -42,6 +42,9 @@ abstract class KMLObject {
     $this->targetId = $targetId;
   }
 
-  public abstract function accept($visitor);
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public abstract function accept(KmlObjectVisitor $visitor);
 
 }

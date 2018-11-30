@@ -1,6 +1,8 @@
 <?php
 
-namespace LibKML\Domain\Geometry;
+namespace LibKml\Domain\Geometry;
+
+use LibKml\Domain\KmlObjectVisitor;
 
 /**
  * LinearRing class.
@@ -11,6 +13,13 @@ class LinearRing extends Geometry {
   private $tessellate;
   private $altitudeMode;
   private $coordinates = array();
+
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitLinearRing($this);
+  }
 
   /**
    *

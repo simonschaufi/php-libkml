@@ -1,6 +1,8 @@
 <?php
 
-namespace LibKML\Domain\AbstractView;
+namespace LibKml\Domain\AbstractView;
+
+use LibKml\Domain\KmlObjectVisitor;
 
 /**
  * Defines the virtual camera that views the scene.
@@ -14,6 +16,13 @@ class Camera extends AbstractView {
   private $tilt;
   private $roll;
   private $altitudeMode;
+
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitCamera($this);
+  }
 
   /**
    *

@@ -2,15 +2,18 @@
 
 namespace LibKml\Tests\Domain;
 
+use LibKml\Domain\KmlObjectVisitor;
 use PHPUnit\Framework\TestCase;
-use LibKML\Domain\KMLObject;
+use LibKml\Domain\KmlObject;
 
 class KMLObjectTest extends TestCase {
 
   protected $kmlObject;
 
   public function setUp() {
-    $this->kmlObject = new class extends KMLObject {};
+    $this->kmlObject = new class extends KmlObject {
+      public function accept(KmlObjectVisitor $visitor) {}
+    };
   }
 
   public function testIdField() {

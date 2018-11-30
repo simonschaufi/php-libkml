@@ -1,11 +1,11 @@
 <?php
 
-namespace LibKML\Domain\SubStyle;
+namespace LibKml\Domain\SubStyle;
 
-use LibKML\Domain\KMLObject;
+use LibKml\Domain\KmlObject;
 
 /**
  * SubStyle abstract class.
  */
-abstract class SubStyle extends KMLObject {
+abstract class SubStyle extends KmlObject {
 }

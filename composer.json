@@ -21,12 +21,12 @@
   },
   "autoload": {
     "psr-4": {
-      "LibKML\\": "src/"
+      "LibKml\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "LibKML\\Tests\\": "tests/src/"
+      "LibKml\\Tests\\": "tests/src/"
     }
   },
   "scripts": {

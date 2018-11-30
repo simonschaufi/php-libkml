@@ -1,6 +1,8 @@
 <?php
 
-namespace LibKML\Domain\StyleSelector;
+namespace LibKml\Domain\StyleSelector;
+
+use LibKml\Domain\KmlObjectVisitor;
 
 /**
  * Style class.
@@ -13,6 +15,13 @@ class Style extends StyleSelector {
   private $polyStyle;
   private $balloonStyle;
   private $listStyle;
+
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitStyle($this);
+  }
 
   /**
    *

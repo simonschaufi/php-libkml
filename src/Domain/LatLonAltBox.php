@@ -1,11 +1,11 @@
 <?php
 
-namespace LibKML\Domain;
+namespace LibKml\Domain;
 
 /**
  * LatLonAltBox class.
  */
-class LanLonAltBox extends KMLObject {
+class LatLonAltBox {
 
   private $altitudeMode;
   private $minAltitude;
@@ -14,6 +14,13 @@ class LanLonAltBox extends KMLObject {
   private $south;
   private $east;
   private $west;
+
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitLatLonAltBox($this);
+  }
 
   /**
    *

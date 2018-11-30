@@ -1,6 +1,8 @@
 <?php
 
-namespace LibKML\Domain\SubStyle;
+namespace LibKml\Domain\SubStyle;
+
+use LibKml\Domain\KmlObjectVisitor;
 
 /**
  * BalloonStyle class.
@@ -11,6 +13,13 @@ class BalloonStyle extends SubStyle {
   private $textColor;
   private $text;
   private $displayMode;
+
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitBalloonStyle($this);
+  }
 
   /**
    *

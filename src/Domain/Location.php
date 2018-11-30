@@ -1,15 +1,22 @@
 <?php
 
-namespace LibKML\Domain;
+namespace LibKml\Domain;
 
 /**
  * Location class.
  */
-class Location extends KMLObject {
+class Location {
 
   private $longitude;
   private $latitude;
   private $altitude;
+
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitLocation($this);
+  }
 
   /**
    *

@@ -1,8 +1,8 @@
 <?php
 
-namespace LibKML\Domain\SubStyle\ColorStyle;
+namespace LibKml\Domain\SubStyle\ColorStyle;
 
-use LibKML\Domain\SubStyle\SubStyle;
+use LibKml\Domain\SubStyle\SubStyle;
 
 /**
  * ColorStyle abstract class.

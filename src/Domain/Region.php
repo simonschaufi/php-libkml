@@ -1,14 +1,21 @@
 <?php
 
-namespace LibKML\Domain;
+namespace LibKml\Domain;
 
 /**
  * Region class.
  */
-class Region extends KMLObject {
+class Region extends KmlObject {
 
   private $latLonAltBox;
   private $lod;
+
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitRegion($this);
+  }
 
   /**
    *

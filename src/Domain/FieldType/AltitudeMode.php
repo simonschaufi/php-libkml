@@ -1,6 +1,6 @@
 <?php
 
-namespace LibKML\Domain\Feature;
+namespace LibKml\Domain\Feature;
 
 /**
  * Altitude modes.

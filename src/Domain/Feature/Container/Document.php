@@ -1,6 +1,8 @@
 <?php
 
-namespace LibKML\Domain\Feature\Container;
+namespace LibKml\Domain\Feature\Container;
+
+use LibKml\Domain\KmlObjectVisitor;
 
 /**
  * Document class.
@@ -8,6 +10,13 @@ namespace LibKML\Domain\Feature\Container;
 class Document extends Container {
 
   private $schemas = array();
+
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitDocument($this);
+  }
 
   /**
    *

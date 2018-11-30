@@ -1,6 +1,8 @@
 <?php
 
-namespace LibKML\Domain\TimePrimitive;
+namespace LibKml\Domain\TimePrimitive;
+
+use LibKml\Domain\KmlObjectVisitor;
 
 /**
  * TimeStamp class.
@@ -8,6 +10,13 @@ namespace LibKML\Domain\TimePrimitive;
 class TimeStamp extends TimePrimitive {
 
   private $when;
+
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitTimeStamp($this);
+  }
 
   /**
    *

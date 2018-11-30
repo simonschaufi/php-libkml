@@ -1,6 +1,6 @@
 <?php
 
-namespace LibKML\Domain\FieldType\Atom;
+namespace LibKml\Domain\FieldType\Atom;
 
 /**
  * Author class implements a xmlns:atom:author object.

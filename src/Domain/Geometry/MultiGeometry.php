@@ -1,6 +1,8 @@
 <?php
 
-namespace LibKML\Domain\Geometry;
+namespace LibKml\Domain\Geometry;
+
+use LibKml\Domain\KmlObjectVisitor;
 
 /**
  * MultiGeometry class.
@@ -8,6 +10,13 @@ namespace LibKML\Domain\Geometry;
 class MultiGeometry extends Geometry {
 
   private $geometries = array();
+
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitMultiGeometry($this);
+  }
 
   /**
    *

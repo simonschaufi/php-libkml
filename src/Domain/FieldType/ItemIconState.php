@@ -1,6 +1,6 @@
 <?php
 
-namespace LibKML\Domain\FieldType;
+namespace LibKml\Domain\FieldType;
 
 /**
  * Description of ItemIconState.

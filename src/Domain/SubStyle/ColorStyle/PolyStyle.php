@@ -1,6 +1,8 @@
 <?php
 
-namespace LibKML\Domain\SubStyle\ColorStyle;
+namespace LibKml\Domain\SubStyle\ColorStyle;
+
+use LibKml\Domain\KmlObjectVisitor;
 
 /**
  * PolyStyle class.
@@ -9,6 +11,13 @@ class PolyStyle extends ColorStyle {
 
   private $fill;
   private $outline;
+
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitPolyStyle($this);
+  }
 
   /**
    *

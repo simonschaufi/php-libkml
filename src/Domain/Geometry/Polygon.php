@@ -1,6 +1,8 @@
 <?php
 
-namespace LibKML\Domain\Geometry;
+namespace LibKml\Domain\Geometry;
+
+use LibKml\Domain\KmlObjectVisitor;
 
 /**
  * Polygon class.
@@ -12,6 +14,13 @@ class Polygon extends Geometry {
   private $altitudeMode;
   private $outerBoundaryIs;
   private $innerBoundaryIs;
+
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitPolygon($this);
+  }
 
   /**
    *

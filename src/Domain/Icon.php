@@ -1,13 +1,13 @@
 <?php
 
-namespace LibKML\Domain;
+namespace LibKml\Domain;
 
-use LibKML\Domain\FieldType\HttpQuery;
+use LibKml\Domain\FieldType\HttpQuery;
 
 /**
  * Defines an image associated with an Icon style or overlay.
  */
-class Icon extends KMLObject {
+class Icon extends KmlObject {
 
   private $href;
   private $refreshMode;
@@ -17,6 +17,10 @@ class Icon extends KMLObject {
   private $viewBoundScale;
   private $viewFormat;
   private $httpQuery;
+
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitIcon($this);
+  }
 
   /**
    *
@@ -120,14 +124,14 @@ class Icon extends KMLObject {
   }
 
   /**
-   * @return \LibKML\Domain\FieldType\HttpQuery
+   * @return \LibKml\Domain\FieldType\HttpQuery
    */
   public function getHttpQuery() {
     return $this->httpQuery;
   }
 
   /**
-   * @param \LibKML\Domain\FieldType\HttpQuery $httpQuery
+   * @param \LibKml\Domain\FieldType\HttpQuery $httpQuery
    */
   public function setHttpQuery(HttpQuery $httpQuery) {
     $this->httpQuery = $httpQuery;

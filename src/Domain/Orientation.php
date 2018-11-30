@@ -1,15 +1,22 @@
 <?php
 
-namespace LibKML\Domain;
+namespace LibKml\Domain;
 
 /**
  * ResouceMap class.
  */
-class Orientation extends KMLObject {
+class Orientation {
 
   private $heading;
   private $tilt;
   private $roll;
+
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitOrientation($this);
+  }
 
   /**
    *

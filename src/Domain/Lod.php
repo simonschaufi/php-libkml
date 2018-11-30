@@ -1,16 +1,23 @@
 <?php
 
-namespace LibKML\Domain;
+namespace LibKml\Domain;
 
 /**
  * Lod class.
  */
-class Lod extends KMLObject {
+class Lod {
 
   private $minLodPixels;
   private $maxLodPixels;
   private $minFadeExtent;
   private $maxFadeExtent;
+
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitLod($this);
+  }
 
   /**
    *

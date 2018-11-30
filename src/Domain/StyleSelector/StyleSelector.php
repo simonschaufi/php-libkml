@@ -1,10 +1,10 @@
 <?php
 
-namespace LibKML\Domain\StyleSelector;
+namespace LibKml\Domain\StyleSelector;
 
-use LibKML\Domain\KMLObject;
+use LibKml\Domain\KmlObject;
 
 /**
  * StyleSelector abstract class.
  */
-abstract class StyleSelector extends KMLObject {}
+abstract class StyleSelector extends KmlObject {}

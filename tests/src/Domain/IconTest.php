@@ -1,10 +1,10 @@
 <?php
 
-namespace LibKML\Tests\Domain;
+namespace LibKml\Tests\Domain;
 
-use LibKML\Domain\FieldType\RefreshMode;
-use LibKML\Domain\FieldType\ViewRefreshMode;
-use LibKML\Domain\Icon;
+use LibKml\Domain\FieldType\RefreshMode;
+use LibKml\Domain\FieldType\ViewRefreshMode;
+use LibKml\Domain\Icon;
 use PHPUnit\Framework\TestCase;
 
 class IconTest extends TestCase {

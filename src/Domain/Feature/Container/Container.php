@@ -1,8 +1,8 @@
 <?php
 
-namespace LibKML\Domain\Feature\Container;
+namespace LibKml\Domain\Feature\Container;
 
-use LibKML\Domain\Feature\Feature;
+use LibKml\Domain\Feature\Feature;
 
 /**
  * Container abstract class.

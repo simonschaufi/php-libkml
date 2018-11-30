@@ -2,7 +2,7 @@
 
 namespace LibKml;
 
-use LibKML\Domain\KMLObject;
+use LibKml\Domain\KmlObject;
 
 /**
  * Defines a KML document.
@@ -12,9 +12,9 @@ class KmlDocument {
   private $elements = array();
 
   /**
-   *
+   * @param KmlObject $element
    */
-  public function addElement(KMLObject $element) {
+  public function addElement(KmlObject $element) {
     $this->elements[] = $element;
   }
 

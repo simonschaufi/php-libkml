@@ -1,12 +1,12 @@
 <?php
 
-namespace LibKML\Domain\TimePrimitive;
+namespace LibKml\Domain\TimePrimitive;
 
-use LibKML\Domain\KMLObject;
+use LibKml\Domain\KmlObject;
 
 /**
  * TimePrimitive abstract class.
  */
-abstract class TimePrimitive extends KMLObject {
+abstract class TimePrimitive extends KmlObject {
 
 }

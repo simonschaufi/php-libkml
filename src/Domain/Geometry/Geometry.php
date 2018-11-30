@@ -1,12 +1,12 @@
 <?php
 
-namespace LibKML\Domain\Geometry;
+namespace LibKml\Domain\Geometry;
 
-use LibKML\Domain\KMLObject;
+use LibKml\Domain\KmlObject;
 
 /**
  * Geometry abstract class.
  */
-abstract class Geometry extends KMLObject {
+abstract class Geometry extends KmlObject {
 
 }

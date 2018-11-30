@@ -1,6 +1,8 @@
 <?php
 
-namespace LibKML\Domain\Feature\Overlay;
+namespace LibKml\Domain\Feature\Overlay;
+
+use LibKml\Domain\KmlObjectVisitor;
 
 /**
  * PhotoOverlay class.
@@ -12,6 +14,13 @@ class PhotoOverlay extends Overlay {
   private $imagePyramid;
   private $point;
   private $shape;
+
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitPhotoOverlay($this);
+  }
 
   /**
    *

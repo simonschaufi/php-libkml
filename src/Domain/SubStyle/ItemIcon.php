@@ -1,13 +1,11 @@
 <?php
 
-namespace LibKML\Domain\SubStyle;
-
-use LibKML\Domain\KMLObject;
+namespace LibKml\Domain\SubStyle;
 
 /**
  * ItemIcon class.
  */
-class ItemIcon extends KMLObject {
+class ItemIcon {
 
   private $href;
   private $state;

@@ -1,6 +1,8 @@
 <?php
 
-namespace LibKML\Domain\Geometry;
+namespace LibKml\Domain\Geometry;
+
+use LibKml\Domain\KmlObjectVisitor;
 
 /**
  * LineString class.
@@ -11,6 +13,13 @@ class LineString extends Geometry {
   private $tessellate;
   private $altitudeMode;
   private $coordinates = array();
+
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitLineString($this);
+  }
 
   /**
    *

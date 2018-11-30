@@ -1,16 +1,24 @@
 <?php
 
-namespace LibKML\Domain\Geometry;
+namespace LibKml\Domain\Geometry;
 
-use LibKML\Domain\KMLObject;
+use LibKml\Domain\KmlObject;
+use LibKml\Domain\KmlObjectVisitor;
 
 /**
  * Alias class.
  */
-class Alias extends KMLObject {
+class Alias extends KmlObject {
 
   private $targetHref;
   private $sourceHref;
+
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitAlias($this);
+  }
 
   /**
    *

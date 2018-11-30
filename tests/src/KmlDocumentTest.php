@@ -1,9 +1,9 @@
 <?php
 
-namespace LibKML\Tests;
+namespace LibKml\Tests;
 
-use LibKML\Domain\Feature\Placemark;
-use LibKML\Domain\Geometry\Polygon;
+use LibKml\Domain\Feature\Placemark;
+use LibKml\Domain\Geometry\Polygon;
 use LibKml\KmlDocument;
 use PHPUnit\Framework\TestCase;
 

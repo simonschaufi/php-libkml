@@ -1,13 +1,11 @@
 <?php
 
-namespace LibKML\Domain\StyleSelector;
-
-use LibKML\Domain\KMLObject;
+namespace LibKml\Domain\StyleSelector;
 
 /**
  * Pair class.
  */
-class Pair extends KMLObject {
+class Pair {
 
   private $key;
   private $styleUrl;

@@ -1,13 +1,14 @@
 <?php
 
-namespace LibKML\Domain\Link;
+namespace LibKml\Domain\Link;
 
-use LibKML\Domain\KMLObject;
+use LibKml\Domain\KmlObject;
+use LibKml\Domain\KmlObjectVisitor;
 
 /**
  * Link class.
  */
-class Link extends KMLObject {
+class Link extends KmlObject {
 
   public static $REFRESH_MODE_ON_CHANGE = 0;
   public static $REFRESH_MODE_ON_INTERVAL = 1;
@@ -21,6 +22,13 @@ class Link extends KMLObject {
   private $viewBoundScale;
   private $viewFormat;
   private $httpQuery;
+
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitLink($this);
+  }
 
   /**
    *

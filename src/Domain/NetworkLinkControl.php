@@ -1,6 +1,6 @@
 <?php
 
-namespace LibKML\Domain\Link;
+namespace LibKml\Domain\Link;
 
 /**
  * NetworkLinkControl class.

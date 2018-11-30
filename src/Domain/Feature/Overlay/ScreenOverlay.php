@@ -1,6 +1,8 @@
 <?php
 
-namespace LibKML\Domain\Feature\Overlay;
+namespace LibKml\Domain\Feature\Overlay;
+
+use LibKml\Domain\KmlObjectVisitor;
 
 /**
  * ScreenOverlay class.
@@ -12,6 +14,13 @@ class ScreenOverlay extends Overlay {
   private $screenXY;
   private $rotationXY;
   private $size;
+
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitScreenOverlay($this);
+  }
 
   /**
    *

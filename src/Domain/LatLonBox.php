@@ -1,17 +1,24 @@
 <?php
 
-namespace LibKML\Domain;
+namespace LibKml\Domain;
 
 /**
  * LatLonBox class.
  */
-class LatLonBox extends KMLObject {
+class LatLonBox {
 
   private $north;
   private $south;
   private $east;
   private $west;
   private $rotation;
+
+  /**
+   * @param KmlObjectVisitor $visitor
+   */
+  public function accept(KmlObjectVisitor $visitor) {
+    $visitor->visitLatLonBox($this);
+  }
 
   /**
    *
