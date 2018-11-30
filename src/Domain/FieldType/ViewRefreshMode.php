@@ -12,4 +12,5 @@ class ViewRefreshMode {
   const ON_STOP = 1;
   const ON_REQUEST = 2;
   const ON_REGION = 3;
+
 }

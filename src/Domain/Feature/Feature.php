@@ -2,7 +2,9 @@
 
 namespace LibKml\Domain\Feature;
 
+use LibKml\Domain\FieldType\Atom\Author;
 use LibKml\Domain\KmlObject;
+use LibKml\Domain\Link\Link;
 use LibKml\Domain\Region;
 
 /**
@@ -10,11 +12,31 @@ use LibKml\Domain\Region;
  */
 abstract class Feature extends KmlObject {
 
+  /**
+   * @var string
+   */
   protected $name;
+
+  /**
+   * @var bool
+   */
   protected $visibility;
+
+  /**
+   * @var bool
+   */
   protected $open;
+
+  /**
+   * @var Author
+   */
   protected $author;
+
+  /**
+   * @var Link
+   */
   protected $link;
+
   protected $address;
   protected $addressDetails;
   protected $phoneNumber;
@@ -23,11 +45,9 @@ abstract class Feature extends KmlObject {
   protected $abstractView;
   protected $timePrimitive;
   protected $styleUrl;
-  protected $styleSelector = array();
+  protected $styleSelector = [];
   protected $region;
   protected $extendedData;
-
-  abstract public function getAllFeatures();
 
   public function addStyleSelector($styleSelector) {
     $this->styleSelector[] = $styleSelector;
@@ -51,7 +71,7 @@ abstract class Feature extends KmlObject {
     return $this->name;
   }
 
-  public function setName($name) {
+  public function setName(string $name) {
     $this->name = $name;
   }
 
@@ -59,7 +79,7 @@ abstract class Feature extends KmlObject {
     return $this->visibility;
   }
 
-  public function setVisibility($visibility) {
+  public function setVisibility(bool $visibility) {
     $this->visibility = $visibility;
   }
 
@@ -67,16 +87,16 @@ abstract class Feature extends KmlObject {
     return $this->open;
   }
 
-  public function setOpen($open) {
+  public function setOpen(bool $open) {
     $this->open = $open;
-  }
-
-  public function setAuthor($autor) {
-    $this->author = $autor;
   }
 
   public function getAuthor() {
     return $this->author;
+  }
+
+  public function setAuthor(Author $autor) {
+    $this->author = $autor;
   }
 
   public function getAddress() {
@@ -151,16 +171,10 @@ abstract class Feature extends KmlObject {
     $this->styleSelector = $styleSelector;
   }
 
-  /**
-   * @return \LibKml\Domain\Region
-   */
   public function getRegion() {
     return $this->region;
   }
 
-  /**
-   * @param \LibKml\Domain\Region $region
-   */
   public function setRegion(Region $region) {
     $this->region = $region;
   }

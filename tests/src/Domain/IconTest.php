@@ -25,9 +25,9 @@ class IconTest extends TestCase {
   }
 
   public function testRefreshModeField() {
-    $this->icon->setRefreshMode(RefreshMode::$ON_EXPIRE);
+    $this->icon->setRefreshMode(RefreshMode::ON_EXPIRE);
 
-    $this->assertEquals(RefreshMode::$ON_EXPIRE, $this->icon->getRefreshMode());
+    $this->assertEquals(RefreshMode::ON_EXPIRE, $this->icon->getRefreshMode());
   }
 
   public function testRefreshIntervalField() {
@@ -37,9 +37,9 @@ class IconTest extends TestCase {
   }
 
   public function testViewRefreshModeField() {
-    $this->icon->setViewRefreshMode(RefreshMode::$ON_EXPIRE);
+    $this->icon->setViewRefreshMode(RefreshMode::ON_EXPIRE);
 
-    $this->assertEquals(ViewRefreshMode::$ON_REQUEST, $this->icon->getViewRefreshMode());
+    $this->assertEquals(ViewRefreshMode::ON_REQUEST, $this->icon->getViewRefreshMode());
   }
 
   public function testViewRefreshTimeField() {

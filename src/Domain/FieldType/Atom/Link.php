@@ -7,6 +7,9 @@ namespace LibKml\Domain\FieldType\Atom;
  */
 class Link {
 
+  /**
+   * @var string
+   */
   private $href;
   private $rel;
   private $type;
@@ -18,7 +21,7 @@ class Link {
     return $this->href;
   }
 
-  public function setHref($href) {
+  public function setHref(string $href) {
     $this->href = $href;
   }
 

@@ -7,21 +7,26 @@ namespace LibKml\Domain\FieldType\Atom;
  */
 class Author {
 
+  /**
+   * @var string
+   */
   private $name;
-  private $uri;
-  private $email;
 
-  public function __construct($name = NULL, $uri = NULL, $email = NULL) {
-    $this->name = $name;
-    $this->uri = $uri;
-    $this->email = $email;
-  }
+  /**
+   * @var string
+   */
+  private $uri;
+
+  /**
+   * @var string
+   */
+  private $email;
 
   public function getName() {
     return $this->name;
   }
 
-  public function setName($name) {
+  public function setName(string $name) {
     $this->name = $name;
   }
 
@@ -29,7 +34,7 @@ class Author {
     return $this->uri;
   }
 
-  public function setUri($uri) {
+  public function setUri(string $uri) {
     $this->uri = $uri;
   }
 
@@ -37,7 +42,7 @@ class Author {
     return $this->email;
   }
 
-  public function setEmail($email) {
+  public function setEmail(string $email) {
     $this->email = $email;
   }
 
