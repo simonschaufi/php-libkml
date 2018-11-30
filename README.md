@@ -1,6 +1,9 @@
 
 # PHP LibKML #
 
+[![Build Status](https://travis-ci.org/earelin/php-libkml.svg?branch=2.x.x)](https://travis-ci.org/earelin/php-libkml)
+[![codecov](https://codecov.io/gh/earelin/php-libkml/branch/2.x.x/graph/badge.svg)](https://codecov.io/gh/earelin/php-libkml)
+
 A php library to manipulate KML/KMZ files.
 
 php-libKML maps KML/KMZ data into proper objects that follows the KML specification. The purpose of the library is create KML file from code, parse KML files and convert to another formats maintaining the complete KML information.
