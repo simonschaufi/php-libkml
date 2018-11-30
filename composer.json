@@ -1,0 +1,38 @@
+{
+  "name": "earelin/php-libkml",
+  "description": "A library to manipulate KML/KMZ files",
+  "type": "library",
+  "keywords": ["kml", "gis"],
+  "homepage": "https://github.com/earelin/php-libkml",
+  "readme": "README.md",
+  "license": "GPL-3.0",
+  "support": {
+    "issues": "https://github.com/earelin/php-libkml/issues",
+    "source": "https://github.com/earelin/php-libkml"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": "^7.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.4",
+    "drupal/coder": "^8.2.12"
+  },
+  "autoload": {
+    "psr-4": {
+      "LibKml\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "LibKml\\Tests\\": "tests/src/"
+    }
+  },
+  "scripts": {
+    "clean": "rm -Rf reports vendor",
+    "test": "phpunit --bootstrap vendor/autoload.php -c phpunit.xml --testdox",
+    "phpcs": "phpcs --bootstrap=vendor/autoload.php --standard=vendor/drupal/coder/coder_sniffer/Drupal --exclude=Drupal.Commenting.FunctionComment src",
+    "phpcbf": "phpcbf --bootstrap=vendor/autoload.php --standard=vendor/drupal/coder/coder_sniffer/Drupal --exclude=Drupal.Commenting.FunctionComment,Drupal.Commenting.ClassComment src"
+  }
+}

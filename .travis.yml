@@ -1,0 +1,8 @@
+language: php
+php:
+  - 7.1
+before_script:
+  - composer install
+script: composer test
+after_success:
+  - curl -s https://codecov.io/bash | bash
