@@ -7,9 +7,6 @@ namespace LibKml\Domain\Geometry;
  */
 class ResourceMap {
 
-  /**
-   * @var array
-   */
   private $aliases = [];
 
   public function getAliases() {

@@ -7,9 +7,6 @@ namespace LibKml\Domain\FieldType\Atom;
  */
 class Link {
 
-  /**
-   * @var string
-   */
   private $href;
   private $rel;
   private $type;
@@ -29,7 +26,7 @@ class Link {
     return $this->rel;
   }
 
-  public function setRel($rel) {
+  public function setRel(string $rel) {
     $this->rel = $rel;
   }
 
@@ -37,7 +34,7 @@ class Link {
     return $this->type;
   }
 
-  public function setType($type) {
+  public function setType(string $type) {
     $this->type = $type;
   }
 
@@ -45,7 +42,7 @@ class Link {
     return $this->hreflang;
   }
 
-  public function setHreflang($hreflang) {
+  public function setHreflang(string $hreflang) {
     $this->hreflang = $hreflang;
   }
 
@@ -53,7 +50,7 @@ class Link {
     return $this->title;
   }
 
-  public function setTitle($title) {
+  public function setTitle(string $title) {
     $this->title = $title;
   }
 
@@ -61,7 +58,7 @@ class Link {
     return $this->length;
   }
 
-  public function setLength($length) {
+  public function setLength(int $length) {
     $this->length = $length;
   }
 

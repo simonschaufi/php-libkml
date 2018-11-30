@@ -13,10 +13,6 @@ class LatLonBox {
   private $west;
   private $rotation;
 
-  public function accept(KmlObjectVisitor $visitor) {
-    $visitor->visitLatLonBox($this);
-  }
-
   public function getNorth() {
     return $this->north;
   }

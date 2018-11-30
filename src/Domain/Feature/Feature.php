@@ -2,41 +2,23 @@
 
 namespace LibKml\Domain\Feature;
 
+use LibKml\Domain\AbstractView\AbstractView;
 use LibKml\Domain\FieldType\Atom\Author;
 use LibKml\Domain\KmlObject;
 use LibKml\Domain\Link\Link;
 use LibKml\Domain\Region;
+use LibKml\Domain\StyleSelector\StyleSelector;
 
 /**
  * Feature abstract class.
  */
 abstract class Feature extends KmlObject {
 
-  /**
-   * @var string
-   */
   protected $name;
-
-  /**
-   * @var bool
-   */
   protected $visibility;
-
-  /**
-   * @var bool
-   */
   protected $open;
-
-  /**
-   * @var Author
-   */
   protected $author;
-
-  /**
-   * @var Link
-   */
   protected $link;
-
   protected $address;
   protected $addressDetails;
   protected $phoneNumber;
@@ -49,15 +31,15 @@ abstract class Feature extends KmlObject {
   protected $region;
   protected $extendedData;
 
-  public function addStyleSelector($styleSelector) {
+  public function addStyleSelector(StyleSelector $styleSelector): void {
     $this->styleSelector[] = $styleSelector;
   }
 
-  public function clearStyleSelectors() {
+  public function clearStyleSelectors(): void {
     $this->styleSelector = array();
   }
 
-  public function getAllStyles() {
+  public function getAllStyles(): array {
     $all_styles = array();
 
     foreach ($this->styleSelector as $style) {
@@ -67,7 +49,7 @@ abstract class Feature extends KmlObject {
     return $all_styles;
   }
 
-  public function getName() {
+  public function getName(): string {
     return $this->name;
   }
 
@@ -75,7 +57,7 @@ abstract class Feature extends KmlObject {
     $this->name = $name;
   }
 
-  public function getVisibility() {
+  public function getVisibility(): bool {
     return $this->visibility;
   }
 
@@ -83,7 +65,7 @@ abstract class Feature extends KmlObject {
     $this->visibility = $visibility;
   }
 
-  public function getOpen() {
+  public function getOpen(): bool {
     return $this->open;
   }
 
@@ -91,20 +73,28 @@ abstract class Feature extends KmlObject {
     $this->open = $open;
   }
 
-  public function getAuthor() {
+  public function getAuthor(): Author {
     return $this->author;
   }
 
-  public function setAuthor(Author $autor) {
+  public function setAuthor(Author $autor): void {
     $this->author = $autor;
   }
 
-  public function getAddress() {
+  public function getAddress(): string {
     return $this->address;
   }
 
-  public function setAddress($address) {
+  public function setAddress(string $address) {
     $this->address = $address;
+  }
+
+  public function getLink(): Link {
+    return $this->link;
+  }
+
+  public function setLink(Link $link): void {
+    $this->link = $link;
   }
 
   public function getAddressDetails() {
@@ -115,35 +105,35 @@ abstract class Feature extends KmlObject {
     $this->addressDetails = $addressDetails;
   }
 
-  public function getPhoneNumber() {
+  public function getPhoneNumber(): string {
     return $this->phoneNumber;
   }
 
-  public function setPhoneNumber($phoneNumber) {
+  public function setPhoneNumber(string $phoneNumber) {
     $this->phoneNumber = $phoneNumber;
   }
 
-  public function getSnippet() {
+  public function getSnippet(): string {
     return $this->snippet;
   }
 
-  public function setSnippet($snippet) {
+  public function setSnippet(string $snippet) {
     $this->snippet = $snippet;
   }
 
-  public function getDescription() {
+  public function getDescription(): string {
     return $this->description;
   }
 
-  public function setDescription($description) {
+  public function setDescription(string $description) {
     $this->description = $description;
   }
 
-  public function getAbstractView() {
+  public function getAbstractView(): AbstractView {
     return $this->abstractView;
   }
 
-  public function setAbstractView($abstractView) {
+  public function setAbstractView(AbstractView $abstractView) {
     $this->abstractView = $abstractView;
   }
 

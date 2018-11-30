@@ -2,7 +2,7 @@
 
 namespace LibKml\Domain\Geometry;
 
-use LibKml\Domain\KmlObjectVisitor;
+use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
  * LineString class.
@@ -14,7 +14,7 @@ class LineString extends Geometry {
   private $altitudeMode;
   private $coordinates = array();
 
-  public function accept(KmlObjectVisitor $visitor) {
+  public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitLineString($this);
   }
 

@@ -2,21 +2,18 @@
 
 namespace LibKml\Domain\Geometry;
 
-use LibKml\Domain\KmlObjectVisitor;
+use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
  * Point class.
  */
 class Point extends Geometry {
 
-  /**
-   * @var bool
-   */
   private $extrude;
   private $altitudeMode;
   private $coordinates;
 
-  public function accept(KmlObjectVisitor $visitor) {
+  public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitPoint($this);
   }
 

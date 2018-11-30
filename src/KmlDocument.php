@@ -11,23 +11,14 @@ class KmlDocument {
 
   private $elements = array();
 
-  /**
-   * @param \LibKml\Domain\KmlObject $element
-   */
   public function addElement(KmlObject $element) {
     $this->elements[] = $element;
   }
 
-  /**
-   * @return array
-   */
   public function getElements(): array {
     return $this->elements;
   }
 
-  /**
-   * @param array $elements
-   */
   public function setElements(array $elements) {
     $this->elements = $elements;
   }

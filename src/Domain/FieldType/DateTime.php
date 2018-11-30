@@ -7,12 +7,9 @@ namespace LibKml\Domain\FieldType;
  */
 class DateTime {
 
-  /**
-   * @var int
-   */
   private $timestamp;
 
-  public function getTimestamp() {
+  public function getTimestamp(): int {
     return $this->timestamp;
   }
 

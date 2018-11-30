@@ -9,31 +9,21 @@ use LibKml\Domain\Feature\Feature;
  */
 abstract class Container extends Feature {
 
-  protected $features = array();
+  protected $features = [];
 
-  public function getAllFeatures() {
-    $allFeatures = array();
-
-    foreach ($this->features as $feature) {
-      $allFeatures = array_merge($allFeatures, $feature->getAllFeatures());
-    }
-
-    return $allFeatures;
-  }
-
-  public function addFeature($feature) {
+  public function addFeature(Feature $feature) {
     $this->features[] = $feature;
   }
 
   public function clearFeatures() {
-    $this->features = array();
+    $this->features = [];
   }
 
-  public function getFeatures() {
+  public function getFeatures(): array {
     return $this->features;
   }
 
-  public function setFeatures($features) {
+  public function setFeatures(array $features) {
     $this->features = $features;
   }
 

@@ -2,7 +2,7 @@
 
 namespace LibKml\Domain\Geometry;
 
-use LibKml\Domain\KmlObjectVisitor;
+use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
  * Polygon class.
@@ -15,7 +15,7 @@ class Polygon extends Geometry {
   private $outerBoundaryIs;
   private $innerBoundaryIs;
 
-  public function accept(KmlObjectVisitor $visitor) {
+  public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitPolygon($this);
   }
 

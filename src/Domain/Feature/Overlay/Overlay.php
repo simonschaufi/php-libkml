@@ -3,6 +3,8 @@
 namespace LibKml\Domain\Feature\Overlay;
 
 use LibKml\Domain\Feature\Feature;
+use LibKml\Domain\FieldType\Color;
+use LibKml\Domain\FieldType\Icon;
 
 /**
  * Overlay abstract class.
@@ -13,31 +15,27 @@ abstract class Overlay extends Feature {
   protected $drawOrder;
   protected $icon;
 
-  public function getAllFeatures() {
-    return array($this);
-  }
-
-  public function getColor() {
+  public function getColor(): Color {
     return $this->color;
   }
 
-  public function setColor($color) {
+  public function setColor(Color $color) {
     $this->color = $color;
   }
 
-  public function getDrawOrder() {
+  public function getDrawOrder(): int {
     return $this->drawOrder;
   }
 
-  public function setDrawOrder($drawOrder) {
+  public function setDrawOrder(int $drawOrder) {
     $this->drawOrder = $drawOrder;
   }
 
-  public function getIcon() {
+  public function getIcon(): Icon {
     return $this->icon;
   }
 
-  public function setIcon($icon) {
+  public function setIcon(Icon $icon) {
     $this->icon = $icon;
   }
 

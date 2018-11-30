@@ -2,10 +2,10 @@
 
 namespace LibKml\Domain\Feature\Overlay;
 
-use LibKml\Domain\KmlObjectVisitor;
+use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
- * PhotoOverlay class.
+ * Allows to geographically locate a photograph on the Earth.
  */
 class PhotoOverlay extends Overlay {
 
@@ -15,15 +15,15 @@ class PhotoOverlay extends Overlay {
   private $point;
   private $shape;
 
-  public function accept(KmlObjectVisitor $visitor) {
+  public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitPhotoOverlay($this);
   }
 
-  public function getRotation() {
+  public function getRotation(): float {
     return $this->rotation;
   }
 
-  public function setRotation($rotation) {
+  public function setRotation(float $rotation) {
     $this->rotation = $rotation;
   }
 

@@ -2,14 +2,14 @@
 
 namespace LibKml\Domain\Feature\Container;
 
-use LibKml\Domain\KmlObjectVisitor;
+use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
  * Folder class.
  */
 class Folder extends Container {
 
-  public function accept(KmlObjectVisitor $visitor) {
+  public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitFolder($this);
   }
 

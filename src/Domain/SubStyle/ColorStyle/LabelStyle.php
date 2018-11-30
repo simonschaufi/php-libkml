@@ -2,7 +2,7 @@
 
 namespace LibKml\Domain\SubStyle\ColorStyle;
 
-use LibKml\Domain\KmlObjectVisitor;
+use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
  * LabelStyle class.
@@ -11,7 +11,7 @@ class LabelStyle extends ColorStyle {
 
   private $scale;
 
-  public function accept(KmlObjectVisitor $visitor) {
+  public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitLabelStyle($this);
   }
 

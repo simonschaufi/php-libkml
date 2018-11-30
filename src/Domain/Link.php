@@ -3,7 +3,7 @@
 namespace LibKml\Domain\Link;
 
 use LibKml\Domain\KmlObject;
-use LibKml\Domain\KmlObjectVisitor;
+use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
  * Link class.
@@ -23,7 +23,7 @@ class Link extends KmlObject {
   private $viewFormat;
   private $httpQuery;
 
-  public function accept(KmlObjectVisitor $visitor) {
+  public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitLink($this);
   }
 

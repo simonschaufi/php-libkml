@@ -2,7 +2,7 @@
 
 namespace LibKml\Domain\SubStyle;
 
-use LibKml\Domain\KmlObjectVisitor;
+use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
  * ListStyle class.
@@ -14,7 +14,7 @@ class ListStyle extends SubStyle {
   private $itemIcons = array();
   private $maxSnippetLines;
 
-  public function accept(KmlObjectVisitor $visitor) {
+  public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitListStyle($this);
   }
 

@@ -2,7 +2,7 @@
 
 namespace LibKml\Domain\StyleSelector;
 
-use LibKml\Domain\KmlObjectVisitor;
+use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
  * StyleMap class.
@@ -11,7 +11,7 @@ class StyleMap extends StyleSelector {
 
   private $pairs = array();
 
-  public function accept(KmlObjectVisitor $visitor) {
+  public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitStyleMap($this);
   }
 

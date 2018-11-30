@@ -2,7 +2,7 @@
 
 namespace LibKml\Domain\Geometry;
 
-use LibKml\Domain\KmlObjectVisitor;
+use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
  * Model class.
@@ -16,7 +16,7 @@ class Model extends Geometry {
   private $link;
   private $resourceMap;
 
-  public function accept(KmlObjectVisitor $visitor) {
+  public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitModel($this);
   }
 

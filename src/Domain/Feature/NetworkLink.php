@@ -2,7 +2,7 @@
 
 namespace LibKml\Domain\Feature;
 
-use LibKml\Domain\KmlObjectVisitor;
+use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
  * References a KML file or KMZ archive on a local or remote network.
@@ -12,7 +12,7 @@ class NetworkLink extends Feature {
   private $refreshVisibility;
   private $flyToView;
 
-  public function accept(KmlObjectVisitor $visitor) {
+  public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitNetworkLink($this);
   }
 

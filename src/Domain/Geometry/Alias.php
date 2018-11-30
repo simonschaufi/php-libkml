@@ -7,14 +7,7 @@ namespace LibKml\Domain\Geometry;
  */
 class Alias {
 
-  /**
-   * @var string
-   */
   private $targetHref;
-
-  /**
-   * @var string
-   */
   private $sourceHref;
 
   public function getTargetHref() {

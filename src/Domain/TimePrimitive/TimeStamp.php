@@ -2,7 +2,7 @@
 
 namespace LibKml\Domain\TimePrimitive;
 
-use LibKml\Domain\KmlObjectVisitor;
+use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
  * TimeStamp class.
@@ -11,7 +11,7 @@ class TimeStamp extends TimePrimitive {
 
   private $when;
 
-  public function accept(KmlObjectVisitor $visitor) {
+  public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitTimeStamp($this);
   }
 

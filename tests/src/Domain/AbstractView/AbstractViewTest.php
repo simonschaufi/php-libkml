@@ -3,7 +3,7 @@
 namespace LibKml\Tests\Domain\AbstractView;
 
 use LibKml\Domain\AbstractView\AbstractView;
-use LibKml\Domain\KmlObjectVisitor;
+use LibKml\Domain\KmlObjectVisitorInterface;
 use PHPUnit\Framework\TestCase;
 
 class AbstractViewTest extends TestCase {
@@ -15,7 +15,7 @@ class AbstractViewTest extends TestCase {
 
   public function setUp() {
     $this->abstractView = new class extends AbstractView {
-      public function accept(KmlObjectVisitor $visitor) {
+      public function accept(KmlObjectVisitorInterface $visitor): void {
       }
     };
   }

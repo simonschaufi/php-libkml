@@ -2,7 +2,7 @@
 
 namespace LibKml\Tests\Domain;
 
-use LibKml\Domain\KmlObjectVisitor;
+use LibKml\Domain\KmlObjectVisitorInterface;
 use PHPUnit\Framework\TestCase;
 use LibKml\Domain\KmlObject;
 
@@ -12,7 +12,7 @@ class KMLObjectTest extends TestCase {
 
   public function setUp() {
     $this->kmlObject = new class extends KmlObject {
-      public function accept(KmlObjectVisitor $visitor) {}
+      public function accept(KmlObjectVisitorInterface $visitor): void {}
     };
   }
 

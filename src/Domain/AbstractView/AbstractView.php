@@ -9,86 +9,59 @@ use LibKml\Domain\KmlObject;
  */
 abstract class AbstractView extends KmlObject {
 
-  /**
-   * @var float
-   */
   private $longitude;
-
-  /**
-   * @var float
-   */
   private $latitude;
-
-  /**
-   * @var float
-   */
   private $altitude;
-
-  /**
-   * @var float
-   */
   private $heading = 0;
-
-  /**
-   * @var float
-   */
   private $tilt;
-
-  /**
-   * @var float
-   */
   private $roll;
-
-  /**
-   * @var int
-   */
   private $altitudeMode;
 
-  public function getLongitude() {
+  public function getLongitude(): float {
     return $this->longitude;
   }
 
-  public function setLongitude($longitude) {
+  public function setLongitude(float $longitude) {
     $this->longitude = $longitude;
   }
 
-  public function getLatitude() {
+  public function getLatitude(): float {
     return $this->latitude;
   }
 
-  public function setLatitude($latitude) {
+  public function setLatitude(float $latitude) {
     $this->latitude = $latitude;
   }
 
-  public function getAltitude() {
+  public function getAltitude(): float {
     return $this->altitude;
   }
 
-  public function setAltitude($altitude) {
+  public function setAltitude(float $altitude) {
     $this->altitude = $altitude;
   }
 
-  public function getHeading() {
+  public function getHeading(): float {
     return $this->heading;
   }
 
-  public function setHeading($heading) {
+  public function setHeading(float $heading) {
     $this->heading = $heading;
   }
 
-  public function getTilt() {
+  public function getTilt(): float {
     return $this->tilt;
   }
 
-  public function setTilt($tilt) {
+  public function setTilt(float $tilt) {
     $this->tilt = $tilt;
   }
 
-  public function getRoll() {
+  public function getRoll(): float {
     return $this->roll;
   }
 
-  public function setRoll($roll) {
+  public function setRoll(float $roll) {
     $this->roll = $roll;
   }
 

@@ -2,7 +2,7 @@
 
 namespace LibKml\Domain\SubStyle;
 
-use LibKml\Domain\KmlObjectVisitor;
+use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
  * BalloonStyle class.
@@ -14,7 +14,7 @@ class BalloonStyle extends SubStyle {
   private $text;
   private $displayMode;
 
-  public function accept(KmlObjectVisitor $visitor) {
+  public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitBalloonStyle($this);
   }
 

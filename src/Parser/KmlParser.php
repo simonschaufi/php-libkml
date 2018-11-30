@@ -2,13 +2,11 @@
 
 namespace LibKml\Parser;
 
-class KmlParser implements Parser {
+use LibKml\KmlDocument;
 
-  /**
-   * @param string $content
-   * @return \LibKml\KmlDocument
-   */
-  public function parse(string $content) {
+class KmlParser implements ParserInterface {
+
+  public function parse(string $content): KmlDocument {
     // TODO: Implement parse() method.
   }
 

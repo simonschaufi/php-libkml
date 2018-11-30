@@ -11,10 +11,6 @@ class Location {
   private $latitude;
   private $altitude;
 
-  public function accept(KmlObjectVisitor $visitor) {
-    $visitor->visitLocation($this);
-  }
-
   public function getLongitude() {
     return $this->longitude;
   }

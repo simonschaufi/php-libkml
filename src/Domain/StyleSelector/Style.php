@@ -2,7 +2,7 @@
 
 namespace LibKml\Domain\StyleSelector;
 
-use LibKml\Domain\KmlObjectVisitor;
+use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
  * Style class.
@@ -16,7 +16,7 @@ class Style extends StyleSelector {
   private $balloonStyle;
   private $listStyle;
 
-  public function accept(KmlObjectVisitor $visitor) {
+  public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitStyle($this);
   }
 

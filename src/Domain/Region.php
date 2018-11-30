@@ -10,7 +10,7 @@ class Region extends KmlObject {
   private $latLonAltBox;
   private $lod;
 
-  public function accept(KmlObjectVisitor $visitor) {
+  public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitRegion($this);
   }
 

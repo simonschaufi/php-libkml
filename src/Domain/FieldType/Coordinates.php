@@ -7,19 +7,8 @@ namespace LibKml\Domain\FieldType;
  */
 class Coordinates {
 
-  /**
-   * @var float
-   */
   private $longitude = 0;
-
-  /**
-   * @var float
-   */
   private $latitude = 0;
-
-  /**
-   * @var float
-   */
   private $altitude = 0;
 
   public function getLongitude() {

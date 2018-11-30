@@ -6,6 +6,7 @@ use LibKml\Domain\AbstractView\Camera;
 use LibKml\Domain\AbstractView\LookAt;
 use LibKml\Domain\Feature\Container\Document;
 use LibKml\Domain\Feature\Container\Folder;
+use LibKml\Domain\Feature\Container\Schema;
 use LibKml\Domain\Feature\NetworkLink;
 use LibKml\Domain\Feature\Overlay\GroundOverlay;
 use LibKml\Domain\Feature\Overlay\PhotoOverlay;
@@ -35,7 +36,7 @@ use LibKml\Domain\TimePrimitive\TimeStamp;
  *
  * @package LibKml\Domain
  */
-interface KmlObjectVisitor {
+interface KmlObjectVisitorInterface {
 
   public function visitIcon(Icon $icon);
 
@@ -50,6 +51,8 @@ interface KmlObjectVisitor {
   public function visitNetworkLink(NetworkLink $networkLink);
 
   public function visitPlacemark(Placemark $placemark);
+
+  public function visitSchema(Schema $schema);
 
   public function visitDocument(Document $document);
 

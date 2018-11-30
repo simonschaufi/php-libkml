@@ -2,7 +2,7 @@
 
 namespace LibKml\Domain\Feature;
 
-use LibKml\Domain\KmlObjectVisitor;
+use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
  * Placemark abstract class.
@@ -11,7 +11,7 @@ class Placemark extends Feature {
 
   private $geometry;
 
-  public function accept(KmlObjectVisitor $visitor) {
+  public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitPlacemark($this);
   }
 

@@ -9,43 +9,16 @@ use LibKml\Domain\FieldType\HttpQuery;
  */
 class Icon extends KmlObject {
 
-  /**
-   * @var string
-   */
   private $href;
-
-  /**
-   * @var int
-   */
   private $refreshMode;
-
-  /**
-   * @var int
-   */
   private $refreshInterval;
-
-  /**
-   * @var int
-   */
   private $viewRefreshMode;
   private $viewRefreshTime;
-
-  /**
-   * @var int
-   */
   private $viewBoundScale;
-
-  /**
-   * @var string
-   */
   private $viewFormat;
-
-  /**
-   * @var \LibKml\Domain\FieldType\HttpQuery
-   */
   private $httpQuery;
 
-  public function accept(KmlObjectVisitor $visitor) {
+  public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitIcon($this);
   }
 

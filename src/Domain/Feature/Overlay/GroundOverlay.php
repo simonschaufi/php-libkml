@@ -2,7 +2,7 @@
 
 namespace LibKml\Domain\Feature\Overlay;
 
-use LibKml\Domain\KmlObjectVisitor;
+use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
  * GroundOverlay class.
@@ -13,7 +13,7 @@ class GroundOverlay extends Overlay {
   private $altitudeMode;
   private $latLonBox;
 
-  public function accept(KmlObjectVisitor $visitor) {
+  public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitGroundOverlay($this);
   }
 

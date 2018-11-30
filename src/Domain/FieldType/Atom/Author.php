@@ -7,19 +7,8 @@ namespace LibKml\Domain\FieldType\Atom;
  */
 class Author {
 
-  /**
-   * @var string
-   */
   private $name;
-
-  /**
-   * @var string
-   */
   private $uri;
-
-  /**
-   * @var string
-   */
   private $email;
 
   public function getName() {

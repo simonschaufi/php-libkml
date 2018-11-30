@@ -1,17 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: xavier
- * Date: 30/11/18
- * Time: 15:52
- */
 
 namespace LibKml\Tests\Domain\Feature;
 
 
 use LibKml\Domain\Feature\Feature;
 use LibKml\Domain\FieldType\Atom\Author;
-use LibKml\Domain\KmlObjectVisitor;
+use LibKml\Domain\KmlObjectVisitorInterface;
 use PHPUnit\Framework\TestCase;
 
 class FeatureTest extends TestCase {
@@ -23,7 +17,7 @@ class FeatureTest extends TestCase {
 
   public function setUp() {
     $this->feature = new class extends Feature {
-      public function accept(KmlObjectVisitor $visitor) {
+      public function accept(KmlObjectVisitorInterface $visitor): void {
       }
     };
   }
@@ -61,5 +55,36 @@ class FeatureTest extends TestCase {
     $this->assertEquals($author, $this->feature->getAuthor());
   }
 
+  public function testAddressField() {
+    $address = "Blackfriards 240";
+
+    $this->feature->setAddress($address);
+
+    $this->assertEquals($address, $this->feature->getAddress());
+  }
+
+  public function testPhoneNumberField() {
+    $phoneNumber = "tel:+449999999999";
+
+    $this->feature->setPhoneNumber($phoneNumber);
+
+    $this->assertEquals($phoneNumber, $this->feature->getPhoneNumber());
+  }
+
+  public function testSnippetField() {
+    $snippet = "London Bridge";
+
+    $this->feature->setSnippet($snippet);
+
+    $this->assertEquals($snippet, $this->feature->getSnippet());
+  }
+
+  public function testDescriptionField() {
+    $description = "London Bridge";
+
+    $this->feature->setDescription($description);
+
+    $this->assertEquals($description, $this->feature->getDescription());
+  }
 
 }

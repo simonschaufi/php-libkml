@@ -4,11 +4,7 @@ namespace LibKml\Parser;
 
 class ParserFactory {
 
-  /**
-   * @param string $type
-   * @return Parser
-   */
-  public function create(string $type) {
+  public function create(string $type): ParserInterface {
 
   }
 

@@ -12,10 +12,6 @@ class Lod {
   private $minFadeExtent;
   private $maxFadeExtent;
 
-  public function accept(KmlObjectVisitor $visitor) {
-    $visitor->visitLod($this);
-  }
-
   public function getMinLodPixels() {
     return $this->minLodPixels;
   }

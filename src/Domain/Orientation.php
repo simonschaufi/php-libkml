@@ -11,10 +11,6 @@ class Orientation {
   private $tilt;
   private $roll;
 
-  public function accept(KmlObjectVisitor $visitor) {
-    $visitor->visitOrientation($this);
-  }
-
   public function getHeading() {
     return $this->heading;
   }

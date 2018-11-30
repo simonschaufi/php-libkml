@@ -2,7 +2,7 @@
 
 namespace LibKml\Domain\SubStyle\ColorStyle;
 
-use LibKml\Domain\KmlObjectVisitor;
+use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
  * LineStyle class.
@@ -11,7 +11,7 @@ class LineStyle extends ColorStyle {
 
   private $width;
 
-  public function accept(KmlObjectVisitor $visitor) {
+  public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitLineStyle($this);
   }
 

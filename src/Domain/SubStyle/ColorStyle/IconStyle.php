@@ -2,7 +2,7 @@
 
 namespace LibKml\Domain\SubStyle\ColorStyle;
 
-use LibKml\Domain\KmlObjectVisitor;
+use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
  * IconStyle class.
@@ -14,7 +14,7 @@ class IconStyle extends ColorStyle {
   private $icon;
   private $hotSpot;
 
-  public function accept(KmlObjectVisitor $visitor) {
+  public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitIconStyle($this);
   }
 

@@ -15,10 +15,6 @@ class LatLonAltBox {
   private $east;
   private $west;
 
-  public function accept(KmlObjectVisitor $visitor) {
-    $visitor->visitLatLonAltBox($this);
-  }
-
   public function getAltitudeMode() {
     return $this->altitudeMode;
   }
