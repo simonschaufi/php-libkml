@@ -45,6 +45,6 @@ abstract class KmlObject {
   /**
    * @param KmlObjectVisitor $visitor
    */
-  public abstract function accept(KmlObjectVisitor $visitor);
+  abstract public function accept(KmlObjectVisitor $visitor);
 
 }

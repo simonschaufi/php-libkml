@@ -15,7 +15,7 @@ class ListStyle extends SubStyle {
   private $maxSnippetLines;
 
   /**
-   * @param KmlObjectVisitor $visitor
+   * @param \LibKml\Domain\KmlObjectVisitor $visitor
    */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitListStyle($this);

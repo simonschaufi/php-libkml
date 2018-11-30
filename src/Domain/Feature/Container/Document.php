@@ -12,7 +12,7 @@ class Document extends Container {
   private $schemas = array();
 
   /**
-   * @param KmlObjectVisitor $visitor
+   * @param \LibKml\Domain\KmlObjectVisitor $visitor
    */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitDocument($this);

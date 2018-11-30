@@ -15,7 +15,7 @@ class LineString extends Geometry {
   private $coordinates = array();
 
   /**
-   * @param KmlObjectVisitor $visitor
+   * @param \LibKml\Domain\KmlObjectVisitor $visitor
    */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitLineString($this);

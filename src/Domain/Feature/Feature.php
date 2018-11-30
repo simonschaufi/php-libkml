@@ -242,14 +242,14 @@ abstract class Feature extends KmlObject {
   }
 
   /**
-   * @return Region
+   * @return \LibKml\Domain\Region
    */
   public function getRegion() {
     return $this->region;
   }
 
   /**
-   * @param Region $region
+   * @param \LibKml\Domain\Region $region
    */
   public function setRegion(Region $region) {
     $this->region = $region;

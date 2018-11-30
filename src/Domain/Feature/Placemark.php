@@ -12,7 +12,7 @@ class Placemark extends Feature {
   private $geometry;
 
   /**
-   * @param KmlObjectVisitor $visitor
+   * @param \LibKml\Domain\KmlObjectVisitor $visitor
    */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitPlacemark($this);

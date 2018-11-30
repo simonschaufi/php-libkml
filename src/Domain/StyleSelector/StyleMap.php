@@ -12,7 +12,7 @@ class StyleMap extends StyleSelector {
   private $pairs = array();
 
   /**
-   * @param KmlObjectVisitor $visitor
+   * @param \LibKml\Domain\KmlObjectVisitor $visitor
    */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitStyleMap($this);

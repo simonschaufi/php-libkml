@@ -14,7 +14,7 @@ class GroundOverlay extends Overlay {
   private $latLonBox;
 
   /**
-   * @param KmlObjectVisitor $visitor
+   * @param \LibKml\Domain\KmlObjectVisitor $visitor
    */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitGroundOverlay($this);

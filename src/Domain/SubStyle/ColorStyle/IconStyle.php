@@ -15,7 +15,7 @@ class IconStyle extends ColorStyle {
   private $hotSpot;
 
   /**
-   * @param KmlObjectVisitor $visitor
+   * @param \LibKml\Domain\KmlObjectVisitor $visitor
    */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitIconStyle($this);

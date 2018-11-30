@@ -16,7 +16,7 @@ class ScreenOverlay extends Overlay {
   private $size;
 
   /**
-   * @param KmlObjectVisitor $visitor
+   * @param \LibKml\Domain\KmlObjectVisitor $visitor
    */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitScreenOverlay($this);

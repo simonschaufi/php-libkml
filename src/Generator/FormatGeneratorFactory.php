@@ -2,6 +2,9 @@
 
 namespace LibKml\Generator;
 
+/**
+ *
+ */
 class FormatGeneratorFactory {
 
   /**
@@ -9,6 +12,9 @@ class FormatGeneratorFactory {
    */
   private $converters;
 
+  /**
+   *
+   */
   public function create(string $converterType) {
 
   }

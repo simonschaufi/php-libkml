@@ -10,7 +10,7 @@ use LibKml\Domain\KmlObjectVisitor;
 class Folder extends Container {
 
   /**
-   * @param KmlObjectVisitor $visitor
+   * @param \LibKml\Domain\KmlObjectVisitor $visitor
    */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitFolder($this);

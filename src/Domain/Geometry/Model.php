@@ -17,7 +17,7 @@ class Model extends Geometry {
   private $resourceMap;
 
   /**
-   * @param KmlObjectVisitor $visitor
+   * @param \LibKml\Domain\KmlObjectVisitor $visitor
    */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitModel($this);

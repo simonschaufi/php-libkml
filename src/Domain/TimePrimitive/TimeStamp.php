@@ -12,7 +12,7 @@ class TimeStamp extends TimePrimitive {
   private $when;
 
   /**
-   * @param KmlObjectVisitor $visitor
+   * @param \LibKml\Domain\KmlObjectVisitor $visitor
    */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitTimeStamp($this);

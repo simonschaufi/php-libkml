@@ -13,7 +13,7 @@ class NetworkLink extends Feature {
   private $flyToView;
 
   /**
-   * @param KmlObjectVisitor $visitor
+   * @param \LibKml\Domain\KmlObjectVisitor $visitor
    */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitNetworkLink($this);

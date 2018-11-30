@@ -16,7 +16,7 @@ class PhotoOverlay extends Overlay {
   private $shape;
 
   /**
-   * @param KmlObjectVisitor $visitor
+   * @param \LibKml\Domain\KmlObjectVisitor $visitor
    */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitPhotoOverlay($this);

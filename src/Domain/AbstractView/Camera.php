@@ -18,7 +18,7 @@ class Camera extends AbstractView {
   private $altitudeMode;
 
   /**
-   * @param KmlObjectVisitor $visitor
+   * @param \LibKml\Domain\KmlObjectVisitor $visitor
    */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitCamera($this);

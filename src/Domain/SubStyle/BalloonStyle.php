@@ -15,7 +15,7 @@ class BalloonStyle extends SubStyle {
   private $displayMode;
 
   /**
-   * @param KmlObjectVisitor $visitor
+   * @param \LibKml\Domain\KmlObjectVisitor $visitor
    */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitBalloonStyle($this);

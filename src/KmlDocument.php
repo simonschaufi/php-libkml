@@ -12,7 +12,7 @@ class KmlDocument {
   private $elements = array();
 
   /**
-   * @param KmlObject $element
+   * @param \LibKml\Domain\KmlObject $element
    */
   public function addElement(KmlObject $element) {
     $this->elements[] = $element;

@@ -16,7 +16,7 @@ class Polygon extends Geometry {
   private $innerBoundaryIs;
 
   /**
-   * @param KmlObjectVisitor $visitor
+   * @param \LibKml\Domain\KmlObjectVisitor $visitor
    */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitPolygon($this);

@@ -17,7 +17,7 @@ class Style extends StyleSelector {
   private $listStyle;
 
   /**
-   * @param KmlObjectVisitor $visitor
+   * @param \LibKml\Domain\KmlObjectVisitor $visitor
    */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitStyle($this);

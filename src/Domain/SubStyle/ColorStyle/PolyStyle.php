@@ -13,7 +13,7 @@ class PolyStyle extends ColorStyle {
   private $outline;
 
   /**
-   * @param KmlObjectVisitor $visitor
+   * @param \LibKml\Domain\KmlObjectVisitor $visitor
    */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitPolyStyle($this);

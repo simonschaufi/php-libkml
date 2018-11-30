@@ -12,7 +12,7 @@ class MultiGeometry extends Geometry {
   private $geometries = array();
 
   /**
-   * @param KmlObjectVisitor $visitor
+   * @param \LibKml\Domain\KmlObjectVisitor $visitor
    */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitMultiGeometry($this);

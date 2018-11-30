@@ -18,6 +18,9 @@ class Icon extends KmlObject {
   private $viewFormat;
   private $httpQuery;
 
+  /**
+   *
+   */
   public function accept(KmlObjectVisitor $visitor) {
     $visitor->visitIcon($this);
   }
