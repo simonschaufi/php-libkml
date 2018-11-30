@@ -2,7 +2,6 @@
 
 namespace LibKml\Domain\Feature\Container;
 
-
 use LibKml\Domain\KmlObject;
 use LibKml\Domain\KmlObjectVisitorInterface;
 
