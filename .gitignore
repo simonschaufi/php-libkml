@@ -1,6 +1,6 @@
 ## IDE
-.sonarlint
-.idea
+/.sonarlint/
+/.idea/
 
 ## Dependencies
 vendor

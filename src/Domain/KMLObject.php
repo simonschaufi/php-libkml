@@ -42,4 +42,6 @@ abstract class KMLObject {
     $this->targetId = $targetId;
   }
 
+  public abstract function accept($visitor);
+
 }
