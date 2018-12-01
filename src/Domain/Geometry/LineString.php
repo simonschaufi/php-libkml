@@ -2,6 +2,7 @@
 
 namespace LibKml\Domain\Geometry;
 
+use LibKml\Domain\FieldType\Coordinates;
 use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
@@ -18,11 +19,11 @@ class LineString extends Geometry {
     $visitor->visitLineString($this);
   }
 
-  public function addCoordinate($coordinate) {
+  public function addCoordinates(Coordinates $coordinate): void {
     $this->coordinates[] = $coordinate;
   }
 
-  public function clearCoordinates() {
+  public function clearCoordinates(): void {
     $this->coordinates = array();
   }
 

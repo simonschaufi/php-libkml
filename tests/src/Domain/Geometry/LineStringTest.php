@@ -65,4 +65,22 @@ class LineStringTest extends TestCase {
     $this->assertContains($coordinates2, $this->lineString->getCoordinates());
   }
 
+  public function testAddCoordinate() {
+    $coordinates = new Coordinates();
+
+    $this->lineString->addCoordinates($coordinates);
+
+    $this->assertCount(1, $this->lineString->getCoordinates());
+    $this->assertContains($coordinates, $this->lineString->getCoordinates());
+  }
+
+  public function testClearCoordinates() {
+    $coordinates1 = new Coordinates();
+    $coordinates2 = new Coordinates();
+    $this->lineString->setCoordinates([$coordinates1, $coordinates2]);
+
+    $this->lineString->clearCoordinates();
+
+    $this->assertEmpty($this->lineString->getCoordinates());
+  }
 }

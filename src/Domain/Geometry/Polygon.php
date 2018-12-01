@@ -19,27 +19,27 @@ class Polygon extends Geometry {
     $visitor->visitPolygon($this);
   }
 
-  public function getExtrude() {
+  public function getExtrude(): bool {
     return $this->extrude;
   }
 
-  public function setExtrude($extrude) {
+  public function setExtrude(bool $extrude): void {
     $this->extrude = $extrude;
   }
 
-  public function getTessellate() {
+  public function getTessellate(): bool {
     return $this->tessellate;
   }
 
-  public function setTessellate($tessellate) {
+  public function setTessellate(bool $tessellate): void {
     $this->tessellate = $tessellate;
   }
 
-  public function getAltitudeMode() {
+  public function getAltitudeMode(): string {
     return $this->altitudeMode;
   }
 
-  public function setAltitudeMode($altitudeMode) {
+  public function setAltitudeMode(string $altitudeMode): void {
     $this->altitudeMode = $altitudeMode;
   }
 

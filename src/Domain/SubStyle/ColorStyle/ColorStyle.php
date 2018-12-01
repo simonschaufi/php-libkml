@@ -2,6 +2,7 @@
 
 namespace LibKml\Domain\SubStyle\ColorStyle;
 
+use LibKml\Domain\FieldType\Color;
 use LibKml\Domain\SubStyle\SubStyle;
 
 /**
@@ -10,21 +11,21 @@ use LibKml\Domain\SubStyle\SubStyle;
 abstract class ColorStyle extends SubStyle {
 
   protected $color;
-  protected $colorMode;
+  protected $colorMode = "normal";
 
-  public function getColor() {
+  public function getColor(): Color {
     return $this->color;
   }
 
-  public function setColor($color) {
+  public function setColor(Color $color): void {
     $this->color = $color;
   }
 
-  public function getColorMode() {
+  public function getColorMode(): string {
     return $this->colorMode;
   }
 
-  public function setColorMode($colorMode) {
+  public function setColorMode(string $colorMode): void {
     $this->colorMode = $colorMode;
   }
 

@@ -15,11 +15,11 @@ class LabelStyle extends ColorStyle {
     $visitor->visitLabelStyle($this);
   }
 
-  public function getScale() {
+  public function getScale(): float {
     return $this->scale;
   }
 
-  public function setScale($scale) {
+  public function setScale(float $scale): void {
     $this->scale = $scale;
   }
 

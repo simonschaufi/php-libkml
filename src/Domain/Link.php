@@ -31,7 +31,7 @@ class Link extends KmlObject {
     return $this->href;
   }
 
-  public function setHref(string  $href) {
+  public function setHref(string $href) {
     $this->href = $href;
   }
 

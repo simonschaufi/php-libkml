@@ -2,6 +2,8 @@
 
 namespace LibKml\Domain\SubStyle\ColorStyle;
 
+use LibKml\Domain\FieldType\Icon;
+use LibKml\Domain\FieldType\Vec2;
 use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
@@ -18,35 +20,35 @@ class IconStyle extends ColorStyle {
     $visitor->visitIconStyle($this);
   }
 
-  public function getScale() {
+  public function getScale(): float {
     return $this->scale;
   }
 
-  public function setScale($scale) {
+  public function setScale(float $scale): void {
     $this->scale = $scale;
   }
 
-  public function getHeading() {
+  public function getHeading(): float {
     return $this->heading;
   }
 
-  public function setHeading($heading) {
+  public function setHeading(float $heading): void {
     $this->heading = $heading;
   }
 
-  public function getIcon() {
+  public function getIcon(): Icon {
     return $this->icon;
   }
 
-  public function setIcon($icon) {
+  public function setIcon(Icon $icon): void {
     $this->icon = $icon;
   }
 
-  public function getHotSpot() {
+  public function getHotSpot(): Vec2 {
     return $this->hotSpot;
   }
 
-  public function setHotSpot($hotSpot) {
+  public function setHotSpot(Vec2 $hotSpot): void {
     $this->hotSpot = $hotSpot;
   }
 

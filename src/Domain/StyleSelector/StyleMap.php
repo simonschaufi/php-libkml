@@ -9,7 +9,7 @@ use LibKml\Domain\KmlObjectVisitorInterface;
  */
 class StyleMap extends StyleSelector {
 
-  private $pairs = array();
+  private $pairs = [];
 
   public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitStyleMap($this);
@@ -20,7 +20,7 @@ class StyleMap extends StyleSelector {
   }
 
   public function clearPairs() {
-    $this->pairs = array();
+    $this->pairs = [];
   }
 
   public function getPairs() {

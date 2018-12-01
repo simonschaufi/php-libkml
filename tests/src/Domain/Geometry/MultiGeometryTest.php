@@ -5,6 +5,7 @@ namespace LibKml\Tests\Domain\Geometry;
 use LibKml\Domain\Geometry\MultiGeometry;
 use LibKml\Domain\Geometry\Point;
 use LibKml\Domain\Geometry\Polygon;
+use LibKml\Domain\KmlObjectVisitorInterface;
 use PHPUnit\Framework\TestCase;
 
 class MultiGeometryTest extends TestCase {
@@ -24,6 +25,16 @@ class MultiGeometryTest extends TestCase {
     $this->point = new Point();
     $this->polygon = new Polygon();
     $this->geometries = [$this->point, $this->polygon];
+  }
+
+  public function testAccept() {
+    $objectVisitor = $this->createMock(KmlObjectVisitorInterface::class);
+
+    $objectVisitor->expects($this->once())
+      ->method('visitMultiGeometry')
+      ->with($this->equalTo($this->multiGeometry));
+
+    $this->multiGeometry->accept($objectVisitor);
   }
 
   public function testGeometriesField() {

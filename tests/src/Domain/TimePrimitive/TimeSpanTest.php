@@ -3,6 +3,7 @@
 namespace LibKml\Tests\Domain\TimePrimitive;
 
 use DateTime;
+use LibKml\Domain\KmlObjectVisitorInterface;
 use LibKml\Domain\TimePrimitive\TimeSpan;
 use PHPUnit\Framework\TestCase;
 
@@ -15,6 +16,18 @@ class TimeSpanTest extends TestCase {
 
   public function setUp() {
     $this->timeSpan = new TimeSpan();
+  }
+
+  public function testAccept() {
+    $timeSpan = new TimeSpan();
+
+    $objectVisitor = $this->createMock(KmlObjectVisitorInterface::class);
+
+    $objectVisitor->expects($this->once())
+      ->method('visitTimeSpan')
+      ->with($this->equalTo($timeSpan));
+
+    $timeSpan->accept($objectVisitor);
   }
 
   public function testBeginField() {

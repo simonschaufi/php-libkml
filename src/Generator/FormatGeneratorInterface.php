@@ -9,7 +9,7 @@ use LibKml\KmlDocument;
  *
  * @package LibKml\Converter
  */
-interface FormatGenerator {
+interface FormatGeneratorInterface {
 
   /**
    * Generates a string with the formatted content of the KmlDocument.

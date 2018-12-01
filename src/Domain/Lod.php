@@ -12,7 +12,7 @@ class Lod {
   private $minFadeExtent;
   private $maxFadeExtent;
 
-  public function getMinLodPixels(): int{
+  public function getMinLodPixels(): int {
     return $this->minLodPixels;
   }
 

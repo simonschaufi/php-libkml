@@ -2,6 +2,7 @@
 
 namespace LibKml\Tests\Domain\TimePrimitive;
 
+use LibKml\Domain\KmlObjectVisitorInterface;
 use LibKml\Domain\TimePrimitive\TimeStamp;
 use PHPUnit\Framework\TestCase;
 
@@ -15,6 +16,19 @@ class TimeStampTest extends TestCase {
   public function setUp() {
     $this->timeStamp = new TimeStamp();
   }
+
+  public function testAccept() {
+    $timeStamp = new TimeStamp();
+
+    $objectVisitor = $this->createMock(KmlObjectVisitorInterface::class);
+
+    $objectVisitor->expects($this->once())
+      ->method('visitTimeStamp')
+      ->with($this->equalTo($timeStamp));
+
+    $timeStamp->accept($objectVisitor);
+  }
+
 
   public function testWhenField() {
     $when = time();

@@ -15,11 +15,11 @@ class LineStyle extends ColorStyle {
     $visitor->visitLineStyle($this);
   }
 
-  public function getWidth() {
+  public function getWidth(): int {
     return $this->width;
   }
 
-  public function setWidth($width) {
+  public function setWidth(int $width): void {
     $this->width = $width;
   }
 
