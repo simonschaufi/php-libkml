@@ -2,6 +2,7 @@
 
 namespace LibKml\Domain\Geometry;
 
+use LibKml\Domain\FieldType\Coordinates;
 use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
@@ -17,27 +18,35 @@ class Point extends Geometry {
     $visitor->visitPoint($this);
   }
 
-  public function getExtrude() {
+  public function addCoordinates(Coordinates $coordinate): void {
+    $this->coordinates[] = $coordinate;
+  }
+
+  public function clearCoordinates(): void {
+    $this->coordinates = array();
+  }
+
+  public function getExtrude(): bool {
     return $this->extrude;
   }
 
-  public function setExtrude(bool $extrude) {
+  public function setExtrude(bool $extrude): void {
     $this->extrude = $extrude;
   }
 
-  public function getAltitudeMode() {
+  public function getAltitudeMode(): string {
     return $this->altitudeMode;
   }
 
-  public function setAltitudeMode($altitudeMode) {
+  public function setAltitudeMode(string $altitudeMode): void {
     $this->altitudeMode = $altitudeMode;
   }
 
-  public function getCoordinates() {
+  public function getCoordinates(): array {
     return $this->coordinates;
   }
 
-  public function setCoordinates($coordinates) {
+  public function setCoordinates(array $coordinates): void {
     $this->coordinates = $coordinates;
   }
 

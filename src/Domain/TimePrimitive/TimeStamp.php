@@ -15,11 +15,11 @@ class TimeStamp extends TimePrimitive {
     $visitor->visitTimeStamp($this);
   }
 
-  public function getWhen() {
+  public function getWhen(): int {
     return $this->when;
   }
 
-  public function setWhen($when) {
+  public function setWhen(int $when): void {
     $this->when = $when;
   }
 

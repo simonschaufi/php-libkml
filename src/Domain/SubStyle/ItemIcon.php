@@ -7,19 +7,19 @@ class ItemIcon {
   private $href;
   private $state;
 
-  public function getHref() {
+  public function getHref(): string {
     return $this->href;
   }
 
-  public function setHref($href) {
+  public function setHref(string $href): void {
     $this->href = $href;
   }
 
-  public function getState() {
+  public function getState(): string {
     return $this->state;
   }
 
-  public function setState($state) {
+  public function setState(string $state): void {
     $this->state = $state;
   }
 

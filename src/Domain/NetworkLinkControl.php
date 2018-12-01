@@ -1,6 +1,8 @@
 <?php
 
-namespace LibKml\Domain\Link;
+namespace LibKml\Domain;
+
+use LibKml\Domain\AbstractView\AbstractView;
 
 /**
  * NetworkLinkControl class.
@@ -18,83 +20,83 @@ class NetworkLinkControl {
   private $update;
   private $abstractView;
 
-  public function getCookie() {
+  public function getCookie(): string {
     return $this->cookie;
   }
 
-  public function setCookie($cookie) {
+  public function setCookie(string $cookie): void {
     $this->cookie = $cookie;
   }
 
-  public function getMessage() {
+  public function getMessage(): string {
     return $this->message;
   }
 
-  public function setMessage($message) {
+  public function setMessage(string $message): void {
     $this->message = $message;
   }
 
-  public function getLinkName() {
+  public function getLinkName(): string {
     return $this->linkName;
   }
 
-  public function setLinkName($linkName) {
+  public function setLinkName(string $linkName): void {
     $this->linkName = $linkName;
   }
 
-  public function getLinkDescription() {
+  public function getLinkDescription(): string {
     return $this->linkDescription;
   }
 
-  public function setLinkDescription($linkDescription) {
+  public function setLinkDescription(string $linkDescription): void {
     $this->linkDescription = $linkDescription;
   }
 
-  public function getMinRefreshPeriod() {
+  public function getMinRefreshPeriod(): float {
     return $this->minRefreshPeriod;
   }
 
-  public function setMinRefreshPeriod($minRefreshPeriod) {
+  public function setMinRefreshPeriod(float $minRefreshPeriod): void {
     $this->minRefreshPeriod = $minRefreshPeriod;
   }
 
-  public function getMaxSessionLength() {
+  public function getMaxSessionLength(): float {
     return $this->maxSessionLength;
   }
 
-  public function setMaxSessionLength($maxSessionLength) {
+  public function setMaxSessionLength(float $maxSessionLength): void {
     $this->maxSessionLength = $maxSessionLength;
   }
 
-  public function getLinkSnippet() {
+  public function getLinkSnippet(): string {
     return $this->linkSnippet;
   }
 
-  public function setLinkSnippet($linkSnippet) {
+  public function setLinkSnippet(string $linkSnippet): void {
     $this->linkSnippet = $linkSnippet;
   }
 
-  public function getExpires() {
+  public function getExpires(): int {
     return $this->expires;
   }
 
-  public function setExpires($expires) {
+  public function setExpires(int $expires): void {
     $this->expires = $expires;
   }
 
-  public function getUpdate() {
+  public function getUpdate(): Update {
     return $this->update;
   }
 
-  public function setUpdate($update) {
+  public function setUpdate(Update $update): void {
     $this->update = $update;
   }
 
-  public function getAbstractView() {
+  public function getAbstractView(): AbstractView {
     return $this->abstractView;
   }
 
-  public function setAbstractView($abstractView) {
+  public function setAbstractView(AbstractView $abstractView): void {
     $this->abstractView = $abstractView;
   }
 

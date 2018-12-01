@@ -22,73 +22,70 @@ class Icon extends KmlObject {
     $visitor->visitIcon($this);
   }
 
-  public function getHref() {
+  public function getHref(): string {
     return $this->href;
   }
 
-  public function setHref($href) {
+  public function setHref(string $href): void {
     $this->href = $href;
   }
 
-  public function getRefreshMode() {
+  public function getRefreshMode(): string {
     return $this->refreshMode;
   }
 
-  public function setRefreshMode($refreshMode) {
+  public function setRefreshMode(string $refreshMode): void {
     $this->refreshMode = $refreshMode;
   }
 
-  public function getRefreshInterval() {
+  public function getRefreshInterval(): float {
     return $this->refreshInterval;
   }
 
   /**
    * Indicates to refresh the file every $refreshInterval seconds.
-   *
-   * @param integer $refreshInterval
-   *   Refresh interval in seconds.
    */
-  public function setRefreshInterval($refreshInterval) {
+  public function setRefreshInterval(float $refreshInterval): void {
     $this->refreshInterval = $refreshInterval;
   }
 
-  public function getViewRefreshMode() {
+  public function getViewRefreshMode(): string {
     return $this->viewRefreshMode;
   }
 
-  public function setViewRefreshMode($viewRefreshMode) {
+  public function setViewRefreshMode(string $viewRefreshMode): void {
     $this->viewRefreshMode = $viewRefreshMode;
   }
 
-  public function getViewRefreshTime() {
+  public function getViewRefreshTime(): float {
     return $this->viewRefreshTime;
   }
 
-  public function setViewRefreshTime($viewRefreshTime) {
+  public function setViewRefreshTime(float $viewRefreshTime): void {
     $this->viewRefreshTime = $viewRefreshTime;
   }
 
-  public function getViewBoundScale() {
+  public function getViewBoundScale(): float {
     return $this->viewBoundScale;
   }
 
-  public function setViewBoundScale($viewBoundScale) {
+  public function setViewBoundScale(float $viewBoundScale): void {
     $this->viewBoundScale = $viewBoundScale;
   }
 
-  public function getViewFormat() {
+  public function getViewFormat(): string {
     return $this->viewFormat;
   }
 
-  public function setViewFormat(string $viewFormat) {
+  public function setViewFormat(string $viewFormat): void {
     $this->viewFormat = $viewFormat;
   }
 
-  public function getHttpQuery() {
+  public function getHttpQuery(): HttpQuery {
     return $this->httpQuery;
   }
 
-  public function setHttpQuery(HttpQuery $httpQuery) {
+  public function setHttpQuery(HttpQuery $httpQuery): void {
     $this->httpQuery = $httpQuery;
   }
 

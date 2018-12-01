@@ -3,9 +3,15 @@
 namespace LibKml\Domain\StyleSelector;
 
 use LibKml\Domain\KmlObjectVisitorInterface;
+use LibKml\Domain\SubStyle\BalloonStyle;
+use LibKml\Domain\SubStyle\ColorStyle\IconStyle;
+use LibKml\Domain\SubStyle\ColorStyle\LabelStyle;
+use LibKml\Domain\SubStyle\ColorStyle\LineStyle;
+use LibKml\Domain\SubStyle\ColorStyle\PolyStyle;
+use LibKml\Domain\SubStyle\ListStyle;
 
 /**
- * Style class.
+ * A Style defines an addressable style group.
  */
 class Style extends StyleSelector {
 
@@ -20,51 +26,51 @@ class Style extends StyleSelector {
     $visitor->visitStyle($this);
   }
 
-  public function getIconStyle() {
+  public function getIconStyle(): IconStyle {
     return $this->iconStyle;
   }
 
-  public function setIconStyle($iconStyle) {
+  public function setIconStyle(IconStyle $iconStyle): void {
     $this->iconStyle = $iconStyle;
   }
 
-  public function getLabelStyle() {
+  public function getLabelStyle(): LabelStyle {
     return $this->labelStyle;
   }
 
-  public function setLabelStyle($labelStyle) {
+  public function setLabelStyle(LabelStyle $labelStyle): void {
     $this->labelStyle = $labelStyle;
   }
 
-  public function getLineStyle() {
+  public function getLineStyle(): LineStyle {
     return $this->lineStyle;
   }
 
-  public function setLineStyle($lineStyle) {
+  public function setLineStyle(LineStyle $lineStyle): void {
     $this->lineStyle = $lineStyle;
   }
 
-  public function getPolyStyle() {
+  public function getPolyStyle(): PolyStyle {
     return $this->polyStyle;
   }
 
-  public function setPolyStyle($polyStyle) {
+  public function setPolyStyle(PolyStyle $polyStyle): void {
     $this->polyStyle = $polyStyle;
   }
 
-  public function getBalloonStyle() {
+  public function getBalloonStyle(): BalloonStyle {
     return $this->balloonStyle;
   }
 
-  public function setBalloonStyle($balloonStyle) {
+  public function setBalloonStyle(BalloonStyle $balloonStyle): void {
     $this->balloonStyle = $balloonStyle;
   }
 
-  public function getListStyle() {
+  public function getListStyle(): ListStyle {
     return $this->listStyle;
   }
 
-  public function setListStyle($listStyle) {
+  public function setListStyle(ListStyle $listStyle): void {
     $this->listStyle = $listStyle;
   }
 

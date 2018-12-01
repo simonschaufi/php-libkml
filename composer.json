@@ -31,7 +31,7 @@
   },
   "scripts": {
     "clean": "rm -Rf reports vendor",
-    "test": "phpunit --bootstrap vendor/autoload.php -c phpunit.xml --testdox",
+    "test": "phpunit --bootstrap vendor/autoload.php -c phpunit.xml",
     "phpcs": "phpcs --bootstrap=vendor/autoload.php --standard=vendor/drupal/coder/coder_sniffer/Drupal --exclude=Drupal.Commenting.FunctionComment src",
     "phpcbf": "phpcbf --bootstrap=vendor/autoload.php --standard=vendor/drupal/coder/coder_sniffer/Drupal --exclude=Drupal.Commenting.FunctionComment,Drupal.Commenting.ClassComment src"
   }

@@ -2,13 +2,13 @@
 
 namespace LibKml\Generator\Kml;
 
-use LibKml\Generator\FormatGenerator;
+use LibKml\Generator\FormatGeneratorInterface;
 use LibKml\KmlDocument;
 
 /**
  *
  */
-class KmlGenerator implements FormatGenerator {
+class KmlGeneratorInterface implements FormatGeneratorInterface {
 
   /**
    * Generates the KmlDocument in KML format schema version 2.2.

@@ -4,6 +4,7 @@ namespace LibKml\Tests\Domain\Feature\Container;
 
 
 use LibKml\Domain\Feature\Container\Document;
+use LibKml\Domain\KmlObjectVisitorInterface;
 use LibKml\Domain\StyleSelector\Style;
 use PHPUnit\Framework\TestCase;
 
@@ -23,6 +24,18 @@ class DocumentTest extends TestCase {
     $this->style1 = new Style();
     $this->style2 = new Style();
     $this->styles = [$this->style1, $this->style2];
+  }
+
+  public function testAccept() {
+    $document = new Document();
+
+    $objectVisitor = $this->createMock(KmlObjectVisitorInterface::class);
+
+    $objectVisitor->expects($this->once())
+      ->method('visitDocument')
+      ->with($this->equalTo($document));
+
+    $document->accept($objectVisitor);
   }
 
   public function testStylesField() {

@@ -15,7 +15,7 @@ class ViewVolume {
   private $topFov;
   private $near;
 
-  public function getLeftFov() {
+  public function getLeftFov(): float {
     return $this->leftFov;
   }
 

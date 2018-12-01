@@ -7,7 +7,7 @@ class Color {
   private $red = 0;
   private $green = 0;
   private $blue = 0;
-  private $alpha = 1;
+  private $alpha = 0;
 
   public function getRed(): int {
     return $this->red;

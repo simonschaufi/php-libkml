@@ -21,7 +21,7 @@ abstract class AbstractView extends KmlObject {
     return $this->longitude;
   }
 
-  public function setLongitude(float $longitude) {
+  public function setLongitude(float $longitude): void {
     $this->longitude = $longitude;
   }
 
@@ -29,7 +29,7 @@ abstract class AbstractView extends KmlObject {
     return $this->latitude;
   }
 
-  public function setLatitude(float $latitude) {
+  public function setLatitude(float $latitude): void {
     $this->latitude = $latitude;
   }
 
@@ -37,7 +37,7 @@ abstract class AbstractView extends KmlObject {
     return $this->altitude;
   }
 
-  public function setAltitude(float $altitude) {
+  public function setAltitude(float $altitude): void {
     $this->altitude = $altitude;
   }
 
@@ -45,7 +45,7 @@ abstract class AbstractView extends KmlObject {
     return $this->heading;
   }
 
-  public function setHeading(float $heading) {
+  public function setHeading(float $heading): void {
     $this->heading = $heading;
   }
 
@@ -53,7 +53,7 @@ abstract class AbstractView extends KmlObject {
     return $this->tilt;
   }
 
-  public function setTilt(float $tilt) {
+  public function setTilt(float $tilt): void {
     $this->tilt = $tilt;
   }
 
@@ -61,15 +61,15 @@ abstract class AbstractView extends KmlObject {
     return $this->roll;
   }
 
-  public function setRoll(float $roll) {
+  public function setRoll(float $roll): void {
     $this->roll = $roll;
   }
 
-  public function getAltitudeMode() {
+  public function getAltitudeMode(): string {
     return $this->altitudeMode;
   }
 
-  public function setAltitudeMode($altitudeMode) {
+  public function setAltitudeMode(string $altitudeMode): void {
     $this->altitudeMode = $altitudeMode;
   }
 

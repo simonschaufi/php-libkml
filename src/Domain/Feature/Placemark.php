@@ -2,10 +2,11 @@
 
 namespace LibKml\Domain\Feature;
 
+use LibKml\Domain\Geometry\Geometry;
 use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
- * Placemark abstract class.
+ * A Placemark is a Feature with associated Geometry.
  */
 class Placemark extends Feature {
 
@@ -15,15 +16,11 @@ class Placemark extends Feature {
     $visitor->visitPlacemark($this);
   }
 
-  public function getAllFeatures() {
-    return array($this->geometry);
-  }
-
-  public function getGeometry() {
+  public function getGeometry(): Geometry {
     return $this->geometry;
   }
 
-  public function setGeometry($geometry) {
+  public function setGeometry(Geometry $geometry): void {
     $this->geometry = $geometry;
   }
 

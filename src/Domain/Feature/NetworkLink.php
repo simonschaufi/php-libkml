@@ -16,19 +16,19 @@ class NetworkLink extends Feature {
     $visitor->visitNetworkLink($this);
   }
 
-  public function getRefreshVisibility() {
-    $this->refreshVisibility;
+  public function getRefreshVisibility(): bool {
+    return $this->refreshVisibility;
   }
 
-  public function setRefreshVisibility($refreshVisibility) {
+  public function setRefreshVisibility(bool $refreshVisibility): void {
     $this->refreshVisibility = $refreshVisibility;
   }
 
-  public function getFlyToView() {
-    $this->flyToView;
+  public function getFlyToView(): bool {
+    return $this->flyToView;
   }
 
-  public function setFlyToView($flyToView) {
+  public function setFlyToView(bool $flyToView): void {
     $this->flyToView = $flyToView;
   }
 

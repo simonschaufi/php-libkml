@@ -13,43 +13,43 @@ class LatLonBox {
   private $west;
   private $rotation;
 
-  public function getNorth() {
+  public function getNorth(): float {
     return $this->north;
   }
 
-  public function setNorth($north) {
+  public function setNorth(float $north): void {
     $this->north = $north;
   }
 
-  public function getSouth() {
+  public function getSouth(): float {
     return $this->south;
   }
 
-  public function setSouth($south) {
+  public function setSouth(float $south): void {
     $this->south = $south;
   }
 
-  public function getEast() {
+  public function getEast(): float {
     return $this->east;
   }
 
-  public function setEast($east) {
+  public function setEast(float $east): void {
     $this->east = $east;
   }
 
-  public function getWest() {
+  public function getWest(): float {
     return $this->west;
   }
 
-  public function setWest($west) {
+  public function setWest(float $west): void {
     $this->west = $west;
   }
 
-  public function getRotation() {
+  public function getRotation(): float {
     return $this->rotation;
   }
 
-  public function setRotation($rotation) {
+  public function setRotation(float $rotation): void {
     $this->rotation = $rotation;
   }
 
