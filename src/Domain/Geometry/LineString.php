@@ -12,7 +12,7 @@ class LineString extends Geometry {
   private $extrude;
   private $tessellate;
   private $altitudeMode;
-  private $coordinates = array();
+  private $coordinates = [];
 
   public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitLineString($this);
@@ -26,27 +26,27 @@ class LineString extends Geometry {
     $this->coordinates = array();
   }
 
-  public function getExtrude() {
+  public function getExtrude(): bool {
     return $this->extrude;
   }
 
-  public function setExtrude($extrude) {
+  public function setExtrude(bool $extrude): void {
     $this->extrude = $extrude;
   }
 
-  public function getTessellate() {
+  public function getTessellate(): bool {
     return $this->tessellate;
   }
 
-  public function setTessellate($tessellate) {
+  public function setTessellate(bool $tessellate): void {
     $this->tessellate = $tessellate;
   }
 
-  public function getAltitudeMode() {
+  public function getAltitudeMode(): string {
     return $this->altitudeMode;
   }
 
-  public function setAltitudeMode($altitudeMode) {
+  public function setAltitudeMode(string $altitudeMode): void {
     $this->altitudeMode = $altitudeMode;
   }
 
