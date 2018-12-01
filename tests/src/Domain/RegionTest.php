@@ -2,6 +2,7 @@
 
 namespace LibKml\Tests\Domain;
 
+use LibKml\Domain\KmlObjectVisitorInterface;
 use LibKml\Domain\LatLonAltBox;
 use LibKml\Domain\Lod;
 use LibKml\Domain\Region;
@@ -16,6 +17,16 @@ class RegionTest extends TestCase {
 
   public function setUp() {
     $this->region = new Region();
+  }
+
+  public function testAccept() {
+    $objectVisitor = $this->createMock(KmlObjectVisitorInterface::class);
+
+    $objectVisitor->expects($this->once())
+      ->method('visitRegion')
+      ->with($this->equalTo($this->region));
+
+    $this->region->accept($objectVisitor);
   }
 
   public function testLatLonAltBoxField() {

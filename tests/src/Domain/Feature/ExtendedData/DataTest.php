@@ -1,12 +1,15 @@
 <?php
 
-namespace LibKml\Tests\Domain\ExtendedData;
+namespace LibKml\Tests\Domain\Feature\ExtendedData;
 
-use LibKml\Domain\ExtendedData\Data;
+use LibKml\Domain\Feature\ExtendedData\Data;
 use PHPUnit\Framework\TestCase;
 
 class DataTest extends TestCase {
-  
+
+  /**
+   * @var Data
+   */
   protected $data;
   
   public function setUp() {
@@ -14,7 +17,7 @@ class DataTest extends TestCase {
   }
 
   public function testNameField() {
-    $name = "London Bridge";
+    $name = "Location";
 
     $this->data->setName($name);
 
@@ -36,4 +39,5 @@ class DataTest extends TestCase {
 
     $this->assertEquals($displayName, $this->data->getDisplayName());
   }
+
 }

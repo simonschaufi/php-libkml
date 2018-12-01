@@ -8,12 +8,20 @@ use PHPUnit\Framework\TestCase;
 class LatLonAltBoxTest extends TestCase {
 
   /**
-   * @var LatLonBox
+   * @var LatLonAltBox
    */
   protected $latLonAltBox;
 
   public function setUp() {
     $this->latLonAltBox = new LatLonAltBox();
+  }
+
+  public function testAltitudeModeField() {
+    $altitudeMode = "relativeToGround";
+
+    $this->latLonAltBox->setAltitudeMode($altitudeMode);
+
+    $this->assertEquals($altitudeMode, $this->latLonAltBox->getAltitudeMode());
   }
 
   public function testMinAltitudeField() {

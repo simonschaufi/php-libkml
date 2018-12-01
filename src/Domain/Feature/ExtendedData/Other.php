@@ -1,12 +1,20 @@
 <?php
 
-namespace LibKml\Domain\ExtendedData;
+namespace LibKml\Domain\Feature\ExtendedData;
 
-class Data {
+class Other {
 
+  private $namespace;
   private $name;
   private $value;
-  private $displayName;
+
+  public function getNamespace(): string {
+    return $this->namespace;
+  }
+
+  public function setNamespace(string $namespace): void {
+    $this->namespace = $namespace;
+  }
 
   public function getName(): string {
     return $this->name;
@@ -22,14 +30,6 @@ class Data {
 
   public function setValue(string $value): void {
     $this->value = $value;
-  }
-
-  public function getDisplayName(): string {
-    return $this->displayName;
-  }
-
-  public function setDisplayName(string $displayName): void {
-    $this->displayName = $displayName;
   }
 
 }

@@ -4,6 +4,7 @@ namespace LibKml\Tests\Domain\Feature;
 
 
 use LibKml\Domain\AbstractView\AbstractView;
+use LibKml\Domain\Feature\ExtendedData\ExtendedData;
 use LibKml\Domain\Feature\Feature;
 use LibKml\Domain\FieldType\Atom\Author;
 use LibKml\Domain\FieldType\Atom\Link;
@@ -150,6 +151,37 @@ class FeatureTest extends TestCase {
     $this->assertContains($styleSelector2, $this->feature->getStyleSelector());
   }
 
+  public function testAddStyleSelector() {
+    $styleSelector = new class extends StyleSelector {
+      public function accept(KmlObjectVisitorInterface $visitor): void {
+      }
+    };
+    $initial = count($this->feature->getStyleSelector());
+
+    $this->feature->addStyleSelector($styleSelector);
+
+    $this->assertContains($styleSelector, $this->feature->getStyleSelector());
+    $this->assertCount($initial + 1, $this->feature->getStyleSelector());
+  }
+
+  public function testClearStyleSelector() {
+    $styleSelector1 = new class extends StyleSelector {
+      public function accept(KmlObjectVisitorInterface $visitor): void {
+      }
+    };
+    $styleSelector2 = new class extends StyleSelector {
+      public function accept(KmlObjectVisitorInterface $visitor): void {
+      }
+    };
+    $styleSelector = [$styleSelector1, $styleSelector2];
+
+    $this->feature->setStyleSelector($styleSelector);
+
+    $this->feature->clearStyleSelectors();
+
+    $this->assertCount(0, $this->feature->getStyleSelector());
+  }
+
   public function testRegionField() {
     $region = new Region();
 
@@ -158,4 +190,11 @@ class FeatureTest extends TestCase {
     $this->assertEquals($region, $this->feature->getRegion());
   }
 
+  public function testExtendedDataField() {
+    $extendedData = new ExtendedData();
+
+    $this->feature->setExtendedData($extendedData);
+
+    $this->assertEquals($extendedData, $this->feature->getExtendedData());
+  }
 }

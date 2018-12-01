@@ -3,6 +3,7 @@
 namespace LibKml\Domain\Feature;
 
 use LibKml\Domain\AbstractView\AbstractView;
+use LibKml\Domain\Feature\ExtendedData\ExtendedData;
 use LibKml\Domain\FieldType\Atom\Author;
 use LibKml\Domain\KmlObject;
 use LibKml\Domain\FieldType\Atom\Link;
@@ -38,16 +39,6 @@ abstract class Feature extends KmlObject {
 
   public function clearStyleSelectors(): void {
     $this->styleSelector = array();
-  }
-
-  public function getAllStyles(): array {
-    $all_styles = array();
-
-    foreach ($this->styleSelector as $style) {
-      $all_styles[] = $style;
-    }
-
-    return $all_styles;
   }
 
   public function getName(): string {
@@ -170,11 +161,11 @@ abstract class Feature extends KmlObject {
     $this->region = $region;
   }
 
-  public function getExtendedData() {
+  public function getExtendedData(): ExtendedData {
     return $this->extendedData;
   }
 
-  public function setExtendedData($extendedData) {
+  public function setExtendedData(ExtendedData $extendedData): void {
     $this->extendedData = $extendedData;
   }
 

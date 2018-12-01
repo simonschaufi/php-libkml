@@ -15,11 +15,11 @@ class LatLonAltBox {
   private $east;
   private $west;
 
-  public function getAltitudeMode() {
+  public function getAltitudeMode(): string {
     return $this->altitudeMode;
   }
 
-  public function setAltitudeMode($altitudeMode) {
+  public function setAltitudeMode(string $altitudeMode): void {
     $this->altitudeMode = $altitudeMode;
   }
 

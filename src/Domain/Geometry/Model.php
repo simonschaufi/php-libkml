@@ -3,9 +3,10 @@
 namespace LibKml\Domain\Geometry;
 
 use LibKml\Domain\KmlObjectVisitorInterface;
+use LibKml\Domain\Location;
 
 /**
- * Model class.
+ * A 3D object described in a COLLADA file.
  */
 class Model extends Geometry {
 
@@ -20,19 +21,19 @@ class Model extends Geometry {
     $visitor->visitModel($this);
   }
 
-  public function getAltitudeMode() {
+  public function getAltitudeMode(): string {
     return $this->altitudeMode;
   }
 
-  public function setAltitudeMode($altitudeMode) {
+  public function setAltitudeMode(string $altitudeMode): void {
     $this->altitudeMode = $altitudeMode;
   }
 
-  public function getLocation() {
+  public function getLocation(): Location {
     return $this->location;
   }
 
-  public function setLocation($location) {
+  public function setLocation(Location $location): void {
     $this->location = $location;
   }
 
