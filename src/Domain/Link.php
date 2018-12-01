@@ -1,9 +1,6 @@
 <?php
 
-namespace LibKml\Domain\Link;
-
-use LibKml\Domain\KmlObject;
-use LibKml\Domain\KmlObjectVisitorInterface;
+namespace LibKml\Domain;
 
 /**
  * Link class.
@@ -31,20 +28,15 @@ class Link extends KmlObject {
     return $this->href;
   }
 
-  public function setHref(string $href) {
+  public function setHref(string $href): void {
     $this->href = $href;
   }
 
-  public function getrefreshMode() {
+  public function getrefreshMode(): string {
     return $this->refreshMode;
   }
 
-  /**
-   * Specifies a time-based refresh mode.
-   *
-   * @param int $refreshMode
-   */
-  public function setRefreshMode($refreshMode) {
+  public function setRefreshMode(string $refreshMode): void {
     $this->refreshMode = $refreshMode;
   }
 
@@ -52,9 +44,6 @@ class Link extends KmlObject {
     return $this->refreshInterval;
   }
 
-  /**
-   * @param int $refreshInterval
-   */
   public function setRefreshInterval($refreshInterval) {
     $this->href = $refreshInterval;
   }

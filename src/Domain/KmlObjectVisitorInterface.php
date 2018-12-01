@@ -19,7 +19,6 @@ use LibKml\Domain\Geometry\MultiGeometry;
 use LibKml\Domain\Geometry\Point;
 use LibKml\Domain\Geometry\Polygon;
 use LibKml\Domain\Geometry\ResourceMap;
-use LibKml\Domain\Link\Link;
 use LibKml\Domain\StyleSelector\Style;
 use LibKml\Domain\StyleSelector\StyleMap;
 use LibKml\Domain\SubStyle\BalloonStyle;

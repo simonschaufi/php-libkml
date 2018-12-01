@@ -5,6 +5,7 @@ namespace LibKml\Tests\Domain;
 use LibKml\Domain\FieldType\RefreshMode;
 use LibKml\Domain\FieldType\ViewRefreshMode;
 use LibKml\Domain\Icon;
+use LibKml\Domain\KmlObjectVisitorInterface;
 use PHPUnit\Framework\TestCase;
 
 class IconTest extends TestCase {
@@ -16,6 +17,16 @@ class IconTest extends TestCase {
 
   public function setUp() {
     $this->icon = new Icon();
+  }
+
+  public function testAccept() {
+    $objectVisitor = $this->createMock(KmlObjectVisitorInterface::class);
+
+    $objectVisitor->expects($this->once())
+      ->method('visitIcon')
+      ->with($this->equalTo($this->icon));
+
+    $this->icon->accept($objectVisitor);
   }
 
   public function testHrefField() {
