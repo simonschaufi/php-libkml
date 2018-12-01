@@ -68,4 +68,12 @@ class AbstractViewTest extends TestCase {
     $this->assertEquals($roll, $this->abstractView->getRoll());
   }
 
+  public function testAltitudeModeField() {
+    $altitudeMode = "clampToGround";
+
+    $this->abstractView->setAltitudeMode($altitudeMode);
+
+    $this->assertEquals($altitudeMode, $this->abstractView->getAltitudeMode());
+  }
+
 }

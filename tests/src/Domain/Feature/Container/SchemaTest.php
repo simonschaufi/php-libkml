@@ -3,6 +3,7 @@
 namespace LibKml\Tests\Domain\Feature\Container;
 
 use LibKml\Domain\Feature\Container\Schema;
+use LibKml\Domain\KmlObjectVisitorInterface;
 use PHPUnit\Framework\TestCase;
 
 class SchemaTest extends TestCase {
@@ -19,6 +20,16 @@ class SchemaTest extends TestCase {
   public function setUp() {
     $this->schema = new Schema();
     $this->fields = [$this->field1, $this->field2];
+  }
+
+  public function testAccept() {
+    $objectVisitor = $this->createMock(KmlObjectVisitorInterface::class);
+
+    $objectVisitor->expects($this->once())
+      ->method('visitSchema')
+      ->with($this->equalTo($this->schema));
+
+    $this->schema->accept($objectVisitor);
   }
 
   public function testFieldsField() {

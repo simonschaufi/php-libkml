@@ -40,4 +40,12 @@ class ImagePyramidTest extends TestCase {
     $this->assertEquals($maxHeight, $this->imagePyramid->getMaxHeight());
   }
 
+  public function testGridOriginField() {
+    $gridOrigin = "lowerLeft";
+
+    $this->imagePyramid->setGridOrigin($gridOrigin);
+
+    $this->assertEquals($gridOrigin, $this->imagePyramid->getGridOrigin());
+  }
+
 }

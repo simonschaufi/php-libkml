@@ -3,7 +3,7 @@
 namespace LibKml\Domain;
 
 /**
- * Region class.
+ * A region describes an area of interest.
  */
 class Region extends KmlObject {
 
@@ -14,19 +14,19 @@ class Region extends KmlObject {
     $visitor->visitRegion($this);
   }
 
-  public function getLatLonAltBox() {
+  public function getLatLonAltBox(): LatLonAltBox {
     return $this->latLonAltBox;
   }
 
-  public function setLatLonAltBox($latLonAltBox) {
+  public function setLatLonAltBox(LatLonAltBox $latLonAltBox): void {
     $this->latLonAltBox = $latLonAltBox;
   }
 
-  public function getLod() {
+  public function getLod(): Lod {
     return $this->lod;
   }
 
-  public function setLod($lod) {
+  public function setLod(Lod $lod): void {
     $this->lod = $lod;
   }
 

@@ -11,27 +11,27 @@ class Location {
   private $latitude;
   private $altitude;
 
-  public function getLongitude() {
+  public function getLongitude(): float {
     return $this->longitude;
   }
 
-  public function setLongitude($longitude) {
+  public function setLongitude(float $longitude): void {
     $this->longitude = $longitude;
   }
 
-  public function getLatitude() {
+  public function getLatitude(): float {
     return $this->latitude;
   }
 
-  public function setLatitude($latitude) {
+  public function setLatitude(float $latitude): void {
     $this->latitude = $latitude;
   }
 
-  public function getAltitude() {
+  public function getAltitude(): float {
     return $this->altitude;
   }
 
-  public function setAltitude($altitude) {
+  public function setAltitude(float $altitude): void {
     $this->altitude = $altitude;
   }
 

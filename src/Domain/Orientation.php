@@ -3,7 +3,7 @@
 namespace LibKml\Domain;
 
 /**
- * ResouceMap class.
+ * Describes rotation of a 3D model's coordinate system.
  */
 class Orientation {
 
@@ -11,27 +11,27 @@ class Orientation {
   private $tilt;
   private $roll;
 
-  public function getHeading() {
+  public function getHeading(): float {
     return $this->heading;
   }
 
-  public function setHeading($heading) {
+  public function setHeading(float $heading) {
     $this->heading = $heading;
   }
 
-  public function gettilt() {
+  public function getTilt(): float {
     return $this->tilt;
   }
 
-  public function settilt($tilt) {
+  public function setTilt(float $tilt) {
     $this->tilt = $tilt;
   }
 
-  public function getroll() {
+  public function getRoll(): float {
     return $this->roll;
   }
 
-  public function setroll($roll) {
+  public function setRoll(float $roll) {
     $this->roll = $roll;
   }
 

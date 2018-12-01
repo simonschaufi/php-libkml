@@ -2,6 +2,7 @@
 
 namespace LibKml\Domain\Feature\Overlay;
 
+use LibKml\Domain\FieldType\Coordinates;
 use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
@@ -13,7 +14,7 @@ class PhotoOverlay extends Overlay {
   private $viewVolume;
   private $imagePyramid;
   private $point;
-  private $shape;
+  private $shape = "rectangle";
 
   public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitPhotoOverlay($this);
@@ -23,39 +24,39 @@ class PhotoOverlay extends Overlay {
     return $this->rotation;
   }
 
-  public function setRotation(float $rotation) {
+  public function setRotation(float $rotation): void {
     $this->rotation = $rotation;
   }
 
-  public function getViewVolume() {
+  public function getViewVolume(): ViewVolume {
     return $this->viewVolume;
   }
 
-  public function setViewVolume($viewVolume) {
+  public function setViewVolume(ViewVolume $viewVolume): void {
     $this->viewVolume = $viewVolume;
   }
 
-  public function getImagePyramid() {
+  public function getImagePyramid(): ImagePyramid {
     return $this->imagePyramid;
   }
 
-  public function setImagePyramid($imagePyramid) {
+  public function setImagePyramid(ImagePyramid $imagePyramid): void {
     $this->imagePyramid = $imagePyramid;
   }
 
-  public function getPoint() {
+  public function getPoint(): Coordinates {
     return $this->point;
   }
 
-  public function setPoint($point) {
+  public function setPoint(Coordinates $point): void {
     $this->point = $point;
   }
 
-  public function getShape() {
+  public function getShape(): string {
     return $this->shape;
   }
 
-  public function setShape($shape) {
+  public function setShape(string $shape): void {
     $this->shape = $shape;
   }
 

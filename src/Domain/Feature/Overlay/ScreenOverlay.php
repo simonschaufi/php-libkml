@@ -5,7 +5,7 @@ namespace LibKml\Domain\Feature\Overlay;
 use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
- * ScreenOverlay class.
+ * This element draws an image overlay fixed to the screen.
  */
 class ScreenOverlay extends Overlay {
 
@@ -19,11 +19,11 @@ class ScreenOverlay extends Overlay {
     $visitor->visitScreenOverlay($this);
   }
 
-  public function getRotation() {
+  public function getRotation(): float {
     return $this->rotation;
   }
 
-  public function setRotation($rotation) {
+  public function setRotation(float $rotation): void {
     $this->rotation = $rotation;
   }
 
