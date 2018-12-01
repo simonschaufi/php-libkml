@@ -16,19 +16,19 @@ class PolyStyle extends ColorStyle {
     $visitor->visitPolyStyle($this);
   }
 
-  public function getFill() {
+  public function getFill(): bool {
     return $this->fill;
   }
 
-  public function setFill($fill) {
+  public function setFill(bool $fill): void {
     $this->fill = $fill;
   }
 
-  public function getOutline() {
+  public function getOutline(): bool {
     return $this->outline;
   }
 
-  public function setOutline($outline) {
+  public function setOutline(bool $outline): void {
     $this->outline = $outline;
   }
 

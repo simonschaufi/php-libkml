@@ -2,60 +2,44 @@
 
 namespace LibKml\Domain\SubStyle;
 
+use LibKml\Domain\FieldType\Color;
 use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
- * ListStyle class.
+ * Specifies how a Feature is displayed in the list view.
  */
 class ListStyle extends SubStyle {
 
   private $listItemType;
   private $bgColor;
-  private $itemIcons = array();
-  private $maxSnippetLines;
+  private $itemIcon;
 
   public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitListStyle($this);
   }
 
-  public function addItemIcon($itemIcon) {
-    $this->itemIcons[] = $itemIcon;
-  }
-
-  public function clearItemIcons() {
-    $this->itemIcons = array();
-  }
-
-  public function getListItemType() {
+  public function getListItemType(): string {
     return $this->listItemType;
   }
 
-  public function setListItemType($listItemType) {
+  public function setListItemType(string $listItemType): void {
     $this->listItemType = $listItemType;
   }
 
-  public function getBgColor() {
+  public function getBgColor(): Color {
     return $this->bgColor;
   }
 
-  public function setBgColor($bgColor) {
+  public function setBgColor(Color $bgColor): void {
     $this->bgColor = $bgColor;
   }
 
-  public function getItemIcons() {
-    return $this->itemIcons;
+  public function getItemIcon(): ItemIcon {
+    return $this->itemIcon;
   }
 
-  public function setItemIcons($itemIcons) {
-    $this->itemIcons = $itemIcons;
-  }
-
-  public function getMaxSnippetLines() {
-    return $this->maxSnippetLines;
-  }
-
-  public function setMaxSnippetLines($maxSnippetLines) {
-    $this->maxSnippetLines = $maxSnippetLines;
+  public function setItemIcon(ItemIcon $itemIcon): void {
+    $this->itemIcon = $itemIcon;
   }
 
 }

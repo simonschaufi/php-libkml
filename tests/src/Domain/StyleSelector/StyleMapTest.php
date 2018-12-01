@@ -40,4 +40,23 @@ class StyleMapTest extends TestCase {
     $this->assertContains($pair2, $this->styleMap->getPairs());
   }
 
+  public function testAddPair() {
+    $pair = new Pair();
+
+    $this->styleMap->addPair($pair);
+
+    $this->assertCount(1, $this->styleMap->getPairs());
+    $this->assertContains($pair, $this->styleMap->getPairs());
+  }
+
+  public function testClearPair() {
+    $pair1 = new Pair();
+    $pair2 = new Pair();
+    $this->styleMap->setPairs([$pair1, $pair2]);
+
+    $this->styleMap->clearPairs();
+
+    $this->assertEmpty($this->styleMap->getPairs());
+  }
+
 }

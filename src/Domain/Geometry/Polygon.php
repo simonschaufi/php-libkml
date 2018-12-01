@@ -43,19 +43,19 @@ class Polygon extends Geometry {
     $this->altitudeMode = $altitudeMode;
   }
 
-  public function getOuterBoundaryIs() {
+  public function getOuterBoundaryIs(): LinearRing {
     return $this->outerBoundaryIs;
   }
 
-  public function setOuterBoundaryIs($outerBoundaryIs) {
+  public function setOuterBoundaryIs(LinearRing $outerBoundaryIs): void {
     $this->outerBoundaryIs = $outerBoundaryIs;
   }
 
-  public function getInnerBoundaryIs() {
+  public function getInnerBoundaryIs(): LinearRing {
     return $this->innerBoundaryIs;
   }
 
-  public function setInnerBoundaryIs($innerBoundaryIs) {
+  public function setInnerBoundaryIs(LinearRing $innerBoundaryIs): void {
     $this->innerBoundaryIs = $innerBoundaryIs;
   }
 

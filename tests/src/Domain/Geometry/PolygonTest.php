@@ -2,6 +2,7 @@
 
 namespace LibKml\Tests\Domain\Geometry;
 
+use LibKml\Domain\Geometry\LinearRing;
 use LibKml\Domain\Geometry\Polygon;
 use LibKml\Domain\KmlObjectVisitorInterface;
 use PHPUnit\Framework\TestCase;
@@ -49,6 +50,22 @@ class PolygonTest extends TestCase {
     $this->polygon->setAltitudeMode($altitudeMode);
 
     $this->assertEquals($altitudeMode, $this->polygon->getAltitudeMode());
+  }
+
+  public function testOuterBoundaryIsField() {
+    $outerBoundaryIs = new LinearRing();
+
+    $this->polygon->setOuterBoundaryIs($outerBoundaryIs);
+
+    $this->assertEquals($outerBoundaryIs, $this->polygon->getOuterBoundaryIs());
+  }
+
+  public function testInnerBoundaryIsField() {
+    $innerBoundaryIs = new LinearRing();
+
+    $this->polygon->setInnerBoundaryIs($innerBoundaryIs);
+
+    $this->assertEquals($innerBoundaryIs, $this->polygon->getInnerBoundaryIs());
   }
 
 }

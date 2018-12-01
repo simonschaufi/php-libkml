@@ -2,6 +2,7 @@
 
 namespace LibKml\Tests\Domain;
 
+use LibKml\Domain\FieldType\HttpQuery;
 use LibKml\Domain\FieldType\RefreshMode;
 use LibKml\Domain\FieldType\ViewRefreshMode;
 use LibKml\Domain\Icon;
@@ -57,6 +58,30 @@ class IconTest extends TestCase {
     $this->icon->setViewRefreshTime(23);
 
     $this->assertEquals(23, $this->icon->getViewRefreshTime());
+  }
+
+  public function testViewBoundScaleField() {
+    $viewBoundScale = 3.67;
+
+    $this->icon->setViewBoundScale($viewBoundScale);
+
+    $this->assertEquals($viewBoundScale, $this->icon->getViewBoundScale());
+  }
+
+  public function testViewFormatField() {
+    $viewFormat = "BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]";
+
+    $this->icon->setViewFormat($viewFormat);
+
+    $this->assertEquals($viewFormat, $this->icon->getViewFormat());
+  }
+
+  public function testHttpQueryField() {
+    $httpQuery = new HttpQuery();
+
+    $this->icon->setHttpQuery($httpQuery);
+
+    $this->assertEquals($httpQuery, $this->icon->getHttpQuery());
   }
 
 }
