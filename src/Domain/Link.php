@@ -27,11 +27,11 @@ class Link extends KmlObject {
     $visitor->visitLink($this);
   }
 
-  public function getHref() {
+  public function getHref(): string {
     return $this->href;
   }
 
-  public function setHref($href) {
+  public function setHref(string  $href) {
     $this->href = $href;
   }
 

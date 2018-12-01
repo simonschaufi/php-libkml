@@ -7,6 +7,7 @@ use LibKml\Domain\Feature\Overlay\PhotoOverlay;
 use LibKml\Domain\Feature\Overlay\ViewVolume;
 
 use LibKml\Domain\FieldType\Coordinates;
+use LibKml\Domain\KmlObjectVisitorInterface;
 use PHPUnit\Framework\TestCase;
 
 class PhotoOverlayTest extends TestCase {
@@ -18,6 +19,16 @@ class PhotoOverlayTest extends TestCase {
 
   public function setUp() {
     $this->photoOverlay = new PhotoOverlay();
+  }
+
+  public function testAccept() {
+    $objectVisitor = $this->createMock(KmlObjectVisitorInterface::class);
+
+    $objectVisitor->expects($this->once())
+      ->method('visitPhotoOverlay')
+      ->with($this->equalTo($this->photoOverlay));
+
+    $this->photoOverlay->accept($objectVisitor);
   }
 
   public function testRotationField() {

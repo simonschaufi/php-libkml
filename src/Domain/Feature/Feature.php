@@ -5,9 +5,10 @@ namespace LibKml\Domain\Feature;
 use LibKml\Domain\AbstractView\AbstractView;
 use LibKml\Domain\FieldType\Atom\Author;
 use LibKml\Domain\KmlObject;
-use LibKml\Domain\Link\Link;
+use LibKml\Domain\FieldType\Atom\Link;
 use LibKml\Domain\Region;
 use LibKml\Domain\StyleSelector\StyleSelector;
+use LibKml\Domain\TimePrimitive\TimePrimitive;
 
 /**
  * Feature abstract class.
@@ -53,7 +54,7 @@ abstract class Feature extends KmlObject {
     return $this->name;
   }
 
-  public function setName(string $name) {
+  public function setName(string $name): void {
     $this->name = $name;
   }
 
@@ -109,7 +110,7 @@ abstract class Feature extends KmlObject {
     return $this->phoneNumber;
   }
 
-  public function setPhoneNumber(string $phoneNumber) {
+  public function setPhoneNumber(string $phoneNumber): void {
     $this->phoneNumber = $phoneNumber;
   }
 
@@ -117,7 +118,7 @@ abstract class Feature extends KmlObject {
     return $this->snippet;
   }
 
-  public function setSnippet(string $snippet) {
+  public function setSnippet(string $snippet): void {
     $this->snippet = $snippet;
   }
 
@@ -125,7 +126,7 @@ abstract class Feature extends KmlObject {
     return $this->description;
   }
 
-  public function setDescription(string $description) {
+  public function setDescription(string $description): void {
     $this->description = $description;
   }
 
@@ -133,39 +134,39 @@ abstract class Feature extends KmlObject {
     return $this->abstractView;
   }
 
-  public function setAbstractView(AbstractView $abstractView) {
+  public function setAbstractView(AbstractView $abstractView): void {
     $this->abstractView = $abstractView;
   }
 
-  public function getTimePrimitive() {
+  public function getTimePrimitive(): TimePrimitive {
     return $this->timePrimitive;
   }
 
-  public function setTimePrimitive($timePrimitive) {
+  public function setTimePrimitive(TimePrimitive $timePrimitive): void {
     $this->timePrimitive = $timePrimitive;
   }
 
-  public function getStyleUrl() {
+  public function getStyleUrl(): string {
     return $this->styleUrl;
   }
 
-  public function setStyleUrl($styleUrl) {
+  public function setStyleUrl(string $styleUrl): void {
     $this->styleUrl = $styleUrl;
   }
 
-  public function getStyleSelector() {
+  public function getStyleSelector(): array {
     return $this->styleSelector;
   }
 
-  public function setStyleSelector(array $styleSelector) {
+  public function setStyleSelector(array $styleSelector): void {
     $this->styleSelector = $styleSelector;
   }
 
-  public function getRegion() {
+  public function getRegion(): Region {
     return $this->region;
   }
 
-  public function setRegion(Region $region) {
+  public function setRegion(Region $region): void {
     $this->region = $region;
   }
 

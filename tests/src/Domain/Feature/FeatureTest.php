@@ -3,9 +3,14 @@
 namespace LibKml\Tests\Domain\Feature;
 
 
+use LibKml\Domain\AbstractView\AbstractView;
 use LibKml\Domain\Feature\Feature;
 use LibKml\Domain\FieldType\Atom\Author;
+use LibKml\Domain\FieldType\Atom\Link;
 use LibKml\Domain\KmlObjectVisitorInterface;
+use LibKml\Domain\Region;
+use LibKml\Domain\StyleSelector\StyleSelector;
+use LibKml\Domain\TimePrimitive\TimePrimitive;
 use PHPUnit\Framework\TestCase;
 
 class FeatureTest extends TestCase {
@@ -63,6 +68,14 @@ class FeatureTest extends TestCase {
     $this->assertEquals($address, $this->feature->getAddress());
   }
 
+  public function testLinkField() {
+    $link = new Link();
+
+    $this->feature->setLink($link);
+
+    $this->assertEquals($link, $this->feature->getLink());
+  }
+
   public function testPhoneNumberField() {
     $phoneNumber = "tel:+449999999999";
 
@@ -85,6 +98,64 @@ class FeatureTest extends TestCase {
     $this->feature->setDescription($description);
 
     $this->assertEquals($description, $this->feature->getDescription());
+  }
+
+  public function testAbstractViewField() {
+    $abstractView = new class extends AbstractView {
+      public function accept(KmlObjectVisitorInterface $visitor): void {
+      }
+    };
+
+    $this->feature->setAbstractView($abstractView);
+
+    $this->assertEquals($abstractView, $this->feature->getAbstractView());
+  }
+
+  public function testTimePrimitiveField() {
+    $timePrimitive = new class extends TimePrimitive {
+      public function accept(KmlObjectVisitorInterface $visitor): void {
+      }
+    };
+
+    $this->feature->setTimePrimitive($timePrimitive);
+
+    $this->assertEquals($timePrimitive, $this->feature->getTimePrimitive());
+  }
+
+  public function testStyleUrlField() {
+    $styleUrl = "http://someserver.com/somestylefile.xml#restaurant";
+
+    $this->feature->setStyleUrl($styleUrl);
+
+    $this->assertEquals($styleUrl, $this->feature->getStyleUrl());
+  }
+
+  public function testStyleSelectorField() {
+    $styleSelector1 = new class extends StyleSelector {
+      public function accept(KmlObjectVisitorInterface $visitor): void {
+      }
+    };
+
+    $styleSelector2 = new class extends StyleSelector {
+      public function accept(KmlObjectVisitorInterface $visitor): void {
+      }
+    };
+
+    $styleSelectors = [$styleSelector1, $styleSelector2];
+
+    $this->feature->setStyleSelector($styleSelectors);
+
+    $this->assertCount(2, $this->feature->getStyleSelector());
+    $this->assertContains($styleSelector1, $this->feature->getStyleSelector());
+    $this->assertContains($styleSelector2, $this->feature->getStyleSelector());
+  }
+
+  public function testRegionField() {
+    $region = new Region();
+
+    $this->feature->setRegion($region);
+
+    $this->assertEquals($region, $this->feature->getRegion());
   }
 
 }

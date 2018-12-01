@@ -2,6 +2,7 @@
 
 namespace LibKml\Domain\Feature\Overlay;
 
+use LibKml\Domain\FieldType\Vec2;
 use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
@@ -27,35 +28,35 @@ class ScreenOverlay extends Overlay {
     $this->rotation = $rotation;
   }
 
-  public function getOverlayXY() {
+  public function getOverlayXY(): Vec2 {
     return $this->overlayXY;
   }
 
-  public function setOverlayXY($overlayXY) {
+  public function setOverlayXY(Vec2 $overlayXY): void {
     $this->overlayXY = $overlayXY;
   }
 
-  public function getScreenXY() {
+  public function getScreenXY(): Vec2 {
     return $this->screenXY;
   }
 
-  public function setScreenXY($screenXY) {
+  public function setScreenXY(Vec2 $screenXY): void {
     $this->screenXY = $screenXY;
   }
 
-  public function getRotationXY() {
+  public function getRotationXY(): Vec2 {
     return $this->rotationXY;
   }
 
-  public function setRotationXY($rotationXY) {
+  public function setRotationXY(Vec2 $rotationXY): void {
     $this->rotationXY = $rotationXY;
   }
 
-  public function getSize() {
+  public function getSize(): Vec2 {
     return $this->size;
   }
 
-  public function setSize($size) {
+  public function setSize(Vec2 $size): void {
     $this->size = $size;
   }
 
