@@ -52,13 +52,13 @@ class FeatureTest extends TestCase {
     $this->assertEquals($open, $this->feature->getOpen());
   }
 
-  public function testAuthorField() {
+  public function testAtomAuthorField() {
     $author = new Author();
     $author->setName("John Smith");
 
-    $this->feature->setAuthor($author);
+    $this->feature->setAtomAuthor($author);
 
-    $this->assertEquals($author, $this->feature->getAuthor());
+    $this->assertEquals($author, $this->feature->getAtomAuthor());
   }
 
   public function testAddressField() {
@@ -69,12 +69,12 @@ class FeatureTest extends TestCase {
     $this->assertEquals($address, $this->feature->getAddress());
   }
 
-  public function testLinkField() {
+  public function testAtomLinkField() {
     $link = new Link();
 
-    $this->feature->setLink($link);
+    $this->feature->setAtomLink($link);
 
-    $this->assertEquals($link, $this->feature->getLink());
+    $this->assertEquals($link, $this->feature->getAtomLink());
   }
 
   public function testPhoneNumberField() {

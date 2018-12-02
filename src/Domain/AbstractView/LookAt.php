@@ -5,7 +5,7 @@ namespace LibKml\Domain\AbstractView;
 use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
- * LookAt class.
+ * Defines a virtual camera that is associated with a Feature.
  */
 class LookAt extends AbstractView {
 

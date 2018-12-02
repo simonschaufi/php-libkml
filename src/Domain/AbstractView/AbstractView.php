@@ -2,6 +2,7 @@
 
 namespace LibKml\Domain\AbstractView;
 
+use LibKml\Domain\Feature\AltitudeMode;
 use LibKml\Domain\KmlObject;
 
 /**
@@ -9,13 +10,13 @@ use LibKml\Domain\KmlObject;
  */
 abstract class AbstractView extends KmlObject {
 
-  private $longitude;
-  private $latitude;
-  private $altitude;
+  private $longitude = 0;
+  private $latitude = 0;
+  private $altitude = 0;
   private $heading = 0;
-  private $tilt;
-  private $roll;
-  private $altitudeMode;
+  private $tilt = 0;
+  private $roll = 0;
+  private $altitudeMode = "relativeToGround";
 
   public function getLongitude(): float {
     return $this->longitude;

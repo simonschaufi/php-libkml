@@ -2,8 +2,6 @@
 
 namespace LibKml\Domain;
 
-use LibKml\Domain\FieldType\HttpQuery;
-
 /**
  * Defines an image associated with an Icon style or overlay.
  */
@@ -81,11 +79,11 @@ class Icon extends KmlObject {
     $this->viewFormat = $viewFormat;
   }
 
-  public function getHttpQuery(): HttpQuery {
+  public function getHttpQuery(): string {
     return $this->httpQuery;
   }
 
-  public function setHttpQuery(HttpQuery $httpQuery): void {
+  public function setHttpQuery(string $httpQuery): void {
     $this->httpQuery = $httpQuery;
   }
 

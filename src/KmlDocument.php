@@ -9,7 +9,7 @@ use LibKml\Domain\KmlObject;
  */
 class KmlDocument {
 
-  private $elements = array();
+  private $elements = [];
 
   public function addElement(KmlObject $element) {
     $this->elements[] = $element;

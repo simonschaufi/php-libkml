@@ -2,7 +2,6 @@
 
 namespace LibKml\Tests\Domain;
 
-use LibKml\Domain\FieldType\HttpQuery;
 use LibKml\Domain\FieldType\RefreshMode;
 use LibKml\Domain\FieldType\ViewRefreshMode;
 use LibKml\Domain\KmlObjectVisitorInterface;
@@ -53,7 +52,7 @@ class LinkTest extends TestCase {
   }
 
   public function testViewRefreshModeField() {
-    $this->link->setViewRefreshMode(RefreshMode::ON_EXPIRE);
+    $this->link->setViewRefreshMode(ViewRefreshMode::ON_REQUEST);
 
     $this->assertEquals(ViewRefreshMode::ON_REQUEST, $this->link->getViewRefreshMode());
   }
@@ -81,7 +80,7 @@ class LinkTest extends TestCase {
   }
 
   public function testHttpQueryField() {
-    $httpQuery = new HttpQuery();
+    $httpQuery = "gv=[clientVersion]&kv=[kmlVersion]&l=[language]";
 
     $this->link->setHttpQuery($httpQuery);
 

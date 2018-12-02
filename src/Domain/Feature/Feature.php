@@ -19,8 +19,8 @@ abstract class Feature extends KmlObject {
   protected $name;
   protected $visibility;
   protected $open;
-  protected $author;
-  protected $link;
+  protected $atomAuthor;
+  protected $atomLink;
   protected $address;
   protected $addressDetails;
   protected $phoneNumber;
@@ -65,12 +65,12 @@ abstract class Feature extends KmlObject {
     $this->open = $open;
   }
 
-  public function getAuthor(): Author {
-    return $this->author;
+  public function getAtomAuthor(): Author {
+    return $this->atomAuthor;
   }
 
-  public function setAuthor(Author $autor): void {
-    $this->author = $autor;
+  public function setAtomAuthor(Author $autor): void {
+    $this->atomAuthor = $autor;
   }
 
   public function getAddress(): string {
@@ -81,12 +81,12 @@ abstract class Feature extends KmlObject {
     $this->address = $address;
   }
 
-  public function getLink(): Link {
-    return $this->link;
+  public function getAtomLink(): Link {
+    return $this->atomLink;
   }
 
-  public function setLink(Link $link): void {
-    $this->link = $link;
+  public function setAtomLink(Link $atomLink): void {
+    $this->atomLink = $atomLink;
   }
 
   public function getAddressDetails() {

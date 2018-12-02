@@ -3,7 +3,9 @@
 namespace LibKml\Tests\Domain\Feature;
 
 use LibKml\Domain\Feature\NetworkLink;
+use LibKml\Domain\Link;
 use LibKml\Domain\KmlObjectVisitorInterface;
+use LibKml\KmlDocument;
 use PHPUnit\Framework\TestCase;
 
 class NetworkLinkTest extends TestCase {
@@ -42,5 +44,21 @@ class NetworkLinkTest extends TestCase {
 
     $this->assertEquals($flyToView, $this->networkLink->getFlyToView());
   }
-  
+
+  public function testLinkField() {
+    $link = new Link();
+
+    $this->networkLink->setLink($link);
+
+    $this->assertEquals($link, $this->networkLink->getLink());
+  }
+
+  public function testKmlDocumentField() {
+    $kmlDocument = new KmlDocument();
+
+    $this->networkLink->setKmlDocument($kmlDocument);
+
+    $this->assertEquals($kmlDocument, $this->networkLink->getKmlDocument());
+  }
+
 }
