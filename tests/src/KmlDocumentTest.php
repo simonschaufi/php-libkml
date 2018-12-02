@@ -2,8 +2,9 @@
 
 namespace LibKml\Tests;
 
-use LibKml\Domain\Feature\Placemark;
-use LibKml\Domain\Geometry\Polygon;
+use LibKml\Domain\Feature\Feature;
+use LibKml\Domain\KmlObjectVisitorInterface;
+use LibKml\Domain\NetworkLinkControl;
 use LibKml\KmlDocument;
 use PHPUnit\Framework\TestCase;
 
@@ -15,25 +16,30 @@ class KmlDocumentTest extends TestCase {
     $this->kmlDocument = new KmlDocument();
   }
 
-  public function testAddElement() {
-    $placemark = new Placemark();
-    $initialElements = count($this->kmlDocument->getElements());
+  public function testHintField() {
+    $hint = "target=sky";
 
-    $this->kmlDocument->addElement($placemark);
+    $this->kmlDocument->setHint($hint);
 
-    $this->assertContains($placemark, $this->kmlDocument->getElements());
-    $this->assertCount($initialElements + 1, $this->kmlDocument->getElements());
+    $this->assertEquals($hint, $this->kmlDocument->getHint());
   }
 
-  public function testElementsField() {
-    $placemark = new Placemark();
-    $polygon = new Polygon();
+  public function testNetworkLinkControlField() {
+    $networkLinkControl = new NetworkLinkControl();
 
-    $this->kmlDocument->setElements(array($placemark, $polygon));
+    $this->kmlDocument->setNetworkLinkControl($networkLinkControl);
 
-    $this->assertContains($placemark, $this->kmlDocument->getElements());
-    $this->assertContains($polygon, $this->kmlDocument->getElements());
-    $this->assertCount(2, $this->kmlDocument->getElements());
+    $this->assertEquals($networkLinkControl, $this->kmlDocument->getNetworkLinkControl());
   }
 
+  public function testFeatureField() {
+    $feature = new class extends Feature {
+      public function accept(KmlObjectVisitorInterface $visitor): void {
+      }
+    };
+
+    $this->kmlDocument->setFeature($feature);
+
+    $this->assertEquals($feature, $this->kmlDocument->getFeature());
+  }
 }

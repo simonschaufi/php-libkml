@@ -7,9 +7,9 @@ Feature: Parse <Folder>
     Given a KML document with a Folder in "tests/kml/folder.kml"
     When I parse the KML document
     Then I should get a KmlDocument object containing one Folder
-    And the Folder will have the following data:
+    And the Folder will have the following properties:
       | property    | value                 |
-      | id          | folder1            |
+      | id          | folder1               |
       | targetId    | target1               |
       | name        | My office             |
       | visibility  | 1                     |

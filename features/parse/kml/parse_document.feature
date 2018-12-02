@@ -7,9 +7,9 @@ Feature: Parse <Document>
     Given a KML document with a Document in "tests/kml/document.kml"
     When I parse the KML document
     Then I should get a KmlDocument object containing one Document
-    And the Document will have the following data:
+    And the Document should contain the following properties:
       | property    | value                 |
-      | id          | document1            |
+      | id          | document1             |
       | targetId    | target1               |
       | name        | My office             |
       | visibility  | 1                     |

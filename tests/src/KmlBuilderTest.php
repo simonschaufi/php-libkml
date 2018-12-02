@@ -12,7 +12,8 @@ class KmlBuilderTest extends TestCase {
     $kmlDocument = KmlBuilder::build();
 
     $this->assertInstanceOf(KmlDocument::class, $kmlDocument);
-    $this->assertEmpty($kmlDocument->getElements());
+    $this->assertNull($kmlDocument->getHint());
+    $this->assertNull($kmlDocument->getFeature());
   }
 
 }

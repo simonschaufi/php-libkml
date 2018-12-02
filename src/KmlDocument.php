@@ -2,25 +2,40 @@
 
 namespace LibKml;
 
-use LibKml\Domain\KmlObject;
+use LibKml\Domain\Feature\Feature;
+use LibKml\Domain\NetworkLinkControl;
 
 /**
- * Defines a KML document.
+ * The root element of a KML file.
  */
 class KmlDocument {
 
-  private $elements = [];
+  private $hint;
+  private $networkLinkControl;
+  private $feature;
 
-  public function addElement(KmlObject $element) {
-    $this->elements[] = $element;
+  public function getHint() {
+    return $this->hint;
   }
 
-  public function getElements(): array {
-    return $this->elements;
+  public function setHint(string $hint): void {
+    $this->hint = $hint;
   }
 
-  public function setElements(array $elements) {
-    $this->elements = $elements;
+  public function getNetworkLinkControl(): NetworkLinkControl {
+    return $this->networkLinkControl;
+  }
+
+  public function setNetworkLinkControl(NetworkLinkControl $networkLinkControl): void {
+    $this->networkLinkControl = $networkLinkControl;
+  }
+
+  public function getFeature() {
+    return $this->feature;
+  }
+
+  public function setFeature(Feature $feature): void {
+    $this->feature = $feature;
   }
 
 }

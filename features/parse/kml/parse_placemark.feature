@@ -7,7 +7,7 @@ Feature: Parse <Placemark>
     Given a KML document with a Placemark in "tests/kml/placemark.kml"
     When I parse the KML document
     Then I should get a KmlDocument object containing one Placemark
-    And the Placemark will have the following data:
+    And the Placemark should have the following properties:
       | property    | value                 |
       | id          | placemark1            |
       | targetId    | target1               |

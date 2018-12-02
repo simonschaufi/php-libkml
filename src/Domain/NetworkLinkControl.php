@@ -5,12 +5,12 @@ namespace LibKml\Domain;
 use LibKml\Domain\AbstractView\AbstractView;
 
 /**
- * NetworkLinkControl class.
+ * Controls the behavior of files fetched by a NetworkLink.
  */
 class NetworkLinkControl {
 
-  private $minRefreshPeriod;
-  private $maxSessionLength;
+  private $minRefreshPeriod = 0;
+  private $maxSessionLength = -1;
   private $cookie;
   private $message;
   private $linkName;

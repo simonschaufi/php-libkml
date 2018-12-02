@@ -16,7 +16,7 @@ abstract class KmlObjectParser {
     return $kmlObject;
   }
 
-  protected abstract function buildKmlObject(): KmlObject;
+  abstract protected function buildKmlObject(): KmlObject;
 
   protected function loadValues(KmlObject &$kmlObject, SimpleXMLElement $element): void {
     if (isset($element->attributes()["id"])) {

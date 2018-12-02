@@ -17,8 +17,8 @@ use LibKml\Domain\TimePrimitive\TimePrimitive;
 abstract class Feature extends KmlObject {
 
   protected $name;
-  protected $visibility;
-  protected $open;
+  protected $visibility = TRUE;
+  protected $open = FALSE;
   protected $atomAuthor;
   protected $atomLink;
   protected $address;
