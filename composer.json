@@ -13,11 +13,13 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "php": "^7.1"
+    "php": "^7.1",
+    "ext-simplexml": "*"
   },
   "require-dev": {
     "phpunit/phpunit": "^7.4",
-    "drupal/coder": "^8.2.12"
+    "drupal/coder": "^8.2.12",
+    "behat/behat": "^3.5"
   },
   "autoload": {
     "psr-4": {
@@ -31,7 +33,10 @@
   },
   "scripts": {
     "clean": "rm -Rf reports vendor",
-    "test": "phpunit --bootstrap vendor/autoload.php -c phpunit.xml",
+    "test": "phpunit --colors=always --bootstrap vendor/autoload.php -c phpunit.xml",
+      "test-ci": "phpunit --colors=never --bootstrap vendor/autoload.php -c phpunit.xml",
+    "acceptance-test": "behat --colors --no-snippets ",
+    "acceptance-test-ci": "behat --no-colors --no-snippets  --format junit --out reports",
     "phpcs": "phpcs --bootstrap=vendor/autoload.php --standard=vendor/drupal/coder/coder_sniffer/Drupal --exclude=Drupal.Commenting.FunctionComment src",
     "phpcbf": "phpcbf --bootstrap=vendor/autoload.php --standard=vendor/drupal/coder/coder_sniffer/Drupal --exclude=Drupal.Commenting.FunctionComment,Drupal.Commenting.ClassComment src"
   }
