@@ -22,7 +22,7 @@ class KmlDocument {
     $this->hint = $hint;
   }
 
-  public function getNetworkLinkControl(): NetworkLinkControl {
+  public function getNetworkLinkControl() {
     return $this->networkLinkControl;
   }
 

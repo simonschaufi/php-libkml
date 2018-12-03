@@ -8,8 +8,17 @@ use PHPUnit\Framework\TestCase;
 
 class KmlBuilderTest extends TestCase {
 
+  /**
+   * @var KmlBuilder
+   */
+  protected $kmlBuilder;
+
+  public function setUp() {
+    $this->kmlBuilder = new KmlBuilder();
+  }
+
   public function testBuild() {
-    $kmlDocument = KmlBuilder::build();
+    $kmlDocument = $this->kmlBuilder->build();
 
     $this->assertInstanceOf(KmlDocument::class, $kmlDocument);
     $this->assertNull($kmlDocument->getHint());

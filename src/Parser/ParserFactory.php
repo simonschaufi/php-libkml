@@ -8,8 +8,10 @@ class ParserFactory {
 
   const KML_STRING = "kml";
 
+  private $parsers;
+
   /**
-   * Creates a parser for the type argument.
+   * Returns a parser for the type argument.
    *
    * @param string $type The type of data to be parsed
    *
@@ -17,11 +19,13 @@ class ParserFactory {
    *
    * @throws UnsupportedFormat Parse target not supported.
    */
-  public static function create(string $type): ParserInterface {
+  public function getParser(string $type): ParserInterface {
     switch ($type) {
       case self::KML_STRING:
-        return new KmlParser();
-
+        if (!isset($this->parsers[self::KML_STRING])) {
+          $this->parsers[self::KML_STRING] = new KmlParser();
+        }
+        return $this->parsers[self::KML_STRING];
       default:
         throw new UnsupportedFormat();
     }

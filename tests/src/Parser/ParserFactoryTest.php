@@ -9,8 +9,17 @@ use PHPUnit\Framework\TestCase;
 
 class ParserFactoryTest extends TestCase {
 
+  /**
+   * @var ParserFactory
+   */
+  protected $parserFactory;
+
+  public function setUp() {
+    $this->parserFactory = new ParserFactory();
+  }
+
   public function testCreateKmlParser() {
-    $parser = ParserFactory::create(ParserFactory::KML_STRING);
+    $parser = $this->parserFactory->getParser(ParserFactory::KML_STRING);
 
     $this->assertInstanceOf(KmlParser::class, $parser);
   }
@@ -18,7 +27,7 @@ class ParserFactoryTest extends TestCase {
   public function testUnsupportedType() {
     $this->expectException(UnsupportedFormat::class);
 
-    ParserFactory::create("unsupported");
+    $this->parserFactory->getParser("unsupported");
   }
 
 }

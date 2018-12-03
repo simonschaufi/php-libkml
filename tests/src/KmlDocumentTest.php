@@ -10,6 +10,9 @@ use PHPUnit\Framework\TestCase;
 
 class KmlDocumentTest extends TestCase {
 
+  /**
+   * @var KmlDocument
+   */
   protected $kmlDocument;
 
   public function setUp() {
