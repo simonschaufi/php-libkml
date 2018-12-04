@@ -16,11 +16,11 @@ class Placemark extends Feature {
     $visitor->visitPlacemark($this);
   }
 
-  public function getGeometry(): Geometry {
+  public function getGeometry(): ?Geometry {
     return $this->geometry;
   }
 
-  public function setGeometry(Geometry $geometry): void {
+  public function setGeometry(?Geometry $geometry): void {
     $this->geometry = $geometry;
   }
 

@@ -38,6 +38,10 @@ class PlacemarkParserTest extends TestCase {
 
     $this->assertEquals("placemark-1", $kmlObject->getId());
     $this->assertEquals("target-1", $kmlObject->getTargetId());
+    $this->assertEquals("My office", $kmlObject->getName());
+
+    $this->assertEquals("#myIconStyle", $kmlObject->getStyleUrl());
+    $this->assertInstanceOf(Point::class, $kmlObject->getGeometry());
   }
 
 }

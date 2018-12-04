@@ -11,6 +11,19 @@ class Coordinates {
   private $latitude = 0;
   private $altitude = 0;
 
+  public static function fromLonLatAlt($longitude, $latitude, $altitude): Coordinates {
+    $coordinates = self::fromLonLat($longitude, $latitude);
+    $coordinates->altitude = $altitude;
+    return $coordinates;
+  }
+
+  public static function fromLonLat($longitude, $latitude): Coordinates {
+    $coordinates = new Coordinates();
+    $coordinates->longitude = $longitude;
+    $coordinates->latitude = $latitude;
+    return $coordinates;
+  }
+
   public function getLongitude(): float {
     return $this->longitude;
   }

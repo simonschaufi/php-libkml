@@ -10,20 +10,12 @@ use LibKml\Domain\KmlObjectVisitorInterface;
  */
 class Point extends Geometry {
 
-  private $extrude;
+  private $extrude = 0;
   private $altitudeMode;
   private $coordinates;
 
   public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitPoint($this);
-  }
-
-  public function addCoordinates(Coordinates $coordinate): void {
-    $this->coordinates[] = $coordinate;
-  }
-
-  public function clearCoordinates(): void {
-    $this->coordinates = array();
   }
 
   public function getExtrude(): bool {
@@ -42,11 +34,11 @@ class Point extends Geometry {
     $this->altitudeMode = $altitudeMode;
   }
 
-  public function getCoordinates(): array {
+  public function getCoordinates(): ?Coordinates {
     return $this->coordinates;
   }
 
-  public function setCoordinates(array $coordinates): void {
+  public function setCoordinates(?Coordinates $coordinates): void {
     $this->coordinates = $coordinates;
   }
 

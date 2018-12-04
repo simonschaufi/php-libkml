@@ -14,11 +14,17 @@ abstract class FeatureParser extends KmlObjectParser {
     if (isset($element->name)) {
       $kmlObject->setName($element->name);
     }
+
     if (isset($element->open)) {
       $kmlObject->setOpen((bool) $element->open);
     }
+
     if (isset($element->description)) {
       $kmlObject->setDescription($element->description);
+    }
+
+    if (isset($element->styleUrl)) {
+      $kmlObject->setStyleUrl($element->styleUrl);
     }
   }
 

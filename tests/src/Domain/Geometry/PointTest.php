@@ -45,34 +45,11 @@ class PointTest extends TestCase {
   }
 
   public function testCoordinatesField() {
-    $coordinates1 = new Coordinates();
-    $coordinates2 = new Coordinates();
-
-    $coordinates = [$coordinates1, $coordinates2];
+    $coordinates = new Coordinates();
 
     $this->point->setCoordinates($coordinates);
 
-    $this->assertCount(2, $this->point->getCoordinates());
-    $this->assertContains($coordinates1, $this->point->getCoordinates());
-    $this->assertContains($coordinates2, $this->point->getCoordinates());
+    $this->assertEquals($coordinates, $this->point->getCoordinates());
   }
 
-  public function testAddCoordinate() {
-    $coordinates = new Coordinates();
-
-    $this->point->addCoordinates($coordinates);
-
-    $this->assertCount(1, $this->point->getCoordinates());
-    $this->assertContains($coordinates, $this->point->getCoordinates());
-  }
-
-  public function testClearCoordinates() {
-    $coordinates1 = new Coordinates();
-    $coordinates2 = new Coordinates();
-    $this->point->setCoordinates([$coordinates1, $coordinates2]);
-
-    $this->point->clearCoordinates();
-
-    $this->assertEmpty($this->point->getCoordinates());
-  }
 }

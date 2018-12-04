@@ -3,11 +3,15 @@
 namespace LibKml\Reader\Kml;
 
 use LibKml\Reader\Kml\Feature\PlacemarkParser;
+use LibKml\Reader\Kml\Geometry\PointParser;
 
 class KmlElementParserFactory {
 
   const LINK = "Link";
+
   const PLACEMARK = "Placemark";
+
+  const POINT = "Point";
 
   private static $instance;
 
@@ -32,6 +36,10 @@ class KmlElementParserFactory {
 
         case self::PLACEMARK:
           $this->parsers[$name] = new PlacemarkParser();
+          break;
+
+        case self::POINT:
+          $this->parsers[$name] = new PointParser();
           break;
       }
     }
