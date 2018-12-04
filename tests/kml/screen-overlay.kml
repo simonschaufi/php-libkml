@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <ScreenOverlay>
+    <name>Centered icon</name>
+    <Icon>
+      <href>http://www.google.com/intl/en_ALL/images/logo.gif</href>
+    </Icon>
+    <!-- put the center of the image -->
+    <overlayXY x="0.5" y="0.5" xunits="fraction" yunits="fraction" />
+    <!-- at the center of the screen -->
+    <screenXY x="0.5" y="0.5" xunits="fraction" yunits="fraction" />
+  </ScreenOverlay>
+</kml>

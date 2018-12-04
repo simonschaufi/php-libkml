@@ -1,8 +1,8 @@
 default:
   suites:
-    default:
+    parser:
       contexts:
-        - ParserKmlContext
+        - LibKml\Tests\Bdd\Read\Kml\ParserKmlContext
   extensions:
     LeanPHP\Behat\CodeCoverage\Extension:
       drivers:
@@ -13,6 +13,6 @@ default:
             directories:
               'src': ~
       report:
-        format:   clover
+        format: clover
         options:
           target: reports/behat-coverage.xml
