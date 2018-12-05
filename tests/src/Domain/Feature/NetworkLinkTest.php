@@ -3,9 +3,9 @@
 namespace LibKml\Tests\Domain\Feature;
 
 use LibKml\Domain\Feature\NetworkLink;
+use LibKml\Domain\KmlDocument;
 use LibKml\Domain\Link;
 use LibKml\Domain\KmlObjectVisitorInterface;
-use LibKml\KmlDocument;
 use PHPUnit\Framework\TestCase;
 
 class NetworkLinkTest extends TestCase {

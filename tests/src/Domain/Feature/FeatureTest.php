@@ -2,7 +2,6 @@
 
 namespace LibKml\Tests\Domain\Feature;
 
-
 use LibKml\Domain\AbstractView\AbstractView;
 use LibKml\Domain\Feature\ExtendedData\ExtendedData;
 use LibKml\Domain\Feature\Feature;
@@ -107,9 +106,9 @@ class FeatureTest extends TestCase {
       }
     };
 
-    $this->feature->setAbstractView($abstractView);
+    $this->feature->setView($abstractView);
 
-    $this->assertEquals($abstractView, $this->feature->getAbstractView());
+    $this->assertEquals($abstractView, $this->feature->getView());
   }
 
   public function testTimePrimitiveField() {
@@ -144,11 +143,11 @@ class FeatureTest extends TestCase {
 
     $styleSelectors = [$styleSelector1, $styleSelector2];
 
-    $this->feature->setStyleSelector($styleSelectors);
+    $this->feature->setStyleSelectors($styleSelectors);
 
-    $this->assertCount(2, $this->feature->getStyleSelector());
-    $this->assertContains($styleSelector1, $this->feature->getStyleSelector());
-    $this->assertContains($styleSelector2, $this->feature->getStyleSelector());
+    $this->assertCount(2, $this->feature->getStyleSelectors());
+    $this->assertContains($styleSelector1, $this->feature->getStyleSelectors());
+    $this->assertContains($styleSelector2, $this->feature->getStyleSelectors());
   }
 
   public function testAddStyleSelector() {
@@ -156,12 +155,12 @@ class FeatureTest extends TestCase {
       public function accept(KmlObjectVisitorInterface $visitor): void {
       }
     };
-    $initial = count($this->feature->getStyleSelector());
+    $initial = count($this->feature->getStyleSelectors());
 
     $this->feature->addStyleSelector($styleSelector);
 
-    $this->assertContains($styleSelector, $this->feature->getStyleSelector());
-    $this->assertCount($initial + 1, $this->feature->getStyleSelector());
+    $this->assertContains($styleSelector, $this->feature->getStyleSelectors());
+    $this->assertCount($initial + 1, $this->feature->getStyleSelectors());
   }
 
   public function testClearStyleSelector() {
@@ -175,11 +174,11 @@ class FeatureTest extends TestCase {
     };
     $styleSelector = [$styleSelector1, $styleSelector2];
 
-    $this->feature->setStyleSelector($styleSelector);
+    $this->feature->setStyleSelectors($styleSelector);
 
     $this->feature->clearStyleSelectors();
 
-    $this->assertCount(0, $this->feature->getStyleSelector());
+    $this->assertCount(0, $this->feature->getStyleSelectors());
   }
 
   public function testRegionField() {

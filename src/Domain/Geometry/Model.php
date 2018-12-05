@@ -2,10 +2,12 @@
 
 namespace LibKml\Domain\Geometry;
 
+use LibKml\Domain\FieldType\AltitudeMode;
+use LibKml\Domain\FieldType\Coordinates;
+use LibKml\Domain\FieldType\Orientation;
+use LibKml\Domain\FieldType\ResourceMap;
 use LibKml\Domain\KmlObjectVisitorInterface;
 use LibKml\Domain\Link;
-use LibKml\Domain\Location;
-use LibKml\Domain\Orientation;
 use LibKml\Domain\Scale;
 
 /**
@@ -13,7 +15,7 @@ use LibKml\Domain\Scale;
  */
 class Model extends Geometry {
 
-  private $altitudeMode;
+  private $altitudeMode = AltitudeMode::CLAMP_TO_GROUND;
   private $location;
   private $orientation;
   private $scale;
@@ -32,43 +34,43 @@ class Model extends Geometry {
     $this->altitudeMode = $altitudeMode;
   }
 
-  public function getLocation(): Location {
+  public function getLocation(): ?Coordinates {
     return $this->location;
   }
 
-  public function setLocation(Location $location): void {
+  public function setLocation(?Coordinates $location): void {
     $this->location = $location;
   }
 
-  public function getOrientation(): Orientation {
+  public function getOrientation(): ?Orientation {
     return $this->orientation;
   }
 
-  public function setOrientation(Orientation $orientation): void {
+  public function setOrientation(?Orientation $orientation): void {
     $this->orientation = $orientation;
   }
 
-  public function getScale(): Scale {
+  public function getScale(): ?Scale {
     return $this->scale;
   }
 
-  public function setScale(Scale $scale): void {
+  public function setScale(?Scale $scale): void {
     $this->scale = $scale;
   }
 
-  public function getLink(): Link {
+  public function getLink(): ?Link {
     return $this->link;
   }
 
-  public function setLink(Link $link): void {
+  public function setLink(?Link $link): void {
     $this->link = $link;
   }
 
-  public function getResourceMap(): array {
+  public function getResourceMap(): ?ResourceMap {
     return $this->resourceMap;
   }
 
-  public function setResourceMap(array $resourceMap): void {
+  public function setResourceMap(?ResourceMap $resourceMap): void {
     $this->resourceMap = $resourceMap;
   }
 

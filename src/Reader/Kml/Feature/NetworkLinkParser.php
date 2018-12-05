@@ -11,9 +11,8 @@ class NetworkLinkParser extends FeatureParser {
 
   private $linkParser;
 
-  function __construct() {
-    $kmlElementParserFactory = KmlElementParserFactory::getInstance();
-    $this->linkParser = $kmlElementParserFactory
+  public function __construct() {
+    $this->linkParser = KmlElementParserFactory::getInstance()
       ->getParserByElementName(KmlElementParserFactory::LINK);
   }
 
@@ -30,4 +29,5 @@ class NetworkLinkParser extends FeatureParser {
       $kmlObject->setLink($this->linkParser->parse($element->Link));
     }
   }
+
 }

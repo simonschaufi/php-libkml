@@ -8,16 +8,31 @@ use PHPUnit\Framework\TestCase;
 
 class CameraTest extends TestCase {
 
-  public function testAccept() {
-    $camera = new Camera();
+  /**
+   * @var Camera
+   */
+  protected $camera;
 
+  public function setUp() {
+    $this->camera = new Camera();
+  }
+
+  public function testAccept() {
     $objectVisitor = $this->createMock(KmlObjectVisitorInterface::class);
 
     $objectVisitor->expects($this->once())
       ->method('visitCamera')
-      ->with($this->equalTo($camera));
+      ->with($this->equalTo($this->camera));
 
-    $camera->accept($objectVisitor);
+    $this->camera->accept($objectVisitor);
+  }
+
+  public function testRollField() {
+    $roll = 100.1;
+
+    $this->camera->setRoll($roll);
+
+    $this->assertEquals($roll, $this->camera->getRoll());
   }
 
 }

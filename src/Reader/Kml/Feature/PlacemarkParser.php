@@ -11,7 +11,7 @@ class PlacemarkParser extends FeatureParser {
 
   private $kmlElementParserFactory;
 
-  function __construct() {
+  public function __construct() {
     $this->kmlElementParserFactory = KmlElementParserFactory::getInstance();
   }
 
@@ -30,4 +30,5 @@ class PlacemarkParser extends FeatureParser {
       $kmlObject->setGeometry($pointParser->parse($element->Point));
     }
   }
+
 }

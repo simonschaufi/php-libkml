@@ -8,11 +8,12 @@ use PHPUnit\Framework\TestCase;
 
 class PointParserTest extends TestCase {
 
-  const KML_POINT = '
+  const KML_POINT = <<<'TAG'
 <Point id="point-1" targetId="target-id-1">
   <extrude>1</extrude>
   <coordinates>-90.86948943473118,48.25450093195546</coordinates>
-</Point>';
+</Point>
+TAG;
 
   /**
    * @var PointParser

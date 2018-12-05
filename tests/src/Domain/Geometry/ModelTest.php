@@ -2,12 +2,14 @@
 
 namespace LibKml\Tests\Domain\Geometry;
 
-use LibKml\Domain\Geometry\Alias;
+use LibKml\Domain\FieldType\Alias;
+use LibKml\Domain\FieldType\AltitudeMode;
+use LibKml\Domain\FieldType\Coordinates;
+use LibKml\Domain\FieldType\ResourceMap;
 use LibKml\Domain\Geometry\Model;
 use LibKml\Domain\KmlObjectVisitorInterface;
 use LibKml\Domain\Link;
-use LibKml\Domain\Location;
-use LibKml\Domain\Orientation;
+use LibKml\Domain\FieldType\Orientation;
 use LibKml\Domain\Scale;
 use PHPUnit\Framework\TestCase;
 
@@ -20,6 +22,10 @@ class ModelTest extends TestCase {
 
   public function setUp() {
     $this->model = new Model();
+  }
+
+  public function testDefaultValues() {
+    $this->assertEquals(AltitudeMode::CLAMP_TO_GROUND, $this->model->getAltitudeMode());
   }
 
   public function testAccept() {
@@ -41,7 +47,7 @@ class ModelTest extends TestCase {
   }
 
   public function testLocationField() {
-    $location = new Location();
+    $location = new Coordinates();
 
     $this->model->setLocation($location);
 
@@ -73,16 +79,11 @@ class ModelTest extends TestCase {
   }
 
   public function testResourceMapField() {
-    $alias1 = new Alias();
-    $alias2 = new Alias();
-
-    $resourceMap = [$alias1, $alias2];
+    $resourceMap = new ResourceMap();
 
     $this->model->setResourceMap($resourceMap);
 
-    $this->assertCount(2, $this->model->getResourceMap());
-    $this->assertContains($alias1, $this->model->getResourceMap());
-    $this->assertContains($alias2, $this->model->getResourceMap());
+    $this->assertEquals($resourceMap, $this->model->getResourceMap());
   }
 
 }

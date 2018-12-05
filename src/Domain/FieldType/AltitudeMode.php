@@ -1,6 +1,6 @@
 <?php
 
-namespace LibKml\Domain\Feature;
+namespace LibKml\Domain\FieldType;
 
 /**
  * Specifies how the altitude value is interpreted.

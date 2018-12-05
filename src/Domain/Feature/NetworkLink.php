@@ -4,7 +4,7 @@ namespace LibKml\Domain\Feature;
 
 use LibKml\Domain\KmlObjectVisitorInterface;
 use LibKml\Domain\Link;
-use LibKml\KmlDocument;
+use LibKml\Domain\KmlDocument;
 
 /**
  * References a KML file or KMZ archive on a local or remote network.
@@ -18,7 +18,7 @@ class NetworkLink extends Feature {
   /**
    * Parsed KML from the link location.
    *
-   * @var \LibKml\KmlDocument
+   * @var \LibKml\Domain\KmlDocument
    */
   private $kmlDocument;
 

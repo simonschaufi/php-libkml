@@ -12,7 +12,6 @@ class LinkParser extends KmlObjectParser {
     return new Link();
   }
 
-
   protected function loadValues(KmlObject &$kmlObject, SimpleXMLElement $element): void {
     parent::loadValues($kmlObject, $element);
 
@@ -40,4 +39,5 @@ class LinkParser extends KmlObjectParser {
       $kmlObject->setViewFormat($element->viewFormat);
     }
   }
+
 }

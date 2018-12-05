@@ -26,19 +26,19 @@ abstract class Feature extends KmlObject {
   protected $phoneNumber;
   protected $snippet;
   protected $description;
-  protected $abstractView;
+  protected $view;
   protected $timePrimitive;
   protected $styleUrl;
-  protected $styleSelector = [];
+  protected $styleSelectors = [];
   protected $region;
   protected $extendedData;
 
   public function addStyleSelector(StyleSelector $styleSelector): void {
-    $this->styleSelector[] = $styleSelector;
+    $this->styleSelectors[] = $styleSelector;
   }
 
   public function clearStyleSelectors(): void {
-    $this->styleSelector = array();
+    $this->styleSelectors = array();
   }
 
   public function getName(): ?string {
@@ -121,12 +121,12 @@ abstract class Feature extends KmlObject {
     $this->description = $description;
   }
 
-  public function getAbstractView(): ?AbstractView {
-    return $this->abstractView;
+  public function getView(): ?AbstractView {
+    return $this->view;
   }
 
-  public function setAbstractView(?AbstractView $abstractView): void {
-    $this->abstractView = $abstractView;
+  public function setView(?AbstractView $view): void {
+    $this->view = $view;
   }
 
   public function getTimePrimitive(): ?TimePrimitive {
@@ -145,12 +145,12 @@ abstract class Feature extends KmlObject {
     $this->styleUrl = $styleUrl;
   }
 
-  public function getStyleSelector(): array {
-    return $this->styleSelector;
+  public function getStyleSelectors(): array {
+    return $this->styleSelectors;
   }
 
-  public function setStyleSelector(array $styleSelector): void {
-    $this->styleSelector = $styleSelector;
+  public function setStyleSelectors(array $styleSelectors): void {
+    $this->styleSelectors = $styleSelectors;
   }
 
   public function getRegion(): ?Region {

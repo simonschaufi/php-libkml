@@ -11,10 +11,24 @@ php-libKML maps KML/KMZ data into proper objects that follows the KML specificat
 ## Features ##
 
 * KML schema version 2.2
-* PHP 7.0+
+* PHP 7.1+
+* Composer integration
 * Object oriented design
 * Comprehensive KML model
+* Import
+  * KML
+
+Pending features:
+
 * Google extensions support
+* Import
+  * KMZ
+  * GeoJson
+* Export
+  * KML/KMZ
+  * GeoJson
+  * WKT
+  
 
 ## Installation ##
 

@@ -2,12 +2,21 @@
 
 namespace LibKml\Reader;
 
-use LibKml\KmlDocument;
+use LibKml\Domain\KmlDocument;
 
 /**
  * Builder for KmlDocument.
  */
 class LibKmlReader {
+
+  private $parserFactory;
+
+  public function __construct(ParserFactory $parserFactory = NULL) {
+    if ($parserFactory === NULL) {
+      $parserFactory = ParserFactory::getInstance();
+    }
+    $this->parserFactory = $parserFactory;
+  }
 
   /**
    * Build a KmlDocument from a KML string.
@@ -15,16 +24,15 @@ class LibKmlReader {
    * @param string $kml
    *   KML content.
    *
-   * @return KmlDocument
+   * @return \LibKml\Domain\KmlDocument
    *   Parsed KML document.
    */
-  public static function fromKml(string $kml): KmlDocument {
-    return self::parse("kml", $kml);
+  public function fromKml(string $kml): KmlDocument {
+    return $this->parse(ParserFactory::KML, $kml);
   }
 
-  private static function parse($type, $content): KmlDocument {
-    $parserFactory = ParserFactory::getInstance();
-    $parser = $parserFactory->getParser($type);
+  private function parse($type, $content): KmlDocument {
+    $parser = $this->parserFactory->getParser($type);
     return $parser->parse($content);
   }
 

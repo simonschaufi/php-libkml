@@ -15,8 +15,24 @@ abstract class FeatureParser extends KmlObjectParser {
       $kmlObject->setName($element->name);
     }
 
+    if (isset($element->visibility)) {
+      $kmlObject->setVisibility(filter_var($element->visibility, FILTER_VALIDATE_BOOLEAN));
+    }
+
     if (isset($element->open)) {
-      $kmlObject->setOpen((bool) $element->open);
+      $kmlObject->setOpen(filter_var($element->open, FILTER_VALIDATE_BOOLEAN));
+    }
+
+    if (isset($element->address)) {
+      $kmlObject->setAddress($element->address);
+    }
+
+    if (isset($element->phoneNumber)) {
+      $kmlObject->setPhoneNumber($element->phoneNumber);
+    }
+
+    if (isset($element->Snippet)) {
+      $kmlObject->setSnippet($element->Snippet);
     }
 
     if (isset($element->description)) {

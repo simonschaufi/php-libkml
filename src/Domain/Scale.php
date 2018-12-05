@@ -3,13 +3,21 @@
 namespace LibKml\Domain;
 
 /**
- * Scale class.
+ * Describe an scale of an element along the x, y, and z axes.
  */
 class Scale {
 
-  private $x;
-  private $y;
-  private $z;
+  private $x = 0;
+  private $y = 0;
+  private $z = 0;
+
+  public static function fromCoordinates($x, $y, $z): Scale {
+    $scale = new Scale();
+    $scale->x = $x;
+    $scale->y = $y;
+    $scale->z = $z;
+    return $scale;
+  }
 
   public function getX(): float {
     return $this->x;

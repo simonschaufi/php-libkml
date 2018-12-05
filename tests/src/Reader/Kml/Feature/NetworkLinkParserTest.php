@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class NetworkLinkParserTest extends TestCase {
 
-  const KML_NETWORK_LINK = '
+  const KML_NETWORK_LINK = <<<'TAG'
 <NetworkLink id="network-link-1" targetId="target-id-1">
   <name>Open NetworkLink</name>
   <open>1</open>
@@ -15,7 +15,8 @@ class NetworkLinkParserTest extends TestCase {
   <Link>
     <href>placemark.kml</href>
   </Link>
-</NetworkLink>';
+</NetworkLink>
+TAG;
 
   /**
    * @var NetworkLinkParser

@@ -2,6 +2,7 @@
 
 namespace LibKml\Tests\Domain\Geometry;
 
+use LibKml\Domain\FieldType\AltitudeMode;
 use LibKml\Domain\Geometry\LinearRing;
 use LibKml\Domain\Geometry\Polygon;
 use LibKml\Domain\KmlObjectVisitorInterface;
@@ -16,6 +17,12 @@ class PolygonTest extends TestCase {
 
   public function setUp() {
     $this->polygon = new Polygon();
+  }
+
+  public function testDefaultValues() {
+    $this->assertFalse($this->polygon->getExtrude());
+    $this->assertFalse($this->polygon->getTessellate());
+    $this->assertEquals(AltitudeMode::CLAMP_TO_GROUND, $this->polygon->getAltitudeMode());
   }
 
   public function testAccept() {

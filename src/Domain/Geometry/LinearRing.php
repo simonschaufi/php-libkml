@@ -2,6 +2,7 @@
 
 namespace LibKml\Domain\Geometry;
 
+use LibKml\Domain\FieldType\AltitudeMode;
 use LibKml\Domain\FieldType\Coordinates;
 use LibKml\Domain\KmlObjectVisitorInterface;
 
@@ -10,9 +11,9 @@ use LibKml\Domain\KmlObjectVisitorInterface;
  */
 class LinearRing extends Geometry {
 
-  private $extrude;
-  private $tessellate;
-  private $altitudeMode;
+  private $extrude = FALSE;
+  private $tessellate = FALSE;
+  private $altitudeMode = AltitudeMode::RELATIVE_TO_GROUND;
   private $coordinates = [];
 
   public function accept(KmlObjectVisitorInterface $visitor): void {
