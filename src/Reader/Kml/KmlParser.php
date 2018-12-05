@@ -20,7 +20,7 @@ class KmlParser implements ParserInterface {
       throw new WrongDocumentFormat();
     }
 
-    return $this->parseKmlElement($xmlDocument->kml);
+    return $this->parseKmlElement($xmlDocument);
   }
 
   public function parseKmlElement(SimpleXMLElement $element): ?KmlDocument {

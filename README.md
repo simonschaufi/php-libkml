@@ -8,6 +8,8 @@ A php library to manipulate KML/KMZ files.
 
 php-libKML maps KML/KMZ data into proper objects that follows the KML specification. The purpose of the library is create KML file from code, parse KML files and convert to another formats maintaining the complete KML information.
 
+KML documentation
+
 ## Features ##
 
 * KML schema version 2.2
@@ -28,7 +30,6 @@ Pending features:
   * KML/KMZ
   * GeoJson
   * WKT
-  
 
 ## Installation ##
 
@@ -40,14 +41,18 @@ composer require earelin/php-libkml:^2.0.0
 
 ## Usage ##
 
-
-
 ## Contribute ##
 
-Execute tests
+Execute unit tests
 
 ```bash
 composer test
+```
+
+Execute acceptance tests
+
+```bash
+composer acceptance-test
 ```
 
 Check code quality with Codesniffer

@@ -22,12 +22,12 @@ class SimpleFieldParser {
   private static function parseSimplefieldElement(SimpleXMLElement $xmlElement): SimpleField {
     $simpleField = new SimpleField();
 
-    if (isset($xmlElement->type)) {
-      $simpleField->setType($xmlElement->type);
+    if (isset($xmlElement['type'])) {
+      $simpleField->setType($xmlElement['type']);
     }
 
-    if (isset($xmlElement->name)) {
-      $simpleField->setName($xmlElement->name);
+    if (isset($xmlElement['name'])) {
+      $simpleField->setName($xmlElement['name']);
     }
 
     if (isset($xmlElement->displayName)) {

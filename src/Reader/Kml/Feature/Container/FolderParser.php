@@ -2,12 +2,13 @@
 
 namespace LibKml\Reader\Kml\Feature\Container;
 
+use LibKml\Domain\Feature\Container\Folder;
 use LibKml\Domain\KmlObject;
 
 class FolderParser extends ContainerParser {
 
   protected function buildKmlObject(): KmlObject {
-    // TODO: Implement buildKmlObject() method.
+    return new Folder();
   }
 
 }

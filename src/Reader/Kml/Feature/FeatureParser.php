@@ -3,6 +3,7 @@
 namespace LibKml\Reader\Kml\Feature;
 
 use LibKml\Domain\KmlObject;
+use LibKml\Reader\Kml\AbstractView\AbstractViewExtractor;
 use LibKml\Reader\Kml\KmlObjectParser;
 use SimpleXMLElement;
 
@@ -42,6 +43,8 @@ abstract class FeatureParser extends KmlObjectParser {
     if (isset($element->styleUrl)) {
       $kmlObject->setStyleUrl($element->styleUrl);
     }
+
+    $kmlObject->setView(AbstractViewExtractor::extract($element));
   }
 
 }

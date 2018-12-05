@@ -10,7 +10,7 @@ class AbstractViewExtractor {
 
   const ELEMENT_TAGS = ['Camera', 'LookAt'];
 
-  public static function extract(SimpleXMLElement $element): KmlObject {
+  public static function extract(SimpleXMLElement $element): ?KmlObject {
     $kmlElementParserFactory = KmlElementParserFactory::getInstance();
 
     foreach ($element->children() as $elementChildren) {
