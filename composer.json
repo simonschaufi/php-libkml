@@ -33,7 +33,7 @@
     }
   },
   "scripts": {
-    "clean": "rm -Rf reports vendor",
+    "clean": "rm -Rf reports",
     "test": "phpunit --colors=always --bootstrap vendor/autoload.php -c phpunit.xml",
     "test-ci": "phpunit --colors=never --bootstrap vendor/autoload.php -c phpunit.xml",
     "acceptance-test": "behat --colors --no-snippets",

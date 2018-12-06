@@ -7,7 +7,18 @@ class Color {
   private $red = 0;
   private $green = 0;
   private $blue = 0;
-  private $alpha = 0;
+  private $alpha = 1;
+
+  public static function fromRGBA(int $red, int $green, int $blue, float $alpha) {
+    $color = new Color();
+
+    $color->red = $red;
+    $color->green = $green;
+    $color->blue = $blue;
+    $color->alpha = $alpha;
+
+    return $color;
+  }
 
   public function getRed(): int {
     return $this->red;
@@ -33,11 +44,11 @@ class Color {
     $this->blue = $blue;
   }
 
-  public function getAlpha(): int {
+  public function getAlpha(): float {
     return $this->alpha;
   }
 
-  public function setAlpha(int $alpha): void {
+  public function setAlpha(float $alpha): void {
     $this->alpha = $alpha;
   }
 

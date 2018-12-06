@@ -16,6 +16,27 @@ class ColorTest extends TestCase {
     $this->color = new Color();
   }
 
+  public function testDefaultValues() {
+    $this->assertEquals(0, $this->color->getRed());
+    $this->assertEquals(0, $this->color->getGreen());
+    $this->assertEquals(0, $this->color->getBlue());
+    $this->assertEquals(1, $this->color->getAlpha());
+  }
+
+  public function testFromRGBA() {
+    $red = 0xBB;
+    $green = 0xA2;
+    $blue = 0x34;
+    $alpha = 0.78;
+
+    $this->color = Color::fromRGBA($red, $green, $blue, $alpha);
+    
+    $this->assertEquals($red, $this->color->getRed());
+    $this->assertEquals($green, $this->color->getGreen());
+    $this->assertEquals($blue, $this->color->getBlue());
+    $this->assertEquals($alpha, $this->color->getAlpha());
+  }
+
   public function testRedField() {
     $red = 125;
 
