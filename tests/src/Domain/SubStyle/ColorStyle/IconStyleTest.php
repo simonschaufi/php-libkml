@@ -2,7 +2,7 @@
 
 namespace LibKml\Tests\Domain\SubStyle\ColorStyle;
 
-use LibKml\Domain\FieldType\Icon;
+use LibKml\Domain\Icon;
 use LibKml\Domain\FieldType\Vec2;
 use LibKml\Domain\KmlObjectVisitorInterface;
 use LibKml\Domain\SubStyle\ColorStyle\IconStyle;

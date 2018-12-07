@@ -7,11 +7,11 @@ namespace LibKml\Domain;
  */
 class LatLonBox {
 
-  private $north;
-  private $south;
-  private $east;
-  private $west;
-  private $rotation;
+  private $north = 0;
+  private $south = 0;
+  private $east = 0;
+  private $west = 0;
+  private $rotation = 0;
 
   public function getNorth(): float {
     return $this->north;

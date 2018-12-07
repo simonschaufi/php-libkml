@@ -11,7 +11,6 @@ use LibKml\Reader\Kml\Feature\Overlay\GroundOverlayParser;
 use LibKml\Reader\Kml\Feature\Overlay\PhotoOverlayParser;
 use LibKml\Reader\Kml\Feature\Overlay\ScreenOverlayParser;
 use LibKml\Reader\Kml\Feature\PlacemarkParser;
-use LibKml\Reader\Kml\FieldType\NetworkLinkControlParser;
 use LibKml\Reader\Kml\Geometry\LinearRingParser;
 use LibKml\Reader\Kml\Geometry\LineStringParser;
 use LibKml\Reader\Kml\Geometry\ModelParser;
@@ -21,8 +20,8 @@ use LibKml\Reader\Kml\Geometry\PolygonParser;
 
 class KmlElementParserFactory {
 
+  const ICON = "Icon";
   const LINK = "Link";
-  const NETWORK_LINK_CONTROL = "NetworkLinkControl";
 
   const NETWORK_LINK = "NetworkLink";
   const PLACEMARK = "Placemark";
@@ -60,12 +59,12 @@ class KmlElementParserFactory {
 
     if (!array_key_exists($name, $this->parsers)) {
       switch ($name) {
-        case self::LINK:
-          $this->parsers[$name] = new LinkParser();
+        case self::ICON:
+          $this->parsers[$name] = new IconParser();
           break;
 
-        case self::NETWORK_LINK_CONTROL:
-          $this->parsers[$name] = new NetworkLinkControlParser();
+        case self::LINK:
+          $this->parsers[$name] = new LinkParser();
           break;
 
         case self::NETWORK_LINK:

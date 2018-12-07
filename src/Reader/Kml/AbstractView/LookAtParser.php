@@ -22,4 +22,5 @@ class LookAtParser extends AbstractViewParser {
       $kmlObject->setRange(floatval($element->range));
     }
   }
+
 }

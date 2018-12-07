@@ -3,6 +3,8 @@
 namespace LibKml\Tests\Domain\Feature\Overlay;
 
 use LibKml\Domain\Feature\Overlay\GroundOverlay;
+use LibKml\Domain\FieldType\AltitudeMode;
+use LibKml\Domain\FieldType\Color;
 use LibKml\Domain\KmlObjectVisitorInterface;
 use LibKml\Domain\LatLonBox;
 use PHPUnit\Framework\TestCase;
@@ -16,6 +18,15 @@ class GroundOverlayTest extends TestCase {
 
   public function setUp() {
     $this->groundOverlay = new GroundOverlay();
+  }
+
+  public function testDefaultValueas() {
+    $this->assertEquals(Color::fromRGBA(0xFF, 0xFF, 0xFF, 1), $this->groundOverlay->getColor());
+    $this->assertEquals(0, $this->groundOverlay->getDrawOrder());
+    $this->assertNull($this->groundOverlay->getIcon());
+    $this->assertEquals(0, $this->groundOverlay->getAltitude());
+    $this->assertEquals(AltitudeMode::CLAMP_TO_GROUND, $this->groundOverlay->getAltitudeMode());
+    $this->assertNull($this->groundOverlay->getLatLonBox());
   }
 
   public function testAccept() {

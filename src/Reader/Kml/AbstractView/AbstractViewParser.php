@@ -10,7 +10,7 @@ abstract class AbstractViewParser extends KmlObjectParser {
 
   protected function loadValues(KmlObject &$kmlObject, SimpleXMLElement $element): void {
     parent::loadValues($kmlObject, $element);
-    
+
     if (isset($element->longitude)) {
       $kmlObject->setLongitude(floatval($element->longitude));
     }
@@ -31,4 +31,5 @@ abstract class AbstractViewParser extends KmlObjectParser {
       $kmlObject->setTilt(floatval($element->tilt));
     }
   }
+
 }

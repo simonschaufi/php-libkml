@@ -139,6 +139,13 @@ TAG;
 </Placemark>
 TAG;
 
+  const KML_NO_GEOMETRY = <<<'TAG'
+<Placemark>
+  <extrude>1</extrude>
+  <altitudeMode>relativeToGround</altitudeMode>
+</Placemark>
+TAG;
+
   public function testExtractPoint() {
     $kmlElement = simplexml_load_string(self::KML_POINT);
 
@@ -185,6 +192,14 @@ TAG;
     $model = GeometryExtractor::extractGeometry($kmlElement);
 
     $this->assertInstanceOf(Model::class, $model);
+  }
+
+  public function testExtractnONE() {
+    $kmlElement = simplexml_load_string(self::KML_NO_GEOMETRY);
+
+    $model = GeometryExtractor::extractGeometry($kmlElement);
+
+    $this->assertNull($model);
   }
 
 }

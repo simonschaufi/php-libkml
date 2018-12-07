@@ -19,6 +19,17 @@ class IconTest extends TestCase {
     $this->icon = new Icon();
   }
 
+  public function testDefaultValues() {
+    $this->assertEmpty($this->icon->getHref());
+    $this->assertEquals(RefreshMode::ON_CHANGE, $this->icon->getRefreshMode());
+    $this->assertEquals(4, $this->icon->getRefreshInterval());
+    $this->assertEquals(ViewRefreshMode::NEVER, $this->icon->getViewRefreshMode());
+    $this->assertEquals(4, $this->icon->getViewRefreshTime());
+    $this->assertEquals(1, $this->icon->getViewBoundScale());
+    $this->assertEmpty($this->icon->getViewFormat());
+    $this->assertEmpty($this->icon->getHttpQuery());
+  }
+
   public function testAccept() {
     $objectVisitor = $this->createMock(KmlObjectVisitorInterface::class);
 

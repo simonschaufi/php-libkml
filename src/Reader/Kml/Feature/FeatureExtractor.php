@@ -28,7 +28,7 @@ class FeatureExtractor {
       }
     }
 
-    return null;
+    return NULL;
   }
 
   public static function extractFeatures(SimpleXMLElement $element): array {

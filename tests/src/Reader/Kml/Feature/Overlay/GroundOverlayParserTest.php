@@ -3,6 +3,9 @@
 namespace LibKml\Tests\Reader\Kml\Feature\Overlay;
 
 use LibKml\Domain\Feature\Overlay\GroundOverlay;
+use LibKml\Domain\FieldType\AltitudeMode;
+use LibKml\Domain\FieldType\Color;
+use LibKml\Domain\Icon;
 use LibKml\Domain\LatLonBox;
 use LibKml\Reader\Kml\Feature\Overlay\GroundOverlayParser;
 use PHPUnit\Framework\TestCase;
@@ -20,6 +23,8 @@ class GroundOverlayParserTest extends TestCase {
       <refreshInterval>86400</refreshInterval>
       <viewBoundScale>0.75</viewBoundScale>
    </Icon>
+   <altitude>135.54</altitude>
+   <altitudeMode>absolute</altitudeMode>
    <LatLonBox>
       <north>37.83234</north>
       <south>37.832122</south>
@@ -46,9 +51,11 @@ TAG;
 
     $this->assertInstanceOf(GroundOverlay::class, $overlay);
     $this->assertEquals("GroundOverlay.kml", $overlay->getName());
-    $this->assertEquals("7fffffff", $overlay->getColor());
+    $this->assertEquals(Color::fromRGBA(0x7f, 0xff, 0xff, 1), $overlay->getColor());
     $this->assertEquals(1, $overlay->getDrawOrder());
     $this->assertInstanceOf(Icon::class, $overlay->getIcon());
+    $this->assertEquals(135.54, $overlay->getAltitude());
+    $this->assertEquals(AltitudeMode::ABSOLUTE, $overlay->getAltitudeMode());
     $this->assertInstanceOf(LatLonBox::class, $overlay->getLatLonBox());
   }
 

@@ -2,6 +2,7 @@
 
 namespace LibKml\Domain\Feature\Overlay;
 
+use LibKml\Domain\FieldType\AltitudeMode;
 use LibKml\Domain\KmlObjectVisitorInterface;
 use LibKml\Domain\LatLonBox;
 
@@ -10,8 +11,8 @@ use LibKml\Domain\LatLonBox;
  */
 class GroundOverlay extends Overlay {
 
-  private $altitude;
-  private $altitudeMode;
+  private $altitude = 0;
+  private $altitudeMode = AltitudeMode::CLAMP_TO_GROUND;
   private $latLonBox;
 
   public function accept(KmlObjectVisitorInterface $visitor): void {
@@ -34,11 +35,11 @@ class GroundOverlay extends Overlay {
     $this->altitudeMode = $altitudeMode;
   }
 
-  public function getLatLonBox(): LatLonBox {
+  public function getLatLonBox(): ?LatLonBox {
     return $this->latLonBox;
   }
 
-  public function setLatLonBox(LatLonBox $latLonBox): void {
+  public function setLatLonBox(?LatLonBox $latLonBox): void {
     $this->latLonBox = $latLonBox;
   }
 

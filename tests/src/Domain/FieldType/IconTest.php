@@ -2,7 +2,7 @@
 
 namespace LibKml\Tests\Domain\FieldType;
 
-use LibKml\Domain\FieldType\Icon;
+use LibKml\Domain\Icon;
 use PHPUnit\Framework\TestCase;
 
 class IconTest extends TestCase {

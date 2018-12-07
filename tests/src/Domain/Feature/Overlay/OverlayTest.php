@@ -4,7 +4,7 @@ namespace LibKml\Tests\Domain\Feature\Overlay;
 
 use LibKml\Domain\Feature\Overlay\Overlay;
 use LibKml\Domain\FieldType\Color;
-use LibKml\Domain\FieldType\Icon;
+use LibKml\Domain\Icon;
 use LibKml\Domain\KmlObjectVisitorInterface;
 use PHPUnit\Framework\TestCase;
 

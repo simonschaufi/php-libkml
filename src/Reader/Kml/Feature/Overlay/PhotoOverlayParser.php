@@ -2,12 +2,13 @@
 
 namespace LibKml\Reader\Kml\Feature\Overlay;
 
+use LibKml\Domain\Feature\Overlay\PhotoOverlay;
 use LibKml\Domain\KmlObject;
 
 class PhotoOverlayParser extends OverlayParser {
 
   protected function buildKmlObject(): KmlObject {
-    // TODO: Implement buildKmlObject() method.
+    return new PhotoOverlay();
   }
 
 }

@@ -16,6 +16,10 @@ class LatLonBoxTest extends TestCase {
     $this->latLonBox = new LatLonBox();
   }
 
+  public function testDefaultValues() {
+    $this->assertEquals(0, $this->latLonBox->getRotation());
+  }
+
   public function testNorthField() {
     $north = 48.25475939255556;
 
