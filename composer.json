@@ -17,10 +17,11 @@
     "ext-simplexml": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "^7.4",
+    "codacy/coverage": "dev-master",    
     "drupal/coder": "^8.2.12",
     "behat/behat": "^3.5",
-    "leanphp/behat-code-coverage": "^3.4"
+    "leanphp/behat-code-coverage": "^3.4",
+    "phpunit/phpunit": "^7.4"
   },
   "autoload": {
     "psr-4": {
