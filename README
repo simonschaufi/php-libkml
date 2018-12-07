@@ -6,3 +6,4 @@ php-libKML v.0.1
 A php library to work with KML/KMZ files
 
 php-libKML maps KML/KMZ data into proper objects that follows the KML specification. The purpose of the library is create KML file from code, parse KML files and convert to another formats maintaining the complete KML information.
+Codacy Badge
