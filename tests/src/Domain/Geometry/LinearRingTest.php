@@ -2,6 +2,7 @@
 
 namespace LibKml\Tests\Domain\Geometry;
 
+use LibKml\Domain\FieldType\AltitudeMode;
 use LibKml\Domain\FieldType\Coordinates;
 use LibKml\Domain\Geometry\LinearRing;
 use LibKml\Domain\KmlObjectVisitorInterface;
@@ -16,6 +17,12 @@ class LinearRingTest extends TestCase {
 
   public function setUp() {
     $this->linearRing = new LinearRing();
+  }
+
+  public function testDefaultValues() {
+    $this->assertFalse($this->linearRing->getExtrude());
+    $this->assertFalse($this->linearRing->getTessellate());
+    $this->assertEquals(AltitudeMode::RELATIVE_TO_GROUND, $this->linearRing->getAltitudeMode());
   }
 
   public function testAccept() {

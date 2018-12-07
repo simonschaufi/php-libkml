@@ -8,16 +8,31 @@ use PHPUnit\Framework\TestCase;
 
 class LookAtTest extends TestCase {
 
-  public function testAccept() {
-    $lookAt = new LookAt();
+  /**
+   * @var LookAt
+   */
+  protected $lookAt;
 
+  public function setUp() {
+    $this->lookAt = new LookAt();
+  }
+
+  public function testAccept() {
     $objectVisitor = $this->createMock(KmlObjectVisitorInterface::class);
 
     $objectVisitor->expects($this->once())
       ->method('visitLookAt')
-      ->with($this->equalTo($lookAt));
+      ->with($this->equalTo($this->lookAt));
 
-    $lookAt->accept($objectVisitor);
+    $this->lookAt->accept($objectVisitor);
+  }
+
+  public function testRangeField() {
+    $range = 1234.45;
+
+    $this->lookAt->setRange($range);
+
+    $this->assertEquals($range, $this->lookAt->getRange());
   }
 
 }

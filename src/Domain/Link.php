@@ -3,13 +3,9 @@
 namespace LibKml\Domain;
 
 /**
- * Link class.
+ * Specifies the location of an external resource.
  */
 class Link extends KmlObject {
-
-  const REFRESH_MODE_ON_CHANGE = 0;
-  const REFRESH_MODE_ON_INTERVAL = 1;
-  const REFRESH_MODE_ON_EXPIRE = 2;
 
   private $href;
   private $refreshMode;
@@ -24,19 +20,19 @@ class Link extends KmlObject {
     $visitor->visitLink($this);
   }
 
-  public function getHref(): string {
+  public function getHref(): ?string {
     return $this->href;
   }
 
-  public function setHref(string $href): void {
+  public function setHref(?string $href): void {
     $this->href = $href;
   }
 
-  public function getrefreshMode(): string {
+  public function getrefreshMode(): ?string {
     return $this->refreshMode;
   }
 
-  public function setRefreshMode(string $refreshMode): void {
+  public function setRefreshMode(?string $refreshMode): void {
     $this->refreshMode = $refreshMode;
   }
 
@@ -80,11 +76,11 @@ class Link extends KmlObject {
     $this->viewFormat = $viewFormat;
   }
 
-  public function getHttpQuery() {
+  public function getHttpQuery(): ?string {
     return $this->httpQuery;
   }
 
-  public function setHttpQuery($httpQuery) {
+  public function setHttpQuery(?string $httpQuery): void {
     $this->httpQuery = $httpQuery;
   }
 

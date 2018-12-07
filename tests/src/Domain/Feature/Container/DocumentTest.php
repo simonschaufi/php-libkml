@@ -2,7 +2,6 @@
 
 namespace LibKml\Tests\Domain\Feature\Container;
 
-
 use LibKml\Domain\Feature\Container\Document;
 use LibKml\Domain\KmlObjectVisitorInterface;
 use LibKml\Domain\StyleSelector\Style;

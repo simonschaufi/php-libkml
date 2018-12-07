@@ -2,6 +2,7 @@
 
 namespace LibKml\Domain\Geometry;
 
+use LibKml\Domain\FieldType\AltitudeMode;
 use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
@@ -9,9 +10,9 @@ use LibKml\Domain\KmlObjectVisitorInterface;
  */
 class Polygon extends Geometry {
 
-  private $extrude;
-  private $tessellate;
-  private $altitudeMode;
+  private $extrude = FALSE;
+  private $tessellate = FALSE;
+  private $altitudeMode = AltitudeMode::CLAMP_TO_GROUND;
   private $outerBoundaryIs;
   private $innerBoundaryIs;
 

@@ -3,11 +3,12 @@
 namespace LibKml\Domain\FieldType;
 
 /**
- * Refresh modes onChange, onInterval, or onExpire.
+ * Specifies a time-based refresh mode.
  */
 class RefreshMode {
-  const ON_CHANGE = 0;
-  const ON_INTERVAL = 1;
-  const ON_EXPIRE = 2;
+
+  const ON_CHANGE = 'onChange';
+  const ON_INTERVAL = 'onInterval';
+  const ON_EXPIRE = 'onExpire';
 
 }

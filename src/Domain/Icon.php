@@ -2,7 +2,8 @@
 
 namespace LibKml\Domain;
 
-use LibKml\Domain\FieldType\HttpQuery;
+use LibKml\Domain\FieldType\RefreshMode;
+use LibKml\Domain\FieldType\ViewRefreshMode;
 
 /**
  * Defines an image associated with an Icon style or overlay.
@@ -10,11 +11,11 @@ use LibKml\Domain\FieldType\HttpQuery;
 class Icon extends KmlObject {
 
   private $href;
-  private $refreshMode;
-  private $refreshInterval;
-  private $viewRefreshMode;
-  private $viewRefreshTime;
-  private $viewBoundScale;
+  private $refreshMode = RefreshMode::ON_CHANGE;
+  private $refreshInterval = 4;
+  private $viewRefreshMode = ViewRefreshMode::NEVER;
+  private $viewRefreshTime = 4;
+  private $viewBoundScale = 1;
   private $viewFormat;
   private $httpQuery;
 
@@ -22,19 +23,19 @@ class Icon extends KmlObject {
     $visitor->visitIcon($this);
   }
 
-  public function getHref(): string {
+  public function getHref(): ?string {
     return $this->href;
   }
 
-  public function setHref(string $href): void {
+  public function setHref(?string $href): void {
     $this->href = $href;
   }
 
-  public function getRefreshMode(): string {
+  public function getRefreshMode(): ?string {
     return $this->refreshMode;
   }
 
-  public function setRefreshMode(string $refreshMode): void {
+  public function setRefreshMode(?string $refreshMode): void {
     $this->refreshMode = $refreshMode;
   }
 
@@ -73,19 +74,19 @@ class Icon extends KmlObject {
     $this->viewBoundScale = $viewBoundScale;
   }
 
-  public function getViewFormat(): string {
+  public function getViewFormat(): ?string {
     return $this->viewFormat;
   }
 
-  public function setViewFormat(string $viewFormat): void {
+  public function setViewFormat(?string $viewFormat): void {
     $this->viewFormat = $viewFormat;
   }
 
-  public function getHttpQuery(): HttpQuery {
+  public function getHttpQuery(): ?string {
     return $this->httpQuery;
   }
 
-  public function setHttpQuery(HttpQuery $httpQuery): void {
+  public function setHttpQuery(?string $httpQuery): void {
     $this->httpQuery = $httpQuery;
   }
 

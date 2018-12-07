@@ -11,27 +11,40 @@ class Coordinates {
   private $latitude = 0;
   private $altitude = 0;
 
-  public function getLongitude() {
+  public static function fromLonLatAlt($longitude, $latitude, $altitude): Coordinates {
+    $coordinates = self::fromLonLat($longitude, $latitude);
+    $coordinates->altitude = $altitude;
+    return $coordinates;
+  }
+
+  public static function fromLonLat($longitude, $latitude): Coordinates {
+    $coordinates = new Coordinates();
+    $coordinates->longitude = $longitude;
+    $coordinates->latitude = $latitude;
+    return $coordinates;
+  }
+
+  public function getLongitude(): float {
     return $this->longitude;
   }
 
-  public function setLongitude(float $longitude) {
+  public function setLongitude(float $longitude): void {
     $this->longitude = $longitude;
   }
 
-  public function getLatitude() {
+  public function getLatitude(): float {
     return $this->latitude;
   }
 
-  public function setLatitude(float $latitude) {
+  public function setLatitude(float $latitude): void {
     $this->latitude = $latitude;
   }
 
-  public function getAltitude() {
+  public function getAltitude(): float {
     return $this->altitude;
   }
 
-  public function setAltitude(float $altitude) {
+  public function setAltitude(float $altitude): void {
     $this->altitude = $altitude;
   }
 

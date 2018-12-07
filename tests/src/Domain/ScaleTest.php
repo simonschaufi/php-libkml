@@ -16,6 +16,24 @@ class ScaleTest extends TestCase {
     $this->scale = new Scale();
   }
 
+  public function testDefaultValues() {
+    $this->assertEquals(0, $this->scale->getX());
+    $this->assertEquals(0, $this->scale->getY());
+    $this->assertEquals(0, $this->scale->getZ());
+  }
+
+  public function testFromCoordinates() {
+    $x = 45.23;
+    $y = 13.12;
+    $z = 1.678;
+
+    $scale = Scale::fromCoordinates($x, $y, $z);
+
+    $this->assertEquals($x, $scale->getX());
+    $this->assertEquals($y, $scale->getY());
+    $this->assertEquals($z, $scale->getZ());
+  }
+
   public function testXField() {
     $x = 1.34;
 

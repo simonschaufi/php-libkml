@@ -12,32 +12,45 @@ class CoordinatesTest extends TestCase {
    */
   protected $coordinates;
 
+  private $longitude = -0.2416788;
+  private $latitude = 51.5285582;
+  private $altitude = 11.5;
+
   public function setUp() {
     $this->coordinates = new Coordinates();
   }
 
   public function testLongitudeField() {
-    $longitude = -0.2416788;
+    $this->coordinates->setLongitude($this->longitude);
 
-    $this->coordinates->setLongitude($longitude);
-
-    $this->assertEquals($longitude, $this->coordinates->getLongitude());
+    $this->assertEquals($this->longitude, $this->coordinates->getLongitude());
   }
 
   public function testLatitudeField() {
-    $latitude = 51.5285582;
+    $this->coordinates->setLatitude($this->latitude);
 
-    $this->coordinates->setLatitude($latitude);
-
-    $this->assertEquals($latitude, $this->coordinates->getLatitude());
+    $this->assertEquals($this->latitude, $this->coordinates->getLatitude());
   }
 
   public function testAltitudeField() {
-    $altitude = 11;
+    $this->coordinates->setAltitude($this->altitude);
 
-    $this->coordinates->setAltitude($altitude);
+    $this->assertEquals($this->altitude, $this->coordinates->getAltitude());
+  }
 
-    $this->assertEquals($altitude, $this->coordinates->getAltitude());
+  public function testFromLonLat() {
+    $this->coordinates = Coordinates::fromLonLat($this->longitude, $this->latitude);
+
+    $this->assertEquals($this->longitude, $this->coordinates->getLongitude());
+    $this->assertEquals($this->latitude, $this->coordinates->getLatitude());
+  }
+
+  public function testFromLonLatAlt() {
+    $this->coordinates = Coordinates::fromLonLatAlt($this->longitude, $this->latitude, $this->altitude);
+
+    $this->assertEquals($this->longitude, $this->coordinates->getLongitude());
+    $this->assertEquals($this->latitude, $this->coordinates->getLatitude());
+    $this->assertEquals($this->altitude, $this->coordinates->getAltitude());
   }
 
 }

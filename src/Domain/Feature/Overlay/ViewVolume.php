@@ -4,8 +4,6 @@ namespace LibKml\Domain\Feature\Overlay;
 
 /**
  * Defines how much of an scene is visible.
- *
- * @package LibKml\Domain\Feature\Overlay
  */
 class ViewVolume {
 

@@ -2,7 +2,6 @@
 
 namespace LibKml\Tests\Domain;
 
-use LibKml\Domain\FieldType\HttpQuery;
 use LibKml\Domain\FieldType\RefreshMode;
 use LibKml\Domain\FieldType\ViewRefreshMode;
 use LibKml\Domain\Icon;
@@ -18,6 +17,17 @@ class IconTest extends TestCase {
 
   public function setUp() {
     $this->icon = new Icon();
+  }
+
+  public function testDefaultValues() {
+    $this->assertEmpty($this->icon->getHref());
+    $this->assertEquals(RefreshMode::ON_CHANGE, $this->icon->getRefreshMode());
+    $this->assertEquals(4, $this->icon->getRefreshInterval());
+    $this->assertEquals(ViewRefreshMode::NEVER, $this->icon->getViewRefreshMode());
+    $this->assertEquals(4, $this->icon->getViewRefreshTime());
+    $this->assertEquals(1, $this->icon->getViewBoundScale());
+    $this->assertEmpty($this->icon->getViewFormat());
+    $this->assertEmpty($this->icon->getHttpQuery());
   }
 
   public function testAccept() {
@@ -49,7 +59,7 @@ class IconTest extends TestCase {
   }
 
   public function testViewRefreshModeField() {
-    $this->icon->setViewRefreshMode(RefreshMode::ON_EXPIRE);
+    $this->icon->setViewRefreshMode(ViewRefreshMode::ON_REQUEST);
 
     $this->assertEquals(ViewRefreshMode::ON_REQUEST, $this->icon->getViewRefreshMode());
   }
@@ -77,7 +87,7 @@ class IconTest extends TestCase {
   }
 
   public function testHttpQueryField() {
-    $httpQuery = new HttpQuery();
+    $httpQuery = "gv=[clientVersion]&kv=[kmlVersion]&l=[language]";
 
     $this->icon->setHttpQuery($httpQuery);
 

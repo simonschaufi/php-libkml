@@ -3,6 +3,7 @@
 namespace LibKml\Tests\Domain\AbstractView;
 
 use LibKml\Domain\AbstractView\AbstractView;
+use LibKml\Domain\FieldType\AltitudeMode;
 use LibKml\Domain\KmlObjectVisitorInterface;
 use PHPUnit\Framework\TestCase;
 
@@ -18,6 +19,15 @@ class AbstractViewTest extends TestCase {
       public function accept(KmlObjectVisitorInterface $visitor): void {
       }
     };
+  }
+
+  public function testDefaultValues() {
+    $this->assertEquals(0, $this->abstractView->getLongitude());
+    $this->assertEquals(0, $this->abstractView->getLatitude());
+    $this->assertEquals(0, $this->abstractView->getAltitude());
+    $this->assertEquals(0, $this->abstractView->getHeading());
+    $this->assertEquals(0, $this->abstractView->getTilt());
+    $this->assertEquals(AltitudeMode::CLAMP_TO_GROUND, $this->abstractView->getAltitudeMode());
   }
 
   public function testLongitudeField() {
@@ -58,14 +68,6 @@ class AbstractViewTest extends TestCase {
     $this->abstractView->setTilt($tilt);
 
     $this->assertEquals($tilt, $this->abstractView->getTilt());
-  }
-
-  public function testRollField() {
-    $roll = 100.0;
-
-    $this->abstractView->setRoll($roll);
-
-    $this->assertEquals($roll, $this->abstractView->getRoll());
   }
 
   public function testAltitudeModeField() {

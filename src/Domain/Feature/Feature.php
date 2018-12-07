@@ -17,35 +17,35 @@ use LibKml\Domain\TimePrimitive\TimePrimitive;
 abstract class Feature extends KmlObject {
 
   protected $name;
-  protected $visibility;
-  protected $open;
-  protected $author;
-  protected $link;
+  protected $visibility = TRUE;
+  protected $open = FALSE;
+  protected $atomAuthor;
+  protected $atomLink;
   protected $address;
   protected $addressDetails;
   protected $phoneNumber;
   protected $snippet;
   protected $description;
-  protected $abstractView;
+  protected $view;
   protected $timePrimitive;
   protected $styleUrl;
-  protected $styleSelector = [];
+  protected $styleSelectors = [];
   protected $region;
   protected $extendedData;
 
   public function addStyleSelector(StyleSelector $styleSelector): void {
-    $this->styleSelector[] = $styleSelector;
+    $this->styleSelectors[] = $styleSelector;
   }
 
   public function clearStyleSelectors(): void {
-    $this->styleSelector = array();
+    $this->styleSelectors = array();
   }
 
-  public function getName(): string {
+  public function getName(): ?string {
     return $this->name;
   }
 
-  public function setName(string $name): void {
+  public function setName(?string $name): void {
     $this->name = $name;
   }
 
@@ -65,28 +65,28 @@ abstract class Feature extends KmlObject {
     $this->open = $open;
   }
 
-  public function getAuthor(): Author {
-    return $this->author;
+  public function getAtomAuthor(): ?Author {
+    return $this->atomAuthor;
   }
 
-  public function setAuthor(Author $autor): void {
-    $this->author = $autor;
+  public function setAtomAuthor(?Author $autor): void {
+    $this->atomAuthor = $autor;
   }
 
-  public function getAddress(): string {
+  public function getAddress(): ?string {
     return $this->address;
   }
 
-  public function setAddress(string $address) {
+  public function setAddress(?string $address) {
     $this->address = $address;
   }
 
-  public function getLink(): Link {
-    return $this->link;
+  public function getAtomLink(): ?Link {
+    return $this->atomLink;
   }
 
-  public function setLink(Link $link): void {
-    $this->link = $link;
+  public function setAtomLink(?Link $atomLink): void {
+    $this->atomLink = $atomLink;
   }
 
   public function getAddressDetails() {
@@ -97,75 +97,75 @@ abstract class Feature extends KmlObject {
     $this->addressDetails = $addressDetails;
   }
 
-  public function getPhoneNumber(): string {
+  public function getPhoneNumber(): ?string {
     return $this->phoneNumber;
   }
 
-  public function setPhoneNumber(string $phoneNumber): void {
+  public function setPhoneNumber(?string $phoneNumber): void {
     $this->phoneNumber = $phoneNumber;
   }
 
-  public function getSnippet(): string {
+  public function getSnippet(): ?string {
     return $this->snippet;
   }
 
-  public function setSnippet(string $snippet): void {
+  public function setSnippet(?string $snippet): void {
     $this->snippet = $snippet;
   }
 
-  public function getDescription(): string {
+  public function getDescription(): ?string {
     return $this->description;
   }
 
-  public function setDescription(string $description): void {
+  public function setDescription(?string $description): void {
     $this->description = $description;
   }
 
-  public function getAbstractView(): AbstractView {
-    return $this->abstractView;
+  public function getView(): ?AbstractView {
+    return $this->view;
   }
 
-  public function setAbstractView(AbstractView $abstractView): void {
-    $this->abstractView = $abstractView;
+  public function setView(?AbstractView $view): void {
+    $this->view = $view;
   }
 
-  public function getTimePrimitive(): TimePrimitive {
+  public function getTimePrimitive(): ?TimePrimitive {
     return $this->timePrimitive;
   }
 
-  public function setTimePrimitive(TimePrimitive $timePrimitive): void {
+  public function setTimePrimitive(?TimePrimitive $timePrimitive): void {
     $this->timePrimitive = $timePrimitive;
   }
 
-  public function getStyleUrl(): string {
+  public function getStyleUrl(): ?string {
     return $this->styleUrl;
   }
 
-  public function setStyleUrl(string $styleUrl): void {
+  public function setStyleUrl(?string $styleUrl): void {
     $this->styleUrl = $styleUrl;
   }
 
-  public function getStyleSelector(): array {
-    return $this->styleSelector;
+  public function getStyleSelectors(): array {
+    return $this->styleSelectors;
   }
 
-  public function setStyleSelector(array $styleSelector): void {
-    $this->styleSelector = $styleSelector;
+  public function setStyleSelectors(array $styleSelectors): void {
+    $this->styleSelectors = $styleSelectors;
   }
 
-  public function getRegion(): Region {
+  public function getRegion(): ?Region {
     return $this->region;
   }
 
-  public function setRegion(Region $region): void {
+  public function setRegion(?Region $region): void {
     $this->region = $region;
   }
 
-  public function getExtendedData(): ExtendedData {
+  public function getExtendedData(): ?ExtendedData {
     return $this->extendedData;
   }
 
-  public function setExtendedData(ExtendedData $extendedData): void {
+  public function setExtendedData(?ExtendedData $extendedData): void {
     $this->extendedData = $extendedData;
   }
 
