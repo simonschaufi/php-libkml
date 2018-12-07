@@ -20,7 +20,7 @@ KML documentation
 * Import
   * KML
 
-Pending features:
+Future features:
 
 * Google extensions support
 * Import
