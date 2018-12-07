@@ -17,7 +17,7 @@
     "ext-simplexml": "*"
   },
   "require-dev": {
-    "codacy/coverage": "^1.4.2",    
+    "codacy/coverage": "dev-master",    
     "drupal/coder": "^8.2.12",
     "behat/behat": "^3.5",
     "leanphp/behat-code-coverage": "^3.4",
