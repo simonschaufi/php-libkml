@@ -10,4 +10,4 @@ Feature: Parse <GroundOverlay>
     And the GroundOverlay should contain the following properties:
       | property    | value                          |
       | name        | Large-scale overlay on terrain |
-      | visibility  | true                           |
+      | visibility  | false                           |

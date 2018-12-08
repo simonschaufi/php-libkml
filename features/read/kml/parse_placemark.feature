@@ -12,7 +12,7 @@ Feature: Parse <Placemark>
       | id          | placemark1            |
       | targetId    | target1               |
       | name        | My office             |
-      | visibility  | 1                     |
+      | visibility  | true                  |
       | address     | Blackfriards 240      |
       | phoneNumber | tel:+44 7890123456789 |
       | snippet     | Office location       |

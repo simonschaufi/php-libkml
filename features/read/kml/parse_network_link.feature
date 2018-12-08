@@ -6,14 +6,8 @@ Feature: Parse <NetworkLink>
   Scenario:
     Given a KML document with a NetworkLink in "tests/kml/network-link.kml"
     When I parse the KML document
-    Then I should get a KmlDocument object containing one 'LibKml\Domain\Feature\Overlay\NetworkLink'
+    Then I should get a KmlDocument object containing one 'LibKml\Domain\Feature\NetworkLink'
     And the NetworkLink should contain the following properties:
       | property    | value                 |
-      | id          | networkLink1          |
-      | targetId    | target1               |
-      | name        | My office             |
-      | visibility  | 1                     |
-      | address     | Blackfriards 240      |
-      | phoneNumber | tel:+44 7890123456789 |
-      | snippet     | Office location       |
-      | styleUrl    | #myIconStyle          |
+      | name        | Open NetworkLink      |
+      | open        | true                  |

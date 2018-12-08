@@ -6,7 +6,7 @@ Feature: Parse <NetworkLinkControl>
   Scenario:
     Given a KML document with a NetworkLinkControl in "tests/kml/network-link-control.kml"
     When I parse the KML document
-    Then I should get a KmlDocument object containing one NetworkLinkControl
+    Then I should get a KmlDocument object containing one 'LibKml\Domain\FieldType\NetworkLinkControl'
     And the NetworkLinkControl should contain the following properties:
       | property         | value            |
       | minRefreshPeriod | 60               |
