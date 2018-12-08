@@ -3,6 +3,7 @@
 
 [![Build Status](https://travis-ci.org/earelin/php-libkml.svg?branch=2.x.x)](https://travis-ci.org/earelin/php-libkml)
 [![codecov](https://codecov.io/gh/earelin/php-libkml/branch/2.x.x/graph/badge.svg)](https://codecov.io/gh/earelin/php-libkml)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1c5f03a197614885af5302aa00495bd8)](https://www.codacy.com/app/xavier-carriba/php-libkml?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=earelin/php-libkml&amp;utm_campaign=Badge_Grade)
 
 A php library to manipulate KML/KMZ files.
 
