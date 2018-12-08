@@ -6,14 +6,10 @@ Feature: Parse <Document>
   Scenario:
     Given a KML document with a Document in "tests/kml/document.kml"
     When I parse the KML document
-    Then I should get a KmlDocument object containing one Document
+    Then I should get a KmlDocument object containing one 'LibKml\Domain\Feature\Container\Document'
     And the Document should contain the following properties:
       | property    | value                 |
-      | id          | document1             |
-      | targetId    | target1               |
-      | name        | My office             |
-      | visibility  | 1                     |
-      | address     | Blackfriards 240      |
-      | phoneNumber | tel:+44 7890123456789 |
-      | snippet     | Office location       |
-      | styleUrl    | #myIconStyle          |
+      | id          | document-1            |
+      | targetId    | target-1              |
+      | name        | Document with XML id  |
+      | open        | true                  |

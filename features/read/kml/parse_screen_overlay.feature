@@ -6,8 +6,8 @@ Feature: Parse <ScreenOverlay>
   Scenario:
     Given a KML document with a ScreenOverlay in "tests/kml/screen-overlay.kml"
     When I parse the KML document
-    Then I should get a KmlDocument object containing one ScreenOverlay
-    And the ScreenOverlay should have the following properties:
+    Then I should get a KmlDocument object containing one 'LibKml\Domain\Feature\Overlay\ScreenOverlay'
+    And the ScreenOverlay should contain the following properties:
       | property    | value                 |
       | id          | screenOverlay1        |
       | targetId    | target1               |

@@ -6,14 +6,8 @@ Feature: Parse <GroundOverlay>
   Scenario:
     Given a KML document with a GroundOverlay in "tests/kml/ground-overlay.kml"
     When I parse the KML document
-    Then I should get a KmlDocument object containing one GroundOverlay
-    And the GroundOverlay will have the following properties:
-      | property    | value                 |
-      | id          | groundOverlay1        |
-      | targetId    | target1               |
-      | name        | My office             |
-      | visibility  | 1                     |
-      | address     | Blackfriards 240      |
-      | phoneNumber | tel:+44 7890123456789 |
-      | snippet     | Office location       |
-      | styleUrl    | #myIconStyle          |
+    Then I should get a KmlDocument object containing one 'LibKml\Domain\Feature\Overlay\GroundOverlay'
+    And the GroundOverlay should contain the following properties:
+      | property    | value                          |
+      | name        | Large-scale overlay on terrain |
+      | visibility  | true                           |

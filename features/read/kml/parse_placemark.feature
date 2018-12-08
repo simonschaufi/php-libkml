@@ -6,8 +6,8 @@ Feature: Parse <Placemark>
   Scenario:
     Given a KML document with a Placemark in "tests/kml/placemark.kml"
     When I parse the KML document
-    Then I should get a KmlDocument object containing one Placemark
-    And the Placemark should have the following properties:
+    Then I should get a KmlDocument object containing one 'LibKml\Domain\Feature\Placemark'
+    And the Placemark should contain the following properties:
       | property    | value                 |
       | id          | placemark1            |
       | targetId    | target1               |
