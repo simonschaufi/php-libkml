@@ -16,19 +16,19 @@ class TimeSpan extends TimePrimitive {
     $visitor->visitTimeSpan($this);
   }
 
-  public function getBegin(): int {
+  public function getBegin(): ?string {
     return $this->begin;
   }
 
-  public function setBegin(int $begin): void {
+  public function setBegin(?string $begin): void {
     $this->begin = $begin;
   }
 
-  public function getEnd(): int {
+  public function getEnd(): ?string {
     return $this->end;
   }
 
-  public function setEnd(int $end): void {
+  public function setEnd(?string $end): void {
     $this->end = $end;
   }
 

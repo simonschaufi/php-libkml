@@ -16,17 +16,33 @@ class LatLonBoxParserTest extends TestCase {
   <rotation>45</rotation>
 </LatLonBox>
 TAG;
-
-  public function testParse() {
+  
+  protected $latLonBox;
+  
+  public function setUp() {
     $kml = simplexml_load_string(self::KML_GROUND_OVERLAY);
 
-    $latLonBox = LatLonBoxParser::parse($kml);
+    $this->latLonBox = LatLonBoxParser::parse($kml);
+  }
 
-    $this->assertEquals(37.83234, $latLonBox->getNorth());
-    $this->assertEquals(37.832122, $latLonBox->getSouth());
-    $this->assertEquals(-122.373033, $latLonBox->getEast());
-    $this->assertEquals(-122.373724, $latLonBox->getWest());
-    $this->assertEquals(45, $latLonBox->getRotation());
+  public function testParseNorth() {
+    $this->assertEquals(37.83234, $this->latLonBox->getNorth());
+  }
+
+  public function testParseSouth() {
+    $this->assertEquals(37.832122, $this->latLonBox->getSouth());
+  }
+
+  public function testParseEast() {
+    $this->assertEquals(-122.373033, $this->latLonBox->getEast());
+  }
+
+  public function testParseWest() {
+    $this->assertEquals(-122.373724, $this->latLonBox->getWest());
+  }
+
+  public function testParseRotation() {
+    $this->assertEquals(45, $this->latLonBox->getRotation());
   }
 
 }

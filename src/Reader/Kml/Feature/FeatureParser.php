@@ -33,7 +33,7 @@ abstract class FeatureParser extends KmlObjectParser {
     }
 
     if (isset($element->Snippet)) {
-      $kmlObject->setSnippet($element->Snippet);
+      $kmlObject->setSnippet(trim($element->Snippet));
     }
 
     if (isset($element->description)) {
@@ -44,7 +44,7 @@ abstract class FeatureParser extends KmlObjectParser {
       $kmlObject->setStyleUrl($element->styleUrl);
     }
 
-    $kmlObject->setView(AbstractViewExtractor::extract($element));
+    $kmlObject->setAbstractView(AbstractViewExtractor::extract($element));
   }
 
 }

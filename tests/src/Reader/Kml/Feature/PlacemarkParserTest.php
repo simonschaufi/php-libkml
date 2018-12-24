@@ -26,6 +26,7 @@ class PlacemarkParserTest extends TestCase {
     <heading>-6.333</heading>
     <tilt>33.5</tilt>
     <roll>12.5</roll>
+    <altitudeMode>absolute</altitudeMode>
   </Camera>
   <styleUrl>#myIconStyle</styleUrl>
   
@@ -40,30 +41,61 @@ TAG;
    * @var PlacemarkParser
    */
   protected $placemarkParser;
-  protected $kmlElement;
+  protected $placemarkKmlElement;
+  protected $placemark;
 
   public function setUp() {
     $this->placemarkParser = new PlacemarkParser();
-    $this->kmlElement = simplexml_load_string(self::KML_PLACEMARK);
+    $this->placemarkKmlElement = simplexml_load_string(self::KML_PLACEMARK);
+    $this->placemark = $this->placemarkParser->parse($this->placemarkKmlElement);
   }
 
-  public function testParse() {
-    $kmlObject = $this->placemarkParser->parse($this->kmlElement);
+  public function testParseId() {
+    $this->assertEquals("placemark-1", $this->placemark->getId());
+  }
 
-    $this->assertEquals("placemark-1", $kmlObject->getId());
-    $this->assertEquals("target-1", $kmlObject->getTargetId());
+  public function testParseTargetId() {
+    $this->assertEquals("target-1", $this->placemark->getTargetId());
+  }
 
-    $this->assertEquals("My office", $kmlObject->getName());
-    $this->assertFalse($kmlObject->getVisibility());
-    $this->assertTrue($kmlObject->getOpen());
-    $this->assertEquals("Blackfriards 240", $kmlObject->getAddress());
-    $this->assertEquals("tel:+44 7890123456789", $kmlObject->getPhoneNumber());
-    $this->assertEquals("Office location", $kmlObject->getSnippet());
-    $this->assertEquals("This is the location of my office.", $kmlObject->getDescription());
-    $this->assertInstanceOf(Camera::class, $kmlObject->getView());
-    $this->assertEquals("#myIconStyle", $kmlObject->getStyleUrl());
+  public function testParseName() {
+    $this->assertEquals("My office", $this->placemark->getName());
+  }
 
-    $this->assertInstanceOf(Point::class, $kmlObject->getGeometry());
+  public function testParseVisibility() {
+    $this->assertFalse($this->placemark->getVisibility());
+  }
+
+  public function testParseOpen() {
+    $this->assertTrue($this->placemark->getOpen());
+  }
+
+  public function testParseAddress() {
+    $this->assertEquals("Blackfriards 240", $this->placemark->getAddress());
+  }
+
+  public function testParsePhoneNumber() {
+    $this->assertEquals("tel:+44 7890123456789", $this->placemark->getPhoneNumber());
+  }
+
+  public function testParseSnippet() {
+    $this->assertEquals("Office location", $this->placemark->getSnippet());
+  }
+
+  public function testParseDescription() {
+    $this->assertEquals("This is the location of my office.", $this->placemark->getDescription());
+  }
+
+  public function testParseAbstractView() {
+    $this->assertInstanceOf(Camera::class, $this->placemark->getAbstractView());
+  }
+
+  public function testParseStyleUrl() {
+    $this->assertEquals("#myIconStyle", $this->placemark->getStyleUrl());
+  }
+
+  public function testParseGeometry() {
+    $this->assertInstanceOf(Point::class, $this->placemark->getGeometry());
   }
 
 }

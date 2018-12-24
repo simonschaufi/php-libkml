@@ -42,24 +42,47 @@ TAG;
   /**
    * @var PolygonParser
    */
-  protected $lineString;
+  protected $polygonParser;
+
+  /**
+   * @var Polygon
+   */
+  protected $polygon;
+
   protected $kmlElement;
 
   public function setUp() {
-    $this->lineString = new PolygonParser();
+    $this->polygonParser = new PolygonParser();
     $this->kmlElement = simplexml_load_string(self::KML_POLYGON);
+    $this->polygon = $this->polygonParser->parse($this->kmlElement);
   }
 
-  public function testParse() {
-    $kmlObject = $this->lineString->parse($this->kmlElement);
+  public function testParseId() {
+    $this->assertEquals("polygon-1", $this->polygon->getId());
+  }
 
-    $this->assertEquals("polygon-1", $kmlObject->getId());
-    $this->assertEquals("target-id-1", $kmlObject->getTargetId());
-    $this->assertTrue($kmlObject->getExtrude());
-    $this->assertTrue($kmlObject->getTessellate());
-    $this->assertEquals(AltitudeMode::ABSOLUTE, $kmlObject->getAltitudeMode());
-    $this->assertInstanceOf(LinearRing::class, $kmlObject->getOuterBoundaryIs());
-    $this->assertInstanceOf(LinearRing::class, $kmlObject->getInnerBoundaryIs());
+  public function testParseTargetId() {
+    $this->assertEquals("target-id-1", $this->polygon->getTargetId());
+  }
+
+  public function testParseExtrude() {
+    $this->assertTrue($this->polygon->getExtrude());
+  }
+
+  public function testParseTessellate() {
+    $this->assertTrue($this->polygon->getTessellate());
+  }
+
+  public function testParseAltitudeMode() {
+    $this->assertEquals(AltitudeMode::ABSOLUTE, $this->polygon->getAltitudeMode());
+  }
+
+  public function testParseOuterBondary() {
+    $this->assertInstanceOf(LinearRing::class, $this->polygon->getOuterBoundaryIs());
+  }
+
+  public function testParseInnerBoundary() {
+    $this->assertInstanceOf(LinearRing::class, $this->polygon->getInnerBoundaryIs());
   }
 
 }

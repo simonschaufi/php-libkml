@@ -22,22 +22,42 @@ TAG;
    * @var NetworkLinkParser
    */
   protected $networkLinkParser;
+
   protected $kmlElement;
+
+  /**
+   * @var NetworkLink
+   */
+  protected $networkLink;
 
   public function setUp() {
     $this->networkLinkParser = new NetworkLinkParser();
     $this->kmlElement = simplexml_load_string(self::KML_NETWORK_LINK);
+    $this->networkLink = $this->networkLinkParser->parse($this->kmlElement);
   }
 
-  public function testParse() {
-    $kmlObject = $this->networkLinkParser->parse($this->kmlElement);
+  public function testParseId() {
+    $this->assertEquals("network-link-1", $this->networkLink->getId());
+  }
 
-    $this->assertEquals("network-link-1", $kmlObject->getId());
-    $this->assertEquals("target-id-1", $kmlObject->getTargetId());
-    $this->assertEquals(TRUE, $kmlObject->getOpen());
-    $this->assertEquals("Open NetworkLink", $kmlObject->getName());
-    $this->assertEquals("NetworkLink closed to fetched content", $kmlObject->getDescription());
-    $this->assertEquals("placemark.kml", $kmlObject->getLink()->getHref());
+  public function testParseTargetId() {
+    $this->assertEquals("target-id-1", $this->networkLink->getTargetId());
+  }
+
+  public function testParseOpen() {
+    $this->assertEquals(TRUE, $this->networkLink->getOpen());
+  }
+
+  public function testParseName() {
+    $this->assertEquals("Open NetworkLink", $this->networkLink->getName());
+  }
+
+  public function testParseDescription() {
+    $this->assertEquals("NetworkLink closed to fetched content", $this->networkLink->getDescription());
+  }
+
+  public function testParseLink() {
+    $this->assertEquals("placemark.kml", $this->networkLink->getLink()->getHref());
   }
 
 }

@@ -53,23 +53,39 @@ TAG;
    * @var FolderParser
    */
   protected $folderParser;
+  protected $folder;
 
   public function setUp() {
     $this->folderParser = new FolderParser();
-  }
 
-  public function testParse() {
     $element = simplexml_load_string(self::KML_FOLDER);
 
-    $kmlObject = $this->folderParser->parse($element);
+    $this->folder = $this->folderParser->parse($element);
+  }
 
-    $this->assertInstanceOf(Folder::class, $kmlObject);
-    $this->assertEquals("folder-1", $kmlObject->getId());
-    $this->assertEquals("target-1", $kmlObject->getTargetId());
-    $this->assertEquals("Folder.kml", $kmlObject->getName());
-    $this->assertTrue($kmlObject->getOpen());
-    $this->assertCount(3, $kmlObject->getFeatures());
-    $this->assertContainsOnlyInstancesOf(Placemark::class, $kmlObject->getFeatures());
+  public function testParseFolder() {
+    $this->assertInstanceOf(Folder::class, $this->folder);
+  }
+
+  public function testParseId() {
+    $this->assertEquals("folder-1", $this->folder->getId());
+  }
+
+  public function testParseTargetId() {
+    $this->assertEquals("target-1", $this->folder->getTargetId());
+  }
+
+  public function testParseName() {
+    $this->assertEquals("Folder.kml", $this->folder->getName());
+  }
+
+  public function testParseOpen() {
+    $this->assertTrue($this->folder->getOpen());
+  }
+
+  public function testParseFeatures() {
+    $this->assertCount(3, $this->folder->getFeatures());
+    $this->assertContainsOnlyInstancesOf(Placemark::class, $this->folder->getFeatures());
   }
 
 }

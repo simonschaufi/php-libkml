@@ -27,6 +27,10 @@ class CameraTest extends TestCase {
     $this->camera->accept($objectVisitor);
   }
 
+  public function testDefaultValues() {
+    $this->assertEquals(0, $this->camera->getRoll());
+  }
+
   public function testRollField() {
     $roll = 100.1;
 

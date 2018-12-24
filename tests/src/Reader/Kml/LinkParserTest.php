@@ -24,22 +24,43 @@ TAG;
    */
   protected $linkParser;
 
+  /**
+   * @var Link
+   */
+  protected $link;
+
   public function setUp() {
     $this->linkParser = new LinkParser();
+    $kml = simplexml_load_string(self::KML_LINK);
+    $this->link = $this->linkParser->parse($kml);
   }
 
-  public function testParse() {
-    $kml = simplexml_load_string(self::KML_LINK);
+  public function testParseLink() {
+    $this->assertInstanceOf(Link::class, $this->link);
+  }
 
-    $kmlObject = $this->linkParser->parse($kml);
+  public function testParseHref() {
+    $this->assertEquals("http://www.example.com/geotiff/NE/MergedReflectivityQComposite.kml", $this->link->getHref());
+  }
 
-    $this->assertInstanceOf(Link::class, $kmlObject);
-    $this->assertEquals("http://www.example.com/geotiff/NE/MergedReflectivityQComposite.kml", $kmlObject->getHref());
-    $this->assertEquals("onInterval", $kmlObject->getRefreshMode());
-    $this->assertEquals("30", $kmlObject->getRefreshInterval());
-    $this->assertEquals("onStop", $kmlObject->getViewRefreshMode());
-    $this->assertEquals("7", $kmlObject->getViewRefreshTime());
-    $this->assertEquals("BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]", $kmlObject->getViewFormat());
+  public function testParseRefreshMode() {
+    $this->assertEquals("onInterval", $this->link->getRefreshMode());
+  }
+
+  public function testParseRefreshInterval() {
+    $this->assertEquals("30", $this->link->getRefreshInterval());
+  }
+
+  public function testParseViewRefreshMode() {
+    $this->assertEquals("onStop", $this->link->getViewRefreshMode());
+  }
+
+  public function testParseViewRefreshTime() {
+    $this->assertEquals("7", $this->link->getViewRefreshTime());
+  }
+
+  public function testParseViewFormat() {
+    $this->assertEquals("BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]", $this->link->getViewFormat());
   }
 
 }

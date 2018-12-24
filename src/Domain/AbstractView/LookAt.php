@@ -9,17 +9,19 @@ use LibKml\Domain\KmlObjectVisitorInterface;
  */
 class LookAt extends AbstractView {
 
-  private $range = NULL;
+  use View;
+
+  private $range = 0;
 
   public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitLookAt($this);
   }
 
-  public function getRange(): ?float {
+  public function getRange(): float {
     return $this->range;
   }
 
-  public function setRange(?float $range): void {
+  public function setRange(float $range): void {
     $this->range = $range;
   }
 

@@ -106,9 +106,9 @@ class FeatureTest extends TestCase {
       }
     };
 
-    $this->feature->setView($abstractView);
+    $this->feature->setAbstractView($abstractView);
 
-    $this->assertEquals($abstractView, $this->feature->getView());
+    $this->assertEquals($abstractView, $this->feature->getAbstractView());
   }
 
   public function testTimePrimitiveField() {

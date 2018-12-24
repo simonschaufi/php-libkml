@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
-  <ScreenOverlay>
+  <ScreenOverlay id="screen-overlay-1" targetId="target-1">
     <name>Centered icon</name>
+    <visibility>0</visibility>
+    <address>Blackfriards 240</address>
+    <phoneNumber>tel:+44 7890123456789</phoneNumber>
+    <Snippet>Office location</Snippet>
+    <styleUrl>#myIconStyle</styleUrl>
     <Icon>
       <href>http://www.google.com/intl/en_ALL/images/logo.gif</href>
     </Icon>

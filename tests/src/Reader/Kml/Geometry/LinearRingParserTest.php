@@ -27,24 +27,43 @@ TAG;
   /**
    * @var LinearRingParser
    */
+  protected $linearRingParser;
+
+  /**
+   * @var LinearRing
+   */
   protected $linearRing;
   protected $kmlElement;
 
   public function setUp() {
-    $this->linearRing = new LinearRingParser();
+    $this->linearRingParser = new LinearRingParser();
     $this->kmlElement = simplexml_load_string(self::KML_LINEAR_RING);
+    $this->linearRing = $this->linearRingParser->parse($this->kmlElement);
   }
 
-  public function testParse() {
-    $kmlObject = $this->linearRing->parse($this->kmlElement);
+  public function testParseId() {
+    $this->assertEquals("linear-ring-1", $this->linearRing->getId());
+  }
 
-    $this->assertEquals("linear-ring-1", $kmlObject->getId());
-    $this->assertEquals("target-id-1", $kmlObject->getTargetId());
-    $this->assertTrue($kmlObject->getExtrude());
-    $this->assertTrue($kmlObject->getTessellate());
-    $this->assertEquals(AltitudeMode::ABSOLUTE, $kmlObject->getAltitudeMode());
-    $this->assertCount(5, $kmlObject->getCoordinates());
-    $this->assertContainsOnlyInstancesOf(Coordinates::class, $kmlObject->getCoordinates());
+  public function testParseTargetId() {
+    $this->assertEquals("target-id-1", $this->linearRing->getTargetId());
+  }
+
+  public function testParseExtrude() {
+    $this->assertTrue($this->linearRing->getExtrude());
+  }
+
+  public function testParseTessellate() {
+    $this->assertTrue($this->linearRing->getTessellate());
+  }
+
+  public function testParseAltitudeMode() {
+    $this->assertEquals(AltitudeMode::ABSOLUTE, $this->linearRing->getAltitudeMode());
+  }
+
+  public function testParseCoordinates() {
+    $this->assertCount(5, $this->linearRing->getCoordinates());
+    $this->assertContainsOnlyInstancesOf(Coordinates::class, $this->linearRing->getCoordinates());
   }
 
 }

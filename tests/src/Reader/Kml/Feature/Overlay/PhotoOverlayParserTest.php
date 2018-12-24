@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class PhotoOverlayParserTest extends TestCase {
 
-  const KML_PHOTO_OVERLAY = <<< 'TAG'
+  const KML_PHOTO_OVERLAY = <<<'TAG'
 <PhotoOverlay>
   <!-- Feature elements -->
   <name>A simple non-pyramidal photo</name>

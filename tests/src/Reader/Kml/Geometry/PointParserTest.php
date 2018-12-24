@@ -19,19 +19,33 @@ TAG;
    * @var PointParser
    */
   protected $pointParser;
+
+  /**
+   * @var Point
+   */
+  protected $point;
+  
   protected $kmlElement;
 
   public function setUp() {
     $this->pointParser = new PointParser();
     $this->kmlElement = simplexml_load_string(self::KML_POINT);
+    $this->point = $this->pointParser->parse($this->kmlElement);
   }
 
-  public function testParse() {
-    $kmlObject = $this->pointParser->parse($this->kmlElement);
+  public function testParseId() {
+    $this->assertEquals("point-1", $this->point->getId());
+  }
 
-    $this->assertEquals("point-1", $kmlObject->getId());
-    $this->assertEquals("target-id-1", $kmlObject->getTargetId());
-    $this->assertEquals(TRUE, $kmlObject->getExtrude());
-    $this->assertInstanceOf(Coordinates::class, $kmlObject->getCoordinates());
+  public function testParseTargetId() {
+    $this->assertEquals("target-id-1", $this->point->getTargetId());
+  }
+
+  public function testParseExtrude() {
+    $this->assertEquals(TRUE, $this->point->getExtrude());
+  }
+
+  public function testParseCoordinates() {
+    $this->assertInstanceOf(Coordinates::class, $this->point->getCoordinates());
   }
 }

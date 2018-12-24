@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 class GroundOverlayParserTest extends TestCase {
 
-  const KML_GROUND_OVERLAY = <<< 'TAG'
+  const KML_GROUND_OVERLAY = <<<'TAG'
 <GroundOverlay>
    <name>GroundOverlay.kml</name>
    <color>7fffffff</color>
@@ -39,24 +39,46 @@ TAG;
    * @var GroundOverlayParser
    */
   protected $groundOverlayParser;
+  protected $overlay;
 
   public function setUp() {
     $this->groundOverlayParser = new GroundOverlayParser();
-  }
 
-  public function testParse() {
     $element = simplexml_load_string(self::KML_GROUND_OVERLAY);
 
-    $overlay = $this->groundOverlayParser->parse($element);
+    $this->overlay = $this->groundOverlayParser->parse($element);
+  }
 
-    $this->assertInstanceOf(GroundOverlay::class, $overlay);
-    $this->assertEquals("GroundOverlay.kml", $overlay->getName());
-    $this->assertEquals(Color::fromRGBA(0x7f, 0xff, 0xff, 1), $overlay->getColor());
-    $this->assertEquals(1, $overlay->getDrawOrder());
-    $this->assertInstanceOf(Icon::class, $overlay->getIcon());
-    $this->assertEquals(135.54, $overlay->getAltitude());
-    $this->assertEquals(AltitudeMode::ABSOLUTE, $overlay->getAltitudeMode());
-    $this->assertInstanceOf(LatLonBox::class, $overlay->getLatLonBox());
+  public function testParseOverlay() {
+    $this->assertInstanceOf(GroundOverlay::class, $this->overlay);
+  }
+
+  public function testParseName() {
+    $this->assertEquals("GroundOverlay.kml", $this->overlay->getName());
+  }
+
+  public function testParseColor() {
+    $this->assertEquals(Color::fromRGBA(0x7f, 0xff, 0xff, 1), $this->overlay->getColor());
+  }
+
+  public function testParseDrawOrder() {
+    $this->assertEquals(1, $this->overlay->getDrawOrder());
+  }
+
+  public function testParseIcon() {
+    $this->assertInstanceOf(Icon::class, $this->overlay->getIcon());
+  }
+
+  public function testParseAltitude() {
+    $this->assertEquals(135.54, $this->overlay->getAltitude());
+  }
+
+  public function testParseAltitudeMode() {
+    $this->assertEquals(AltitudeMode::ABSOLUTE, $this->overlay->getAltitudeMode());
+  }
+
+  public function testParseLatLonBox() {
+    $this->assertInstanceOf(LatLonBox::class, $this->overlay->getLatLonBox());
   }
 
 }

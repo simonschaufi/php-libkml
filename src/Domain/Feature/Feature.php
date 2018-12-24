@@ -26,7 +26,7 @@ abstract class Feature extends KmlObject {
   protected $phoneNumber;
   protected $snippet;
   protected $description;
-  protected $view;
+  protected $abstractView;
   protected $timePrimitive;
   protected $styleUrl;
   protected $styleSelectors = [];
@@ -121,12 +121,12 @@ abstract class Feature extends KmlObject {
     $this->description = $description;
   }
 
-  public function getView(): ?AbstractView {
-    return $this->view;
+  public function getAbstractView(): ?AbstractView {
+    return $this->abstractView;
   }
 
-  public function setView(?AbstractView $view): void {
-    $this->view = $view;
+  public function setAbstractView(?AbstractView $abstractView): void {
+    $this->abstractView = $abstractView;
   }
 
   public function getTimePrimitive(): ?TimePrimitive {

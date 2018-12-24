@@ -17,6 +17,8 @@ use LibKml\Reader\Kml\Geometry\ModelParser;
 use LibKml\Reader\Kml\Geometry\MultiGeometryParser;
 use LibKml\Reader\Kml\Geometry\PointParser;
 use LibKml\Reader\Kml\Geometry\PolygonParser;
+use LibKml\Reader\Kml\TimePrimitive\TimeSpanParser;
+use LibKml\Reader\Kml\TimePrimitive\TimeStampParser;
 
 class KmlElementParserFactory {
 
@@ -40,6 +42,9 @@ class KmlElementParserFactory {
 
   const CAMERA = "Camera";
   const LOOK_AT = "LookAt";
+
+  const TIME_SPAN = "TimeSpan";
+  const TIME_STAMP = "TimeStamp";
 
   private static $instance;
 
@@ -125,6 +130,14 @@ class KmlElementParserFactory {
 
         case self::LOOK_AT:
           $this->parsers[$name] = new LookAtParser();
+          break;
+
+        case self::TIME_SPAN:
+          $this->parsers[$name] = new TimeSpanParser();
+          break;
+
+        case self::TIME_STAMP:
+          $this->parsers[$name] = new TimeStampParser();
           break;
 
         default:

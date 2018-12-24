@@ -31,7 +31,7 @@ class TimeSpanTest extends TestCase {
   }
 
   public function testBeginField() {
-    $begin = time();
+    $begin = date(DATE_ATOM);
 
     $this->timeSpan->setBegin($begin);
 
@@ -42,7 +42,7 @@ class TimeSpanTest extends TestCase {
    * @throws \Exception
    */
   public function testEndField() {
-    $end = time();
+    $end = date(DATE_ATOM);
 
     $this->timeSpan->setEnd($end);
 

@@ -21,35 +21,35 @@ class NetworkLinkControl {
   private $update;
   private $abstractView;
 
-  public function getCookie(): string {
+  public function getCookie(): ?string {
     return $this->cookie;
   }
 
-  public function setCookie(string $cookie): void {
+  public function setCookie(?string $cookie): void {
     $this->cookie = $cookie;
   }
 
-  public function getMessage(): string {
+  public function getMessage(): ?string {
     return $this->message;
   }
 
-  public function setMessage(string $message): void {
+  public function setMessage(?string $message): void {
     $this->message = $message;
   }
 
-  public function getLinkName(): string {
+  public function getLinkName(): ?string {
     return $this->linkName;
   }
 
-  public function setLinkName(string $linkName): void {
+  public function setLinkName(?string $linkName): void {
     $this->linkName = $linkName;
   }
 
-  public function getLinkDescription(): string {
+  public function getLinkDescription(): ?string {
     return $this->linkDescription;
   }
 
-  public function setLinkDescription(string $linkDescription): void {
+  public function setLinkDescription(?string $linkDescription): void {
     $this->linkDescription = $linkDescription;
   }
 
@@ -69,35 +69,35 @@ class NetworkLinkControl {
     $this->maxSessionLength = $maxSessionLength;
   }
 
-  public function getLinkSnippet(): string {
+  public function getLinkSnippet(): ?string {
     return $this->linkSnippet;
   }
 
-  public function setLinkSnippet(string $linkSnippet): void {
+  public function setLinkSnippet(?string $linkSnippet): void {
     $this->linkSnippet = $linkSnippet;
   }
 
-  public function getExpires(): int {
+  public function getExpires(): ?string {
     return $this->expires;
   }
 
-  public function setExpires(int $expires): void {
+  public function setExpires(?string $expires): void {
     $this->expires = $expires;
   }
 
-  public function getUpdate(): Update {
+  public function getUpdate(): ?Update {
     return $this->update;
   }
 
-  public function setUpdate(Update $update): void {
+  public function setUpdate(?Update $update): void {
     $this->update = $update;
   }
 
-  public function getAbstractView(): AbstractView {
+  public function getAbstractView(): ?AbstractView {
     return $this->abstractView;
   }
 
-  public function setAbstractView(AbstractView $abstractView): void {
+  public function setAbstractView(?AbstractView $abstractView): void {
     $this->abstractView = $abstractView;
   }
 

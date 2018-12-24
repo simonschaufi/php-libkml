@@ -6,8 +6,8 @@ Feature: Parse <Document>
   Scenario:
     Given a KML document with a Document in "tests/kml/document.kml"
     When I parse the KML document
-    Then I should get a KmlDocument object containing one 'LibKml\Domain\Feature\Container\Document'
-    And the Document should contain the following properties:
+    Then I should get a KmlDocument object containing one feature 'LibKml\Domain\Feature\Container\Document'
+    And the feature Document should contain the following properties:
       | property    | value                 |
       | id          | document-1            |
       | targetId    | target-1              |

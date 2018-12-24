@@ -6,8 +6,8 @@ Feature: Parse <GroundOverlay>
   Scenario:
     Given a KML document with a GroundOverlay in "tests/kml/ground-overlay.kml"
     When I parse the KML document
-    Then I should get a KmlDocument object containing one 'LibKml\Domain\Feature\Overlay\GroundOverlay'
-    And the GroundOverlay should contain the following properties:
+    Then I should get a KmlDocument object containing one feature 'LibKml\Domain\Feature\Overlay\GroundOverlay'
+    And the feature GroundOverlay should contain the following properties:
       | property    | value                          |
       | name        | Large-scale overlay on terrain |
-      | visibility  | false                           |
+      | visibility  | false                          |

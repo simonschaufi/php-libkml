@@ -21,6 +21,8 @@ class ParserKmlContext implements Context {
    */
   private $kmlDocument;
 
+  protected $target;
+
   public function __construct() {
     $this->kmlReader = new LibKmlReader();
   }
@@ -41,20 +43,68 @@ class ParserKmlContext implements Context {
   }
 
   /**
-   * @Then I should get a KmlDocument object containing one :featureType
+   * @Then I should get a KmlDocument object containing one NetworkLinkControl
    */
-  public function iShouldGetAKmldocumentObjectContainingOne($featureType) {
+  public function iShouldGetAKmlDocumentObjectContainingOneNetworkLinkControl() {
+    TestCase::assertInstanceOf("LibKml\Domain\FieldType\NetworkLinkControl", $this->kmlDocument->getNetworkLinkControl());
+  }
+
+  /**
+   * @Then I should get a KmlDocument object containing one feature :featureType
+   */
+  public function iShouldGetAKmlDocumentObjectContainingOneFeature($featureType) {
     TestCase::assertInstanceOf($featureType, $this->kmlDocument->getFeature());
   }
 
   /**
-   * @Then the :element should contain the following properties:
+   * @Then the NetworkLinkControl should contain the following properties:
    */
-  public function theDocumentShouldContainTheFollowingProperties(TableNode $table) {
+  public function theNetworklinkcontrolShouldContainTheFollowingProperties(TableNode $table) {
+    $networkLinkControl = $this->kmlDocument->getNetworkLinkControl();
+    $this->containsProperties($networkLinkControl, $table);
+  }
+
+  /**
+   * @Then the NetworkLinkControl should contain a Camera with a :timePrimitiveType TimePrimitive property
+   */
+  public function theNetworklinkcontrolShouldContainACameraWithATimeprimitiveProperty($timePrimitiveType) {
+    $networkLinkControl = $this->kmlDocument->getNetworkLinkControl();
+    TestCase::assertNotNull($networkLinkControl->getAbstractView());
+
+    $abstractView = $networkLinkControl->getAbstractView();
+    TestCase::assertNotNull($abstractView->getTimePrimitive());
+
+    $this->target = $abstractView->getTimePrimitive();
+  }
+
+  /**
+   * @Then the feature should contain a LookAt object with the the following properties:
+   */
+  public function theFeatureShouldContainALookatObjectWithTheTheFollowingProperties(TableNode $table) {
     $feature = $this->kmlDocument->getFeature();
-    foreach ($table->getRows() as $i => $row) {
+    $this->containsProperties($feature->getAbstractView(), $table);
+  }
+
+  /**
+   * @Then the NetworkLinkControl should have an AbstractView with the following properties:
+   */
+  public function theNetworkLinkControlShouldHaveAnAbstractViewWithTheFollowingProperties(TableNode $table) {
+    $networkLinkControl = $this->kmlDocument->getNetworkLinkControl();
+    $containedType = $networkLinkControl->getAbstractView();
+    $this->containsProperties($containedType, $table);
+  }
+
+  /**
+   * @Then the feature :element should contain the following properties:
+   */
+  public function theFeatureElementShouldContainTheFollowingProperties(TableNode $table) {
+    $this->containsProperties($this->kmlDocument->getFeature(), $table);
+  }
+
+  private function containsProperties($object, TableNode $properties) {
+    foreach ($properties->getRows() as $i => $row) {
       if ($i > 0) {
-        $value = $feature->{"get" . ucfirst($row[0])}();
+        $value = $object->{"get" . ucfirst($row[0])}();
 
         switch ($row[1]) {
           case 'true':
@@ -66,7 +116,7 @@ class ParserKmlContext implements Context {
             break;
 
           default:
-            TestCase::assertEquals($row[1], $feature->{"get" . ucfirst($row[0])}());
+            TestCase::assertEquals($row[1], $object->{"get" . ucfirst($row[0])}());
         }
       }
     }

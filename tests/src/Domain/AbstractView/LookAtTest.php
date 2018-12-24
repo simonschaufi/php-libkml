@@ -27,6 +27,10 @@ class LookAtTest extends TestCase {
     $this->lookAt->accept($objectVisitor);
   }
 
+  public function testDefaultValues() {
+    $this->assertEquals(0, $this->lookAt->getRange());
+  }
+
   public function testRangeField() {
     $range = 1234.45;
 

@@ -4,6 +4,7 @@ namespace LibKml\Reader\Kml\AbstractView;
 
 use LibKml\Domain\KmlObject;
 use LibKml\Reader\Kml\KmlObjectParser;
+use LibKml\Reader\Kml\TimePrimitive\TimePrimitiveExtractor;
 use SimpleXMLElement;
 
 abstract class AbstractViewParser extends KmlObjectParser {
@@ -29,6 +30,15 @@ abstract class AbstractViewParser extends KmlObjectParser {
 
     if (isset($element->tilt)) {
       $kmlObject->setTilt(floatval($element->tilt));
+    }
+
+    if (isset($element->altitudeMode)) {
+      $kmlObject->setAltitudeMode(trim($element->altitudeMode));
+    }
+
+    $timePrimitive = TimePrimitiveExtractor::extract($element);
+    if (isset($timePrimitive)) {
+      $kmlObject->setTimePrimitive($timePrimitive);
     }
   }
 

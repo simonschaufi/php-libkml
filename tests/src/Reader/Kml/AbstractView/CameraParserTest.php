@@ -19,21 +19,37 @@ class CameraParserTest extends TestCase {
 TAG;
 
   protected $cameraParser;
+  protected $camera;
 
   public function setUp() {
     $this->cameraParser = new CameraParser();
-  }
 
-  public function testParse() {
     $xmlElement = simplexml_load_string(self::KML_CAMERA);
 
-    $camera = $this->cameraParser->parse($xmlElement);
+    $this->camera = $this->cameraParser->parse($xmlElement);
+  }
 
-    $this->assertEquals(170.157, $camera->getLongitude());
-    $this->assertEquals(-43.671, $camera->getLatitude());
-    $this->assertEquals(9700, $camera->getAltitude());
-    $this->assertEquals(-6.333, $camera->getHeading());
-    $this->assertEquals(33.5, $camera->getTilt());
-    $this->assertEquals(12.5, $camera->getRoll());
+  public function testParseLongitude() {
+    $this->assertEquals(170.157, $this->camera->getLongitude());
+  }
+
+  public function testParseLatitude() {
+    $this->assertEquals(-43.671, $this->camera->getLatitude());
+  }
+
+  public function testParseAltitude() {
+    $this->assertEquals(9700, $this->camera->getAltitude());
+  }
+
+  public function testParseHeading() {
+    $this->assertEquals(-6.333, $this->camera->getHeading());
+  }
+
+  public function testParseTilt() {
+    $this->assertEquals(33.5, $this->camera->getTilt());
+  }
+
+  public function testParseRoll() {
+    $this->assertEquals(12.5, $this->camera->getRoll());
   }
 }

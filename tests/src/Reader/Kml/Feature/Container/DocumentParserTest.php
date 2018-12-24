@@ -14,6 +14,11 @@ class DocumentParserTest extends TestCase {
 <Document id="document-1" targetId="target-1">
   <name>Document.kml</name>
   <open>1</open>
+  <visibility>0</visibility>
+  <address>Feature address</address>
+  <phoneNumber>7897688976</phoneNumber>
+  <Snippet>Feature snippet</Snippet>
+  <description>Feature description</description>
   <Style id="exampleStyleDocument">
     <LabelStyle>
       <color>ff0000cc</color>
@@ -47,25 +52,61 @@ class DocumentParserTest extends TestCase {
 </Document>
 TAG;
 
-  protected $documentParser;
+  protected $document;
 
   public function setUp() {
-    $this->documentParser = new DocumentParser();
+    $documentParser = new DocumentParser();
+    $element = simplexml_load_string(self::KML_DOCUMENT);
+    $this->document = $documentParser->parse($element);
   }
 
   public function testParse() {
-    $element = simplexml_load_string(self::KML_DOCUMENT);
+    $this->assertInstanceOf(Document::class, $this->document);
+  }
 
-    $kmlObject = $this->documentParser->parse($element);
+  public function testParseId() {
+    $this->assertEquals("document-1", $this->document->getId());
+  }
 
-    $this->assertInstanceOf(Document::class, $kmlObject);
-    $this->assertEquals("document-1", $kmlObject->getId());
-    $this->assertEquals("target-1", $kmlObject->getTargetId());
-    $this->assertEquals("Document.kml", $kmlObject->getName());
-    $this->assertTrue($kmlObject->getOpen());
-    $this->assertCount(2, $kmlObject->getFeatures());
-    $this->assertContainsOnlyInstancesOf(Placemark::class, $kmlObject->getFeatures());
-    $this->assertCount(1, $kmlObject->getSchemas());
-    $this->assertContainsOnlyInstancesOf(Schema::class, $kmlObject->getSchemas());
+  public function testParseTargetId() {
+    $this->assertEquals("target-1", $this->document->getTargetId());
+  }
+
+  public function testParseName() {
+    $this->assertEquals("Document.kml", $this->document->getName());
+  }
+
+  public function testParseVisibility() {
+    $this->assertFalse($this->document->getVisibility());
+  }
+
+  public function testParseOpen() {
+    $this->assertTrue($this->document->getOpen());
+  }
+
+  public function testParseAddress() {
+    $this->assertEquals('Feature address', $this->document->getAddress());
+  }
+
+  public function testParsePhoneNumber() {
+    $this->assertEquals('7897688976', $this->document->getPhoneNumber());
+  }
+
+  public function testParseSnippet() {
+    $this->assertEquals('Feature snippet', $this->document->getSnippet());
+  }
+
+  public function testParseDescription() {
+    $this->assertEquals('Feature description', $this->document->getDescription());
+  }
+
+  public function testParseFeatures() {
+    $this->assertCount(2, $this->document->getFeatures());
+    $this->assertContainsOnlyInstancesOf(Placemark::class, $this->document->getFeatures());
+  }
+
+  public function testParseSchemas() {
+    $this->assertCount(1, $this->document->getSchemas());
+    $this->assertContainsOnlyInstancesOf(Schema::class, $this->document->getSchemas());
   }
 }

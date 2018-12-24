@@ -24,21 +24,41 @@ TAG;
    */
   protected $lookAtParser;
 
+  /**
+   * @var LookAt
+   */
+  protected $lookAt;
+
   public function setUp() {
     $this->lookAtParser = new LookAtParser();
-  }
 
-  public function testParse() {
     $xmlElement = simplexml_load_string(self::KML_LOOK_AT);
 
-    $lookAt = $this->lookAtParser->parse($xmlElement);
+    $this->lookAt = $this->lookAtParser->parse($xmlElement);
+  }
 
-    $this->assertEquals(-119.748584, $lookAt->getLongitude());
-    $this->assertEquals(33.736266, $lookAt->getLatitude());
-    $this->assertEquals(90, $lookAt->getAltitude());
-    $this->assertEquals(-9.295926, $lookAt->getHeading());
-    $this->assertEquals(84.0957450, $lookAt->getTilt());
-    $this->assertEquals(4469.850414, $lookAt->getRange());
+  public function testParseLongitude() {
+    $this->assertEquals(-119.748584, $this->lookAt->getLongitude());
+  }
+
+  public function testParseLatitude() {
+    $this->assertEquals(33.736266, $this->lookAt->getLatitude());
+  }
+
+  public function testParseAltitude() {
+    $this->assertEquals(90, $this->lookAt->getAltitude());
+  }
+
+  public function testParseHeading() {
+    $this->assertEquals(-9.295926, $this->lookAt->getHeading());
+  }
+
+  public function testParseTilt() {
+    $this->assertEquals(84.0957450, $this->lookAt->getTilt());
+  }
+
+  public function testParseRange() {
+    $this->assertEquals(4469.850414, $this->lookAt->getRange());
   }
 
 }

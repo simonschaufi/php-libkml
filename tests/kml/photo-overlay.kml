@@ -7,8 +7,12 @@ KML 2.2 is BETA and subject to change.
 
 -->
 <kml xmlns="http://www.opengis.net/kml/2.2">
-  <PhotoOverlay id="space-needle">
+  <PhotoOverlay id="photo-overlay-1" targetId="target-1">
     <name>Seattle Space Needle</name>
+    <visibility>0</visibility>
+    <address>Blackfriards 240</address>
+    <phoneNumber>tel:+44 7890123456789</phoneNumber>
+    <styleUrl>#myIconStyle</styleUrl>
     <Snippet maxLines="1">
       <![CDATA[<a href="#space-needle">Fly into picture</a>]]>
     </Snippet>

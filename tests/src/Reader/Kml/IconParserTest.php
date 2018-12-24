@@ -28,23 +28,50 @@ TAG;
    */
   protected $iconParser;
 
+  /**
+   * @var Icon
+   */
+  protected $icon;
+
   public function setUp() {
     $this->iconParser = new IconParser();
+    $kml = simplexml_load_string(self::KML_ICON);
+    $this->icon = $this->iconParser->parse($kml);
   }
 
-  public function testParse() {
-    $kml = simplexml_load_string(self::KML_ICON);
+  public function testParseIcon() {
+    $this->assertInstanceOf(Icon::class, $this->icon);
+  }
 
-    $kmlObject = $this->iconParser->parse($kml);
+  public function testParseHref() {
+    $this->assertEquals("Sunset.jpg", $this->icon->getHref());
+  }
 
-    $this->assertInstanceOf(Icon::class, $kmlObject);
-    $this->assertEquals("Sunset.jpg", $kmlObject->getHref());
-    $this->assertEquals(RefreshMode::ON_INTERVAL, $kmlObject->getRefreshMode());
-    $this->assertEquals(10, $kmlObject->getRefreshInterval());
-    $this->assertEquals(ViewRefreshMode::ON_REQUEST, $kmlObject->getViewRefreshMode());
-    $this->assertEquals(30, $kmlObject->getViewRefreshTime());
-    $this->assertEquals(3, $kmlObject->getViewBoundScale());
-    $this->assertEquals('BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]', $kmlObject->getViewFormat());
-    $this->assertEquals('gv=[clientVersion]', $kmlObject->getHttpQuery());
+  public function testParseRefreshMode() {
+    $this->assertEquals(RefreshMode::ON_INTERVAL, $this->icon->getRefreshMode());
+  }
+
+  public function testParseRefreshInterval() {
+    $this->assertEquals(10, $this->icon->getRefreshInterval());
+  }
+
+  public function testParseViewRefreshMode() {
+    $this->assertEquals(ViewRefreshMode::ON_REQUEST, $this->icon->getViewRefreshMode());
+  }
+
+  public function testParseViewRefreshTime() {
+    $this->assertEquals(30, $this->icon->getViewRefreshTime());
+  }
+
+  public function testParseViewBoundScale() {
+    $this->assertEquals(3, $this->icon->getViewBoundScale());
+  }
+
+  public function testParseViewFormat() {
+    $this->assertEquals('BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]', $this->icon->getViewFormat());
+  }
+
+  public function testParseHttpQuery() {
+    $this->assertEquals('gv=[clientVersion]', $this->icon->getHttpQuery());
   }
 }

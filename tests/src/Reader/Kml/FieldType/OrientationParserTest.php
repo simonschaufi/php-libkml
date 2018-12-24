@@ -16,15 +16,27 @@ class OrientationParserTest extends TestCase {
 </Orientation> 
 TAG;
 
-
-  function testParse() {
+  protected $orientation;
+  
+  public function setUp() {
     $element = simplexml_load_string(self::KML_ORIENTATION);
 
-    $orientation = OrientationParser::parse($element);
+    $this->orientation = OrientationParser::parse($element);
+  }
 
-    $this->assertInstanceOf(Orientation::class, $orientation);
-    $this->assertEquals(45.8, $orientation->getHeading());
-    $this->assertEquals(10.1, $orientation->getTilt());
-    $this->assertEquals(3.75, $orientation->getRoll());
+  public function testParseOrientation() {
+    $this->assertInstanceOf(Orientation::class, $this->orientation);
+  }
+
+  public function testParseHeading() {
+    $this->assertEquals(45.8, $this->orientation->getHeading());
+  }
+
+  public function testParseTilt() {
+    $this->assertEquals(10.1, $this->orientation->getTilt());
+  }
+
+  public function testParseRoll() {
+    $this->assertEquals(3.75, $this->orientation->getRoll());
   }
 }

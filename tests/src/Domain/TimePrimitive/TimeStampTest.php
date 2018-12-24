@@ -31,7 +31,7 @@ class TimeStampTest extends TestCase {
 
 
   public function testWhenField() {
-    $when = time();
+    $when = date(DATE_ATOM);
 
     $this->timeStamp->setWhen($when);
 

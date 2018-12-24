@@ -9,6 +9,8 @@ use LibKml\Domain\KmlObjectVisitorInterface;
  */
 class Camera extends AbstractView {
 
+  use View;
+
   private $roll = 0;
 
   public function accept(KmlObjectVisitorInterface $visitor): void {
