@@ -78,6 +78,13 @@ class ParserKmlContext implements Context {
   }
 
   /**
+   * @Then the TimeSpan/TimeStamp object should contain the following properties:
+   */
+  public function theTimespanTimeStampObjectShouldContainTheFollowingProperties(TableNode $table) {
+
+  }
+
+  /**
    * @Then the feature should contain a LookAt object with the the following properties:
    */
   public function theFeatureShouldContainALookatObjectWithTheTheFollowingProperties(TableNode $table) {
