@@ -4,6 +4,12 @@
     <name>Document with XML id</name>
     <open>1</open>
     <Style id="style-1" targetId="target-1">
+      <BalloonStyle>
+        <bgColor>ffffffbb</bgColor>
+        <textColor>ff00aabb</textColor>
+        <text>$[name]</text>
+        <displayMode>random</displayMode>
+      </BalloonStyle>
       <IconStyle>
         <color>a1ff00ff</color>
         <scale>1.399999976158142</scale>
@@ -24,14 +30,14 @@
         <colorMode>random</colorMode>
       </PolyStyle>
     </Style>
-    <Style id="style-2" targetId="target-2">
-      <IconStyle>
-        <color>ff00ff00</color>
-        <scale>2</scale>
-        <Icon>
-          <href>http://myserver.com/icon.jpg</href>
-        </Icon>
-      </IconStyle>
-    </Style>
+    <Folder>
+      <name>Folder 1</name>
+    </Folder>
+    <Folder>
+      <name>Folder 2</name>
+    </Folder>
+    <Folder>
+      <name>Folder 3</name>
+    </Folder>
   </Document>
 </kml>

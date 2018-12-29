@@ -11,6 +11,12 @@ class TimeStamp extends TimePrimitive {
 
   private $when;
 
+  public static function fromInteger(int $unixTimestamp) {
+    $timeStamp = new TimeStamp();
+    $timeStamp->when = date(DATE_ISO8601, $unixTimestamp);
+    return $timeStamp;
+  }
+
   public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitTimeStamp($this);
   }

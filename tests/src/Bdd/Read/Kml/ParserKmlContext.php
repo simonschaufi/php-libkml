@@ -7,6 +7,7 @@ use Behat\Gherkin\Node\TableNode;
 use LibKml\Domain\KmlDocument;
 use LibKml\Domain\StyleSelector\StyleSelector;
 use LibKml\Domain\SubStyle\SubStyle;
+use LibKml\Domain\StyleSelector\Style;
 use LibKml\Reader\LibKmlReader;
 use PHPUnit\Framework\TestCase;
 
@@ -91,11 +92,39 @@ class ParserKmlContext implements Context {
   }
 
   /**
+   * @Then the TimeSpan/TimeStamp object should contain the following properties:
+   */
+  public function theTimespanTimeStampObjectShouldContainTheFollowingProperties(TableNode $table) {
+
+  }
+
+  /**
    * @Then the feature should contain a LookAt object with the the following properties:
    */
   public function theFeatureShouldContainALookatObjectWithTheTheFollowingProperties(TableNode $table) {
     $feature = $this->kmlDocument->getFeature();
     $this->containsProperties($feature->getAbstractView(), $table);
+  }
+
+  /**
+   * @Then the feature should contain a Style object with the following properties:
+   */
+  public function theFeatureShouldContainAStyleObjectWithTheFollowingProperties(TableNode $table) {
+    $styles = $this->kmlDocument->getFeature()->getStyleSelectors();
+
+    TestCase::assertCount(1, $styles);
+    TestCase::assertInstanceOf(Style::class, $styles[0]);
+    $this->containsProperties($styles[0], $table);
+
+    $this->target = $styles[0];
+  }
+
+  /**
+   * @Then the Style should contain a :subStyle with the following properties:
+   */
+  public function theStyleShouldContainABalloonstyleWithTheFollowingProperties($subStyle, TableNode $table) {
+    $subStyle = $this->target->{'get' . $subStyle}();
+    $this->containsProperties($subStyle, $table);
   }
 
   /**

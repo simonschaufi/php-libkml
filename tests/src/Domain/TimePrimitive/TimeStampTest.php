@@ -37,5 +37,13 @@ class TimeStampTest extends TestCase {
 
     $this->assertEquals($when, $this->timeStamp->getWhen());
   }
+
+  public function testFromInteger() {
+    $unixTimestamp = time();
+
+    $timeStamp = TimeStamp::fromInteger($unixTimestamp);
+
+    $this->assertEquals(date(DATE_ISO8601, $unixTimestamp), $timeStamp->getWhen());
+  }
   
 }
