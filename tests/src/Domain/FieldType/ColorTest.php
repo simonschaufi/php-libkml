@@ -23,6 +23,24 @@ class ColorTest extends TestCase {
     $this->assertEquals(1, $this->color->getAlpha());
   }
 
+  public function testFromBlack() {
+    $this->color = Color::fromBlack();
+
+    $this->assertEquals(0, $this->color->getRed());
+    $this->assertEquals(0, $this->color->getGreen());
+    $this->assertEquals(0, $this->color->getBlue());
+    $this->assertEquals(1, $this->color->getAlpha());
+  }
+
+  public function testFromWhite() {
+    $this->color = Color::fromWhite();
+
+    $this->assertEquals(0xFF, $this->color->getRed());
+    $this->assertEquals(0xFF, $this->color->getGreen());
+    $this->assertEquals(0xFF, $this->color->getBlue());
+    $this->assertEquals(1, $this->color->getAlpha());
+  }
+
   public function testFromRGBA() {
     $red = 0xBB;
     $green = 0xA2;

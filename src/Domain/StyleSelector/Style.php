@@ -26,51 +26,51 @@ class Style extends StyleSelector {
     $visitor->visitStyle($this);
   }
 
-  public function getIconStyle(): IconStyle {
+  public function getIconStyle(): ?IconStyle {
     return $this->iconStyle;
   }
 
-  public function setIconStyle(IconStyle $iconStyle): void {
+  public function setIconStyle(?IconStyle $iconStyle): void {
     $this->iconStyle = $iconStyle;
   }
 
-  public function getLabelStyle(): LabelStyle {
+  public function getLabelStyle(): ?LabelStyle {
     return $this->labelStyle;
   }
 
-  public function setLabelStyle(LabelStyle $labelStyle): void {
+  public function setLabelStyle(?LabelStyle $labelStyle): void {
     $this->labelStyle = $labelStyle;
   }
 
-  public function getLineStyle(): LineStyle {
+  public function getLineStyle(): ?LineStyle {
     return $this->lineStyle;
   }
 
-  public function setLineStyle(LineStyle $lineStyle): void {
+  public function setLineStyle(?LineStyle $lineStyle): void {
     $this->lineStyle = $lineStyle;
   }
 
-  public function getPolyStyle(): PolyStyle {
+  public function getPolyStyle(): ?PolyStyle {
     return $this->polyStyle;
   }
 
-  public function setPolyStyle(PolyStyle $polyStyle): void {
+  public function setPolyStyle(?PolyStyle $polyStyle): void {
     $this->polyStyle = $polyStyle;
   }
 
-  public function getBalloonStyle(): BalloonStyle {
+  public function getBalloonStyle(): ?BalloonStyle {
     return $this->balloonStyle;
   }
 
-  public function setBalloonStyle(BalloonStyle $balloonStyle): void {
+  public function setBalloonStyle(?BalloonStyle $balloonStyle): void {
     $this->balloonStyle = $balloonStyle;
   }
 
-  public function getListStyle(): ListStyle {
+  public function getListStyle(): ?ListStyle {
     return $this->listStyle;
   }
 
-  public function setListStyle(ListStyle $listStyle): void {
+  public function setListStyle(?ListStyle $listStyle): void {
     $this->listStyle = $listStyle;
   }
 

@@ -2,6 +2,8 @@
 
 namespace LibKml\Tests\Domain\SubStyle\ColorStyle;
 
+use LibKml\Domain\FieldType\Color;
+use LibKml\Domain\FieldType\ColorMode;
 use LibKml\Domain\Icon;
 use LibKml\Domain\FieldType\Vec2;
 use LibKml\Domain\KmlObjectVisitorInterface;
@@ -29,6 +31,17 @@ class IconStyleTest extends TestCase {
       ->with($this->equalTo($timeStamp));
 
     $timeStamp->accept($objectVisitor);
+  }
+
+  public function testDefaultValues() {
+    $this->assertEquals(Color::fromWhite(), $this->iconStyle->getColor());
+    $this->assertEquals(ColorMode::NORMAL, $this->iconStyle->getColorMode());
+    $this->assertEquals(1, $this->iconStyle->getScale());
+    $this->assertEquals(0, $this->iconStyle->getHeading());
+    $this->assertEquals(0.5, $this->iconStyle->getHotSpot()->getX());
+    $this->assertEquals(0.5, $this->iconStyle->getHotSpot()->getY());
+    $this->assertEquals('fraction', $this->iconStyle->getHotSpot()->getXUnits());
+    $this->assertEquals('fraction', $this->iconStyle->getHotSpot()->getYUnits());
   }
 
   public function testScaleField() {

@@ -13,6 +13,10 @@ abstract class ColorStyle extends SubStyle {
   protected $color;
   protected $colorMode = "normal";
 
+  public function __construct() {
+    $this->color = Color::fromWhite();
+  }
+
   public function getColor(): Color {
     return $this->color;
   }

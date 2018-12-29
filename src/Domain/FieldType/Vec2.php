@@ -12,6 +12,15 @@ class Vec2 {
   private $xUnits;
   private $yUnits;
 
+  public static function fromValues($x, $y, $xUnits, $yUnits) {
+    $vec2 = new Vec2();
+    $vec2->x = $x;
+    $vec2->y = $y;
+    $vec2->xUnits = $xUnits;
+    $vec2->yUnits = $yUnits;
+    return $vec2;
+  }
+
   public function getX(): float {
     return $this->x;
   }

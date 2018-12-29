@@ -11,10 +11,15 @@ use LibKml\Domain\KmlObjectVisitorInterface;
  */
 class IconStyle extends ColorStyle {
 
-  private $scale;
-  private $heading;
+  private $scale = 1;
+  private $heading = 0;
   private $icon;
   private $hotSpot;
+
+  public function __construct() {
+    parent::__construct();
+    $this->hotSpot = Vec2::fromValues(0.5, 0.5, 'fraction', 'fraction');
+  }
 
   public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitIconStyle($this);
@@ -36,19 +41,19 @@ class IconStyle extends ColorStyle {
     $this->heading = $heading;
   }
 
-  public function getIcon(): Icon {
+  public function getIcon(): ?Icon {
     return $this->icon;
   }
 
-  public function setIcon(Icon $icon): void {
+  public function setIcon(?Icon $icon): void {
     $this->icon = $icon;
   }
 
-  public function getHotSpot(): Vec2 {
+  public function getHotSpot(): ?Vec2 {
     return $this->hotSpot;
   }
 
-  public function setHotSpot(Vec2 $hotSpot): void {
+  public function setHotSpot(?Vec2 $hotSpot): void {
     $this->hotSpot = $hotSpot;
   }
 

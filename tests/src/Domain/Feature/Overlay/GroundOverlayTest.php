@@ -20,7 +20,7 @@ class GroundOverlayTest extends TestCase {
     $this->groundOverlay = new GroundOverlay();
   }
 
-  public function testDefaultValueas() {
+  public function testDefaultValues() {
     $this->assertEquals(Color::fromRGBA(0xFF, 0xFF, 0xFF, 1), $this->groundOverlay->getColor());
     $this->assertEquals(0, $this->groundOverlay->getDrawOrder());
     $this->assertNull($this->groundOverlay->getIcon());

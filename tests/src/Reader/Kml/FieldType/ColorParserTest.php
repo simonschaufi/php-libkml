@@ -12,24 +12,14 @@ class ColorParserTest extends TestCase {
     $color = ColorParser::parse("a366ff88");
 
     $this->assertInstanceOf(Color::class, $color);
-    $this->assertEquals(0xA3, $color->getRed());
-    $this->assertEquals(0x66, $color->getGreen());
-    $this->assertEquals(0xFF, $color->getBlue());
-    $this->assertEquals(0.5333, $color->getAlpha(), '', 0.0001);
-  }
-
-  public function testParseRgb() {
-    $color = ColorParser::parse("a366ff");
-
-    $this->assertInstanceOf(Color::class, $color);
-    $this->assertEquals(0xA3, $color->getRed());
-    $this->assertEquals(0x66, $color->getGreen());
-    $this->assertEquals(0xFF, $color->getBlue());
-    $this->assertEquals(1, $color->getAlpha(), '', 0.0001);
+    $this->assertEquals(0x88, $color->getRed());
+    $this->assertEquals(0xFF, $color->getGreen());
+    $this->assertEquals(0x66, $color->getBlue());
+    $this->assertEquals(0xA3 / 0xFF, $color->getAlpha(), '', 0.0001);
   }
 
   public function testParseError() {
-    $color = ColorParser::parse("a366");
+    $color = ColorParser::parse("a366ff");
 
     $this->assertNull($color);
   }

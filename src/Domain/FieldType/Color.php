@@ -20,6 +20,28 @@ class Color {
     return $color;
   }
 
+  public static function fromWhite() {
+    $color = new Color();
+
+    $color->red = 0xFF;
+    $color->green = 0xFF;
+    $color->blue = 0xFF;
+    $color->alpha = 1;
+
+    return $color;
+  }
+
+  public static function fromBlack() {
+    $color = new Color();
+
+    $color->red = 0x00;
+    $color->green = 0x00;
+    $color->blue = 0x00;
+    $color->alpha = 1;
+
+    return $color;
+  }
+
   public function getRed(): int {
     return $this->red;
   }

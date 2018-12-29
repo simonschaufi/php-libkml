@@ -15,7 +15,7 @@ class GroundOverlayParserTest extends TestCase {
   const KML_GROUND_OVERLAY = <<<'TAG'
 <GroundOverlay>
    <name>GroundOverlay.kml</name>
-   <color>7fffffff</color>
+   <color>ffffff7f</color>
    <drawOrder>1</drawOrder>
    <Icon>
       <href>http://www.google.com/intl/en/images/logo.gif</href>

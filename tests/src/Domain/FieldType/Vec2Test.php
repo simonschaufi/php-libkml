@@ -16,6 +16,15 @@ class Vec2Test extends TestCase {
     $this->vec2 = new Vec2();
   }
 
+  public function testConstructor() {
+    $vec2 = Vec2::fromValues(0.5, 24.76, 'fraction', 'fraction');
+
+    $this->assertEquals(0.5, $vec2->getX());
+    $this->assertEquals(24.76, $vec2->getY());
+    $this->assertEquals('fraction', $vec2->getXUnits());
+    $this->assertEquals('fraction', $vec2->getYUnits());
+  }
+
   public function testXField() {
     $x = 167;
     

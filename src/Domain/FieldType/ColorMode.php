@@ -6,6 +6,6 @@ namespace LibKml\Domain\FieldType;
  * Applies effects to a base color.
  */
 class ColorMode {
-  const NORMAL = 0;
-  const RANDOM = 1;
+  const NORMAL = 'normal';
+  const RANDOM = 'random';
 }

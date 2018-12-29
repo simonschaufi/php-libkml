@@ -5,6 +5,8 @@ namespace LibKml\Tests\Bdd\Read\Kml;
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\TableNode;
 use LibKml\Domain\KmlDocument;
+use LibKml\Domain\StyleSelector\StyleSelector;
+use LibKml\Domain\SubStyle\SubStyle;
 use LibKml\Reader\LibKmlReader;
 use PHPUnit\Framework\TestCase;
 
@@ -57,6 +59,17 @@ class ParserKmlContext implements Context {
   }
 
   /**
+   * @Then I should get a KmlDocument object containing one Style
+   */
+  public function iShouldGetAKmldocumentObjectContainingOneStyle() {
+    $styleSelectors = $this->kmlDocument->getFeature()->getStyleSelectors();
+    TestCase::assertCount(1, $styleSelectors);
+    TestCase::assertInstanceOf(StyleSelector::class, $styleSelectors[0]);
+
+    $this->target = $styleSelectors[0];
+  }
+
+  /**
    * @Then the NetworkLinkControl should contain the following properties:
    */
   public function theNetworklinkcontrolShouldContainTheFollowingProperties(TableNode $table) {
@@ -95,10 +108,27 @@ class ParserKmlContext implements Context {
   }
 
   /**
+   * @Then the TimeSpan object should contain the following properties:
+   * @Then the TimeStamp object should contain the following properties:
+   */
+  public function theTimePrimitiveObjectShouldContainTheFollowingProperties(TableNode $table) {
+    $networkLinkControl = $this->kmlDocument->getNetworkLinkControl();
+    $containedType = $networkLinkControl->getAbstractView();
+    $this->containsProperties($containedType->getTimePrimitive(), $table);
+  }
+
+  /**
    * @Then the feature :element should contain the following properties:
    */
   public function theFeatureElementShouldContainTheFollowingProperties(TableNode $table) {
     $this->containsProperties($this->kmlDocument->getFeature(), $table);
+  }
+
+  /**
+   * @Then the Style object should contain a :subStyle object with the following properties:
+   */
+  public function theStyleObjectShouldContainASubStyleObjectWithTheFollowingProperties(SubStyle $subStyle, TableNode $table) {
+    $this->containsProperties($this->target->{'get' . $subStyle}(), $table);
   }
 
   private function containsProperties($object, TableNode $properties) {

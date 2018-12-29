@@ -1,14 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: xaviercarriba
- * Date: 2018-12-26
- * Time: 15:10
- */
 
 namespace LibKml\Reader\Kml\SubStyle;
 
+use LibKml\Domain\KmlObject;
+use LibKml\Domain\SubStyle\BalloonStyle;
+use LibKml\Reader\Kml\KmlObjectParser;
 
-class BalloonStyleParser {
+class BalloonStyleParser extends KmlObjectParser {
 
+  protected function buildKmlObject(): KmlObject {
+    return new BalloonStyle();
+  }
 }

@@ -19,35 +19,35 @@ class BalloonStyle extends SubStyle {
     $visitor->visitBalloonStyle($this);
   }
 
-  public function getBgColor(): Color {
+  public function getBgColor(): ?Color {
     return $this->bgColor;
   }
 
-  public function setBgColor(Color $bgColor): void {
+  public function setBgColor(?Color $bgColor): void {
     $this->bgColor = $bgColor;
   }
 
-  public function getTextColor(): Color {
+  public function getTextColor(): ?Color {
     return $this->textColor;
   }
 
-  public function setTextColor(Color $textColor): void {
+  public function setTextColor(?Color $textColor): void {
     $this->textColor = $textColor;
   }
 
-  public function getText(): string {
+  public function getText(): ?string {
     return $this->text;
   }
 
-  public function setText(string $text): void {
+  public function setText(?string $text): void {
     $this->text = $text;
   }
 
-  public function getDisplayMode(): string {
+  public function getDisplayMode(): ?string {
     return $this->displayMode;
   }
 
-  public function setDisplayMode(string $displayMode): void {
+  public function setDisplayMode(?string $displayMode): void {
     $this->displayMode = $displayMode;
   }
 
