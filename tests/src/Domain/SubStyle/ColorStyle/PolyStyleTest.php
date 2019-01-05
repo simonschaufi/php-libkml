@@ -2,6 +2,8 @@
 
 namespace LibKml\Tests\Domain\SubStyle\ColorStyle;
 
+use LibKml\Domain\FieldType\Color;
+use LibKml\Domain\FieldType\ColorMode;
 use LibKml\Domain\KmlObjectVisitorInterface;
 use LibKml\Domain\SubStyle\ColorStyle\PolyStyle;
 use PHPUnit\Framework\TestCase;
@@ -15,6 +17,13 @@ class PolyStyleTest extends TestCase {
 
   public function setUp() {
     $this->polyStyle = new PolyStyle();
+  }
+
+  public function testDefaultValues() {
+    $this->assertEquals(Color::fromWhite(), $this->polyStyle->getColor());
+    $this->assertEquals(ColorMode::NORMAL, $this->polyStyle->getColorMode());
+    $this->assertTrue($this->polyStyle->getFill());
+    $this->assertTrue($this->polyStyle->getOutline());
   }
 
   public function testAccept() {
@@ -44,5 +53,5 @@ class PolyStyleTest extends TestCase {
 
     $this->assertEquals($outline, $this->polyStyle->getOutline());
   }
-  
+
 }

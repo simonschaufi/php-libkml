@@ -12,19 +12,27 @@
       </BalloonStyle>
       <IconStyle>
         <color>a1ff00ff</color>
-        <scale>1.399999976158142</scale>
+        <colorMode>random</colorMode>
+        <scale>1.39</scale>
+        <heading>2.56</heading>
         <Icon>
           <href>http://myserver.com/icon.jpg</href>
         </Icon>
       </IconStyle>
       <LabelStyle>
         <color>7fffaaff</color>
+        <colorMode>random</colorMode>
         <scale>1.5</scale>
       </LabelStyle>
       <LineStyle>
-        <color>ff0000ff</color>
-        <width>15</width>
+        <color>ffddbbcc</color>
+        <colorMode>random</colorMode>
+        <width>2.75</width>
       </LineStyle>
+      <ListStyle>
+        <bgBolor>55aabbcc</bgBolor>
+        <listItemType>radioFolder</listItemType>
+      </ListStyle>
       <PolyStyle>
         <color>7f7faaaa</color>
         <colorMode>random</colorMode>

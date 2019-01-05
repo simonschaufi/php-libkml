@@ -5,9 +5,10 @@ namespace LibKml\Tests\Bdd\Read\Kml;
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\TableNode;
 use LibKml\Domain\KmlDocument;
+use LibKml\Domain\StyleSelector\Style;
 use LibKml\Domain\StyleSelector\StyleSelector;
 use LibKml\Domain\SubStyle\SubStyle;
-use LibKml\Domain\StyleSelector\Style;
+use LibKml\Reader\Kml\FieldType\ColorParser;
 use LibKml\Reader\LibKmlReader;
 use PHPUnit\Framework\TestCase;
 
@@ -16,6 +17,7 @@ use PHPUnit\Framework\TestCase;
  */
 class ParserKmlContext implements Context {
 
+  protected $target;
   private $kmlText;
   private $kmlReader;
 
@@ -23,8 +25,6 @@ class ParserKmlContext implements Context {
    * @var KmlDocument
    */
   private $kmlDocument;
-
-  protected $target;
 
   public function __construct() {
     $this->kmlReader = new LibKmlReader();
@@ -57,6 +57,7 @@ class ParserKmlContext implements Context {
    */
   public function iShouldGetAKmlDocumentObjectContainingOneFeature($featureType) {
     TestCase::assertInstanceOf($featureType, $this->kmlDocument->getFeature());
+    $this->target = $this->kmlDocument->getFeature();
   }
 
   /**
@@ -78,6 +79,44 @@ class ParserKmlContext implements Context {
     $this->containsProperties($networkLinkControl, $table);
   }
 
+  private function containsProperties($object, TableNode $properties) {
+    foreach ($properties->getRows() as $i => $row) {
+      if ($i > 0) {
+        $value = $object->{"get" . ucfirst($row[0])}();
+
+        switch ($row[1]) {
+          case 'true':
+            TestCase::assertTrue($value);
+            break;
+
+          case 'false':
+            TestCase::assertFalse($value);
+            break;
+
+          default:
+            TestCase::assertEquals($row[1], $object->{"get" . ucfirst($row[0])}());
+        }
+      }
+    }
+  }
+
+  /**
+   * @Then the :subStyleName should contain the following property colors:
+   */
+  public function theSubStyleNameShouldContainTheFollowingPropertyColors($subStyleName, TableNode $table) {
+    $subStyle = $this->target->{'get' . $subStyleName}();
+    $this->containsColorProperties($subStyle, $table);
+  }
+
+  private function containsColorProperties($object, TableNode $properties) {
+    foreach ($properties->getRows() as $i => $row) {
+      if ($i > 0) {
+        $color = ColorParser::parse($row[1]);
+        TestCase::assertEquals($color, $object->{"get" . ucfirst($row[0])}());
+      }
+    }
+  }
+
   /**
    * @Then the NetworkLinkControl should contain a Camera with a :timePrimitiveType TimePrimitive property
    */
@@ -92,13 +131,6 @@ class ParserKmlContext implements Context {
   }
 
   /**
-   * @Then the TimeSpan/TimeStamp object should contain the following properties:
-   */
-  public function theTimespanTimeStampObjectShouldContainTheFollowingProperties(TableNode $table) {
-
-  }
-
-  /**
    * @Then the feature should contain a LookAt object with the the following properties:
    */
   public function theFeatureShouldContainALookatObjectWithTheTheFollowingProperties(TableNode $table) {
@@ -110,7 +142,7 @@ class ParserKmlContext implements Context {
    * @Then the feature should contain a Style object with the following properties:
    */
   public function theFeatureShouldContainAStyleObjectWithTheFollowingProperties(TableNode $table) {
-    $styles = $this->kmlDocument->getFeature()->getStyleSelectors();
+    $styles = $this->target->getStyleSelectors();
 
     TestCase::assertCount(1, $styles);
     TestCase::assertInstanceOf(Style::class, $styles[0]);
@@ -158,27 +190,6 @@ class ParserKmlContext implements Context {
    */
   public function theStyleObjectShouldContainASubStyleObjectWithTheFollowingProperties(SubStyle $subStyle, TableNode $table) {
     $this->containsProperties($this->target->{'get' . $subStyle}(), $table);
-  }
-
-  private function containsProperties($object, TableNode $properties) {
-    foreach ($properties->getRows() as $i => $row) {
-      if ($i > 0) {
-        $value = $object->{"get" . ucfirst($row[0])}();
-
-        switch ($row[1]) {
-          case 'true':
-            TestCase::assertTrue($value);
-            break;
-
-          case 'false':
-            TestCase::assertFalse($value);
-            break;
-
-          default:
-            TestCase::assertEquals($row[1], $object->{"get" . ucfirst($row[0])}());
-        }
-      }
-    }
   }
 
 }

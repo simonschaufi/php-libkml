@@ -9,8 +9,8 @@ use LibKml\Domain\KmlObjectVisitorInterface;
  */
 class PolyStyle extends ColorStyle {
 
-  private $fill;
-  private $outline;
+  private $fill = TRUE;
+  private $outline = TRUE;
 
   public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitPolyStyle($this);

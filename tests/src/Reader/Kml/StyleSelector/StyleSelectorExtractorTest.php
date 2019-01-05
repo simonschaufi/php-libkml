@@ -8,6 +8,13 @@ use PHPUnit\Framework\TestCase;
 
 class StyleSelectorExtractorTest extends TestCase {
 
+  const KML_NO_STYLE = <<<'TAG'
+<Document id="document-1" targetId="target-1">
+  <name>Document with XML id</name>
+  <open>1</open>
+</Document>
+TAG;
+
   const KML_STYLE = <<<'TAG'
 <Document id="document-1" targetId="target-1">
   <name>Document with XML id</name>
@@ -74,6 +81,14 @@ TAG;
     $this->assertInstanceOf(Style::class, $style);
   }
 
+  public function testExtractNoStyle() {
+    $kmlElement = simplexml_load_string(self::KML_NO_STYLE);
+
+    $style = StyleSelectorExtractor::extractStyleSelector($kmlElement);
+
+    $this->assertNull($style);
+  }
+
   public function testExtractStyles() {
     $kmlElement = simplexml_load_string(self::KML_STYLES);
 
@@ -81,6 +96,14 @@ TAG;
 
     $this->assertCount(2, $styles);
     $this->assertContainsOnlyInstancesOf(Style::class, $styles);
+  }
+
+  public function testExtractNoStyles() {
+    $kmlElement = simplexml_load_string(self::KML_NO_STYLE);
+
+    $styles = StyleSelectorExtractor::extractStyleSelectors($kmlElement);
+
+    $this->assertCount(0, $styles);
   }
 
 }

@@ -9,17 +9,17 @@ use LibKml\Domain\KmlObjectVisitorInterface;
  */
 class LineStyle extends ColorStyle {
 
-  private $width;
+  private $width = 1;
 
   public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitLineStyle($this);
   }
 
-  public function getWidth(): int {
+  public function getWidth(): float {
     return $this->width;
   }
 
-  public function setWidth(int $width): void {
+  public function setWidth(float $width): void {
     $this->width = $width;
   }
 

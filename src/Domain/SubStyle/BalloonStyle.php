@@ -3,6 +3,7 @@
 namespace LibKml\Domain\SubStyle;
 
 use LibKml\Domain\FieldType\Color;
+use LibKml\Domain\FieldType\DisplayModeEnum;
 use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
@@ -14,6 +15,13 @@ class BalloonStyle extends SubStyle {
   private $textColor;
   private $text;
   private $displayMode;
+
+  public function __construct() {
+    $this->bgColor = Color::fromWhite();
+    $this->textColor = Color::fromBlack();
+    $this->displayMode = DisplayModeEnum::DEFAULT;
+    $this->text = '';
+  }
 
   public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitBalloonStyle($this);

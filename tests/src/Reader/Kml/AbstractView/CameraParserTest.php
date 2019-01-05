@@ -15,6 +15,9 @@ class CameraParserTest extends TestCase {
   <heading>-6.333</heading>
   <tilt>33.5</tilt>
   <roll>12.5</roll>
+  <TimeSpan>
+    <begin>1876-08-01</begin>
+  </TimeSpan>
 </Camera>
 TAG;
 

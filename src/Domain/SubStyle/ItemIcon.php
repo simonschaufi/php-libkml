@@ -2,10 +2,12 @@
 
 namespace LibKml\Domain\SubStyle;
 
+use LibKml\Domain\FieldType\ItemIconState;
+
 class ItemIcon {
 
   private $href;
-  private $state;
+  private $state = ItemIconState::OPEN;
 
   public function getHref(): string {
     return $this->href;

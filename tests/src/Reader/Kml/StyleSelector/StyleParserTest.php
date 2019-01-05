@@ -4,6 +4,9 @@ namespace LibKml\Tests\Reader\Kml\StyleSelector;
 
 use LibKml\Domain\StyleSelector\Style;
 use LibKml\Domain\SubStyle\ColorStyle\IconStyle;
+use LibKml\Domain\SubStyle\ColorStyle\LabelStyle;
+use LibKml\Domain\SubStyle\ColorStyle\LineStyle;
+use LibKml\Domain\SubStyle\ColorStyle\PolyStyle;
 use LibKml\Reader\Kml\StyleSelector\StyleParser;
 use PHPUnit\Framework\TestCase;
 

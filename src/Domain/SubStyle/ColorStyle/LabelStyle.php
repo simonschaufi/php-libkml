@@ -9,7 +9,7 @@ use LibKml\Domain\KmlObjectVisitorInterface;
  */
 class LabelStyle extends ColorStyle {
 
-  private $scale;
+  private $scale = 1;
 
   public function accept(KmlObjectVisitorInterface $visitor): void {
     $visitor->visitLabelStyle($this);

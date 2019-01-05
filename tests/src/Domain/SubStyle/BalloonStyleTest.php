@@ -3,6 +3,7 @@
 namespace LibKml\Tests\Domain\SubStyle;
 
 use LibKml\Domain\FieldType\Color;
+use LibKml\Domain\FieldType\DisplayModeEnum;
 use LibKml\Domain\KmlObjectVisitorInterface;
 use LibKml\Domain\SubStyle\BalloonStyle;
 use PHPUnit\Framework\TestCase;
@@ -16,6 +17,13 @@ class BalloonStyleTest extends TestCase {
 
   public function setUp() {
     $this->balloonStyle = new BalloonStyle();
+  }
+
+  public function testDefaultValues() {
+    $this->assertEquals(Color::fromWhite(), $this->balloonStyle->getBgColor());
+    $this->assertEquals(Color::fromBlack(), $this->balloonStyle->getTextColor());
+    $this->assertEquals(DisplayModeEnum::DEFAULT, $this->balloonStyle->getDisplayMode());
+    $this->assertEquals('', $this->balloonStyle->getText());
   }
 
   public function testAccept() {

@@ -17,6 +17,13 @@ use LibKml\Reader\Kml\Geometry\ModelParser;
 use LibKml\Reader\Kml\Geometry\MultiGeometryParser;
 use LibKml\Reader\Kml\Geometry\PointParser;
 use LibKml\Reader\Kml\Geometry\PolygonParser;
+use LibKml\Reader\Kml\StyleSelector\StyleParser;
+use LibKml\Reader\Kml\SubStyle\BalloonStyleParser;
+use LibKml\Reader\Kml\SubStyle\ColorStyle\IconStyleParser;
+use LibKml\Reader\Kml\SubStyle\ColorStyle\LabelStyleParser;
+use LibKml\Reader\Kml\SubStyle\ColorStyle\LineStyleParser;
+use LibKml\Reader\Kml\SubStyle\ColorStyle\PolyStyleParser;
+use LibKml\Reader\Kml\SubStyle\ListStyleParser;
 use LibKml\Reader\Kml\TimePrimitive\TimeSpanParser;
 use LibKml\Reader\Kml\TimePrimitive\TimeStampParser;
 
@@ -46,6 +53,14 @@ class KmlElementParserFactory {
   const TIME_SPAN = "TimeSpan";
   const TIME_STAMP = "TimeStamp";
 
+  const STYLE = "Style";
+  const BALLOON_STYLE = "BalloonStyle";
+  const LIST_STYLE = "ListStyle";
+  const ICON_STYLE = "IconStyle";
+  const LABEL_STYLE = "LabelStyle";
+  const LINE_STYLE = "LineStyle";
+  const POLY_STYLE = "PolyStyle";
+
   private static $instance;
 
   private $parsers = [];
@@ -60,6 +75,11 @@ class KmlElementParserFactory {
     return self::$instance;
   }
 
+  /**
+   * @param string $name
+   * @return KmlElementParserInterface
+   * @throws UnsupportedTagException
+   */
   public function getParserByElementName(string $name): KmlElementParserInterface {
 
     if (!array_key_exists($name, $this->parsers)) {
@@ -138,6 +158,34 @@ class KmlElementParserFactory {
 
         case self::TIME_STAMP:
           $this->parsers[$name] = new TimeStampParser();
+          break;
+
+        case self::STYLE:
+          $this->parsers[$name] = new StyleParser();
+          break;
+
+        case self::BALLOON_STYLE:
+          $this->parsers[$name] = new BalloonStyleParser();
+          break;
+
+        case self::LIST_STYLE:
+          $this->parsers[$name] = new ListStyleParser();
+          break;
+
+        case self::ICON_STYLE:
+          $this->parsers[$name] = new IconStyleParser();
+          break;
+
+        case self::LABEL_STYLE:
+          $this->parsers[$name] = new LabelStyleParser();
+          break;
+
+        case self::LINE_STYLE:
+          $this->parsers[$name] = new LineStyleParser();
+          break;
+
+        case self::POLY_STYLE:
+          $this->parsers[$name] = new PolyStyleParser();
           break;
 
         default:

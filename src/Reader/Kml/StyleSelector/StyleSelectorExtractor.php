@@ -9,8 +9,8 @@ use SimpleXMLElement;
 class StyleSelectorExtractor {
 
   private static $styleSelectorNames = [
-      'Style',
-      'StyleMap',
+    'Style',
+    'StyleMap',
   ];
 
   public static function extractStyleSelector(SimpleXMLElement $element): ?StyleSelector {
