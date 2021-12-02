@@ -24,11 +24,12 @@ class PlacemarkParser extends FeatureParser {
       SimpleXMLElement $element): void {
     parent::loadValues($kmlObject, $element);
 
-    if (isset($element->Point)) {
-      $pointParser = $this->kmlElementParserFactory
-        ->getParserByElementName(KmlElementParserFactory::POINT);
-      $kmlObject->setGeometry($pointParser->parse($element->Point));
-    }
+//     if (isset($element->Point)) {
+//       $pointParser = $this->kmlElementParserFactory
+//         ->getParserByElementName(KmlElementParserFactory::POINT);
+//       $kmlObject->setGeometry($pointParser->parse($element->Point));
+//     }
+    $kmlObject->setGeometry(\LibKml\Reader\Kml\Geometry\GeometryExtractor::extractGeometry($element));
   }
 
 }
