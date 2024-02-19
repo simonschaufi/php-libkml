@@ -1,27 +1,30 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Reader\Kml\AbstractView;
 
 use LibKml\Domain\KmlObject;
 use LibKml\Reader\Kml\KmlElementParserFactory;
-use SimpleXMLElement;
 
-class AbstractViewExtractor {
+class AbstractViewExtractor
+{
+    public const ELEMENT_TAGS = [
+        'Camera',
+        'LookAt',
+    ];
 
-  const ELEMENT_TAGS = ['Camera', 'LookAt'];
+    public static function extract(\SimpleXMLElement $element): ?KmlObject
+    {
+        $kmlElementParserFactory = KmlElementParserFactory::getInstance();
 
-  public static function extract(SimpleXMLElement $element): ?KmlObject {
-    $kmlElementParserFactory = KmlElementParserFactory::getInstance();
+        foreach ($element->children() as $elementChildren) {
+            if (in_array($elementChildren->getName(), self::ELEMENT_TAGS, true)) {
+                $parser = $kmlElementParserFactory->getParserByElementName($elementChildren->getName());
+                return $parser->parse($elementChildren);
+            }
+        }
 
-    foreach ($element->children() as $elementChildren) {
-      if (in_array($elementChildren->getName(), self::ELEMENT_TAGS)) {
-        $parser = $kmlElementParserFactory
-          ->getParserByElementName($elementChildren->getName());
-        return $parser->parse($elementChildren);
-      }
+        return null;
     }
-
-    return NULL;
-  }
-
 }

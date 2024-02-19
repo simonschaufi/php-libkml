@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Domain\FieldType;
 
-class DisplayModeEnum {
-  const DEFAULT = 'default';
-  const HIDE = 'hide';
-  const NORMAL = 'normal';
-  const RANDOM = 'random';
+class DisplayModeEnum
+{
+    public const DEFAULT = 'default';
+    public const HIDE = 'hide';
+    public const NORMAL = 'normal';
+    public const RANDOM = 'random';
 }

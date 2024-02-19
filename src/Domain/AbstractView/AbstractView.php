@@ -1,30 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Domain\AbstractView;
 
-use LibKml\Domain\FieldType\AltitudeMode;
-use LibKml\Domain\TimePrimitive\TimePrimitive;
 use LibKml\Domain\KmlObject;
+use LibKml\Domain\TimePrimitive\TimePrimitive;
 
-/**
- * AbstractView abstract class.
- */
-abstract class AbstractView extends KmlObject {
+abstract class AbstractView extends KmlObject
+{
+    protected TimePrimitive $timePrimitive;
 
-  protected $timePrimitive = NULL;
+    public function getTimePrimitive(): TimePrimitive
+    {
+        return $this->timePrimitive;
+    }
 
-  /**
-   * @return TimePrimitive
-   */
-  public function getTimePrimitive(): TimePrimitive {
-    return $this->timePrimitive;
-  }
-
-  /**
-   * @param TimePrimitive $timePrivitive
-   */
-  public function setTimePrimitive(TimePrimitive $timePrivitive): void {
-    $this->timePrimitive = $timePrivitive;
-  }
-
+    public function setTimePrimitive(TimePrimitive $timePrimitive): void
+    {
+        $this->timePrimitive = $timePrimitive;
+    }
 }

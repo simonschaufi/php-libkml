@@ -1,26 +1,27 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Domain\SubStyle\ColorStyle;
 
 use LibKml\Domain\KmlObjectVisitorInterface;
 
-/**
- * LineStyle class.
- */
-class LineStyle extends ColorStyle {
+class LineStyle extends ColorStyle
+{
+    private float $width = 1.0;
 
-  private $width = 1;
+    public function accept(KmlObjectVisitorInterface $visitor): void
+    {
+        $visitor->visitLineStyle($this);
+    }
 
-  public function accept(KmlObjectVisitorInterface $visitor): void {
-    $visitor->visitLineStyle($this);
-  }
+    public function getWidth(): float
+    {
+        return $this->width;
+    }
 
-  public function getWidth(): float {
-    return $this->width;
-  }
-
-  public function setWidth(float $width): void {
-    $this->width = $width;
-  }
-
+    public function setWidth(float $width): void
+    {
+        $this->width = $width;
+    }
 }

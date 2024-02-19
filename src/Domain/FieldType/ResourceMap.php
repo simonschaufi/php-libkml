@@ -1,28 +1,33 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Domain\FieldType;
 
 /**
  * ResouceMap class.
  */
-class ResourceMap {
+class ResourceMap
+{
+    private array $aliases = [];
 
-  private $aliases = [];
+    public function getAliases(): array
+    {
+        return $this->aliases;
+    }
 
-  public function getAliases() {
-    return $this->aliases;
-  }
+    public function setAliases(array $aliases): void
+    {
+        $this->aliases = $aliases;
+    }
 
-  public function setAliases(array $aliases) {
-    $this->aliases = $aliases;
-  }
+    public function clearAliases(): void
+    {
+        $this->aliases = [];
+    }
 
-  public function clearAliases() {
-    $this->aliases = [];
-  }
-
-  public function addAlias($alias) {
-    $this->aliases[] = $alias;
-  }
-
+    public function addAlias($alias): void
+    {
+        $this->aliases[] = $alias;
+    }
 }

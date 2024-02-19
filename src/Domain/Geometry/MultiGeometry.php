@@ -1,34 +1,40 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Domain\Geometry;
 
 use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
- * MultiGeometry class.
+ * @see https://developers.google.com/kml/documentation/kmlreference#multigeometry
  */
-class MultiGeometry extends Geometry {
+class MultiGeometry extends Geometry
+{
+    private array $geometries = [];
 
-  private $geometries = [];
+    public function accept(KmlObjectVisitorInterface $visitor): void
+    {
+        $visitor->visitMultiGeometry($this);
+    }
 
-  public function accept(KmlObjectVisitorInterface $visitor): void {
-    $visitor->visitMultiGeometry($this);
-  }
+    public function addGeometry(Geometry $geometry): void
+    {
+        $this->geometries[] = $geometry;
+    }
 
-  public function addGeometry(Geometry $geometry) {
-    $this->geometries[] = $geometry;
-  }
+    public function clearGeometries(): void
+    {
+        $this->geometries = [];
+    }
 
-  public function clearGeometries() {
-    $this->geometries = [];
-  }
+    public function getGeometries(): array
+    {
+        return $this->geometries;
+    }
 
-  public function getGeometries() {
-    return $this->geometries;
-  }
-
-  public function setGeometries(array $geometries) {
-    $this->geometries = $geometries;
-  }
-
+    public function setGeometries(array $geometries): void
+    {
+        $this->geometries = $geometries;
+    }
 }

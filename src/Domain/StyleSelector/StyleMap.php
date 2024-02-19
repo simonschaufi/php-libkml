@@ -1,34 +1,40 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Domain\StyleSelector;
 
 use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
- * StyleMap class.
+ * @see https://developers.google.com/kml/documentation/kmlreference#stylemap
  */
-class StyleMap extends StyleSelector {
+class StyleMap extends StyleSelector
+{
+    private array $pairs = [];
 
-  private $pairs = [];
+    public function accept(KmlObjectVisitorInterface $visitor): void
+    {
+        $visitor->visitStyleMap($this);
+    }
 
-  public function accept(KmlObjectVisitorInterface $visitor): void {
-    $visitor->visitStyleMap($this);
-  }
+    public function clearPairs(): void
+    {
+        $this->pairs = [];
+    }
 
-  public function addPair(Pair $pair) {
-    $this->pairs[] = $pair;
-  }
+    public function getPairs(): array
+    {
+        return $this->pairs;
+    }
 
-  public function clearPairs() {
-    $this->pairs = [];
-  }
+    public function setPairs(array $pairs): void
+    {
+        $this->pairs = $pairs;
+    }
 
-  public function getPairs() {
-    return $this->pairs;
-  }
-
-  public function setPairs(array $pairs) {
-    $this->pairs = $pairs;
-  }
-
+    public function addPair(Pair $pair): void
+    {
+        $this->pairs[] = $pair;
+    }
 }

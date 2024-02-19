@@ -1,51 +1,56 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Reader\Kml;
 
 use LibKml\Domain\Icon;
 use LibKml\Domain\KmlObject;
-use SimpleXMLElement;
 
-class IconParser extends KmlObjectParser {
-
-  protected function buildKmlObject(): KmlObject {
-    return new Icon();
-  }
-
-  protected function loadValues(KmlObject &$kmlObject, SimpleXMLElement $element): void {
-    parent::loadValues($kmlObject, $element);
-
-    if (isset($element->href)) {
-      $kmlObject->setHref($element->href);
+class IconParser extends KmlObjectParser
+{
+    protected function buildKmlObject(): KmlObject
+    {
+        return new Icon();
     }
 
-    if (isset($element->refreshMode)) {
-      $kmlObject->setRefreshMode($element->refreshMode);
-    }
+    /**
+     * @param KmlObject|Icon $kmlObject
+     */
+    protected function loadValues(KmlObject $kmlObject, \SimpleXMLElement $element): void
+    {
+        parent::loadValues($kmlObject, $element);
 
-    if (isset($element->refreshInterval)) {
-      $kmlObject->setRefreshInterval(floatval($element->refreshInterval));
-    }
+        if (isset($element->href)) {
+            $kmlObject->setHref((string)$element->href);
+        }
 
-    if (isset($element->viewRefreshMode)) {
-      $kmlObject->setViewRefreshMode($element->viewRefreshMode);
-    }
+        if (isset($element->refreshMode)) {
+            $kmlObject->setRefreshMode((string)$element->refreshMode);
+        }
 
-    if (isset($element->viewRefreshTime)) {
-      $kmlObject->setViewRefreshTime(floatval($element->viewRefreshTime));
-    }
+        if (isset($element->refreshInterval)) {
+            $kmlObject->setRefreshInterval((float)$element->refreshInterval);
+        }
 
-    if (isset($element->viewBoundScale)) {
-      $kmlObject->setViewBoundScale(floatval($element->viewBoundScale));
-    }
+        if (isset($element->viewRefreshMode)) {
+            $kmlObject->setViewRefreshMode((string)$element->viewRefreshMode);
+        }
 
-    if (isset($element->viewFormat)) {
-      $kmlObject->setViewFormat($element->viewFormat);
-    }
+        if (isset($element->viewRefreshTime)) {
+            $kmlObject->setViewRefreshTime((float)$element->viewRefreshTime);
+        }
 
-    if (isset($element->httpQuery)) {
-      $kmlObject->setHttpQuery($element->httpQuery);
-    }
-  }
+        if (isset($element->viewBoundScale)) {
+            $kmlObject->setViewBoundScale((float)$element->viewBoundScale);
+        }
 
+        if (isset($element->viewFormat)) {
+            $kmlObject->setViewFormat((string)$element->viewFormat);
+        }
+
+        if (isset($element->httpQuery)) {
+            $kmlObject->setHttpQuery((string)$element->httpQuery);
+        }
+    }
 }

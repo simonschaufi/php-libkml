@@ -1,45 +1,58 @@
 {
-  "name": "earelin/php-libkml",
-  "description": "A library to manipulate KML/KMZ files",
-  "type": "library",
-  "keywords": ["kml", "gis"],
-  "homepage": "https://github.com/earelin/php-libkml",
-  "readme": "README.md",
-  "license": "GPL-3.0",
-  "support": {
-    "issues": "https://github.com/earelin/php-libkml/issues",
-    "source": "https://github.com/earelin/php-libkml"
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "require": {
-    "php": "^7.1",
-    "ext-simplexml": "*"
-  },
-  "require-dev": {
-    "codacy/coverage": "dev-master",    
-    "drupal/coder": "^8.2.12",
-    "behat/behat": "^3.5",
-    "leanphp/behat-code-coverage": "^3.4",
-    "phpunit/phpunit": "^7.4"
-  },
-  "autoload": {
-    "psr-4": {
-      "LibKml\\": "src/"
+    "name": "simonschaufi/php-libkml",
+    "description": "A library to manipulate KML/KMZ files",
+    "license": "GPL-3.0",
+    "keywords": [
+        "kml",
+        "gis"
+    ],
+    "homepage": "https://github.com/simonschaufi/php-libkml",
+    "support": {
+        "issues": "https://github.com/simonschaufi/php-libkml/issues",
+        "source": "https://github.com/simonschaufi/php-libkml"
+    },
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "ext-simplexml": "*"
+    },
+    "require-dev": {
+        "behat/behat": "^3.0",
+        "dvdoug/behat-code-coverage": "^5.0",
+        "ergebnis/composer-normalize": "^2.0.0",
+        "friendsofphp/php-cs-fixer": "^3.0.0",
+        "phpunit/phpunit": "^9.0",
+        "rector/rector": "^1.0",
+        "squizlabs/php_codesniffer": "^3.8.1"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "LibKml\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LibKml\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "ergebnis/composer-normalize": true
+        }
+    },
+    "scripts": {
+        "ci:composer:normalize": "@composer normalize --no-check-lock --dry-run",
+        "ci:php:php-cs-fixer": "vendor/bin/php-cs-fixer fix -v --dry-run --diff",
+        "ci:tests:acceptance": "XDEBUG_MODE=coverage vendor/bin/behat --no-colors --no-snippets --format junit --out reports",
+        "ci:tests:unit": "vendor/bin/phpunit --colors=never",
+        "ci:rector": "vendor/bin/rector process --dry-run",
+        "fix:composer:normalize": "@composer normalize --no-check-lock",
+        "fix:php:php-cs-fixer": "vendor/bin/php-cs-fixer fix",
+        "fix:rector": "vendor/bin/rector process",
+        "local:clean": "rm -Rf reports",
+        "local:tests:acceptance": "XDEBUG_MODE=coverage vendor/bin/behat --colors --no-snippets",
+        "local:tests:unit": "vendor/bin/phpunit --colors=always"
     }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "LibKml\\Tests\\": "tests/src/"
-    }
-  },
-  "scripts": {
-    "clean": "rm -Rf reports",
-    "test": "phpunit --colors=always --bootstrap vendor/autoload.php -c phpunit.xml",
-    "test-ci": "phpunit --colors=never --bootstrap vendor/autoload.php -c phpunit.xml",
-    "acceptance-test": "behat --colors --no-snippets",
-    "acceptance-test-ci": "behat --no-colors --no-snippets --format junit --out reports",
-    "phpcs": "phpcs --bootstrap=vendor/autoload.php --standard=vendor/drupal/coder/coder_sniffer/Drupal --exclude=Drupal.Commenting.FunctionComment src",
-    "phpcbf": "phpcbf --bootstrap=vendor/autoload.php --standard=vendor/drupal/coder/coder_sniffer/Drupal --exclude=Drupal.Commenting.FunctionComment,Drupal.Commenting.ClassComment src"
-  }
 }

@@ -1,41 +1,44 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Reader\Kml\FieldType;
 
 use LibKml\Domain\FieldType\Schema;
-use SimpleXMLElement;
 
-class SchemaParser {
-
-  public static function parse(SimpleXMLElement $xmlElement): ?Schema {
-    return self::parseSchemaElement($xmlElement);
-  }
-
-  public static function parseList(SimpleXMLElement $xmlElement): array {
-    $schemas = [];
-
-    foreach ($xmlElement->children() as $xmlElementChildren) {
-      if ($xmlElementChildren->getName() === "Schema") {
-        $schemas[] = self::parseSchemaElement($xmlElementChildren);
-      }
+class SchemaParser
+{
+    public static function parse(\SimpleXMLElement $xmlElement): ?Schema
+    {
+        return self::parseSchemaElement($xmlElement);
     }
 
-    return $schemas;
-  }
+    public static function parseList(\SimpleXMLElement $xmlElement): array
+    {
+        $schemas = [];
 
-  private static function parseSchemaElement(SimpleXMLElement $xmlElement): Schema {
-    $schema = new Schema();
+        foreach ($xmlElement->children() as $xmlElementChildren) {
+            if ($xmlElementChildren->getName() === 'Schema') {
+                $schemas[] = self::parseSchemaElement($xmlElementChildren);
+            }
+        }
 
-    if (isset($xmlElement['id'])) {
-      $schema->setId($xmlElement['id']);
+        return $schemas;
     }
 
-    if (isset($xmlElement['name'])) {
-      $schema->setName($xmlElement['name']);
+    private static function parseSchemaElement(\SimpleXMLElement $xmlElement): Schema
+    {
+        $schema = new Schema();
+
+        if (isset($xmlElement['id'])) {
+            $schema->setId((string)$xmlElement['id']);
+        }
+
+        if (isset($xmlElement['name'])) {
+            $schema->setName((string)$xmlElement['name']);
+        }
+
+        $schema->setFields(SimpleFieldParser::parseList($xmlElement));
+        return $schema;
     }
-
-    $schema->setFields(SimpleFieldParser::parseList($xmlElement));
-    return $schema;
-  }
-
 }

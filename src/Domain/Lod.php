@@ -1,47 +1,58 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Domain;
 
 /**
- * Lod class.
+ * Level of Detail
+ *
+ * @see https://developers.google.com/kml/documentation/kmlreference#lod
  */
-class Lod {
+class Lod
+{
+    private int $minLodPixels = 0;
+    private ?int $maxLodPixels = null;
+    private ?int $minFadeExtent = null;
+    private ?int $maxFadeExtent = null;
 
-  private $minLodPixels;
-  private $maxLodPixels;
-  private $minFadeExtent;
-  private $maxFadeExtent;
+    public function getMinLodPixels(): int
+    {
+        return $this->minLodPixels;
+    }
 
-  public function getMinLodPixels(): int {
-    return $this->minLodPixels;
-  }
+    public function setMinLodPixels(int $minLodPixels): void
+    {
+        $this->minLodPixels = $minLodPixels;
+    }
 
-  public function setMinLodPixels($minLodPixels): void {
-    $this->minLodPixels = $minLodPixels;
-  }
+    public function getMaxLodPixels(): ?int
+    {
+        return $this->maxLodPixels;
+    }
 
-  public function getMaxLodPixels(): int {
-    return $this->maxLodPixels;
-  }
+    public function setMaxLodPixels(?int $maxLodPixels): void
+    {
+        $this->maxLodPixels = $maxLodPixels;
+    }
 
-  public function setMaxLodPixels($maxLodPixels): void {
-    $this->maxLodPixels = $maxLodPixels;
-  }
+    public function getMinFadeExtent(): ?int
+    {
+        return $this->minFadeExtent;
+    }
 
-  public function getMinFadeExtent(): int {
-    return $this->minFadeExtent;
-  }
+    public function setMinFadeExtent(?int $minFadeExtent): void
+    {
+        $this->minFadeExtent = $minFadeExtent;
+    }
 
-  public function setMinFadeExtent($minFadeExtent): void {
-    $this->minFadeExtent = $minFadeExtent;
-  }
+    public function getMaxFadeExtent(): ?int
+    {
+        return $this->maxFadeExtent;
+    }
 
-  public function getMaxFadeExtent(): int {
-    return $this->maxFadeExtent;
-  }
-
-  public function setMaxFadeExtent($maxFadeExtent): void {
-    $this->maxFadeExtent = $maxFadeExtent;
-  }
-
+    public function setMaxFadeExtent(?int $maxFadeExtent): void
+    {
+        $this->maxFadeExtent = $maxFadeExtent;
+    }
 }

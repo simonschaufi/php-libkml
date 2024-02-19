@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Domain\Feature;
 
 use LibKml\Domain\Geometry\Geometry;
@@ -8,20 +10,22 @@ use LibKml\Domain\KmlObjectVisitorInterface;
 /**
  * A Placemark is a Feature with associated Geometry.
  */
-class Placemark extends Feature {
+class Placemark extends Feature
+{
+    private ?Geometry $geometry = null;
 
-  private $geometry;
+    public function accept(KmlObjectVisitorInterface $visitor): void
+    {
+        $visitor->visitPlacemark($this);
+    }
 
-  public function accept(KmlObjectVisitorInterface $visitor): void {
-    $visitor->visitPlacemark($this);
-  }
+    public function getGeometry(): ?Geometry
+    {
+        return $this->geometry;
+    }
 
-  public function getGeometry(): ?Geometry {
-    return $this->geometry;
-  }
-
-  public function setGeometry(?Geometry $geometry): void {
-    $this->geometry = $geometry;
-  }
-
+    public function setGeometry(?Geometry $geometry): void
+    {
+        $this->geometry = $geometry;
+    }
 }

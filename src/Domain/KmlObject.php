@@ -1,31 +1,33 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Domain;
 
-/**
- * Base KMLObject.
- */
-abstract class KmlObject {
+abstract class KmlObject
+{
+    protected ?string $id = null;
+    protected ?string $targetId = null;
 
-  protected $id;
-  protected $targetId;
+    public function getId(): ?string
+    {
+        return $this->id;
+    }
 
-  public function getId() {
-    return $this->id;
-  }
+    public function setId(string $id): void
+    {
+        $this->id = $id;
+    }
 
-  public function setId($id) {
-    $this->id = $id;
-  }
+    public function getTargetId(): ?string
+    {
+        return $this->targetId;
+    }
 
-  public function getTargetId() {
-    return $this->targetId;
-  }
+    public function setTargetId(string $targetId): void
+    {
+        $this->targetId = $targetId;
+    }
 
-  public function setTargetId($targetId) {
-    $this->targetId = $targetId;
-  }
-
-  abstract public function accept(KmlObjectVisitorInterface $visitor): void;
-
+    abstract public function accept(KmlObjectVisitorInterface $visitor): void;
 }
