@@ -1,9 +1,5 @@
-## IDE
-.sonarlint/
-.idea/
-
-## Dependencies
-vendor
-
-## Generated
-reports
+/.idea/
+/vendor/
+/reports/
+/.php-cs-fixer.cache
+/.phpunit.result.cache

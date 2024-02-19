@@ -1,13 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Writer;
 
-class WriterFactory {
+class WriterFactory
+{
+    private $converters;
 
-  private $converters;
-
-  public function getWriter(string $converterType) {
-
-  }
-
+    public function getWriter(string $converterType) {}
 }

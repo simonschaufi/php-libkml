@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
-  <Placemark id="placemark1" targetId="target1">
-    <name>My office</name>
-    <visibility>1</visibility>
-    <address>Blackfriards 240</address>
-    <phoneNumber>tel:+44 7890123456789</phoneNumber>
-    <Snippet>Office location</Snippet>
-    <description>This is the location of my office.</description>
-    <styleUrl>#myIconStyle</styleUrl>
-    <Point>
-      <coordinates>-122.087461,37.422069</coordinates>
-    </Point>
-  </Placemark>
+    <Placemark id="placemark1" targetId="target1">
+        <name>My office</name>
+        <visibility>1</visibility>
+        <address>Blackfriards 240</address>
+        <phoneNumber>tel:+44 7890123456789</phoneNumber>
+        <Snippet>Office location</Snippet>
+        <description>This is the location of my office.</description>
+        <styleUrl>#myIconStyle</styleUrl>
+        <Point>
+            <coordinates>-122.087461,37.422069</coordinates>
+        </Point>
+    </Placemark>
 </kml>

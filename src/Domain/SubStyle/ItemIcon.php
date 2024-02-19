@@ -1,26 +1,33 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Domain\SubStyle;
 
-class ItemIcon {
+use LibKml\Domain\FieldType\ItemIconState;
 
-  private $href;
-  private $state;
+class ItemIcon
+{
+    private string $state = ItemIconState::OPEN;
+    private string $href;
 
-  public function getHref(): string {
-    return $this->href;
-  }
+    public function getState(): string
+    {
+        return $this->state;
+    }
 
-  public function setHref(string $href): void {
-    $this->href = $href;
-  }
+    public function setState(string $state): void
+    {
+        $this->state = $state;
+    }
 
-  public function getState(): string {
-    return $this->state;
-  }
+    public function getHref(): string
+    {
+        return $this->href;
+    }
 
-  public function setState(string $state): void {
-    $this->state = $state;
-  }
-
+    public function setHref(string $href): void
+    {
+        $this->href = $href;
+    }
 }

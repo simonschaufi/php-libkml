@@ -1,9 +1,7 @@
 <?php
 
-namespace LibKml\Reader\Kml;
+declare(strict_types=1);
 
-use Exception;
+namespace LibKml\Reader\Kml\Exception;
 
-class UnsupportedTagException extends Exception {
-
-}
+class UnsupportedTagException extends \Exception {}

@@ -1,17 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Domain\FieldType;
 
 /**
  * Specifies the current state of the NetworkLink or Folder.
  */
-class ItemIconState {
-
-  const OPEN = 'open';
-  const CLOSED = 'closed';
-  const ERROR = 'error';
-  const FETCHING0 = 'fetching0';
-  const FETCHING1 = 'fetching1';
-  const FETCHING2 = 'fetching2';
-
+class ItemIconState
+{
+    public const OPEN = 'open';
+    public const CLOSED = 'closed';
+    public const ERROR = 'error';
+    public const FETCHING0 = 'fetching0';
+    public const FETCHING1 = 'fetching1';
+    public const FETCHING2 = 'fetching2';
 }

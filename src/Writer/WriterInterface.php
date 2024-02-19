@@ -1,22 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Writer;
 
-use LibKml\KmlDocument;
+use LibKml\Domain\KmlDocument;
 
-/**
- * Interface FormatGenerator.
- */
-interface WriterInterface {
-
-  /**
-   * Generates a string with the formatted content of the KmlDocument.
-   *
-   * @param \LibKml\KmlDocument $kmlDocument
-   *   The KmlDocument to generate from.
-   *
-   * @return string Generated code
-   */
-  public function generate(KmlDocument $kmlDocument);
-
+interface WriterInterface
+{
+    public function generate(KmlDocument $kmlDocument): string;
 }

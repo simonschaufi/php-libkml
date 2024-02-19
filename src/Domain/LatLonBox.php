@@ -1,56 +1,67 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Domain;
 
 /**
- * LatLonBox class.
+ * @see https://developers.google.com/kml/documentation/kmlreference#latlonbox
  */
-class LatLonBox {
+class LatLonBox
+{
+    private float $north = 0.0;
+    private float $south = 0.0;
+    private float $east = 0.0;
+    private float $west = 0.0;
+    private float $rotation = 0.0;
 
-  private $north = 0;
-  private $south = 0;
-  private $east = 0;
-  private $west = 0;
-  private $rotation = 0;
+    public function getNorth(): float
+    {
+        return $this->north;
+    }
 
-  public function getNorth(): float {
-    return $this->north;
-  }
+    public function setNorth(float $north): void
+    {
+        $this->north = $north;
+    }
 
-  public function setNorth(float $north): void {
-    $this->north = $north;
-  }
+    public function getSouth(): float
+    {
+        return $this->south;
+    }
 
-  public function getSouth(): float {
-    return $this->south;
-  }
+    public function setSouth(float $south): void
+    {
+        $this->south = $south;
+    }
 
-  public function setSouth(float $south): void {
-    $this->south = $south;
-  }
+    public function getEast(): float
+    {
+        return $this->east;
+    }
 
-  public function getEast(): float {
-    return $this->east;
-  }
+    public function setEast(float $east): void
+    {
+        $this->east = $east;
+    }
 
-  public function setEast(float $east): void {
-    $this->east = $east;
-  }
+    public function getWest(): float
+    {
+        return $this->west;
+    }
 
-  public function getWest(): float {
-    return $this->west;
-  }
+    public function setWest(float $west): void
+    {
+        $this->west = $west;
+    }
 
-  public function setWest(float $west): void {
-    $this->west = $west;
-  }
+    public function getRotation(): float
+    {
+        return $this->rotation;
+    }
 
-  public function getRotation(): float {
-    return $this->rotation;
-  }
-
-  public function setRotation(float $rotation): void {
-    $this->rotation = $rotation;
-  }
-
+    public function setRotation(float $rotation): void
+    {
+        $this->rotation = $rotation;
+    }
 }

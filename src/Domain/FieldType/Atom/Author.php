@@ -1,38 +1,45 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Domain\FieldType\Atom;
 
 /**
  * Author class implements a xmlns:atom:author object.
  */
-class Author {
+class Author
+{
+    private ?string $name = null;
+    private ?string $uri = null;
+    private ?string $email = null;
 
-  private $name;
-  private $uri;
-  private $email;
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
 
-  public function getName() {
-    return $this->name;
-  }
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
 
-  public function setName(string $name) {
-    $this->name = $name;
-  }
+    public function getUri(): ?string
+    {
+        return $this->uri;
+    }
 
-  public function getUri() {
-    return $this->uri;
-  }
+    public function setUri(string $uri): void
+    {
+        $this->uri = $uri;
+    }
 
-  public function setUri(string $uri) {
-    $this->uri = $uri;
-  }
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
 
-  public function getEmail() {
-    return $this->email;
-  }
-
-  public function setEmail(string $email) {
-    $this->email = $email;
-  }
-
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
+    }
 }

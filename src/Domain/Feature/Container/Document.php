@@ -1,34 +1,37 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Domain\Feature\Container;
 
 use LibKml\Domain\KmlObjectVisitorInterface;
 
-/**
- * Document class.
- */
-class Document extends Container {
+class Document extends Container
+{
+    private array $schemas = [];
 
-  private $schemas = [];
+    public function accept(KmlObjectVisitorInterface $visitor): void
+    {
+        $visitor->visitDocument($this);
+    }
 
-  public function accept(KmlObjectVisitorInterface $visitor): void {
-    $visitor->visitDocument($this);
-  }
+    public function addSchema($schema): void
+    {
+        $this->schemas[] = $schema;
+    }
 
-  public function addSchema($schema) {
-    $this->schemas[] = $schema;
-  }
+    public function clearSchemas(): void
+    {
+        $this->schemas = [];
+    }
 
-  public function clearSchemas() {
-    $this->schemas = array();
-  }
+    public function getSchemas(): array
+    {
+        return $this->schemas;
+    }
 
-  public function getSchemas() {
-    return $this->schemas;
-  }
-
-  public function setSchemas($schemas) {
-    $this->schemas = $schemas;
-  }
-
+    public function setSchemas(array $schemas): void
+    {
+        $this->schemas = $schemas;
+    }
 }

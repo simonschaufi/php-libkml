@@ -1,26 +1,34 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Domain\TimePrimitive;
 
 use LibKml\Domain\KmlObjectVisitorInterface;
 
-/**
- * TimeStamp class.
- */
-class TimeStamp extends TimePrimitive {
+class TimeStamp extends TimePrimitive
+{
+    private ?string $when = null;
 
-  private $when;
+    public static function fromInteger(int $unixTimestamp): TimeStamp
+    {
+        $timeStamp = new self();
+        $timeStamp->when = date(DATE_ATOM, $unixTimestamp);
+        return $timeStamp;
+    }
 
-  public function accept(KmlObjectVisitorInterface $visitor): void {
-    $visitor->visitTimeStamp($this);
-  }
+    public function accept(KmlObjectVisitorInterface $visitor): void
+    {
+        $visitor->visitTimeStamp($this);
+    }
 
-  public function getWhen(): int {
-    return $this->when;
-  }
+    public function getWhen(): ?string
+    {
+        return $this->when;
+    }
 
-  public function setWhen(int $when): void {
-    $this->when = $when;
-  }
-
+    public function setWhen(?string $when): void
+    {
+        $this->when = $when;
+    }
 }

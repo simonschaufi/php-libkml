@@ -1,74 +1,86 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Domain;
 
-/**
- * LatLonAltBox class.
- */
-class LatLonAltBox {
+class LatLonAltBox
+{
+    private ?string $altitudeMode = null;
+    private float $minAltitude = 0.0;
+    private float $maxAltitude = 0.0;
+    private float $north = 0.0;
+    private float $south = 0.0;
+    private float $east = 0.0;
+    private float $west = 0.0;
 
-  private $altitudeMode;
-  private $minAltitude;
-  private $maxAltitude;
-  private $north;
-  private $south;
-  private $east;
-  private $west;
+    public function getAltitudeMode(): string
+    {
+        return $this->altitudeMode;
+    }
 
-  public function getAltitudeMode(): string {
-    return $this->altitudeMode;
-  }
+    public function setAltitudeMode(string $altitudeMode): void
+    {
+        $this->altitudeMode = $altitudeMode;
+    }
 
-  public function setAltitudeMode(string $altitudeMode): void {
-    $this->altitudeMode = $altitudeMode;
-  }
+    public function getMinAltitude(): float
+    {
+        return $this->minAltitude;
+    }
 
-  public function getMinAltitude() {
-    return $this->minAltitude;
-  }
+    public function setMinAltitude(float $minAltitude): void
+    {
+        $this->minAltitude = $minAltitude;
+    }
 
-  public function setMinAltitude($minAltitude) {
-    $this->minAltitude = $minAltitude;
-  }
+    public function getMaxAltitude(): float
+    {
+        return $this->maxAltitude;
+    }
 
-  public function getMaxAltitude() {
-    return $this->maxAltitude;
-  }
+    public function setMaxAltitude(float $maxAltitude): void
+    {
+        $this->maxAltitude = $maxAltitude;
+    }
 
-  public function setMaxAltitude($maxAltitude) {
-    $this->maxAltitude = $maxAltitude;
-  }
+    public function getNorth(): float
+    {
+        return $this->north;
+    }
 
-  public function getNorth() {
-    return $this->north;
-  }
+    public function setNorth(float $north): void
+    {
+        $this->north = $north;
+    }
 
-  public function setNorth($north) {
-    $this->north = $north;
-  }
+    public function getSouth(): float
+    {
+        return $this->south;
+    }
 
-  public function getSouth() {
-    return $this->south;
-  }
+    public function setSouth(float $south): void
+    {
+        $this->south = $south;
+    }
 
-  public function setSouth($south) {
-    $this->south = $south;
-  }
+    public function getEast(): float
+    {
+        return $this->east;
+    }
 
-  public function getEast() {
-    return $this->east;
-  }
+    public function setEast(float $east): void
+    {
+        $this->east = $east;
+    }
 
-  public function setEast($east) {
-    $this->east = $east;
-  }
+    public function getWest(): float
+    {
+        return $this->west;
+    }
 
-  public function getWest() {
-    return $this->west;
-  }
-
-  public function setWest($west) {
-    $this->west = $west;
-  }
-
+    public function setWest(float $west): void
+    {
+        $this->west = $west;
+    }
 }

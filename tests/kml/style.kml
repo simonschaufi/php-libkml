@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document id="document-1" targetId="target-1">
+    <name>Document with XML id</name>
+    <open>1</open>
+    <Style id="style-1" targetId="target-1">
+      <BalloonStyle>
+        <bgColor>ffffffbb</bgColor>
+        <textColor>ff00aabb</textColor>
+        <text>$[name]</text>
+        <displayMode>random</displayMode>
+      </BalloonStyle>
+      <IconStyle>
+        <color>a1ff00ff</color>
+        <colorMode>random</colorMode>
+        <scale>1.39</scale>
+        <heading>2.56</heading>
+        <Icon>
+          <href>http://myserver.com/icon.jpg</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <color>7fffaaff</color>
+        <colorMode>random</colorMode>
+        <scale>1.5</scale>
+      </LabelStyle>
+      <LineStyle>
+        <color>ffddbbcc</color>
+        <colorMode>random</colorMode>
+        <width>2.75</width>
+      </LineStyle>
+      <ListStyle>
+        <bgBolor>55aabbcc</bgBolor>
+        <listItemType>radioFolder</listItemType>
+      </ListStyle>
+      <PolyStyle>
+        <color>7f7faaaa</color>
+        <colorMode>random</colorMode>
+      </PolyStyle>
+    </Style>
+    <Folder>
+      <name>Folder 1</name>
+    </Folder>
+    <Folder>
+      <name>Folder 2</name>
+    </Folder>
+    <Folder>
+      <name>Folder 3</name>
+    </Folder>
+  </Document>
+</kml>

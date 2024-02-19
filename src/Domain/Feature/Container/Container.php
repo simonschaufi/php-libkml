@@ -1,30 +1,32 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Domain\Feature\Container;
 
 use LibKml\Domain\Feature\Feature;
 
-/**
- * Container abstract class.
- */
-abstract class Container extends Feature {
+abstract class Container extends Feature
+{
+    protected array $features = [];
 
-  protected $features = [];
+    public function addFeature(Feature $feature): void
+    {
+        $this->features[] = $feature;
+    }
 
-  public function addFeature(Feature $feature) {
-    $this->features[] = $feature;
-  }
+    public function clearFeatures(): void
+    {
+        $this->features = [];
+    }
 
-  public function clearFeatures() {
-    $this->features = [];
-  }
+    public function getFeatures(): array
+    {
+        return $this->features;
+    }
 
-  public function getFeatures(): array {
-    return $this->features;
-  }
-
-  public function setFeatures(array $features) {
-    $this->features = $features;
-  }
-
+    public function setFeatures(array $features): void
+    {
+        $this->features = $features;
+    }
 }

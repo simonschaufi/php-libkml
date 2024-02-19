@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+    <NetworkLinkControl>
+        <minRefreshPeriod>60</minRefreshPeriod>
+        <maxSessionLength>3600</maxSessionLength>
+        <cookie>language=en</cookie>
+        <message>Hello world!</message>
+        <linkName>Link name</linkName>
+        <linkDescription>Link description</linkDescription>
+        <linkSnippet>Link snippet</linkSnippet>
+        <expires>2323198129301</expires>
+        <Camera>
+            <longitude>-1.345</longitude>
+            <latitude>34.5642</latitude>
+            <altitude>125.45</altitude>
+            <heading>98.54</heading>
+            <tilt>-15.78</tilt>
+            <roll>5.67</roll>
+            <TimeSpan>
+                <begin>2021-09-12T15:07:35.678</begin>
+                <end>2021-09-12T16:14:18.765</end>
+            </TimeSpan>
+        </Camera>
+    </NetworkLinkControl>
+</kml>

@@ -1,40 +1,42 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Reader\Kml\FieldType;
 
 use LibKml\Domain\FieldType\SimpleField;
-use SimpleXMLElement;
 
-class SimpleFieldParser {
+class SimpleFieldParser
+{
+    public static function parseList(\SimpleXMLElement $xmlElement): array
+    {
+        $fields = [];
 
-  public static function parseList(SimpleXMLElement $xmlElement): array {
-    $fields = [];
+        foreach ($xmlElement->children() as $xmlElementChild) {
+            if ($xmlElementChild->getName() === 'SimpleField') {
+                $fields[] = self::parseSimpleFieldElement($xmlElementChild);
+            }
+        }
 
-    foreach ($xmlElement->children() as $xmlElementChild) {
-      if ($xmlElementChild->getName() === "SimpleField") {
-        $fields[] = self::parseSimplefieldElement($xmlElementChild);
-      }
+        return $fields;
     }
 
-    return $fields;
-  }
+    private static function parseSimpleFieldElement(\SimpleXMLElement $xmlElement): SimpleField
+    {
+        $simpleField = new SimpleField();
 
-  private static function parseSimplefieldElement(SimpleXMLElement $xmlElement): SimpleField {
-    $simpleField = new SimpleField();
+        if (isset($xmlElement['type'])) {
+            $simpleField->setType((string)$xmlElement['type']);
+        }
 
-    if (isset($xmlElement['type'])) {
-      $simpleField->setType($xmlElement['type']);
+        if (isset($xmlElement['name'])) {
+            $simpleField->setName((string)$xmlElement['name']);
+        }
+
+        if (isset($xmlElement->displayName)) {
+            $simpleField->setDisplayName((string)$xmlElement->displayName);
+        }
+
+        return $simpleField;
     }
-
-    if (isset($xmlElement['name'])) {
-      $simpleField->setName($xmlElement['name']);
-    }
-
-    if (isset($xmlElement->displayName)) {
-      $simpleField->setDisplayName($xmlElement->displayName);
-    }
-
-    return $simpleField;
-  }
-
 }

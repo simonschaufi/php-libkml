@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Domain\FieldType;
 
 /**
  * Applies effects to a base color.
  */
-class ColorMode {
-
-  const NORMAL = 0;
-  const RANDOM = 1;
-
+class ColorMode
+{
+    public const NORMAL = 'normal';
+    public const RANDOM = 'random';
 }

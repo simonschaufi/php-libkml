@@ -1,32 +1,39 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LibKml\Domain\SubStyle\ColorStyle;
 
 use LibKml\Domain\FieldType\Color;
 use LibKml\Domain\SubStyle\SubStyle;
 
-/**
- * ColorStyle abstract class.
- */
-abstract class ColorStyle extends SubStyle {
+abstract class ColorStyle extends SubStyle
+{
+    protected Color $color;
+    protected string $colorMode = 'normal';
 
-  protected $color;
-  protected $colorMode = "normal";
+    public function __construct()
+    {
+        $this->color = Color::fromWhite();
+    }
 
-  public function getColor(): Color {
-    return $this->color;
-  }
+    public function getColor(): Color
+    {
+        return $this->color;
+    }
 
-  public function setColor(Color $color): void {
-    $this->color = $color;
-  }
+    public function setColor(Color $color): void
+    {
+        $this->color = $color;
+    }
 
-  public function getColorMode(): string {
-    return $this->colorMode;
-  }
+    public function getColorMode(): string
+    {
+        return $this->colorMode;
+    }
 
-  public function setColorMode(string $colorMode): void {
-    $this->colorMode = $colorMode;
-  }
-
+    public function setColorMode(string $colorMode): void
+    {
+        $this->colorMode = $colorMode;
+    }
 }
