@@ -9,10 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class OtherTest extends TestCase
 {
-    /**
-     * @var Other
-     */
-    protected $other;
+    private Other $other;
 
     protected function setUp(): void
     {

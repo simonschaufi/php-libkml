@@ -9,10 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class LatLonBoxTest extends TestCase
 {
-    /**
-     * @var LatLonBox
-     */
-    protected $latLonBox;
+    private LatLonBox $latLonBox;
 
     protected function setUp(): void
     {

@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 final class MultiGeometryParserTest extends TestCase
 {
-    public const KML_MULTI_GEOMETRY = <<<'TAG'
+    private const KML_MULTI_GEOMETRY = <<<'TAG'
 <MultiGeometry>
   <Point>
     <coordinates>-122.442558793,37.80666418607323,10</coordinates>
@@ -31,11 +31,8 @@ final class MultiGeometryParserTest extends TestCase
 </MultiGeometry>
 TAG;
 
-    /**
-     * @var MultiGeometryParser
-     */
-    protected $multiGeometry;
-    protected $kmlElement;
+    private MultiGeometryParser $multiGeometry;
+    private $kmlElement;
 
     protected function setUp(): void
     {

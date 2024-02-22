@@ -9,10 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class ImagePyramidTest extends TestCase
 {
-    /**
-     * @var ImagePyramid
-     */
-    protected $imagePyramid;
+    private ImagePyramid $imagePyramid;
 
     protected function setUp(): void
     {

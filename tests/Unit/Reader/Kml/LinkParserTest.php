@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace LibKml\Tests\Unit\Reader\Kml;
 
+use LibKml\Domain\KmlObject;
 use LibKml\Domain\Link;
 use LibKml\Reader\Kml\LinkParser;
 use PHPUnit\Framework\TestCase;
 
 final class LinkParserTest extends TestCase
 {
-    public const KML_LINK = <<<'TAG'
+    private const KML_LINK = <<<'TAG'
 <Link>
   <href>http://www.example.com/geotiff/NE/MergedReflectivityQComposite.kml</href>
   <refreshMode>onInterval</refreshMode>
@@ -21,25 +22,52 @@ final class LinkParserTest extends TestCase
 </Link>
 TAG;
 
-    protected LinkParser $linkParser;
+    private LinkParser $linkParser;
+
+    /**
+     * @var Link
+     */
+    private KmlObject $link;
 
     protected function setUp(): void
     {
         $this->linkParser = new LinkParser();
+        $kml = simplexml_load_string(self::KML_LINK);
+        $this->link = $this->linkParser->parse($kml);
     }
 
-    public function testParse(): void
+    public function testParseLink(): void
     {
-        $kml = simplexml_load_string(self::KML_LINK);
+        self::assertInstanceOf(Link::class, $this->link);
+    }
 
-        $kmlObject = $this->linkParser->parse($kml);
+    public function testParseHref(): void
+    {
+        self::assertEquals('http://www.example.com/geotiff/NE/MergedReflectivityQComposite.kml', $this->link->getHref());
+    }
 
-        self::assertInstanceOf(Link::class, $kmlObject);
-        self::assertEquals('http://www.example.com/geotiff/NE/MergedReflectivityQComposite.kml', $kmlObject->getHref());
-        self::assertEquals('onInterval', $kmlObject->getRefreshMode());
-        self::assertEquals('30', $kmlObject->getRefreshInterval());
-        self::assertEquals('onStop', $kmlObject->getViewRefreshMode());
-        self::assertEquals('7', $kmlObject->getViewRefreshTime());
-        self::assertEquals('BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]', $kmlObject->getViewFormat());
+    public function testParseRefreshMode(): void
+    {
+        self::assertEquals('onInterval', $this->link->getRefreshMode());
+    }
+
+    public function testParseRefreshInterval(): void
+    {
+        self::assertEquals('30', $this->link->getRefreshInterval());
+    }
+
+    public function testParseViewRefreshMode(): void
+    {
+        self::assertEquals('onStop', $this->link->getViewRefreshMode());
+    }
+
+    public function testParseViewRefreshTime(): void
+    {
+        self::assertEquals('7', $this->link->getViewRefreshTime());
+    }
+
+    public function testParseViewFormat(): void
+    {
+        self::assertEquals('BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]', $this->link->getViewFormat());
     }
 }

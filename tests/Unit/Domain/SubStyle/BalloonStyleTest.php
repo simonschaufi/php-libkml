@@ -5,20 +5,26 @@ declare(strict_types=1);
 namespace LibKml\Tests\Unit\Domain\SubStyle;
 
 use LibKml\Domain\FieldType\Color;
+use LibKml\Domain\FieldType\DisplayModeEnum;
 use LibKml\Domain\KmlObjectVisitorInterface;
 use LibKml\Domain\SubStyle\BalloonStyle;
 use PHPUnit\Framework\TestCase;
 
 final class BalloonStyleTest extends TestCase
 {
-    /**
-     * @var BalloonStyle
-     */
-    protected $balloonStyle;
+    private BalloonStyle $balloonStyle;
 
     protected function setUp(): void
     {
         $this->balloonStyle = new BalloonStyle();
+    }
+
+    public function testDefaultValues(): void
+    {
+        self::assertEquals(Color::fromWhite(), $this->balloonStyle->getBgColor());
+        self::assertEquals(Color::fromBlack(), $this->balloonStyle->getTextColor());
+        self::assertEquals(DisplayModeEnum::DEFAULT, $this->balloonStyle->getDisplayMode());
+        self::assertEquals('', $this->balloonStyle->getText());
     }
 
     public function testAccept(): void

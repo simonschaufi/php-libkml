@@ -11,10 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 final class ColorStyleTest extends TestCase
 {
-    /**
-     * @var ColorStyle
-     */
-    protected $colorStyle;
+    private ColorStyle $colorStyle;
 
     protected function setUp(): void
     {

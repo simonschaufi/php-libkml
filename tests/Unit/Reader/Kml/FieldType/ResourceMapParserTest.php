@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final class ResourceMapParserTest extends TestCase
 {
-    public const KML_RESOURCE_MAP = <<<'TAG'
+    private const KML_RESOURCE_MAP = <<<'TAG'
 <ResourceMap>
   <Alias>
     <targetHref>../files/CU-Macky---Center-StairsnoCulling.jpg</targetHref>

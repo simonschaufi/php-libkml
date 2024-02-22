@@ -9,10 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class OrientationTest extends TestCase
 {
-    /**
-     * @var Orientation
-     */
-    protected $orientation;
+    private Orientation $orientation;
 
     protected function setUp(): void
     {

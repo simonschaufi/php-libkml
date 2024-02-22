@@ -12,10 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 final class NetworkLinkControlTest extends TestCase
 {
-    /**
-     * @var NetworkLinkControl
-     */
-    protected $networkLinkControl;
+    private NetworkLinkControl $networkLinkControl;
 
     protected function setUp(): void
     {
@@ -87,7 +84,7 @@ final class NetworkLinkControlTest extends TestCase
 
     public function testExpiresField(): void
     {
-        $expires = 23891798741;
+        $expires = '1997-07-16T07:30:15Z';
 
         $this->networkLinkControl->setExpires($expires);
 

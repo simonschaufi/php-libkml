@@ -8,13 +8,14 @@ use LibKml\Domain\FieldType\AltitudeMode;
 use LibKml\Domain\FieldType\Coordinates;
 use LibKml\Domain\FieldType\Orientation;
 use LibKml\Domain\FieldType\ResourceMap;
+use LibKml\Domain\KmlObject;
 use LibKml\Domain\Link;
 use LibKml\Reader\Kml\Geometry\ModelParser;
 use PHPUnit\Framework\TestCase;
 
 final class ModelParserTest extends TestCase
 {
-    public const KML_MODEL = <<<'TAG'
+    private const KML_MODEL = <<<'TAG'
 <Model id="model-1" targetId="target-id-1">
   <altitudeMode>absolute</altitudeMode>
   <Location>
@@ -53,28 +54,54 @@ final class ModelParserTest extends TestCase
 </Model>
 TAG;
 
+    private ModelParser $modelParser;
+
     /**
-     * @var ModelParser
+     * @var Model
      */
-    protected $modelParser;
-    protected $kmlElement;
+    private KmlObject $model;
+
+    private $kmlElement;
 
     protected function setUp(): void
     {
         $this->modelParser = new ModelParser();
         $this->kmlElement = simplexml_load_string(self::KML_MODEL);
+        $this->model = $this->modelParser->parse($this->kmlElement);
     }
 
-    public function testParse(): void
+    public function testParseId(): void
     {
-        $kmlObject = $this->modelParser->parse($this->kmlElement);
+        self::assertEquals('model-1', $this->model->getId());
+    }
 
-        self::assertEquals('model-1', $kmlObject->getId());
-        self::assertEquals('target-id-1', $kmlObject->getTargetId());
-        self::assertEquals(AltitudeMode::ABSOLUTE, $kmlObject->getAltitudeMode());
-        self::assertEquals(Coordinates::fromLonLatAlt(39.55375305703105, -118.9813220168456, 1223), $kmlObject->getLocation());
-        self::assertEquals(Orientation::fromHeadingTiltRoll(45.2, 10.7, 0.34), $kmlObject->getOrientation());
-        self::assertInstanceOf(Link::class, $kmlObject->getLink());
-        self::assertInstanceOf(ResourceMap::class, $kmlObject->getResourceMap());
+    public function testParseTargetId(): void
+    {
+        self::assertEquals('target-id-1', $this->model->getTargetId());
+    }
+
+    public function testParseAltitudeMode(): void
+    {
+        self::assertEquals(AltitudeMode::ABSOLUTE, $this->model->getAltitudeMode());
+    }
+
+    public function testParseLocation(): void
+    {
+        self::assertEquals(Coordinates::fromLonLatAlt(39.55375305703105, -118.9813220168456, 1223), $this->model->getLocation());
+    }
+
+    public function testParseOrientation(): void
+    {
+        self::assertEquals(Orientation::fromHeadingTiltRoll(45.2, 10.7, 0.34), $this->model->getOrientation());
+    }
+
+    public function testParseLink(): void
+    {
+        self::assertInstanceOf(Link::class, $this->model->getLink());
+    }
+
+    public function testParseResourceMap(): void
+    {
+        self::assertInstanceOf(ResourceMap::class, $this->model->getResourceMap());
     }
 }

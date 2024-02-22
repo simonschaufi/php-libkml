@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
-    <Document>
-        <name>Open Document</name>
-        <open>1</open>
-        <NetworkLink>
-            <name>Open NetworkLink</name>
-            <open>1</open>
-            <description>NetworkLink open to fetched content</description>
-            <Link>
-                <href>placemark.kml</href>
-            </Link>
-        </NetworkLink>
-    </Document>
+  <NetworkLink>
+    <name>Open NetworkLink</name>
+    <open>1</open>
+    <description>NetworkLink open to fetched content</description>
+    <Link>
+      <href>placemark.kml</href>
+    </Link>
+  </NetworkLink>
 </kml>

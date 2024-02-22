@@ -4,19 +4,22 @@ declare(strict_types=1);
 
 namespace LibKml\Tests\Unit\Domain\SubStyle;
 
+use LibKml\Domain\FieldType\ItemIconState;
 use LibKml\Domain\SubStyle\ItemIcon;
 use PHPUnit\Framework\TestCase;
 
 final class ItemIconTest extends TestCase
 {
-    /**
-     * @var ItemIcon
-     */
-    protected $itemIcon;
+    private ItemIcon $itemIcon;
 
     protected function setUp(): void
     {
         $this->itemIcon = new ItemIcon();
+    }
+
+    public function testDefaultValues(): void
+    {
+        self::assertEquals(ItemIconState::OPEN, $this->itemIcon->getState());
     }
 
     public function testHrefField(): void

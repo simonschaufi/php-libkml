@@ -9,10 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class SimpleFieldTest extends TestCase
 {
-    /**
-     * @var SimpleField
-     */
-    protected $simpleField;
+    private SimpleField $simpleField;
 
     protected function setUp(): void
     {

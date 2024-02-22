@@ -11,10 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 final class ParserFactoryTest extends TestCase
 {
-    /**
-     * @var ParserFactory
-     */
-    protected $parserFactory;
+    private ParserFactory $parserFactory;
 
     protected function setUp(): void
     {

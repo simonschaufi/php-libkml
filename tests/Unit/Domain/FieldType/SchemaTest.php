@@ -5,18 +5,16 @@ declare(strict_types=1);
 namespace LibKml\Tests\Unit\Domain\FieldType;
 
 use LibKml\Domain\FieldType\Schema;
+use LibKml\Domain\FieldType\SimpleField;
 use PHPUnit\Framework\TestCase;
 
 final class SchemaTest extends TestCase
 {
-    /**
-     * @var Schema
-     */
-    protected $schema;
+    private Schema $schema;
 
-    protected $field1;
-    protected $field2;
-    protected $fields;
+    private ?SimpleField $field1 = null;
+    private ?SimpleField $field2 = null;
+    private array $fields = [];
 
     protected function setUp(): void
     {

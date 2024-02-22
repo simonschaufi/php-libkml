@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 final class IconTest extends TestCase
 {
-    protected Icon $icon;
+    private Icon $icon;
 
     protected function setUp(): void
     {

@@ -11,10 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 final class LinkTest extends TestCase
 {
-    /**
-     * @var Link
-     */
-    protected $link;
+    private Link $link;
 
     protected function setUp(): void
     {
@@ -34,7 +31,7 @@ final class LinkTest extends TestCase
 
     public function testHrefField(): void
     {
-        $href = 'http://www.google.com';
+        $href = 'https://www.google.com';
 
         $this->link->setHref($href);
 

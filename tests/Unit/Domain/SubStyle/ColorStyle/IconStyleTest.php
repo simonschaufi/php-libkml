@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace LibKml\Tests\Unit\Domain\SubStyle\ColorStyle;
 
+use LibKml\Domain\FieldType\Color;
+use LibKml\Domain\FieldType\ColorMode;
 use LibKml\Domain\FieldType\Vec2;
 use LibKml\Domain\Icon;
 use LibKml\Domain\KmlObjectVisitorInterface;
@@ -12,10 +14,7 @@ use PHPUnit\Framework\TestCase;
 
 final class IconStyleTest extends TestCase
 {
-    /**
-     * @var IconStyle
-     */
-    protected $iconStyle;
+    private IconStyle $iconStyle;
 
     protected function setUp(): void
     {
@@ -33,6 +32,18 @@ final class IconStyleTest extends TestCase
           ->with(self::equalTo($timeStamp));
 
         $timeStamp->accept($objectVisitor);
+    }
+
+    public function testDefaultValues(): void
+    {
+        self::assertEquals(Color::fromWhite(), $this->iconStyle->getColor());
+        self::assertEquals(ColorMode::NORMAL, $this->iconStyle->getColorMode());
+        self::assertEquals(1, $this->iconStyle->getScale());
+        self::assertEquals(0, $this->iconStyle->getHeading());
+        self::assertEquals(0.5, $this->iconStyle->getHotSpot()->getX());
+        self::assertEquals(0.5, $this->iconStyle->getHotSpot()->getY());
+        self::assertEquals('fraction', $this->iconStyle->getHotSpot()->getXUnits());
+        self::assertEquals('fraction', $this->iconStyle->getHotSpot()->getYUnits());
     }
 
     public function testScaleField(): void

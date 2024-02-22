@@ -12,10 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 final class NetworkLinkTest extends TestCase
 {
-    /**
-     * @var NetworkLink
-     */
-    protected $networkLink;
+    private NetworkLink $networkLink;
 
     protected function setUp(): void
     {

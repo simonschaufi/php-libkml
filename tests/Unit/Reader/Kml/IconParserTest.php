@@ -7,12 +7,13 @@ namespace LibKml\Tests\Unit\Reader\Kml;
 use LibKml\Domain\FieldType\RefreshMode;
 use LibKml\Domain\FieldType\ViewRefreshMode;
 use LibKml\Domain\Icon;
+use LibKml\Domain\KmlObject;
 use LibKml\Reader\Kml\IconParser;
 use PHPUnit\Framework\TestCase;
 
 final class IconParserTest extends TestCase
 {
-    public const KML_ICON = <<<'TAG'
+    private const KML_ICON = <<<'TAG'
 <Icon>
   <href>Sunset.jpg</href>
   <refreshMode>onInterval</refreshMode>
@@ -25,30 +26,62 @@ final class IconParserTest extends TestCase
 </Icon>
 TAG;
 
+    private IconParser $iconParser;
+
     /**
-     * @var IconParser
+     * @var Icon
      */
-    protected $iconParser;
+    private KmlObject $icon;
 
     protected function setUp(): void
     {
         $this->iconParser = new IconParser();
+        $kml = simplexml_load_string(self::KML_ICON);
+        $this->icon = $this->iconParser->parse($kml);
     }
 
-    public function testParse(): void
+    public function testParseIcon(): void
     {
-        $kml = simplexml_load_string(self::KML_ICON);
+        self::assertInstanceOf(Icon::class, $this->icon);
+    }
 
-        $kmlObject = $this->iconParser->parse($kml);
+    public function testParseHref(): void
+    {
+        self::assertEquals('Sunset.jpg', $this->icon->getHref());
+    }
 
-        self::assertInstanceOf(Icon::class, $kmlObject);
-        self::assertEquals('Sunset.jpg', $kmlObject->getHref());
-        self::assertEquals(RefreshMode::ON_INTERVAL, $kmlObject->getRefreshMode());
-        self::assertEquals(10, $kmlObject->getRefreshInterval());
-        self::assertEquals(ViewRefreshMode::ON_REQUEST, $kmlObject->getViewRefreshMode());
-        self::assertEquals(30, $kmlObject->getViewRefreshTime());
-        self::assertEquals(3, $kmlObject->getViewBoundScale());
-        self::assertEquals('BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]', $kmlObject->getViewFormat());
-        self::assertEquals('gv=[clientVersion]', $kmlObject->getHttpQuery());
+    public function testParseRefreshMode(): void
+    {
+        self::assertEquals(RefreshMode::ON_INTERVAL, $this->icon->getRefreshMode());
+    }
+
+    public function testParseRefreshInterval(): void
+    {
+        self::assertEquals(10, $this->icon->getRefreshInterval());
+    }
+
+    public function testParseViewRefreshMode(): void
+    {
+        self::assertEquals(ViewRefreshMode::ON_REQUEST, $this->icon->getViewRefreshMode());
+    }
+
+    public function testParseViewRefreshTime(): void
+    {
+        self::assertEquals(30, $this->icon->getViewRefreshTime());
+    }
+
+    public function testParseViewBoundScale(): void
+    {
+        self::assertEquals(3, $this->icon->getViewBoundScale());
+    }
+
+    public function testParseViewFormat(): void
+    {
+        self::assertEquals('BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]', $this->icon->getViewFormat());
+    }
+
+    public function testParseHttpQuery(): void
+    {
+        self::assertEquals('gv=[clientVersion]', $this->icon->getHttpQuery());
     }
 }

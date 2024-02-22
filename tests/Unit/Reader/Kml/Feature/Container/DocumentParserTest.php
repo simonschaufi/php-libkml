@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 final class DocumentParserTest extends TestCase
 {
-    public const KML_DOCUMENT = <<<'TAG'
+    private const KML_DOCUMENT = <<<'TAG'
 <Document id="document-1" targetId="target-1">
   <name>Document.kml</name>
   <open>1</open>
@@ -49,7 +49,7 @@ final class DocumentParserTest extends TestCase
 </Document>
 TAG;
 
-    protected $documentParser;
+    private DocumentParser $documentParser;
 
     protected function setUp(): void
     {

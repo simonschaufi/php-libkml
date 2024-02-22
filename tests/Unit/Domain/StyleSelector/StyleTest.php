@@ -16,10 +16,7 @@ use PHPUnit\Framework\TestCase;
 
 final class StyleTest extends TestCase
 {
-    /**
-     * @var Style
-     */
-    protected $style;
+    private Style $style;
 
     protected function setUp(): void
     {

@@ -5,37 +5,52 @@ declare(strict_types=1);
 namespace LibKml\Tests\Unit\Reader\Kml\Geometry;
 
 use LibKml\Domain\FieldType\Coordinates;
+use LibKml\Domain\KmlObject;
 use LibKml\Reader\Kml\Geometry\PointParser;
 use PHPUnit\Framework\TestCase;
 
 final class PointParserTest extends TestCase
 {
-    public const KML_POINT = <<<'TAG'
+    private const KML_POINT = <<<'TAG'
 <Point id="point-1" targetId="target-id-1">
   <extrude>1</extrude>
   <coordinates>-90.86948943473118,48.25450093195546</coordinates>
 </Point>
 TAG;
 
+    private PointParser $pointParser;
+
     /**
-     * @var PointParser
+     * @var Point
      */
-    protected $pointParser;
-    protected $kmlElement;
+    private KmlObject $point;
+
+    private $kmlElement;
 
     protected function setUp(): void
     {
         $this->pointParser = new PointParser();
         $this->kmlElement = simplexml_load_string(self::KML_POINT);
+        $this->point = $this->pointParser->parse($this->kmlElement);
     }
 
-    public function testParse(): void
+    public function testParseId(): void
     {
-        $kmlObject = $this->pointParser->parse($this->kmlElement);
+        self::assertEquals('point-1', $this->point->getId());
+    }
 
-        self::assertEquals('point-1', $kmlObject->getId());
-        self::assertEquals('target-id-1', $kmlObject->getTargetId());
-        self::assertTrue($kmlObject->getExtrude());
-        self::assertInstanceOf(Coordinates::class, $kmlObject->getCoordinates());
+    public function testParseTargetId(): void
+    {
+        self::assertEquals('target-id-1', $this->point->getTargetId());
+    }
+
+    public function testParseExtrude(): void
+    {
+        self::assertTrue($this->point->getExtrude());
+    }
+
+    public function testParseCoordinates(): void
+    {
+        self::assertInstanceOf(Coordinates::class, $this->point->getCoordinates());
     }
 }

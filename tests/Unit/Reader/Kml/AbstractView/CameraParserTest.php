@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace LibKml\Tests\Unit\Reader\Kml\AbstractView;
 
+use LibKml\Domain\AbstractView\Camera;
+use LibKml\Domain\KmlObject;
 use LibKml\Reader\Kml\AbstractView\CameraParser;
 use PHPUnit\Framework\TestCase;
 
 final class CameraParserTest extends TestCase
 {
-    public const KML_CAMERA = <<<'TAG'
+    private const KML_CAMERA = <<<'TAG'
 <Camera>
   <longitude>170.157</longitude>
   <latitude>-43.671</latitude>
@@ -17,27 +19,51 @@ final class CameraParserTest extends TestCase
   <heading>-6.333</heading>
   <tilt>33.5</tilt>
   <roll>12.5</roll>
+  <TimeSpan>
+    <begin>1876-08-01</begin>
+  </TimeSpan>
 </Camera>
 TAG;
 
-    protected $cameraParser;
+    /**
+     * @var Camera
+     */
+    private KmlObject $camera;
 
     protected function setUp(): void
     {
-        $this->cameraParser = new CameraParser();
+        $cameraParser = new CameraParser();
+
+        $this->camera = $cameraParser->parse(simplexml_load_string(self::KML_CAMERA));
     }
 
-    public function testParse(): void
+    public function testParseLongitude(): void
     {
-        $xmlElement = simplexml_load_string(self::KML_CAMERA);
+        self::assertEquals(170.157, $this->camera->getLongitude());
+    }
 
-        $camera = $this->cameraParser->parse($xmlElement);
+    public function testParseLatitude(): void
+    {
+        self::assertEquals(-43.671, $this->camera->getLatitude());
+    }
 
-        self::assertEquals(170.157, $camera->getLongitude());
-        self::assertEquals(-43.671, $camera->getLatitude());
-        self::assertEquals(9700, $camera->getAltitude());
-        self::assertEquals(-6.333, $camera->getHeading());
-        self::assertEquals(33.5, $camera->getTilt());
-        self::assertEquals(12.5, $camera->getRoll());
+    public function testParseAltitude(): void
+    {
+        self::assertEquals(9700, $this->camera->getAltitude());
+    }
+
+    public function testParseHeading(): void
+    {
+        self::assertEquals(-6.333, $this->camera->getHeading());
+    }
+
+    public function testParseTilt(): void
+    {
+        self::assertEquals(33.5, $this->camera->getTilt());
+    }
+
+    public function testParseRoll(): void
+    {
+        self::assertEquals(12.5, $this->camera->getRoll());
     }
 }

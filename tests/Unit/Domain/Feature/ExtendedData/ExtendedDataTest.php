@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 final class ExtendedDataTest extends TestCase
 {
-    protected ExtendedData $extendedData;
+    private ExtendedData $extendedData;
 
     protected function setUp(): void
     {

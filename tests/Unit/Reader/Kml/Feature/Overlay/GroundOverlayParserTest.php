@@ -8,16 +8,17 @@ use LibKml\Domain\Feature\Overlay\GroundOverlay;
 use LibKml\Domain\FieldType\AltitudeMode;
 use LibKml\Domain\FieldType\Color;
 use LibKml\Domain\Icon;
+use LibKml\Domain\KmlObject;
 use LibKml\Domain\LatLonBox;
 use LibKml\Reader\Kml\Feature\Overlay\GroundOverlayParser;
 use PHPUnit\Framework\TestCase;
 
 final class GroundOverlayParserTest extends TestCase
 {
-    public const KML_GROUND_OVERLAY = <<< 'TAG'
+    private const KML_GROUND_OVERLAY = <<<'TAG'
 <GroundOverlay>
    <name>GroundOverlay.kml</name>
-   <color>7fffffff</color>
+   <color>ffffff7f</color>
    <drawOrder>1</drawOrder>
    <Icon>
       <href>http://www.google.com/intl/en/images/logo.gif</href>
@@ -37,29 +38,51 @@ final class GroundOverlayParserTest extends TestCase
 </GroundOverlay>
 TAG;
 
-    /**
-     * @var GroundOverlayParser
-     */
-    protected $groundOverlayParser;
+    private KmlObject $overlay;
 
     protected function setUp(): void
     {
-        $this->groundOverlayParser = new GroundOverlayParser();
+        $groundOverlayParser = new GroundOverlayParser();
+        $this->overlay = $groundOverlayParser->parse(simplexml_load_string(self::KML_GROUND_OVERLAY));
     }
 
-    public function testParse(): void
+    public function testParseOverlay(): void
     {
-        $element = simplexml_load_string(self::KML_GROUND_OVERLAY);
+        self::assertInstanceOf(GroundOverlay::class, $this->overlay);
+    }
 
-        $overlay = $this->groundOverlayParser->parse($element);
+    public function testParseName(): void
+    {
+        self::assertEquals('GroundOverlay.kml', $this->overlay->getName());
+    }
 
-        self::assertInstanceOf(GroundOverlay::class, $overlay);
-        self::assertEquals('GroundOverlay.kml', $overlay->getName());
-        self::assertEquals(Color::fromRGBA(0x7f, 0xff, 0xff, 1), $overlay->getColor());
-        self::assertEquals(1, $overlay->getDrawOrder());
-        self::assertInstanceOf(Icon::class, $overlay->getIcon());
-        self::assertEquals(135.54, $overlay->getAltitude());
-        self::assertEquals(AltitudeMode::ABSOLUTE, $overlay->getAltitudeMode());
-        self::assertInstanceOf(LatLonBox::class, $overlay->getLatLonBox());
+    public function testParseColor(): void
+    {
+        self::assertEquals(Color::fromRGBA(0x7f, 0xff, 0xff, 1), $this->overlay->getColor());
+    }
+
+    public function testParseDrawOrder(): void
+    {
+        self::assertEquals(1, $this->overlay->getDrawOrder());
+    }
+
+    public function testParseIcon(): void
+    {
+        self::assertInstanceOf(Icon::class, $this->overlay->getIcon());
+    }
+
+    public function testParseAltitude(): void
+    {
+        self::assertEquals(135.54, $this->overlay->getAltitude());
+    }
+
+    public function testParseAltitudeMode(): void
+    {
+        self::assertEquals(AltitudeMode::ABSOLUTE, $this->overlay->getAltitudeMode());
+    }
+
+    public function testParseLatLonBox(): void
+    {
+        self::assertInstanceOf(LatLonBox::class, $this->overlay->getLatLonBox());
     }
 }

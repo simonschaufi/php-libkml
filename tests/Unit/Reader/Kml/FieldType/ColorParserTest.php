@@ -15,26 +15,15 @@ final class ColorParserTest extends TestCase
         $color = ColorParser::parse('a366ff88');
 
         self::assertInstanceOf(Color::class, $color);
-        self::assertEquals(0xA3, $color->getRed());
-        self::assertEquals(0x66, $color->getGreen());
-        self::assertEquals(0xFF, $color->getBlue());
-        self::assertEqualsWithDelta(0.5333, $color->getAlpha(), 0.0001);
-    }
-
-    public function testParseRgb(): void
-    {
-        $color = ColorParser::parse('a366ff');
-
-        self::assertInstanceOf(Color::class, $color);
-        self::assertEquals(0xA3, $color->getRed());
-        self::assertEquals(0x66, $color->getGreen());
-        self::assertEquals(0xFF, $color->getBlue());
-        self::assertEqualsWithDelta(1, $color->getAlpha(), 0.0001);
+        self::assertEquals(0x88, $color->getRed());
+        self::assertEquals(0xFF, $color->getGreen());
+        self::assertEquals(0x66, $color->getBlue());
+        self::assertEquals(0xA3 / 0xFF, $color->getAlpha(), '');
     }
 
     public function testParseError(): void
     {
-        $color = ColorParser::parse('a366');
+        $color = ColorParser::parse('a366ff');
 
         self::assertNull($color);
     }

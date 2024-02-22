@@ -6,12 +6,13 @@ namespace LibKml\Tests\Unit\Reader\Kml\Geometry;
 
 use LibKml\Domain\FieldType\AltitudeMode;
 use LibKml\Domain\FieldType\Coordinates;
+use LibKml\Domain\KmlObject;
 use LibKml\Reader\Kml\Geometry\LineStringParser;
 use PHPUnit\Framework\TestCase;
 
 final class LineStringParserTest extends TestCase
 {
-    public const KML_LINE_STRING = <<<'TAG'
+    private const KML_LINE_STRING = <<<'TAG'
 <LineString id="line-string-1" targetId="target-id-1">
   <extrude>1</extrude>
   <tessellate>1</tessellate>
@@ -26,28 +27,50 @@ final class LineStringParserTest extends TestCase
 </LineString>
 TAG;
 
+    private LineStringParser $lineStringParser;
+
     /**
-     * @var LineStringParser
+     * @var LineString
      */
-    protected $lineString;
-    protected $kmlElement;
+    private KmlObject $lineString;
+
+    private $kmlElement;
 
     protected function setUp(): void
     {
-        $this->lineString = new LineStringParser();
+        $this->lineStringParser = new LineStringParser();
         $this->kmlElement = simplexml_load_string(self::KML_LINE_STRING);
+        $this->lineString = $this->lineStringParser->parse($this->kmlElement);
     }
 
-    public function testParse(): void
+    public function testParseId(): void
     {
-        $kmlObject = $this->lineString->parse($this->kmlElement);
+        self::assertEquals('line-string-1', $this->lineString->getId());
+    }
 
-        self::assertEquals('line-string-1', $kmlObject->getId());
-        self::assertEquals('target-id-1', $kmlObject->getTargetId());
-        self::assertTrue($kmlObject->getExtrude());
-        self::assertTrue($kmlObject->getTessellate());
-        self::assertEquals(AltitudeMode::ABSOLUTE, $kmlObject->getAltitudeMode());
-        self::assertCount(5, $kmlObject->getCoordinates());
-        self::assertContainsOnlyInstancesOf(Coordinates::class, $kmlObject->getCoordinates());
+    public function testParseTargetId(): void
+    {
+        self::assertEquals('target-id-1', $this->lineString->getTargetId());
+    }
+
+    public function testParseExtrude(): void
+    {
+        self::assertTrue($this->lineString->getExtrude());
+    }
+
+    public function testParseTessellate(): void
+    {
+        self::assertTrue($this->lineString->getTessellate());
+    }
+
+    public function testParseAltitudeMode(): void
+    {
+        self::assertEquals(AltitudeMode::ABSOLUTE, $this->lineString->getAltitudeMode());
+    }
+
+    public function testParseCoordinates(): void
+    {
+        self::assertCount(5, $this->lineString->getCoordinates());
+        self::assertContainsOnlyInstancesOf(Coordinates::class, $this->lineString->getCoordinates());
     }
 }

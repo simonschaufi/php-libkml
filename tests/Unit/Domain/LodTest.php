@@ -9,10 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class LodTest extends TestCase
 {
-    /**
-     * @var Lod
-     */
-    protected $lod;
+    private Lod $lod;
 
     protected function setUp(): void
     {

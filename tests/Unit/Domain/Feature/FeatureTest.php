@@ -17,10 +17,7 @@ use PHPUnit\Framework\TestCase;
 
 final class FeatureTest extends TestCase
 {
-    /**
-     * @var Feature
-     */
-    protected $feature;
+    private Feature $feature;
 
     protected function setUp(): void
     {
@@ -117,9 +114,9 @@ final class FeatureTest extends TestCase
             public function accept(KmlObjectVisitorInterface $visitor): void {}
         };
 
-        $this->feature->setView($abstractView);
+        $this->feature->setAbstractView($abstractView);
 
-        self::assertEquals($abstractView, $this->feature->getView());
+        self::assertEquals($abstractView, $this->feature->getAbstractView());
     }
 
     public function testTimePrimitiveField(): void

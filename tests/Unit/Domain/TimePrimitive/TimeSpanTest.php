@@ -10,10 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final class TimeSpanTest extends TestCase
 {
-    /**
-     * @var TimeSpan
-     */
-    protected $timeSpan;
+    private TimeSpan $timeSpan;
 
     protected function setUp(): void
     {
@@ -35,7 +32,7 @@ final class TimeSpanTest extends TestCase
 
     public function testBeginField(): void
     {
-        $begin = time();
+        $begin = date(DATE_ATOM);
 
         $this->timeSpan->setBegin($begin);
 
@@ -47,7 +44,7 @@ final class TimeSpanTest extends TestCase
      */
     public function testEndField(): void
     {
-        $end = time();
+        $end = date(DATE_ATOM);
 
         $this->timeSpan->setEnd($end);
 

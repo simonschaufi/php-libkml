@@ -15,7 +15,7 @@ final class DocumentTest extends TestCase
 
     private Style $style1;
     private Style $style2;
-    private array $styles = [];
+    private array $styles;
 
     protected function setUp(): void
     {

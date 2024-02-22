@@ -6,12 +6,13 @@ namespace LibKml\Tests\Unit\Reader\Kml\Feature;
 
 use LibKml\Domain\AbstractView\Camera;
 use LibKml\Domain\Geometry\Point;
+use LibKml\Domain\KmlObject;
 use LibKml\Reader\Kml\Feature\PlacemarkParser;
 use PHPUnit\Framework\TestCase;
 
 final class PlacemarkParserTest extends TestCase
 {
-    public const KML_PLACEMARK = <<<'TAG'
+    private const KML_PLACEMARK = <<<'TAG'
 <Placemark id="placemark-1" targetId="target-1">
   <name>My office</name>
   <visibility>0</visibility>
@@ -27,6 +28,7 @@ final class PlacemarkParserTest extends TestCase
     <heading>-6.333</heading>
     <tilt>33.5</tilt>
     <roll>12.5</roll>
+    <altitudeMode>absolute</altitudeMode>
   </Camera>
   <styleUrl>#myIconStyle</styleUrl>
 
@@ -37,35 +39,71 @@ final class PlacemarkParserTest extends TestCase
 </Placemark>
 TAG;
 
-    /**
-     * @var PlacemarkParser
-     */
-    protected $placemarkParser;
-    protected $kmlElement;
+    private KmlObject $placemark;
 
     protected function setUp(): void
     {
-        $this->placemarkParser = new PlacemarkParser();
-        $this->kmlElement = simplexml_load_string(self::KML_PLACEMARK);
+        $placemarkParser = new PlacemarkParser();
+        $this->placemark = $placemarkParser->parse(simplexml_load_string(self::KML_PLACEMARK));
     }
 
-    public function testParse(): void
+    public function testParseId(): void
     {
-        $kmlObject = $this->placemarkParser->parse($this->kmlElement);
+        self::assertEquals('placemark-1', $this->placemark->getId());
+    }
 
-        self::assertEquals('placemark-1', $kmlObject->getId());
-        self::assertEquals('target-1', $kmlObject->getTargetId());
+    public function testParseTargetId(): void
+    {
+        self::assertEquals('target-1', $this->placemark->getTargetId());
+    }
 
-        self::assertEquals('My office', $kmlObject->getName());
-        self::assertFalse($kmlObject->getVisibility());
-        self::assertTrue($kmlObject->getOpen());
-        self::assertEquals('Blackfriards 240', $kmlObject->getAddress());
-        self::assertEquals('tel:+44 7890123456789', $kmlObject->getPhoneNumber());
-        self::assertEquals('Office location', $kmlObject->getSnippet());
-        self::assertEquals('This is the location of my office.', $kmlObject->getDescription());
-        self::assertInstanceOf(Camera::class, $kmlObject->getView());
-        self::assertEquals('#myIconStyle', $kmlObject->getStyleUrl());
+    public function testParseName(): void
+    {
+        self::assertEquals('My office', $this->placemark->getName());
+    }
 
-        self::assertInstanceOf(Point::class, $kmlObject->getGeometry());
+    public function testParseVisibility(): void
+    {
+        self::assertFalse($this->placemark->getVisibility());
+    }
+
+    public function testParseOpen(): void
+    {
+        self::assertTrue($this->placemark->getOpen());
+    }
+
+    public function testParseAddress(): void
+    {
+        self::assertEquals('Blackfriards 240', $this->placemark->getAddress());
+    }
+
+    public function testParsePhoneNumber(): void
+    {
+        self::assertEquals('tel:+44 7890123456789', $this->placemark->getPhoneNumber());
+    }
+
+    public function testParseSnippet(): void
+    {
+        self::assertEquals('Office location', $this->placemark->getSnippet());
+    }
+
+    public function testParseDescription(): void
+    {
+        self::assertEquals('This is the location of my office.', $this->placemark->getDescription());
+    }
+
+    public function testParseAbstractView(): void
+    {
+        self::assertInstanceOf(Camera::class, $this->placemark->getAbstractView());
+    }
+
+    public function testParseStyleUrl(): void
+    {
+        self::assertEquals('#myIconStyle', $this->placemark->getStyleUrl());
+    }
+
+    public function testParseGeometry(): void
+    {
+        self::assertInstanceOf(Point::class, $this->placemark->getGeometry());
     }
 }

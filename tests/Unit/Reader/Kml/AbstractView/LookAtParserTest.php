@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace LibKml\Tests\Unit\Reader\Kml\AbstractView;
 
+use LibKml\Domain\AbstractView\LookAt;
+use LibKml\Domain\KmlObject;
 use LibKml\Reader\Kml\AbstractView\LookAtParser;
 use PHPUnit\Framework\TestCase;
 
 final class LookAtParserTest extends TestCase
 {
-    public const KML_LOOK_AT = <<<'TAG'
+    private const KML_LOOK_AT = <<<'TAG'
 <LookAt>
   <longitude>-119.748584</longitude>
   <latitude>33.736266</latitude>
@@ -20,27 +22,49 @@ final class LookAtParserTest extends TestCase
 </LookAt>
 TAG;
 
+    private LookAtParser $lookAtParser;
+
     /**
-     * @var LookAtParser
+     * @var LookAt
      */
-    protected $lookAtParser;
+    private KmlObject $lookAt;
 
     protected function setUp(): void
     {
         $this->lookAtParser = new LookAtParser();
-    }
 
-    public function testParse(): void
-    {
         $xmlElement = simplexml_load_string(self::KML_LOOK_AT);
 
-        $lookAt = $this->lookAtParser->parse($xmlElement);
+        $this->lookAt = $this->lookAtParser->parse($xmlElement);
+    }
 
-        self::assertEquals(-119.748584, $lookAt->getLongitude());
-        self::assertEquals(33.736266, $lookAt->getLatitude());
-        self::assertEquals(90, $lookAt->getAltitude());
-        self::assertEquals(-9.295926, $lookAt->getHeading());
-        self::assertEquals(84.0957450, $lookAt->getTilt());
-        self::assertEquals(4469.850414, $lookAt->getRange());
+    public function testParseLongitude(): void
+    {
+        self::assertEquals(-119.748584, $this->lookAt->getLongitude());
+    }
+
+    public function testParseLatitude(): void
+    {
+        self::assertEquals(33.736266, $this->lookAt->getLatitude());
+    }
+
+    public function testParseAltitude(): void
+    {
+        self::assertEquals(90, $this->lookAt->getAltitude());
+    }
+
+    public function testParseHeading(): void
+    {
+        self::assertEquals(-9.295926, $this->lookAt->getHeading());
+    }
+
+    public function testParseTilt(): void
+    {
+        self::assertEquals(84.0957450, $this->lookAt->getTilt());
+    }
+
+    public function testParseRange(): void
+    {
+        self::assertEquals(4469.850414, $this->lookAt->getRange());
     }
 }

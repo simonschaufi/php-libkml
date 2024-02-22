@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LibKml\Tests\Unit\Reader\Kml;
 
+use LibKml\Reader\Kml\Exception\UnsupportedTagException;
 use LibKml\Reader\Kml\Feature\Container\DocumentParser;
 use LibKml\Reader\Kml\Feature\Container\FolderParser;
 use LibKml\Reader\Kml\Feature\NetworkLinkParser;
@@ -18,15 +19,11 @@ use LibKml\Reader\Kml\Geometry\PointParser;
 use LibKml\Reader\Kml\Geometry\PolygonParser;
 use LibKml\Reader\Kml\KmlElementParserFactory;
 use LibKml\Reader\Kml\LinkParser;
-use LibKml\Reader\Kml\UnsupportedTagException;
 use PHPUnit\Framework\TestCase;
 
 final class KmlElementParserFactoryTest extends TestCase
 {
-    /**
-     * @var KmlElementParserFactory
-     */
-    protected $kmlElementParserFactory;
+    private KmlElementParserFactory $kmlElementParserFactory;
 
     protected function setUp(): void
     {

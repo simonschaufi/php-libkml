@@ -10,10 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final class TimeStampTest extends TestCase
 {
-    /**
-     * @var TimeStamp
-     */
-    protected $timeStamp;
+    private TimeStamp $timeStamp;
 
     protected function setUp(): void
     {
@@ -35,10 +32,19 @@ final class TimeStampTest extends TestCase
 
     public function testWhenField(): void
     {
-        $when = time();
+        $when = date(DATE_ATOM);
 
         $this->timeStamp->setWhen($when);
 
         self::assertEquals($when, $this->timeStamp->getWhen());
+    }
+
+    public function testFromInteger(): void
+    {
+        $unixTimestamp = time();
+
+        $timeStamp = TimeStamp::fromInteger($unixTimestamp);
+
+        self::assertEquals(date(DATE_ATOM, $unixTimestamp), $timeStamp->getWhen());
     }
 }

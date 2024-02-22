@@ -12,10 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 final class ListStyleTest extends TestCase
 {
-    /**
-     * @var ListStyle
-     */
-    protected $listStyle;
+    private ListStyle $listStyle;
 
     protected function setUp(): void
     {

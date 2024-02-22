@@ -11,10 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 final class ScreenOverlayTest extends TestCase
 {
-    /**
-     * @var ScreenOverlay
-     */
-    protected $screenOverlay;
+    private ScreenOverlay $screenOverlay;
 
     protected function setUp(): void
     {

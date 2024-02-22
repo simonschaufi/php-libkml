@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final class LibKmlReaderTest extends TestCase
 {
-    public const KML = '<?xml version="1.0" encoding="utf-8"?>
+    private const KML = '<?xml version="1.0" encoding="utf-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <NetworkLinkControl>
     <maxSessionLength>4</maxSessionLength>
@@ -23,10 +23,7 @@ final class LibKmlReaderTest extends TestCase
   </Placemark>
 </kml>';
 
-    /**
-     * @var KmlReader
-     */
-    protected $libKmlReader;
+    private KmlReader $libKmlReader;
 
     protected function setUp(): void
     {
@@ -36,6 +33,13 @@ final class LibKmlReaderTest extends TestCase
     public function testFromKml(): void
     {
         $kmlDocument = $this->libKmlReader->fromKml(self::KML);
+
+        self::assertInstanceOf(KmlDocument::class, $kmlDocument);
+    }
+
+    public function testFromKmlFile(): void
+    {
+        $kmlDocument = $this->libKmlReader->fromKmlFile(__DIR__ . '/../../kml/document.kml');
 
         self::assertInstanceOf(KmlDocument::class, $kmlDocument);
     }

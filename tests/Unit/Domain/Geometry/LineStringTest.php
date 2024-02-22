@@ -11,10 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 final class LineStringTest extends TestCase
 {
-    /**
-     * @var LineString
-     */
-    protected $lineString;
+    private LineString $lineString;
 
     protected function setUp(): void
     {

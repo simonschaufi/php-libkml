@@ -11,10 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 final class PointTest extends TestCase
 {
-    /**
-     * @var Point
-     */
-    protected $point;
+    private Point $point;
 
     protected function setUp(): void
     {

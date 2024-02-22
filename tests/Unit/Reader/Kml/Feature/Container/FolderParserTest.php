@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 final class FolderParserTest extends TestCase
 {
-    public const KML_FOLDER = <<< 'TAG'
+    private const KML_FOLDER = <<< 'TAG'
 <Folder id="folder-1" targetId="target-1">
   <name>Folder.kml</name>
   <open>1</open>
@@ -51,10 +51,7 @@ final class FolderParserTest extends TestCase
 </Folder>
 TAG;
 
-    /**
-     * @var FolderParser
-     */
-    protected $folderParser;
+    private FolderParser $folderParser;
 
     protected function setUp(): void
     {

@@ -9,17 +9,14 @@ use PHPUnit\Framework\TestCase;
 
 final class IconTest extends TestCase
 {
-    /**
-     * @var Icon
-     */
-    protected $icon;
+    private Icon $icon;
 
     protected function setUp(): void
     {
         $this->icon = new Icon();
     }
 
-    public function testLongitudeField(): void
+    public function testHrefField(): void
     {
         $href = 'https://www.google.com';
 

@@ -16,10 +16,7 @@ use PHPUnit\Framework\TestCase;
 
 final class ModelTest extends TestCase
 {
-    /**
-     * @var Model
-     */
-    protected $model;
+    private Model $model;
 
     protected function setUp(): void
     {

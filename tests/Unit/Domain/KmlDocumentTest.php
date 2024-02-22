@@ -13,10 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 final class KmlDocumentTest extends TestCase
 {
-    /**
-     * @var KmlDocument
-     */
-    protected $kmlDocument;
+    private KmlDocument $kmlDocument;
 
     protected function setUp(): void
     {

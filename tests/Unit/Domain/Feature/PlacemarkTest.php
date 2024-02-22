@@ -11,10 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 final class PlacemarkTest extends TestCase
 {
-    /**
-     * @var Placemark
-     */
-    protected $placemark;
+    private Placemark $placemark;
 
     protected function setUp(): void
     {

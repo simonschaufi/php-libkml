@@ -12,10 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 final class RegionTest extends TestCase
 {
-    /**
-     * @var Region
-     */
-    protected $region;
+    private Region $region;
 
     protected function setUp(): void
     {

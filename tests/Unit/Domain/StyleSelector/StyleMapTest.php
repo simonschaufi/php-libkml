@@ -11,10 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 final class StyleMapTest extends TestCase
 {
-    /**
-     * @var StyleMap
-     */
-    protected $styleMap;
+    private StyleMap $styleMap;
 
     protected function setUp(): void
     {

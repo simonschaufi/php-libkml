@@ -12,10 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 final class LinearRingTest extends TestCase
 {
-    /**
-     * @var LinearRing
-     */
-    protected $linearRing;
+    private LinearRing $linearRing;
 
     protected function setUp(): void
     {

@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final class SchemaParserTest extends TestCase
 {
-    public const KML_SCHEMA = <<<'TAG'
+    private const KML_SCHEMA = <<<'TAG'
 <Schema name="TrailHeadType" id="TrailHeadTypeId">
   <SimpleField type="string" name="TrailHeadName">
     <displayName><![CDATA[<b>Trail Head Name</b>]]></displayName>
@@ -24,7 +24,7 @@ final class SchemaParserTest extends TestCase
 </Schema>
 TAG;
 
-    public const KML_MULTIPLE_SCHEMAS = <<<'TAG'
+    private const KML_MULTIPLE_SCHEMAS = <<<'TAG'
 <Document>
   <Schema name="TrailHeadType" id="TrailHeadTypeId">
     <SimpleField type="string" name="TrailHeadName">

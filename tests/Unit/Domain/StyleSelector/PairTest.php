@@ -10,10 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final class PairTest extends TestCase
 {
-    /**
-     * @var Pair
-     */
-    protected $pair;
+    private Pair $pair;
 
     protected function setUp(): void
     {

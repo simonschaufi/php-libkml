@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 final class AbstractViewExtractorTest extends TestCase
 {
-    public const KML_CAMERA = <<<'TAG'
+    private const KML_CAMERA = <<<'TAG'
 <Placemark id="placemark-1" targetId="target-1">
   <name>My office</name>
   <Camera>
@@ -29,7 +29,7 @@ final class AbstractViewExtractorTest extends TestCase
 </Placemark>
 TAG;
 
-    public const KML_LOOK_AT = <<<'TAG'
+    private const KML_LOOK_AT = <<<'TAG'
 <Placemark id="placemark-1" targetId="target-1">
   <name>My office</name>
   <LookAt>

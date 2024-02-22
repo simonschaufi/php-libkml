@@ -10,10 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final class SchemaDataTest extends TestCase
 {
-    /**
-     * @var SchemaData
-     */
-    protected $schemaData;
+    private SchemaData $schemaData;
 
     protected function setUp(): void
     {

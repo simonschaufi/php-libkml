@@ -9,10 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class AuthorTest extends TestCase
 {
-    /**
-     * @var Author
-     */
-    protected $author;
+    private Author $author;
 
     protected function setUp(): void
     {

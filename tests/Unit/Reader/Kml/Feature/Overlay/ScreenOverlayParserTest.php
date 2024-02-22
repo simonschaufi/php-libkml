@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final class ScreenOverlayParserTest extends TestCase
 {
-    public const KML_SCREEN_OVERLAY = <<< 'TAG'
+    private const KML_SCREEN_OVERLAY = <<< 'TAG'
 <ScreenOverlay id="khScreenOverlay756">
   <name>Simple crosshairs</name>
   <description>This screen overlay uses fractional positioning
@@ -25,7 +25,7 @@ final class ScreenOverlayParserTest extends TestCase
 </ScreenOverlay>
 TAG;
 
-    protected $screenOverlayParser;
+    private ScreenOverlayParser $screenOverlayParser;
 
     protected function setUp(): void
     {

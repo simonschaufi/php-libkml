@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace LibKml\Tests\Unit\Reader\Kml\Feature;
 
+use LibKml\Domain\Feature\NetworkLink;
+use LibKml\Domain\KmlObject;
 use LibKml\Reader\Kml\Feature\NetworkLinkParser;
 use PHPUnit\Framework\TestCase;
 
 final class NetworkLinkParserTest extends TestCase
 {
-    public const KML_NETWORK_LINK = <<<'TAG'
+    private const KML_NETWORK_LINK = <<<'TAG'
 <NetworkLink id="network-link-1" targetId="target-id-1">
   <name>Open NetworkLink</name>
   <open>1</open>
@@ -21,26 +23,43 @@ final class NetworkLinkParserTest extends TestCase
 TAG;
 
     /**
-     * @var NetworkLinkParser
+     * @var NetworkLink
      */
-    protected $networkLinkParser;
-    protected $kmlElement;
+    private KmlObject $networkLink;
 
     protected function setUp(): void
     {
-        $this->networkLinkParser = new NetworkLinkParser();
-        $this->kmlElement = simplexml_load_string(self::KML_NETWORK_LINK);
+        $networkLinkParser = new NetworkLinkParser();
+        $this->networkLink = $networkLinkParser->parse(simplexml_load_string(self::KML_NETWORK_LINK));
     }
 
-    public function testParse(): void
+    public function testParseId(): void
     {
-        $kmlObject = $this->networkLinkParser->parse($this->kmlElement);
+        self::assertEquals('network-link-1', $this->networkLink->getId());
+    }
 
-        self::assertEquals('network-link-1', $kmlObject->getId());
-        self::assertEquals('target-id-1', $kmlObject->getTargetId());
-        self::assertTrue($kmlObject->getOpen());
-        self::assertEquals('Open NetworkLink', $kmlObject->getName());
-        self::assertEquals('NetworkLink closed to fetched content', $kmlObject->getDescription());
-        self::assertEquals('placemark.kml', $kmlObject->getLink()->getHref());
+    public function testParseTargetId(): void
+    {
+        self::assertEquals('target-id-1', $this->networkLink->getTargetId());
+    }
+
+    public function testParseOpen(): void
+    {
+        self::assertTrue($this->networkLink->getOpen());
+    }
+
+    public function testParseName(): void
+    {
+        self::assertEquals('Open NetworkLink', $this->networkLink->getName());
+    }
+
+    public function testParseDescription(): void
+    {
+        self::assertEquals('NetworkLink closed to fetched content', $this->networkLink->getDescription());
+    }
+
+    public function testParseLink(): void
+    {
+        self::assertEquals('placemark.kml', $this->networkLink->getLink()->getHref());
     }
 }

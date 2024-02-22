@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final class KMLObjectTest extends TestCase
 {
-    protected $kmlObject;
+    private KmlObject $kmlObject;
 
     protected function setUp(): void
     {

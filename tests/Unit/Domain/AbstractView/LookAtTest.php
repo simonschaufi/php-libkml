@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final class LookAtTest extends TestCase
 {
-    protected LookAt $lookAt;
+    private LookAt $lookAt;
 
     protected function setUp(): void
     {
@@ -26,6 +26,11 @@ final class LookAtTest extends TestCase
           ->with(self::equalTo($this->lookAt));
 
         $this->lookAt->accept($objectVisitor);
+    }
+
+    public function testDefaultValues(): void
+    {
+        self::assertEquals(0, $this->lookAt->getRange());
     }
 
     public function testRangeField(): void

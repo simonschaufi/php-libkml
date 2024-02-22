@@ -4,20 +4,26 @@ declare(strict_types=1);
 
 namespace LibKml\Tests\Unit\Domain\SubStyle\ColorStyle;
 
+use LibKml\Domain\FieldType\Color;
+use LibKml\Domain\FieldType\ColorMode;
 use LibKml\Domain\KmlObjectVisitorInterface;
 use LibKml\Domain\SubStyle\ColorStyle\LineStyle;
 use PHPUnit\Framework\TestCase;
 
 final class LineStyleTest extends TestCase
 {
-    /**
-     * @var LineStyle
-     */
-    protected $lineStyle;
+    private LineStyle $lineStyle;
 
     protected function setUp(): void
     {
         $this->lineStyle = new LineStyle();
+    }
+
+    public function testDefaultValues(): void
+    {
+        self::assertEquals(Color::fromWhite(), $this->lineStyle->getColor());
+        self::assertEquals(ColorMode::NORMAL, $this->lineStyle->getColorMode());
+        self::assertEquals(1, $this->lineStyle->getWidth());
     }
 
     public function testAccept(): void

@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 
 final class GeometryExtractorTest extends TestCase
 {
-    public const KML_POINT = <<<'TAG'
+    private const KML_POINT = <<<'TAG'
 <Placemark>
   <Point>
     <coordinates>-90.86948943473118,48.25450093195546</coordinates>
@@ -23,7 +23,7 @@ final class GeometryExtractorTest extends TestCase
 </Placemark>
 TAG;
 
-    public const KML_LINE_STRING = <<<'TAG'
+    private const KML_LINE_STRING = <<<'TAG'
 <Placemark>
   <LineString>
     <extrude>1</extrude>
@@ -36,7 +36,7 @@ TAG;
 </Placemark>
 TAG;
 
-    public const KML_LINEAR_RING = <<<'TAG'
+    private const KML_LINEAR_RING = <<<'TAG'
 <Placemark>
   <LinearRing>
     <coordinates>
@@ -50,7 +50,7 @@ TAG;
 </Placemark>
 TAG;
 
-    public const KML_POLYGON = <<<'TAG'
+    private const KML_POLYGON = <<<'TAG'
 <Placemark>
   <Polygon>
     <extrude>1</extrude>
@@ -81,7 +81,7 @@ TAG;
 </Placemark>
 TAG;
 
-    public const KML_MULTI_GEOMETRY = <<<'TAG'
+    private const KML_MULTI_GEOMETRY = <<<'TAG'
 <Placemark>
   <MultiGeometry>
     <LineString>
@@ -100,7 +100,7 @@ TAG;
 </Placemark>
 TAG;
 
-    public const KML_MODEL = <<<'TAG'
+    private const KML_MODEL = <<<'TAG'
 <Placemark>
   <Model id="khModel543">
     <altitudeMode>relativeToGround</altitudeMode>
@@ -141,7 +141,7 @@ TAG;
 </Placemark>
 TAG;
 
-    public const KML_NO_GEOMETRY = <<<'TAG'
+    private const KML_NO_GEOMETRY = <<<'TAG'
 <Placemark>
   <extrude>1</extrude>
   <altitudeMode>relativeToGround</altitudeMode>

@@ -10,10 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final class UpdateTest extends TestCase
 {
-    /**
-     * @var Update
-     */
-    protected $update;
+    private Update $update;
 
     protected function setUp(): void
     {

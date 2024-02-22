@@ -6,12 +6,13 @@ namespace LibKml\Tests\Unit\Reader\Kml\Geometry;
 
 use LibKml\Domain\FieldType\AltitudeMode;
 use LibKml\Domain\Geometry\LinearRing;
+use LibKml\Domain\KmlObject;
 use LibKml\Reader\Kml\Geometry\PolygonParser;
 use PHPUnit\Framework\TestCase;
 
 final class PolygonParserTest extends TestCase
 {
-    public const KML_POLYGON = <<<'TAG'
+    private const KML_POLYGON = <<<'TAG'
 <Polygon id="polygon-1" targetId="target-id-1">
   <extrude>1</extrude>
   <tessellate>1</tessellate>
@@ -41,28 +42,54 @@ final class PolygonParserTest extends TestCase
 </Polygon>
 TAG;
 
+    private PolygonParser $polygonParser;
+
     /**
-     * @var PolygonParser
+     * @var Polygon
      */
-    protected $lineString;
-    protected $kmlElement;
+    private KmlObject $polygon;
+
+    private $kmlElement;
 
     protected function setUp(): void
     {
-        $this->lineString = new PolygonParser();
+        $this->polygonParser = new PolygonParser();
         $this->kmlElement = simplexml_load_string(self::KML_POLYGON);
+        $this->polygon = $this->polygonParser->parse($this->kmlElement);
     }
 
-    public function testParse(): void
+    public function testParseId(): void
     {
-        $kmlObject = $this->lineString->parse($this->kmlElement);
+        self::assertEquals('polygon-1', $this->polygon->getId());
+    }
 
-        self::assertEquals('polygon-1', $kmlObject->getId());
-        self::assertEquals('target-id-1', $kmlObject->getTargetId());
-        self::assertTrue($kmlObject->getExtrude());
-        self::assertTrue($kmlObject->getTessellate());
-        self::assertEquals(AltitudeMode::ABSOLUTE, $kmlObject->getAltitudeMode());
-        self::assertInstanceOf(LinearRing::class, $kmlObject->getOuterBoundaryIs());
-        self::assertInstanceOf(LinearRing::class, $kmlObject->getInnerBoundaryIs());
+    public function testParseTargetId(): void
+    {
+        self::assertEquals('target-id-1', $this->polygon->getTargetId());
+    }
+
+    public function testParseExtrude(): void
+    {
+        self::assertTrue($this->polygon->getExtrude());
+    }
+
+    public function testParseTessellate(): void
+    {
+        self::assertTrue($this->polygon->getTessellate());
+    }
+
+    public function testParseAltitudeMode(): void
+    {
+        self::assertEquals(AltitudeMode::ABSOLUTE, $this->polygon->getAltitudeMode());
+    }
+
+    public function testParseOuterBondary(): void
+    {
+        self::assertInstanceOf(LinearRing::class, $this->polygon->getOuterBoundaryIs());
+    }
+
+    public function testParseInnerBoundary(): void
+    {
+        self::assertInstanceOf(LinearRing::class, $this->polygon->getInnerBoundaryIs());
     }
 }

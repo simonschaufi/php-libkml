@@ -9,10 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class LinkTest extends TestCase
 {
-    /**
-     * @var Link
-     */
-    protected $link;
+    private Link $link;
 
     protected function setUp(): void
     {

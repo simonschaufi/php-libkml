@@ -12,10 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 final class OverlayTest extends TestCase
 {
-    /**
-     * @var Overlay
-     */
-    protected $overlay;
+    private Overlay $overlay;
 
     protected function setUp(): void
     {

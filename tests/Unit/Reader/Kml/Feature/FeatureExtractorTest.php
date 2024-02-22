@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final class FeatureExtractorTest extends TestCase
 {
-    public const KML_FEATURE = <<<'TAG'
+    private const KML_FEATURE = <<<'TAG'
 <?xml version="1.0" encoding="utf-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <NetworkLinkControl>
@@ -25,7 +25,7 @@ final class FeatureExtractorTest extends TestCase
 </kml>
 TAG;
 
-    public const KML_NO_FEATURE = <<<'TAG'
+    private const KML_NO_FEATURE = <<<'TAG'
 <?xml version="1.0" encoding="utf-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <NetworkLinkControl>

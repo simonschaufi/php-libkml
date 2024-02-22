@@ -9,10 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class SimpleDataTest extends TestCase
 {
-    /**
-     * @var SimpleData
-     */
-    protected $simpleData;
+    private SimpleData $simpleData;
 
     protected function setUp(): void
     {

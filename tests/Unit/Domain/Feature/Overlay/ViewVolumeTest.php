@@ -9,10 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class ViewVolumeTest extends TestCase
 {
-    /**
-     * @var ViewVolume
-     */
-    protected $viewVolume;
+    private ViewVolume $viewVolume;
 
     protected function setUp(): void
     {

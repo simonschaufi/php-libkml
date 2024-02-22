@@ -9,10 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class ScaleTest extends TestCase
 {
-    /**
-     * @var Scale
-     */
-    protected $scale;
+    private Scale $scale;
 
     protected function setUp(): void
     {

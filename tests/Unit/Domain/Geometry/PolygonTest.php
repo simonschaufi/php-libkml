@@ -12,10 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 final class PolygonTest extends TestCase
 {
-    /**
-     * @var Polygon
-     */
-    protected $polygon;
+    private Polygon $polygon;
 
     protected function setUp(): void
     {

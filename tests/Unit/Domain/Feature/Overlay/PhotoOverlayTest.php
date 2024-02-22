@@ -14,10 +14,7 @@ use PHPUnit\Framework\TestCase;
 
 final class PhotoOverlayTest extends TestCase
 {
-    /**
-     * @var PhotoOverlay
-     */
-    protected $photoOverlay;
+    private PhotoOverlay $photoOverlay;
 
     protected function setUp(): void
     {

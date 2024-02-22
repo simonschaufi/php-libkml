@@ -6,13 +6,13 @@ namespace LibKml\Tests\Unit\Reader\Kml;
 
 use LibKml\Domain\Feature\Feature;
 use LibKml\Domain\FieldType\NetworkLinkControl;
+use LibKml\Reader\Exception\WrongDocumentFormat;
 use LibKml\Reader\Kml\KmlParser;
-use LibKml\Reader\WrongDocumentFormat;
 use PHPUnit\Framework\TestCase;
 
 final class KmlParserTest extends TestCase
 {
-    public const KML = <<<'TAG'
+    private const KML = <<<'TAG'
 <?xml version="1.0" encoding="utf-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <NetworkLinkControl>
@@ -27,7 +27,7 @@ final class KmlParserTest extends TestCase
 </kml>
 TAG;
 
-    public const KML_ERRONEOUS = <<<'TAG'
+    private const KML_ERRONEOUS = <<<'TAG'
 <?xml version="1.0" encoding="utf-8"?>
 <Placemark>
   <name>Visible for 4 seconds</name>
@@ -37,10 +37,7 @@ TAG;
 </Placemark>
 TAG;
 
-    /**
-     * @var KmlParser
-     */
-    protected $kmlParser;
+    private KmlParser $kmlParser;
 
     protected function setUp(): void
     {

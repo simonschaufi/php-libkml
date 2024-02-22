@@ -9,10 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class CoordinatesTest extends TestCase
 {
-    /**
-     * @var Coordinates
-     */
-    protected $coordinates;
+    protected Coordinates $coordinates;
 
     private float $longitude = -0.2416788;
     private float $latitude = 51.5285582;

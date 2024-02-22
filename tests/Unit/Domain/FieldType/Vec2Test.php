@@ -9,14 +9,21 @@ use PHPUnit\Framework\TestCase;
 
 final class Vec2Test extends TestCase
 {
-    /**
-     * @var Vec2
-     */
-    protected $vec2;
+    private Vec2 $vec2;
 
     protected function setUp(): void
     {
         $this->vec2 = new Vec2();
+    }
+
+    public function testConstructor(): void
+    {
+        $vec2 = Vec2::fromValues(0.5, 24.76, 'fraction', 'fraction');
+
+        self::assertEquals(0.5, $vec2->getX());
+        self::assertEquals(24.76, $vec2->getY());
+        self::assertEquals('fraction', $vec2->getXUnits());
+        self::assertEquals('fraction', $vec2->getYUnits());
     }
 
     public function testXField(): void

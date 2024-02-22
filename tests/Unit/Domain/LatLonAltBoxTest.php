@@ -9,10 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class LatLonAltBoxTest extends TestCase
 {
-    /**
-     * @var LatLonAltBox
-     */
-    protected $latLonAltBox;
+    private LatLonAltBox $latLonAltBox;
 
     protected function setUp(): void
     {

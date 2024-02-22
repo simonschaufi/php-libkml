@@ -6,12 +6,13 @@ namespace LibKml\Tests\Unit\Reader\Kml\Geometry;
 
 use LibKml\Domain\FieldType\AltitudeMode;
 use LibKml\Domain\FieldType\Coordinates;
+use LibKml\Domain\KmlObject;
 use LibKml\Reader\Kml\Geometry\LinearRingParser;
 use PHPUnit\Framework\TestCase;
 
 final class LinearRingParserTest extends TestCase
 {
-    public const KML_LINEAR_RING = <<<'TAG'
+    private const KML_LINEAR_RING = <<<'TAG'
 <LinearRing id="linear-ring-1" targetId="target-id-1">
   <extrude>1</extrude>
   <tessellate>1</tessellate>
@@ -26,28 +27,49 @@ final class LinearRingParserTest extends TestCase
 </LinearRing>
 TAG;
 
+    private LinearRingParser $linearRingParser;
+
     /**
-     * @var LinearRingParser
+     * @var LinearRing
      */
-    protected $linearRing;
-    protected $kmlElement;
+    private KmlObject $linearRing;
+    private $kmlElement;
 
     protected function setUp(): void
     {
-        $this->linearRing = new LinearRingParser();
+        $this->linearRingParser = new LinearRingParser();
         $this->kmlElement = simplexml_load_string(self::KML_LINEAR_RING);
+        $this->linearRing = $this->linearRingParser->parse($this->kmlElement);
     }
 
-    public function testParse(): void
+    public function testParseId(): void
     {
-        $kmlObject = $this->linearRing->parse($this->kmlElement);
+        self::assertEquals('linear-ring-1', $this->linearRing->getId());
+    }
 
-        self::assertEquals('linear-ring-1', $kmlObject->getId());
-        self::assertEquals('target-id-1', $kmlObject->getTargetId());
-        self::assertTrue($kmlObject->getExtrude());
-        self::assertTrue($kmlObject->getTessellate());
-        self::assertEquals(AltitudeMode::ABSOLUTE, $kmlObject->getAltitudeMode());
-        self::assertCount(5, $kmlObject->getCoordinates());
-        self::assertContainsOnlyInstancesOf(Coordinates::class, $kmlObject->getCoordinates());
+    public function testParseTargetId(): void
+    {
+        self::assertEquals('target-id-1', $this->linearRing->getTargetId());
+    }
+
+    public function testParseExtrude(): void
+    {
+        self::assertTrue($this->linearRing->getExtrude());
+    }
+
+    public function testParseTessellate(): void
+    {
+        self::assertTrue($this->linearRing->getTessellate());
+    }
+
+    public function testParseAltitudeMode(): void
+    {
+        self::assertEquals(AltitudeMode::ABSOLUTE, $this->linearRing->getAltitudeMode());
+    }
+
+    public function testParseCoordinates(): void
+    {
+        self::assertCount(5, $this->linearRing->getCoordinates());
+        self::assertContainsOnlyInstancesOf(Coordinates::class, $this->linearRing->getCoordinates());
     }
 }

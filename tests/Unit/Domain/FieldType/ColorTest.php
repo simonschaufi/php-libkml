@@ -9,10 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class ColorTest extends TestCase
 {
-    /**
-     * @var Color
-     */
-    protected $color;
+    private Color $color;
 
     protected function setUp(): void
     {
@@ -24,6 +21,26 @@ final class ColorTest extends TestCase
         self::assertEquals(0, $this->color->getRed());
         self::assertEquals(0, $this->color->getGreen());
         self::assertEquals(0, $this->color->getBlue());
+        self::assertEquals(1, $this->color->getAlpha());
+    }
+
+    public function testFromBlack(): void
+    {
+        $this->color = Color::fromBlack();
+
+        self::assertEquals(0, $this->color->getRed());
+        self::assertEquals(0, $this->color->getGreen());
+        self::assertEquals(0, $this->color->getBlue());
+        self::assertEquals(1, $this->color->getAlpha());
+    }
+
+    public function testFromWhite(): void
+    {
+        $this->color = Color::fromWhite();
+
+        self::assertEquals(0xFF, $this->color->getRed());
+        self::assertEquals(0xFF, $this->color->getGreen());
+        self::assertEquals(0xFF, $this->color->getBlue());
         self::assertEquals(1, $this->color->getAlpha());
     }
 

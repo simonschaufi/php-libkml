@@ -13,17 +13,14 @@ use PHPUnit\Framework\TestCase;
 
 final class GroundOverlayTest extends TestCase
 {
-    /**
-     * @var GroundOverlay
-     */
-    protected $groundOverlay;
+    private GroundOverlay $groundOverlay;
 
     protected function setUp(): void
     {
         $this->groundOverlay = new GroundOverlay();
     }
 
-    public function testDefaultValueas(): void
+    public function testDefaultValues(): void
     {
         self::assertEquals(Color::fromRGBA(0xFF, 0xFF, 0xFF, 1), $this->groundOverlay->getColor());
         self::assertEquals(0, $this->groundOverlay->getDrawOrder());

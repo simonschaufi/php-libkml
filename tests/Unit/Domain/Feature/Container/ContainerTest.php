@@ -15,7 +15,7 @@ final class ContainerTest extends TestCase
 
     private Placemark $placemark1;
     private Placemark $placemark2;
-    private array $features = [];
+    private array $features;
 
     protected function setUp(): void
     {
