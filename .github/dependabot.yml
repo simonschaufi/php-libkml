@@ -1,16 +1,22 @@
 # https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
 
 version: 2
-
 updates:
-  - package-ecosystem: composer
+  - package-ecosystem: "github-actions"
     directory: "/"
     open-pull-requests-limit: 5
     schedule:
-      interval: weekly
+      interval: "monthly"
+    commit-message:
+      prefix: "[TASK] "
 
-  - package-ecosystem: github-actions
+  - package-ecosystem: "composer"
     directory: "/"
     open-pull-requests-limit: 5
     schedule:
-      interval: monthly
+      interval: "daily"
+    allow:
+      - dependency-type: "development"
+    versioning-strategy: "increase"
+    commit-message:
+      prefix: "[TASK] "
