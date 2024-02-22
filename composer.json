@@ -17,12 +17,12 @@
     },
     "require-dev": {
         "behat/behat": "^3.0",
-        "dvdoug/behat-code-coverage": "^5.0",
-        "ergebnis/composer-normalize": "^2.0.0",
-        "friendsofphp/php-cs-fixer": "^3.0.0",
-        "phpunit/phpunit": "^9.0",
-        "rector/rector": "^1.0",
-        "squizlabs/php_codesniffer": "^3.8.1"
+        "dvdoug/behat-code-coverage": "^5.3.2",
+        "ergebnis/composer-normalize": "^2.42.0",
+        "friendsofphp/php-cs-fixer": "^3.49.0",
+        "phpunit/phpunit": "^9.6.16",
+        "rector/rector": "^1.0.1",
+        "squizlabs/php_codesniffer": "^3.9.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
