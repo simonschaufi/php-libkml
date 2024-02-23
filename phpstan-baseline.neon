@@ -1,0 +1,786 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setAltitude\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/AbstractView/AbstractViewParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setAltitudeMode\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/AbstractView/AbstractViewParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setHeading\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/AbstractView/AbstractViewParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setLatitude\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/AbstractView/AbstractViewParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setLongitude\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/AbstractView/AbstractViewParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setTilt\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/AbstractView/AbstractViewParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setTimePrimitive\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/AbstractView/AbstractViewParser.php
+
+		-
+			message: "#^PHPDoc tag @param for parameter \\$kmlObject with type LibKml\\\\Domain\\\\AbstractView\\\\View\\|LibKml\\\\Domain\\\\KmlObject is not subtype of native type LibKml\\\\Domain\\\\KmlObject\\.$#"
+			count: 1
+			path: src/Reader/Kml/AbstractView/AbstractViewParser.php
+
+		-
+			message: "#^Parameter \\$kmlObject of method LibKml\\\\Reader\\\\Kml\\\\AbstractView\\\\AbstractViewParser\\:\\:loadValues\\(\\) has invalid type LibKml\\\\Domain\\\\AbstractView\\\\View\\.$#"
+			count: 1
+			path: src/Reader/Kml/AbstractView/AbstractViewParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setRoll\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/AbstractView/CameraParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setRange\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/AbstractView/LookAtParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setFeatures\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Feature/Container/ContainerParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setSchemas\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Feature/Container/DocumentParser.php
+
+		-
+			message: "#^Method LibKml\\\\Reader\\\\Kml\\\\Feature\\\\FeatureExtractor\\:\\:extractFeature\\(\\) should return LibKml\\\\Domain\\\\Feature\\\\Feature\\|null but returns LibKml\\\\Domain\\\\KmlObject\\.$#"
+			count: 1
+			path: src/Reader/Kml/Feature/FeatureExtractor.php
+
+		-
+			message: "#^Variable property access on SimpleXMLElement\\.$#"
+			count: 2
+			path: src/Reader/Kml/Feature/FeatureExtractor.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setAbstractView\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Feature/FeatureParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setAddress\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Feature/FeatureParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setDescription\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Feature/FeatureParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setName\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Feature/FeatureParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setOpen\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Feature/FeatureParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setPhoneNumber\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Feature/FeatureParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setSnippet\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Feature/FeatureParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setStyleSelectors\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Feature/FeatureParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setStyleUrl\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Feature/FeatureParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setVisibility\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Feature/FeatureParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setLink\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Feature/NetworkLinkParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setAltitude\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Feature/Overlay/GroundOverlayParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setAltitudeMode\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Feature/Overlay/GroundOverlayParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setLatLonBox\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Feature/Overlay/GroundOverlayParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setColor\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Feature/Overlay/OverlayParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setDrawOrder\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Feature/Overlay/OverlayParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setIcon\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Feature/Overlay/OverlayParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setGeometry\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Feature/PlacemarkParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setTimePrimitive\\(\\)\\.$#"
+			count: 2
+			path: src/Reader/Kml/Feature/PlacemarkParser.php
+
+		-
+			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
+			count: 1
+			path: src/Reader/Kml/FieldType/CoordinatesParser.php
+
+		-
+			message: "#^Method LibKml\\\\Reader\\\\Kml\\\\Geometry\\\\GeometryExtractor\\:\\:extractGeometry\\(\\) should return LibKml\\\\Domain\\\\Geometry\\\\Geometry\\|null but returns LibKml\\\\Domain\\\\KmlObject\\.$#"
+			count: 1
+			path: src/Reader/Kml/Geometry/GeometryExtractor.php
+
+		-
+			message: "#^Variable property access on SimpleXMLElement\\.$#"
+			count: 2
+			path: src/Reader/Kml/Geometry/GeometryExtractor.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setAltitudeMode\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Geometry/LineStringParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setCoordinates\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Geometry/LineStringParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setExtrude\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Geometry/LineStringParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setTessellate\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Geometry/LineStringParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setAltitudeMode\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Geometry/LinearRingParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setCoordinates\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Geometry/LinearRingParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setExtrude\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Geometry/LinearRingParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setTessellate\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Geometry/LinearRingParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setAltitudeMode\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Geometry/ModelParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setLink\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Geometry/ModelParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setLocation\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Geometry/ModelParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setOrientation\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Geometry/ModelParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setResourceMap\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Geometry/ModelParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setGeometries\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Geometry/MultiGeometryParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setCoordinates\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Geometry/PointParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setExtrude\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Geometry/PointParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setAltitudeMode\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Geometry/PolygonParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setExtrude\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Geometry/PolygonParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setInnerBoundaryIs\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Geometry/PolygonParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setOuterBoundaryIs\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Geometry/PolygonParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setTessellate\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/Geometry/PolygonParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setHref\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/IconParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setHttpQuery\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/IconParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setRefreshInterval\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/IconParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setRefreshMode\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/IconParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setViewBoundScale\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/IconParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setViewFormat\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/IconParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setViewRefreshMode\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/IconParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setViewRefreshTime\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/IconParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setHref\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/LinkParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setRefreshInterval\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/LinkParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setRefreshMode\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/LinkParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setViewFormat\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/LinkParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setViewRefreshMode\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/LinkParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setViewRefreshTime\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/LinkParser.php
+
+		-
+			message: "#^Variable method call on LibKml\\\\Domain\\\\KmlObject\\.$#"
+			count: 1
+			path: src/Reader/Kml/StyleSelector/StyleParser.php
+
+		-
+			message: "#^Variable property access on SimpleXMLElement\\.$#"
+			count: 2
+			path: src/Reader/Kml/StyleSelector/StyleParser.php
+
+		-
+			message: "#^Method LibKml\\\\Reader\\\\Kml\\\\StyleSelector\\\\StyleSelectorExtractor\\:\\:extractStyleSelector\\(\\) should return LibKml\\\\Domain\\\\StyleSelector\\\\StyleSelector\\|null but returns LibKml\\\\Domain\\\\KmlObject\\.$#"
+			count: 1
+			path: src/Reader/Kml/StyleSelector/StyleSelectorExtractor.php
+
+		-
+			message: "#^Variable property access on SimpleXMLElement\\.$#"
+			count: 2
+			path: src/Reader/Kml/StyleSelector/StyleSelectorExtractor.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setBgColor\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/SubStyle/BalloonStyleParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setDisplayMode\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/SubStyle/BalloonStyleParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setText\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/SubStyle/BalloonStyleParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setTextColor\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/SubStyle/BalloonStyleParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setColor\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/SubStyle/ColorStyle/ColorStyleParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setColorMode\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/SubStyle/ColorStyle/ColorStyleParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setHeading\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/SubStyle/ColorStyle/IconStyleParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setHotSpot\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/SubStyle/ColorStyle/IconStyleParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setIcon\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/SubStyle/ColorStyle/IconStyleParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setScale\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/SubStyle/ColorStyle/IconStyleParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setScale\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/SubStyle/ColorStyle/LabelStyleParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setWidth\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/SubStyle/ColorStyle/LineStyleParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setFill\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/SubStyle/ColorStyle/PolyStyleParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setOutline\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/SubStyle/ColorStyle/PolyStyleParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setBgColor\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/SubStyle/ListStyleParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setListItemType\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/SubStyle/ListStyleParser.php
+
+		-
+			message: "#^Call to function in_array\\(\\) requires parameter \\#3 to be set\\.$#"
+			count: 1
+			path: src/Reader/Kml/TimePrimitive/TimePrimitiveExtractor.php
+
+		-
+			message: "#^Calling in_array\\(\\) is forbidden, set the third parameter \\$strict to `true` to also check the types to prevent type juggling bugs\\.$#"
+			count: 1
+			path: src/Reader/Kml/TimePrimitive/TimePrimitiveExtractor.php
+
+		-
+			message: "#^Method LibKml\\\\Reader\\\\Kml\\\\TimePrimitive\\\\TimePrimitiveExtractor\\:\\:extract\\(\\) should return LibKml\\\\Domain\\\\TimePrimitive\\\\TimePrimitive\\|null but returns LibKml\\\\Domain\\\\KmlObject\\.$#"
+			count: 1
+			path: src/Reader/Kml/TimePrimitive/TimePrimitiveExtractor.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setBegin\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/TimePrimitive/TimeSpanParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setEnd\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/TimePrimitive/TimeSpanParser.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:setWhen\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Kml/TimePrimitive/TimeStampParser.php
+
+		-
+			message: "#^Binary operation \"\\.\" between 'get' and LibKml\\\\Domain\\\\SubStyle\\\\SubStyle results in an error\\.$#"
+			count: 1
+			path: tests/Bdd/Read/Kml/ParserKmlContext.php
+
+		-
+			message: "#^Variable method call on mixed\\.$#"
+			count: 6
+			path: tests/Bdd/Read/Kml/ParserKmlContext.php
+
+		-
+			message: "#^Property LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\AbstractView\\\\CameraParserTest\\:\\:\\$camera \\(LibKml\\\\Domain\\\\AbstractView\\\\Camera\\) does not accept LibKml\\\\Domain\\\\KmlObject\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/AbstractView/CameraParserTest.php
+
+		-
+			message: "#^Property LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\AbstractView\\\\LookAtParserTest\\:\\:\\$lookAt \\(LibKml\\\\Domain\\\\AbstractView\\\\LookAt\\) does not accept LibKml\\\\Domain\\\\KmlObject\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/AbstractView/LookAtParserTest.php
+
+		-
+			message: "#^Property LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\Feature\\\\NetworkLinkParserTest\\:\\:\\$networkLink \\(LibKml\\\\Domain\\\\Feature\\\\NetworkLink\\) does not accept LibKml\\\\Domain\\\\KmlObject\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Feature/NetworkLinkParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getAltitude\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Feature/Overlay/GroundOverlayParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getAltitudeMode\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Feature/Overlay/GroundOverlayParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getColor\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Feature/Overlay/GroundOverlayParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getDrawOrder\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Feature/Overlay/GroundOverlayParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getIcon\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Feature/Overlay/GroundOverlayParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getLatLonBox\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Feature/Overlay/GroundOverlayParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getName\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Feature/Overlay/GroundOverlayParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getTimePrimitive\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Feature/PlacemarkParserTest.php
+
+		-
+			message: "#^Property LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\Feature\\\\PlacemarkParserTest\\:\\:\\$placemark \\(LibKml\\\\Domain\\\\Feature\\\\Placemark\\) does not accept LibKml\\\\Domain\\\\KmlObject\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Feature/PlacemarkParserTest.php
+
+		-
+			message: "#^Call to function in_array\\(\\) requires parameter \\#3 to be set\\.$#"
+			count: 10
+			path: tests/Unit/Reader/Kml/FieldType/CoordinatesParserTest.php
+
+		-
+			message: "#^Calling in_array\\(\\) is forbidden, set the third parameter \\$strict to `true` to also check the types to prevent type juggling bugs\\.$#"
+			count: 10
+			path: tests/Unit/Reader/Kml/FieldType/CoordinatesParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getAltitudeMode\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/LineStringParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getCoordinates\\(\\)\\.$#"
+			count: 2
+			path: tests/Unit/Reader/Kml/Geometry/LineStringParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getExtrude\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/LineStringParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getTessellate\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/LineStringParserTest.php
+
+		-
+			message: "#^PHPDoc tag @var for property LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\Geometry\\\\LineStringParserTest\\:\\:\\$lineString with type LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\Geometry\\\\LineString is not subtype of native type LibKml\\\\Domain\\\\KmlObject\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/LineStringParserTest.php
+
+		-
+			message: "#^Property LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\Geometry\\\\LineStringParserTest\\:\\:\\$lineString has unknown class LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\Geometry\\\\LineString as its type\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/LineStringParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getAltitudeMode\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/LinearRingParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getCoordinates\\(\\)\\.$#"
+			count: 2
+			path: tests/Unit/Reader/Kml/Geometry/LinearRingParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getExtrude\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/LinearRingParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getTessellate\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/LinearRingParserTest.php
+
+		-
+			message: "#^PHPDoc tag @var for property LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\Geometry\\\\LinearRingParserTest\\:\\:\\$linearRing with type LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\Geometry\\\\LinearRing is not subtype of native type LibKml\\\\Domain\\\\KmlObject\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/LinearRingParserTest.php
+
+		-
+			message: "#^Property LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\Geometry\\\\LinearRingParserTest\\:\\:\\$linearRing has unknown class LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\Geometry\\\\LinearRing as its type\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/LinearRingParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getAltitudeMode\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/ModelParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getLink\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/ModelParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getLocation\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/ModelParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getOrientation\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/ModelParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getResourceMap\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/ModelParserTest.php
+
+		-
+			message: "#^PHPDoc tag @var for property LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\Geometry\\\\ModelParserTest\\:\\:\\$model with type LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\Geometry\\\\Model is not subtype of native type LibKml\\\\Domain\\\\KmlObject\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/ModelParserTest.php
+
+		-
+			message: "#^Property LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\Geometry\\\\ModelParserTest\\:\\:\\$model has unknown class LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\Geometry\\\\Model as its type\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/ModelParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getGeometries\\(\\)\\.$#"
+			count: 4
+			path: tests/Unit/Reader/Kml/Geometry/MultiGeometryParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getCoordinates\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/PointParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getExtrude\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/PointParserTest.php
+
+		-
+			message: "#^PHPDoc tag @var for property LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\Geometry\\\\PointParserTest\\:\\:\\$point with type LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\Geometry\\\\Point is not subtype of native type LibKml\\\\Domain\\\\KmlObject\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/PointParserTest.php
+
+		-
+			message: "#^Property LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\Geometry\\\\PointParserTest\\:\\:\\$point has unknown class LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\Geometry\\\\Point as its type\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/PointParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getAltitudeMode\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/PolygonParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getExtrude\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/PolygonParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getInnerBoundaryIs\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/PolygonParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getOuterBoundaryIs\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/PolygonParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\KmlObject\\:\\:getTessellate\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/PolygonParserTest.php
+
+		-
+			message: "#^PHPDoc tag @var for property LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\Geometry\\\\PolygonParserTest\\:\\:\\$polygon with type LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\Geometry\\\\Polygon is not subtype of native type LibKml\\\\Domain\\\\KmlObject\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/PolygonParserTest.php
+
+		-
+			message: "#^Property LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\Geometry\\\\PolygonParserTest\\:\\:\\$polygon has unknown class LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\Geometry\\\\Polygon as its type\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/Geometry/PolygonParserTest.php
+
+		-
+			message: "#^Property LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\IconParserTest\\:\\:\\$icon \\(LibKml\\\\Domain\\\\Icon\\) does not accept LibKml\\\\Domain\\\\KmlObject\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/IconParserTest.php
+
+		-
+			message: "#^Property LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\LinkParserTest\\:\\:\\$link \\(LibKml\\\\Domain\\\\Link\\) does not accept LibKml\\\\Domain\\\\KmlObject\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/LinkParserTest.php
+
+		-
+			message: "#^Property LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\StyleSelector\\\\StyleParserTest\\:\\:\\$style \\(LibKml\\\\Domain\\\\StyleSelector\\\\Style\\) does not accept LibKml\\\\Domain\\\\KmlObject\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/StyleSelector/StyleParserTest.php
+
+		-
+			message: "#^Property LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\SubStyle\\\\BalloonStyleParserTest\\:\\:\\$balloonStyle \\(LibKml\\\\Domain\\\\SubStyle\\\\BalloonStyle\\) does not accept LibKml\\\\Domain\\\\KmlObject\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/SubStyle/BalloonStyleParserTest.php
+
+		-
+			message: "#^Property LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\SubStyle\\\\ColorStyle\\\\IconStyleParserTest\\:\\:\\$iconStyle \\(LibKml\\\\Domain\\\\SubStyle\\\\ColorStyle\\\\IconStyle\\) does not accept LibKml\\\\Domain\\\\KmlObject\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/SubStyle/ColorStyle/IconStyleParserTest.php
+
+		-
+			message: "#^Property LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\SubStyle\\\\ColorStyle\\\\LabelStyleParserTest\\:\\:\\$labelStyle \\(LibKml\\\\Domain\\\\SubStyle\\\\ColorStyle\\\\LabelStyle\\) does not accept LibKml\\\\Domain\\\\KmlObject\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/SubStyle/ColorStyle/LabelStyleParserTest.php
+
+		-
+			message: "#^Property LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\SubStyle\\\\ColorStyle\\\\LineStyleParserTest\\:\\:\\$lineStyle \\(LibKml\\\\Domain\\\\SubStyle\\\\ColorStyle\\\\LineStyle\\) does not accept LibKml\\\\Domain\\\\KmlObject\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/SubStyle/ColorStyle/LineStyleParserTest.php
+
+		-
+			message: "#^Property LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\SubStyle\\\\ColorStyle\\\\PolyStyleParserTest\\:\\:\\$polyStyle \\(LibKml\\\\Domain\\\\SubStyle\\\\ColorStyle\\\\PolyStyle\\) does not accept LibKml\\\\Domain\\\\KmlObject\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/SubStyle/ColorStyle/PolyStyleParserTest.php
+
+		-
+			message: "#^Property LibKml\\\\Tests\\\\Unit\\\\Reader\\\\Kml\\\\SubStyle\\\\ListStyleParserTest\\:\\:\\$listStyle \\(LibKml\\\\Domain\\\\SubStyle\\\\ListStyle\\) does not accept LibKml\\\\Domain\\\\KmlObject\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/SubStyle/ListStyleParserTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\TimePrimitive\\\\TimePrimitive\\:\\:getBegin\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/TimePrimitive/TimePrimitiveExtractorTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\TimePrimitive\\\\TimePrimitive\\:\\:getEnd\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/TimePrimitive/TimePrimitiveExtractorTest.php
+
+		-
+			message: "#^Call to an undefined method LibKml\\\\Domain\\\\TimePrimitive\\\\TimePrimitive\\:\\:getWhen\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Reader/Kml/TimePrimitive/TimePrimitiveExtractorTest.php

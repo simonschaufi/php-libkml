@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LibKml\Tests\Unit\Reader\Kml\TimePrimitive;
 
-use LibKml\Reader\Kml\TimePrimitive\TimePrimitive;
+use LibKml\Domain\TimePrimitive\TimePrimitive;
 use LibKml\Reader\Kml\TimePrimitive\TimePrimitiveExtractor;
 use PHPUnit\Framework\TestCase;
 
@@ -86,10 +86,7 @@ TAG;
      */
     private $noTimePrimitive;
 
-    /**
-     * @var TimePrimitive
-     */
-    private $timePrimitive;
+    private ?TimePrimitive $timePrimitive = null;
 
     protected function setUp(): void
     {

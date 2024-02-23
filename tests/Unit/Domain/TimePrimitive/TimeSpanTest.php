@@ -19,15 +19,13 @@ final class TimeSpanTest extends TestCase
 
     public function testAccept(): void
     {
-        $timeSpan = new TimeSpan();
-
         $objectVisitor = $this->createMock(KmlObjectVisitorInterface::class);
 
         $objectVisitor->expects(self::once())
           ->method('visitTimeSpan')
-          ->with(self::equalTo($timeSpan));
+          ->with(self::equalTo($this->timeSpan));
 
-        $timeSpan->accept($objectVisitor);
+        $this->timeSpan->accept($objectVisitor);
     }
 
     public function testBeginField(): void

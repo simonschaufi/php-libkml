@@ -21,23 +21,23 @@ class KmlReader
     /**
      * Build a KmlDocument from a KML string
      */
-    public function fromKml(string $kml): KmlDocument
+    public function fromString(string $kml): KmlDocument
     {
-        return $this->parse(ParserFactory::KML, $kml);
+        return $this->parse($kml);
     }
 
     /**
-     * Build a KmlDocument from a KML string
+     * Build a KmlDocument from a KML file
      */
     public function fromKmlFile(string $kmlFile): KmlDocument
     {
         $kml = file_get_contents($kmlFile);
-        return $this->parse(ParserFactory::KML, $kml);
+        return $this->parse($kml);
     }
 
-    private function parse(string $type, string $content): KmlDocument
+    private function parse(string $content): KmlDocument
     {
-        $parser = $this->parserFactory->getParser($type);
+        $parser = $this->parserFactory->getParser(ParserFactory::KML);
         return $parser->parse($content);
     }
 }

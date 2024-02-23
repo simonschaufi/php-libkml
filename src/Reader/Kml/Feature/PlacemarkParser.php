@@ -35,5 +35,15 @@ class PlacemarkParser extends FeatureParser
             $pointParser = $this->kmlElementParserFactory->getParserByElementName(KmlElementParserFactory::POINT);
             $kmlObject->setGeometry($pointParser->parse($element->Point));
         }
+
+        if (isset($element->TimeStamp)) {
+            $timeStampParser = $this->kmlElementParserFactory->getParserByElementName(KmlElementParserFactory::TIME_STAMP);
+            $kmlObject->setTimePrimitive($timeStampParser->parse($element->TimeStamp));
+        }
+
+        if (isset($element->TimeSpan)) {
+            $timeSpanParser = $this->kmlElementParserFactory->getParserByElementName(KmlElementParserFactory::TIME_SPAN);
+            $kmlObject->setTimePrimitive($timeSpanParser->parse($element->TimeSpan));
+        }
     }
 }

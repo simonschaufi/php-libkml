@@ -9,6 +9,8 @@ use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
  * A Placemark is a Feature with associated Geometry.
+ *
+ * @see https://developers.google.com/kml/documentation/kmlreference#placemark
  */
 class Placemark extends Feature
 {

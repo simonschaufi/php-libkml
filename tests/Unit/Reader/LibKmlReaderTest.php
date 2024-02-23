@@ -32,7 +32,7 @@ final class LibKmlReaderTest extends TestCase
 
     public function testFromKml(): void
     {
-        $kmlDocument = $this->libKmlReader->fromKml(self::KML);
+        $kmlDocument = $this->libKmlReader->fromString(self::KML);
 
         self::assertInstanceOf(KmlDocument::class, $kmlDocument);
     }

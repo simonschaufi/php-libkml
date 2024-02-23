@@ -6,7 +6,6 @@ namespace LibKml\Tests\Unit\Reader\Kml\SubStyle;
 
 use LibKml\Domain\FieldType\Color;
 use LibKml\Domain\FieldType\ListItemType;
-use LibKml\Domain\KmlObject;
 use LibKml\Domain\SubStyle\ListStyle;
 use LibKml\Reader\Kml\SubStyle\ListStyleParser;
 use PHPUnit\Framework\TestCase;
@@ -24,10 +23,7 @@ final class ListStyleParserTest extends TestCase
 </ListStyle>
 TAG;
 
-    /**
-     * @var ListStyle
-     */
-    private KmlObject $listStyle;
+    private ListStyle $listStyle;
 
     protected function setUp(): void
     {

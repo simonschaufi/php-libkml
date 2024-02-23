@@ -19,15 +19,13 @@ final class TimeStampTest extends TestCase
 
     public function testAccept(): void
     {
-        $timeStamp = new TimeStamp();
-
         $objectVisitor = $this->createMock(KmlObjectVisitorInterface::class);
 
         $objectVisitor->expects(self::once())
           ->method('visitTimeStamp')
-          ->with(self::equalTo($timeStamp));
+          ->with(self::equalTo($this->timeStamp));
 
-        $timeStamp->accept($objectVisitor);
+        $this->timeStamp->accept($objectVisitor);
     }
 
     public function testWhenField(): void
@@ -43,8 +41,10 @@ final class TimeStampTest extends TestCase
     {
         $unixTimestamp = time();
 
+        $when = date(DATE_ATOM, $unixTimestamp);
+
         $timeStamp = TimeStamp::fromInteger($unixTimestamp);
 
-        self::assertEquals(date(DATE_ATOM, $unixTimestamp), $timeStamp->getWhen());
+        self::assertEquals($when, $timeStamp->getWhen());
     }
 }

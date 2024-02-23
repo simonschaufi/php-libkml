@@ -6,6 +6,11 @@ namespace LibKml\Domain\TimePrimitive;
 
 use LibKml\Domain\KmlObjectVisitorInterface;
 
+/**
+ * Represents a single moment in time.
+ *
+ * @see https://developers.google.com/kml/documentation/kmlreference#timestamp
+ */
 class TimeStamp extends TimePrimitive
 {
     private ?string $when = null;

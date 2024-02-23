@@ -44,7 +44,7 @@ final class ParserKmlContext implements Context
      */
     public function iParseTheKmlDocument(): void
     {
-        $this->kmlDocument = $this->kmlReader->fromKml($this->kmlText);
+        $this->kmlDocument = $this->kmlReader->fromString($this->kmlText);
     }
 
     /**

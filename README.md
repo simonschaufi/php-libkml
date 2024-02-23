@@ -1,8 +1,9 @@
 # PHP KML parser
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/simonschaufi/10)
-[![Latest Stable Version](https://poser.pugx.org/simonschaufi/php-libkml/v/stable)](https://packagist.org/packages/simonschaufi/php-libkml)
-[![Total Downloads](https://poser.pugx.org/simonschaufi/php-libkml/downloads)](https://packagist.org/packages/simonschaufi/php-libkml)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/simonschaufi/php-libkml.svg)](https://packagist.org/packages/simonschaufi/php-libkml)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/simonschaufi/php-libkml/run-tests.yml?branch=main&label=tests)](https://github.com/simonschaufi/php-libkml/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/simonschaufi/php-libkml.svg)](https://packagist.org/packages/simonschaufi/php-libkml)
 [![License](https://poser.pugx.org/simonschaufi/php-libkml/license)](https://packagist.org/packages/simonschaufi/php-libkml)
 
 A php library to parse KML/KMZ files.
@@ -32,19 +33,24 @@ Future features:
   * GeoJson
   * WKT
 
-## Usage
+## Installation
 
-### Installation
-
-The recommended way to install the extension is using [Composer][1].
-
-Run the following command within your Composer based TYPO3 project:
+You can install the package via composer:
 
 ```bash
 composer require simonschaufi/php-libkml
 ```
 
-### Contribution
+## Usage
+
+```php
+$kmlReader = new KmlReader();
+$kmlDocument = $kmlReader->fromString($kml);
+// or
+$kmlDocument = $kmlReader->fromKmlFile($kmlFilePath);
+```
+
+## Contributing
 
 **Pull Requests** are gladly welcome!
 
@@ -69,4 +75,11 @@ Execute acceptance tests:
 composer local:tests:acceptance
 ```
 
-[1]: https://getcomposer.org/
+## Credits
+
+- [Simon Schaufelberger](https://github.com/simonschaufi)
+- [All Contributors](../../contributors)
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

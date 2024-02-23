@@ -1,0 +1,27 @@
+includes:
+    - phpstan-baseline.neon
+    - vendor/spaze/phpstan-disallowed-calls/disallowed-dangerous-calls.neon
+    - vendor/spaze/phpstan-disallowed-calls/disallowed-execution-calls.neon
+    - vendor/spaze/phpstan-disallowed-calls/disallowed-insecure-calls.neon
+    - vendor/spaze/phpstan-disallowed-calls/disallowed-loose-calls.neon
+
+parameters:
+    parallel:
+        # Don't be overly greedy on machines with more CPU's to be a good neighbor especially on CI
+        maximumNumberOfProcesses: 5
+    level: 3
+    bootstrapFiles:
+        - vendor/autoload.php
+    paths:
+        - src
+        - tests
+    scanDirectories:
+        - src
+        - tests
+    disallowedFunctionCalls:
+        -
+            function:
+                - 'var_dump()'
+                - 'xdebug_break()'
+            message: 'Use logging instead or remove if it was for debugging purposes.'
+    tmpDir: build/phpstan

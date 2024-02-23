@@ -7,7 +7,9 @@ namespace LibKml\Domain\TimePrimitive;
 use LibKml\Domain\KmlObjectVisitorInterface;
 
 /**
- * TimeSpan class.
+ * Represents an extent in time bounded by begin and end dateTimes.
+ *
+ * @see https://developers.google.com/kml/documentation/kmlreference#timespan
  */
 class TimeSpan extends TimePrimitive
 {
