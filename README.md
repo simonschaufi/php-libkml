@@ -78,7 +78,7 @@ composer local:tests:acceptance
 ## Credits
 
 - [Simon Schaufelberger](https://github.com/simonschaufi)
-- [All Contributors](../../contributors)
+- [All Contributors](../../graphs/contributors)
 
 ## License
 
