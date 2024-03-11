@@ -2,35 +2,37 @@
 name: Rector
 
 on:
-    pull_request: null
+  pull_request: null
 
 jobs:
-    rector:
-        runs-on: ubuntu-latest
-        if: github.event.pull_request.head.repo.full_name == 'simonschaufi/php-libkml'
-        steps:
-            -
-                if: github.event.pull_request.head.repo.full_name == github.repository
-                uses: actions/checkout@v4
-                with:
-                    # Must be used to trigger workflow after push
-                    token: ${{ secrets.ACCESS_TOKEN }}
+  rector:
+    runs-on: ubuntu-latest
 
-            -
-                uses: shivammathur/setup-php@v2
-                with:
-                    php-version: 8.2
-                    coverage: none
+    if: github.event.pull_request.head.repo.full_name == 'simonschaufi/php-libkml'
 
-            -   uses: "ramsey/composer-install@v3"
+    steps:
+      - name: "Checkout code"
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        uses: actions/checkout@v4
+        with:
+          # Must be used to trigger workflow after push
+          token: ${{ secrets.ACCESS_TOKEN }}
 
-            -   run: vendor/bin/rector --ansi
-            # @todo apply coding standard if used
+      - name: "Setup PHP"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          coverage: none
 
-            -
-                # commit only to core contributors who have repository access
-                uses: stefanzweifel/git-auto-commit-action@v5
-                with:
-                    commit_message: '[TASK] Rector fixes'
-                    commit_author: 'GitHub Action <actions@github.com>'
-                    commit_user_email: 'action@github.com'
+      - uses: ramsey/composer-install@v3
+
+      - name: "Run Rector"
+        run: vendor/bin/rector --ansi
+
+      - name: "Run PHP CS Fixer"
+        run: vendor/bin/php-cs-fixer fix --ansi
+
+      - # commit only to core contributors who have repository access
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: '[TASK] Rector fixes'
