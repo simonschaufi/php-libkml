@@ -1,8 +1,10 @@
-# Based on https://github.com/spatie/package-skeleton-laravel/blob/main/.github/workflows/dependabot-auto-merge.yml
+# Copied from https://github.com/spatie/package-skeleton-laravel/blob/main/.github/workflows/dependabot-auto-merge.yml
+# See https://docs.github.com/en/enterprise-cloud@latest/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions#enable-auto-merge-on-a-pull-request
 name: dependabot-auto-merge
-on:
-  pull_request_target:
-    types: [opened, reopened]
+
+# We're using pull_request_target instead of pull_request due to permission issues with the pull_request target:
+# https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions#responding-to-events
+on: pull_request_target
 
 permissions:
   pull-requests: write
@@ -10,33 +12,37 @@ permissions:
 
 jobs:
   dependabot:
+    name: "Dependabot auto-merge"
     runs-on: ubuntu-latest
     timeout-minutes: 5
+
     if: ${{ github.actor == 'dependabot[bot]' }}
 
     steps:
       - name: "Dependabot metadata"
-        id: dependabot-metadata
+        # https://docs.github.com/en/enterprise-cloud@latest/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions#fetch-metadata-about-a-pull-request
+        id: metadata
         uses: dependabot/fetch-metadata@v2.1.0
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
 
-      - name: "Output updated dependencies (JSON)"
-        run: echo steps.dependabot-metadata.outputs.updated-dependencies-json
-        env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # does not work, see https://github.com/dependabot/fetch-metadata/issues/499
+      #      - name: "Auto-merge Dependabot PRs for semver-minor updates"
+      #        if: ${{ steps.metadata.outputs.update-type == 'version-update:semver-minor' }}
+      #        run: gh pr merge --auto --rebase "$PR_URL"
+      #        env:
+      #          PR_URL: "${{ github.event.pull_request.html_url }}"
+      #          github-token: "${{ secrets.GITHUB_TOKEN }}"
+      #
+      #      - name: "Auto-merge Dependabot PRs for semver-patch updates"
+      #        if: ${{ steps.metadata.outputs.update-type == 'version-update:semver-patch' }}
+      #        run: gh pr merge --auto --rebase "$PR_URL"
+      #        env:
+      #          PR_URL: "${{ github.event.pull_request.html_url }}"
+      #          github-token: "${{ secrets.GITHUB_TOKEN }}"
 
-      - name: "Auto-merge Dependabot PRs for semver-minor updates"
-        if: ${{steps.metadata.outputs.update-type == 'version-update:semver-minor'}}
-        run: gh pr merge --auto --squash "$PR_URL"
+      - name: "Enable auto-merge"
+        if: ${{ steps.metadata.outputs.dependency-type == 'direct:development' }}
+        run: gh pr merge -R "${{ github.repository }}" --squash --auto "${{ github.event.pull_request.number }}"
         env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-
-      - name: "Auto-merge Dependabot PRs for semver-patch updates"
-        if: ${{steps.metadata.outputs.update-type == 'version-update:semver-patch'}}
-        run: gh pr merge --auto --squash "$PR_URL"
-        env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"

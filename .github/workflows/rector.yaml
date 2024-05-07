@@ -27,7 +27,7 @@ jobs:
       - uses: ramsey/composer-install@v3
 
       - name: "Run Rector"
-        run: vendor/bin/rector --ansi
+        run: vendor/bin/rector process --config build/rector/rector.php --ansi
 
       - name: "Run PHP CS Fixer"
         run: vendor/bin/php-cs-fixer fix --ansi

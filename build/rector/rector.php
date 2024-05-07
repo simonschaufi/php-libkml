@@ -12,35 +12,40 @@ use Rector\TypeDeclaration\Rector\ClassMethod\AddVoidReturnTypeWhereNoReturnRect
 use Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromStrictNativeCallRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromStrictScalarReturnExprRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromStrictTypedPropertyRector;
-use Rector\TypeDeclaration\Rector\Property\AddPropertyTypeDeclarationRector;
 use Rector\TypeDeclaration\Rector\Property\TypedPropertyFromAssignsRector;
 use Rector\TypeDeclaration\Rector\Property\TypedPropertyFromStrictConstructorRector;
 use Rector\TypeDeclaration\Rector\Property\TypedPropertyFromStrictSetUpRector;
 use Rector\TypeDeclaration\Rector\StmtsAwareInterface\DeclareStrictTypesRector;
+use Rector\ValueObject\PhpVersion;
 
-return RectorConfig::configure()
-    ->withPaths([
-        __DIR__ . '/src',
-        __DIR__ . '/tests',
-    ])
-    // uncomment to reach your current PHP version
-    //->withPhpSets()
-    ->withSets([
+return static function (RectorConfig $rectorConfig) {
+    $rectorConfig->paths([
+        __DIR__ . '/../../src',
+        __DIR__ . '/../../tests',
+    ]);
+    $rectorConfig->phpVersion(PhpVersion::PHP_74);
+    $rectorConfig->sets([
         LevelSetList::UP_TO_PHP_74,
-    ])
-    ->withRules([
+    ]);
+    $rectorConfig->rules([
+        // Privatization
+        PrivatizeFinalClassMethodRector::class,
+
+        // TypeDeclaration
+        AddMethodCallBasedStrictParamTypeRector::class,
+        AddParamTypeFromPropertyTypeRector::class,
         AddVoidReturnTypeWhereNoReturnRector::class,
+        ReturnTypeFromStrictNativeCallRector::class,
+        ReturnTypeFromStrictScalarReturnExprRector::class,
+        ReturnTypeFromStrictTypedPropertyRector::class,
+
         TypedPropertyFromAssignsRector::class,
         TypedPropertyFromStrictConstructorRector::class,
         TypedPropertyFromStrictSetUpRector::class,
-        PrivatizeFinalClassMethodRector::class,
+
         DeclareStrictTypesRector::class,
-        ReturnTypeFromStrictTypedPropertyRector::class,
-        AddMethodCallBasedStrictParamTypeRector::class,
-        AddParamTypeFromPropertyTypeRector::class,
-        ReturnTypeFromStrictNativeCallRector::class,
-        ReturnTypeFromStrictScalarReturnExprRector::class,
-    ])
-    //->withConfiguredRule(AddPropertyTypeDeclarationRector::class, [])
-    ->withConfiguredRule(AddParamTypeDeclarationRector::class, [])
-    ->withImportNames(true, true, false);
+    ]);
+    $rectorConfig->ruleWithConfiguration(AddParamTypeDeclarationRector::class, []);
+    $rectorConfig->importNames();
+    $rectorConfig->importShortClasses(false);
+};

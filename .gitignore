@@ -1,6 +1,7 @@
 /.idea/
 /.phpunit.cache/
-/build/
+/build/*
+!/build/rector/
 /vendor/
 /.php-cs-fixer.cache
 /composer.lock
