@@ -16,7 +16,7 @@ final class MultiGeometryTest extends TestCase
 
     private Point $point;
     private Polygon $polygon;
-    private $geometries;
+    private array $geometries;
 
     protected function setUp(): void
     {
