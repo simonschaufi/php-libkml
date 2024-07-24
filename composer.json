@@ -21,7 +21,7 @@
         "ergebnis/composer-normalize": "^2.43.0",
         "friendsofphp/php-cs-fixer": "^3.59.3",
         "phpstan/extension-installer": "^1.4.1",
-        "phpstan/phpstan": "^1.11.7",
+        "phpstan/phpstan": "^1.11.8",
         "phpstan/phpstan-deprecation-rules": "^1.2",
         "phpstan/phpstan-phpunit": "^1.4.0",
         "phpstan/phpstan-strict-rules": "^1.6.0",
