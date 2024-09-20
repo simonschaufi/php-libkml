@@ -24,7 +24,7 @@
         "phpstan/phpstan": "^1.12.4",
         "phpstan/phpstan-deprecation-rules": "^1.2",
         "phpstan/phpstan-phpunit": "^1.4.0",
-        "phpstan/phpstan-strict-rules": "^1.6.0",
+        "phpstan/phpstan-strict-rules": "^1.6.1",
         "phpunit/phpunit": "^11.3.6",
         "rector/rector": "^1.2.5",
         "spaze/phpstan-disallowed-calls": "^3.4",
