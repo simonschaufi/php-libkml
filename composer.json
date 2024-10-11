@@ -27,7 +27,7 @@
         "phpstan/phpstan-strict-rules": "^1.6.1",
         "phpunit/phpunit": "^11.4.1",
         "rector/rector": "^1.2.6",
-        "spaze/phpstan-disallowed-calls": "^3.4",
+        "spaze/phpstan-disallowed-calls": "^3.5",
         "squizlabs/php_codesniffer": "^3.10.3"
     },
     "minimum-stability": "dev",
