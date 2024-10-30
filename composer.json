@@ -16,7 +16,7 @@
         "ext-simplexml": "*"
     },
     "require-dev": {
-        "behat/behat": "^3.14",
+        "behat/behat": "^3.15",
         "dvdoug/behat-code-coverage": "^5.3.5",
         "ergebnis/composer-normalize": "^2.44.0",
         "friendsofphp/php-cs-fixer": "^3.64.0",
