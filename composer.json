@@ -28,7 +28,7 @@
         "phpunit/phpunit": "^11.4.3",
         "rector/rector": "^1.2.10",
         "spaze/phpstan-disallowed-calls": "^4.0",
-        "squizlabs/php_codesniffer": "^3.11.0"
+        "squizlabs/php_codesniffer": "^3.11.1"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
