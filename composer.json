@@ -17,7 +17,7 @@
     },
     "require-dev": {
         "behat/behat": "^3.18",
-        "dvdoug/behat-code-coverage": "^5.3.6",
+        "dvdoug/behat-code-coverage": "^5.3.7",
         "ergebnis/composer-normalize": "^2.45.0",
         "friendsofphp/php-cs-fixer": "^3.68.5",
         "phpstan/extension-installer": "^1.4.3",
