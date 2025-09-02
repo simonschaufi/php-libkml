@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: "Checkout code"
         if: github.event.pull_request.head.repo.full_name == github.repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           # Must be used to trigger workflow after push
           token: ${{ secrets.ACCESS_TOKEN }}
